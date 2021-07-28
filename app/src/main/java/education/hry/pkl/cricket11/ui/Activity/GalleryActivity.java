@@ -27,23 +27,20 @@ public class GalleryActivity extends BaseActivity implements GalleryAdapter.Item
 
     RecyclerView recyclerView;
     ArrayList<GalleryResponse.Datum> arrayList= new ArrayList<GalleryResponse.Datum>();
-
     String Registration_Id, token;
-    RecyclerView usertotalplantrv;
     Button plantationnow;
-
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.activity_gallery);
 
 
         TextView tv_toolbarTitle = findViewById(R.id.tv_toolbarTitle);
         tv_toolbarTitle.setText("Gallery");
         ImageButton back = findViewById(R.id.back);
+        recyclerView =  findViewById(R.id.usertotalplantrv);
+        plantationnow = findViewById(R.id.plantationnow);
 
 
         try {
@@ -57,7 +54,7 @@ public class GalleryActivity extends BaseActivity implements GalleryAdapter.Item
         if (GlobalClass.isNetworkConnected(this)) {
 
             WebAPiCall aPiCall = new WebAPiCall();
-            aPiCall.GalleryDataMethod(this, this, token);
+            aPiCall.GalleryDataMethod(this, this, token,this);
 
 
         } else {
@@ -74,22 +71,14 @@ public class GalleryActivity extends BaseActivity implements GalleryAdapter.Item
         });
 
 
-        recyclerView = (RecyclerView) findViewById(R.id.usertotalplantrv);
-        plantationnow = findViewById(R.id.plantationnow);
+
         GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
         recyclerView.setLayoutManager(manager);
-
-        arrayList = new ArrayList<GalleryResponse.Datum>();
-
-
         plantationnow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-//                Intent intent = new Intent(MapsActivity.this, CapturePlantationActivity.class);
-//               // intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                startActivity(intent);
-//                finish();
+                finish();
 
             }
         });
@@ -116,7 +105,7 @@ public class GalleryActivity extends BaseActivity implements GalleryAdapter.Item
 
             plantationnow.setVisibility(View.VISIBLE);
             recyclerView.setVisibility(View.GONE);
-            GlobalClass.dailogwarring(GalleryActivity.this, "No Planting", "No Record found!");
+            GlobalClass.dailogwarring(GalleryActivity.this, "No Gallery", "No Gallery found!");
 
         }
 

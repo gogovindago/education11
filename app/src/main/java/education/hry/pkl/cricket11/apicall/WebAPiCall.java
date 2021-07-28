@@ -17,6 +17,7 @@ import java.util.Objects;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.BannerData_interface;
+import education.hry.pkl.cricket11.allinterfaces.GetGalleryDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
@@ -580,8 +581,7 @@ public class WebAPiCall {
         });
     }
 
-    public void GalleryDataMethod(
-            final Activity activity, final Context context, String token) {
+    public void GalleryDataMethod(final Activity activity, final Context context, String token, GetGalleryDetail_interface anInterface) {
 
         loadershowwithMsg(context, "Fetching all Photos...");
 
@@ -598,6 +598,7 @@ public class WebAPiCall {
 
                     if (response.body().getResponse() == 200) {
                         GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        anInterface.GetGalleryDetail_list(response.body().getData());
 
 
                     } else {

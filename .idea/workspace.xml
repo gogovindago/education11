@@ -31,26 +31,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7063279c-bc44-49d9-9779-54be30cd925c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/androidx/databinding/DataBinderMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/androidx/databinding/DataBindingComponent.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/androidx/databinding/library/baseAdapters/BR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/BR.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/DataBinderMapperImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityEducationwebsiteBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityForgetPasswordBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityMainBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityNotificationDetailBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityNotificationsBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityProfileBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityResetPasswordBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ActivityWelcomeBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ListViewItemRowBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/databinding/ToolbarLayoutBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/roomdb/AppDatabase_Impl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/ap_generated_sources/debug/out/education/hry/pkl/cricket11/roomdb/TaskDao_Impl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/res/google-services/debug/values/values.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/education/hry/pkl/cricket11/BuildConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/GalleryResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -62,23 +42,17 @@
       <change beforePath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/6.7.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/UserAllplantedPlantAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/GalleryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/allinterfaces/GetPlantationDetail_interface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/allinterfaces/GetGalleryDetail_interface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/GetPlantDetailsResponse.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MapsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/GalleryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/GalleryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/GalleryActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_maps.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_gallery.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[VirtualDevicePath@C:\Users\Govind\.android\avd\Pixel_3a_XL_API_22.avd]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[SerialNumber@RZ8M60120ZX]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -153,7 +127,7 @@
     <property name="DEBUGGABLE_PROCESS" value="plantation.hr.cbse.haryanaplantation" />
     <property name="DEBUGGER_ID" value="Auto" />
     <property name="DeviceAndSnapshotComboBoxAction.selectedDevice" value="SerialNumber@RZ8M60120ZX" />
-    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-07-23T07:51:30.362873100Z" />
+    <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-07-28T12:03:54.393630800Z" />
     <property name="ExportApk.ApkPath" value="E:\AndroidApps\Govind\2020\AllApps\Java\Live\haryanaPlantation13julylatest\haryanaPlantation\app" />
     <property name="ExportApk.BuildVariants" value="release" />
     <property name="ResourceManagerPrefKey.ResourceType" value="DRAWABLE" />
@@ -359,7 +333,14 @@
       <option name="project" value="LOCAL" />
       <updated>1627467429762</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="gallery...">
+      <created>1627472720732</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1627472720732</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -432,7 +413,8 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="login done" />
-    <option name="LAST_COMMIT_MESSAGE" value="login done" />
+    <MESSAGE value="gallery..." />
+    <option name="LAST_COMMIT_MESSAGE" value="gallery..." />
   </component>
   <component name="WindowStateProjectService">
     <state x="611" y="271" key="#Notifications" timestamp="1627463910078">
@@ -457,11 +439,11 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="795" y="323" key="AndroidCreateXmlResourceDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1626155743535" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1627467426347">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1627472710248">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="219" y="0" key="CommitChangelistDialog2/0.0.1366.738@0.0.1366.738" timestamp="1627004562558" />
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1627467426347" />
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1627472710248" />
     <state x="510" y="173" key="Downloadable.Font.Dialog.Size" timestamp="1627295041258">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -484,41 +466,41 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="614" y="217" key="Github.UntrackedFilesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627020292123" />
-    <state width="1877" height="694" key="GridCell.Tab.0.bottom" timestamp="1627472661515">
+    <state width="1877" height="463" key="GridCell.Tab.0.bottom" timestamp="1627474250721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1322" height="312" key="GridCell.Tab.0.bottom/0.0.1366.738@0.0.1366.738" timestamp="1627000261564" />
-    <state width="1877" height="694" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1627472661515" />
-    <state width="1877" height="694" key="GridCell.Tab.0.center" timestamp="1627472661515">
+    <state width="1877" height="463" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1627474250721" />
+    <state width="1877" height="463" key="GridCell.Tab.0.center" timestamp="1627474250721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1322" height="312" key="GridCell.Tab.0.center/0.0.1366.738@0.0.1366.738" timestamp="1627000261563" />
-    <state width="1877" height="694" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1627472661515" />
-    <state width="1877" height="694" key="GridCell.Tab.0.left" timestamp="1627472661515">
+    <state width="1877" height="463" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1627474250721" />
+    <state width="1877" height="463" key="GridCell.Tab.0.left" timestamp="1627474250721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1322" height="312" key="GridCell.Tab.0.left/0.0.1366.738@0.0.1366.738" timestamp="1627000261563" />
-    <state width="1877" height="694" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1627472661515" />
-    <state width="1877" height="694" key="GridCell.Tab.0.right" timestamp="1627472661515">
+    <state width="1877" height="463" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1627474250721" />
+    <state width="1877" height="463" key="GridCell.Tab.0.right" timestamp="1627474250721">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1322" height="312" key="GridCell.Tab.0.right/0.0.1366.738@0.0.1366.738" timestamp="1627000261563" />
-    <state width="1877" height="694" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1627472661515" />
-    <state x="540" y="262" key="IDE.errors.dialog" timestamp="1627040323770">
+    <state width="1877" height="463" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1627474250721" />
+    <state x="540" y="262" key="IDE.errors.dialog" timestamp="1627472840931">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="384" y="186" key="IDE.errors.dialog/0.0.1366.738@0.0.1366.738" timestamp="1626999333080" />
-    <state x="540" y="262" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627040323770" />
+    <state x="540" y="262" key="IDE.errors.dialog/0.0.1920.1040@0.0.1920.1040" timestamp="1627472840931" />
     <state x="259" y="0" key="SettingsEditor" timestamp="1627467067265">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="184" y="0" key="SettingsEditor/0.0.1366.738@0.0.1366.738" timestamp="1627003537276" />
     <state x="259" y="0" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1627467067265" />
-    <state x="387" y="142" key="Vcs.Push.Dialog.v2" timestamp="1627467530781">
+    <state x="387" y="142" key="Vcs.Push.Dialog.v2" timestamp="1627472724031">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="275" y="101" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1627004323741" />
-    <state x="387" y="142" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1627467530781" />
+    <state x="387" y="142" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1627472724031" />
     <state x="662" y="328" key="com.android.tools.idea.run.deployment.SelectMultipleDevicesDialog" timestamp="1627025605010">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
