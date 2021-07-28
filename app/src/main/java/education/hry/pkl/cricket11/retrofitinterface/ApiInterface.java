@@ -3,7 +3,7 @@ package education.hry.pkl.cricket11.retrofitinterface;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
-import education.hry.pkl.cricket11.model.GetPlantDetailsResponse;
+import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
@@ -19,7 +19,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
-import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
@@ -28,10 +27,6 @@ public interface ApiInterface {
 
     @GET("HomeData")
     Call<BannerResponse> getBannnerAPi();
-
-    @GET("GetPlantDetails/{Registration_Id}")
-    Call<GetPlantDetailsResponse> getGetPlantDetailsAPi(@Path("Registration_Id") String s);
-
 
 
     @Multipart
@@ -57,7 +52,6 @@ public interface ApiInterface {
     Call<LoginRespone> LoginWithPasswordUser(@Body LoginRequest request);
 
 
-
     @GET("StudentProfile")
     Call<StudentProfileResponse> STUDENT_PROFILE_DATA_RESPONSE_CALL(@Query("Registration_Id") String Registration_Id);
 
@@ -69,5 +63,9 @@ public interface ApiInterface {
                                                                              @Field("Latitude") String Latitude,
                                                                              @Field("ImageDate") String ImageDate,
                                                                              @Field("ImagePath") String ImagePath);
+
+    @FormUrlEncoded
+    @POST("Gallery")
+    Call<GalleryResponse> GalleryApiCall(@Field("token") String token);
 
 }

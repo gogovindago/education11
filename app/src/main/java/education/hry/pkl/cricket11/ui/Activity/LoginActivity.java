@@ -52,7 +52,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private TextInputEditText edtMobileNumber, txtpaswrd;
     private TextInputEditText edtpass;
     LinearLayout llotpbox;
-    private String refreshedToken, userMobileNumber, username, userEmailId, lativale, longivalue, admissionURL, Profilepicurl,Registration_Id;
+    private String refreshedToken, userMobileNumber, username, userEmailId, lativale, longivalue, admissionURL, Profilepicurl,Registration_Id,token;
     private static final String TAG = "LoginActivity";
     private MyLoaders myLoaders;
     EasyCountDownTextview countDownTextview;
@@ -200,6 +200,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
             Registration_Id = data.getId();
+            token = data.getToken();
             username = data.getName();
             userMobileNumber = data.getMobile();
             userEmailId = data.getEmailId();
@@ -210,6 +211,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             boolean firstTimelogin = true;
 
             CSPreferences.putString(this, "id", Registration_Id);
+            CSPreferences.putString(this, "token", token);
             CSPreferences.putString(this, "User_Id", Registration_Id);
             CSPreferences.putString(this, "User_mobile", userMobileNumber);
             CSPreferences.putString(this, "User_email", userEmailId);

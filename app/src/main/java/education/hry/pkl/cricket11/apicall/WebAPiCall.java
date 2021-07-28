@@ -13,23 +13,20 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.BannerData_interface;
-import education.hry.pkl.cricket11.allinterfaces.GetPlantationDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
-import education.hry.pkl.cricket11.model.GetPlantDetailsResponse;
+import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
-import education.hry.pkl.cricket11.model.StudentEventDataSaveResponse;
 import education.hry.pkl.cricket11.model.StudentProfileResponse;
 import education.hry.pkl.cricket11.retrofitinterface.ApiClient;
 import education.hry.pkl.cricket11.utility.CSPreferences;
@@ -304,32 +301,6 @@ public class WebAPiCall {
     }
 
 
-    public void getPlantDetailsMethod(final Context context, final GetPlantationDetail_interface anInterface, String Registration_Id) {
-
-        loadershowwithMsg(context, "Getting all  Plants Details...");
-        Call<GetPlantDetailsResponse> userpost_responseCall = ApiClient.getClient().getGetPlantDetailsAPi(Registration_Id);
-        userpost_responseCall.enqueue(new Callback<GetPlantDetailsResponse>() {
-            @Override
-            public void onResponse(Call<GetPlantDetailsResponse> call, Response<GetPlantDetailsResponse> response) {
-                dailoghide(context);
-                if (response.isSuccessful() && response.code() == 200) {
-                    //GlobalClass.showtost(context, "" + response.message());
-                    anInterface.GetPlantationDetail_list((List<GetPlantDetailsResponse.GetPlantDetailsData>) response.body().getData());
-                } else {
-                    GlobalClass.showtost(context, "" + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<GetPlantDetailsResponse> call, Throwable t) {
-
-                dailoghide(context);
-                t.printStackTrace();
-                //Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
-                // Log.d("dddddd", "onFailure: " + t.getMessage());
-            }
-        });
-    }
 
 
     public void profilepicPostDataMethod(final Activity activity, final Context context, RequestBody registration_id, MultipartBody.Part image) {
@@ -609,59 +580,28 @@ public class WebAPiCall {
         });
     }
 
+    public void GalleryDataMethod(
+            final Activity activity, final Context context, String token) {
 
+        loadershowwithMsg(context, "Fetching all Photos...");
 
-
-/*Registration_Id,
-Longitude,
-Latitude,
-ImagePath,
-ImageDate,
-Description  Remarks*/
-
-    public void StudentDataMethod(
-            final Activity activity, final Context context, String Registration_Id, String Description,
-            final String Longitude, String ImageDate, final String Latitude, String ImagePath) {
-
-        loadershowwithMsg(context, "Your Data is Uploading...");
-
-        Call<StudentEventDataSaveResponse> userpost_responseCall =
-                ApiClient.getClient().STUDENT_EVENT_DATA_SAVE_RESPONSE_CALL(Registration_Id, Description, Longitude, Latitude, ImageDate, ImagePath);
-        userpost_responseCall.enqueue(new Callback<StudentEventDataSaveResponse>() {
+        Call<GalleryResponse> apiCall =
+                ApiClient.getClient().GalleryApiCall("Bearer "+token);
+        apiCall.enqueue(new Callback<GalleryResponse>() {
             @Override
-            public void onResponse(Call<StudentEventDataSaveResponse> call, final Response<StudentEventDataSaveResponse> response) {
+            public void onResponse(Call<GalleryResponse> call, final Response<GalleryResponse> response) {
 
                 if (response.isSuccessful()) {
 
                     dailoghide(context);
 
-                    dailogsuccessWithActivity(context, activity, "Good job!", "Your Data has been  Uploaded Successfully.");
-                    CSPreferences.putString(context, "lativale", Latitude);
-                    CSPreferences.putString(context, "longivalue", Longitude);
 
-                   /* SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context);
-                    sweetAlertDialog.setTitle("Good job!");
-                    sweetAlertDialog.setContentText("Your Data has been  Uploaded Successfully.");
-                    sweetAlertDialog.setVolumeControlStream(2);
-                    
-                    sweetAlertDialog.changeAlertType(2);
-                    sweetAlertDialog.setCanceledOnTouchOutside(false);
-                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sweetAlertDialog) {
-                            GlobalClass.showtost(context, "" + response.body().getMessage());
-                            activity.finish();
-                        }
-                    });
-                    sweetAlertDialog.show();*/
+                    if (response.body().getResponse() == 200) {
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
 
-
-                    if (response.body().getStatusCode() == 201) {
-                        GlobalClass.showtost(context, "" + response.body().getMessage());
-                        activity.finish();
 
                     } else {
-                        GlobalClass.showtost(context, "" + response.body().getMessage());
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
 
                     }
 
@@ -674,7 +614,7 @@ Description  Remarks*/
 
 
             @Override
-            public void onFailure(Call<StudentEventDataSaveResponse> call, Throwable t) {
+            public void onFailure(Call<GalleryResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();

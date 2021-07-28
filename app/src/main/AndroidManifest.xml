@@ -57,7 +57,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name="education.hry.pkl.cricket11.ui.Activity.MapsActivity"
+            android:name="education.hry.pkl.cricket11.ui.Activity.GalleryActivity"
             android:label="@string/title_activity_maps">
 
             <!-- <intent-filter> -->

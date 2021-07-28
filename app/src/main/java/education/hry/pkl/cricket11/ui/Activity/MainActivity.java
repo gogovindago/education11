@@ -202,7 +202,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
 
             Picasso.get()
-                    .load(CSPreferences.readString(MainActivity.this, "Profilepicurl").trim())
+                    .load(imageurl.trim())
                     .placeholder(R.mipmap.ic_launcher_round)
                     .error(R.drawable.notattached)
                     .into(profile_image);
@@ -222,18 +222,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         rvRun = (RecyclerView) findViewById(R.id.rvRun);
         rvMostSixes = (RecyclerView) findViewById(R.id.rvMostSixes);
         rvMostFour = (RecyclerView) findViewById(R.id.rvMostFour);
-        //  adminimagelist = new ArrayList();
 
-      /*  adminimagelist.add(new OptionDataModel(R.string.cm, R.drawable.manohar, 11, "#FFFFFF"));
-        adminimagelist.add(new OptionDataModel(R.string.edm, R.drawable.kanwar_pal_gujjar, 12, "#FFFFFF"));
-        adminimagelist.add(new OptionDataModel(R.string.psnow, R.drawable.anand_png, 13, "#FFFFFF"));
-        adminimagelist.add(new OptionDataModel(R.string.dgnow, R.drawable.vijay, 14, "#FFFFFF"));
-
-        AdminImgAdapter adapteradminimage = new AdminImgAdapter(this, adminimagelist, this);
-        rvadminimage.setAdapter(adapteradminimage);
-        GridLayoutManager adminimagemanager = new GridLayoutManager(this, 4, GridLayoutManager.VERTICAL, false);
-        rvadminimage.setLayoutManager(adminimagemanager);
-*/
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList();
@@ -513,7 +502,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         switch (position) {
             case 0:
                 mDrawerLayout.closeDrawers();
-                Intent intent2 = new Intent(this, MapsActivity.class);
+                Intent intent2 = new Intent(this, GalleryActivity.class);
                 startActivity(intent2);
                 // fragment = new FixturesFragment();
                 // fragment = new Upload_service();
