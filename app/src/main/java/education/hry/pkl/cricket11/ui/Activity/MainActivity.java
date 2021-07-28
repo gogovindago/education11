@@ -286,7 +286,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         DataModelLeft[] drawerItem = new DataModelLeft[8];
 
 
-        drawerItem[0] = new DataModelLeft(R.drawable.ic_outline_dashboard_24, "My Dashboard");
+        drawerItem[0] = new DataModelLeft(R.drawable.ic_outline_dashboard_24, "Gallery");
         drawerItem[1] = new DataModelLeft(R.drawable.personwhite, "My Profile");
         drawerItem[2] = new DataModelLeft(R.drawable.rate_review, "Rate App");
         drawerItem[3] = new DataModelLeft(R.drawable.share, "Share App");
