@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/maincard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="horizontal"
+    app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true">
+
+    <RelativeLayout
+        android:id="@+id/llmain"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:background="#DAE8FC"
+        android:gravity="center"
+        android:padding="2dp">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_below="@+id/txtName"
+            android:id="@+id/ivThumb"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="start"
+            android:layout_margin="5dp"
+            android:src="@mipmap/bg"
+            app:civ_border_color="@color/colorPrimaryDark"
+            app:civ_border_width="2dp" />
+
+        <TextView
+            android:id="@+id/txtName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center|start"
+            android:padding="0dp"
+            android:text="Tau Devi Lal Cricket Stadium, Panchkula (20 Overs) | 21/03/2021"
+            android:textSize="12sp" />
+
+        <TextView
+
+            android:id="@+id/txtteamA"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtName"
+            android:layout_toEndOf="@+id/ivThumb"
+            android:layout_toRightOf="@+id/ivThumb"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="TeamA"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txtTeamAscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtName"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@+id/txtteamA"
+            android:layout_toRightOf="@+id/txtteamA"
+            android:gravity="center|end"
+            android:padding="2dp"
+            android:text="00-00(00.00)"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:ellipsize="marquee"
+            android:id="@+id/txtteamB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtteamA"
+            android:layout_alignParentBottom="false"
+            android:layout_toEndOf="@+id/ivThumb"
+            android:layout_toRightOf="@+id/ivThumb"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="TeamB"
+            android:textSize="12sp"
+            android:maxWidth="12sp"
+            android:maxEms="12"
+            android:singleLine="true" />
+
+        <TextView
+            android:id="@+id/txtTeamBscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtTeamAscore"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_toEndOf="@+id/txtteamB"
+            android:layout_toRightOf="@+id/txtteamB"
+            android:gravity="center|end"
+            android:padding="2dp"
+            android:text="00-00(00.00)"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:id="@+id/txtResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtteamB"
+            android:layout_alignParentBottom="false"
+            android:layout_toEndOf="@+id/ivThumb"
+            android:layout_toRightOf="@+id/ivThumb"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="Result"
+            android:textSize="12sp" />
+
+
+        <TextView
+            android:id="@+id/txtmom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtResult"
+            android:layout_alignParentBottom="false"
+            android:layout_toEndOf="@+id/ivThumb"
+            android:layout_toRightOf="@+id/ivThumb"
+            android:background="@drawable/spinner_border"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="Man of the match"
+            android:textSize="12sp" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imgmomplayer"
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:layout_below="@+id/txtmom"
+            android:layout_toEndOf="@+id/ivThumb"
+            android:layout_toRightOf="@+id/ivThumb"
+            android:gravity="center"
+            android:padding="2dp"
+            android:src="@mipmap/ic_launcher_round"
+            android:text="Man of the match"
+            android:layout_centerInParent="true"
+            app:civ_border_color="@color/colorPrimaryDark"
+            app:civ_border_width="2dp" />
+
+
+        <TextView
+            android:id="@+id/txtmomPlayerName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgmomplayer"
+            android:layout_alignParentBottom="false"
+            android:layout_toEndOf="@+id/ivThumb"
+            android:layout_toRightOf="@+id/ivThumb"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="Name Of mom player"
+            android:textColor="@color/black"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtmomTeamName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtmomPlayerName"
+            android:layout_toEndOf="@+id/ivThumb"
+            android:layout_toRightOf="@+id/ivThumb"
+            android:gravity="center"
+            android:padding="2dp"
+            android:text="Mom Team Name"
+            android:textSize="12sp" />
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+

@@ -1,0 +1,31 @@
+<resources>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_horizontal_marginn">8dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="nav_header_vertical_spacing">8dp</dimen>
+    <dimen name="nav_header_height">176dp</dimen>
+    <dimen name="fab_margin">18dp</dimen>
+    <dimen name="publisher_height">120dp</dimen>
+    <dimen name="publisher_width">90dp</dimen>
+    <dimen name="publisher_end_margin">16dp</dimen>
+    <dimen name="publisher_right_margin">16dp</dimen>
+    <dimen name="publisher_bottom_margin">16dp</dimen>
+    <dimen name="publisher_padding">2dp</dimen>
+     <dimen name="seeall">10dp</dimen>
+    <dimen name="activity_padding">16dp</dimen>
+
+    <dimen name="edit_hight">45dp</dimen>
+    <dimen name="edit_hintsize">12dp</dimen>
+    <dimen name="placeholder_image">150dp</dimen>
+    <dimen name="placeholder_text_height">8dp</dimen>
+    <dimen name="activity_padding_horizontal">16dp</dimen>
+    <dimen name="padding_10">10dp</dimen>
+    <dimen name="name">15dp</dimen>
+    <dimen name="chef">12dp</dimen>
+    <dimen name="timestamp">11dp</dimen>
+    <dimen name="description">15dp</dimen>
+    <dimen name="price">13dp</dimen>
+    <dimen name="pageMargin">32dp</dimen>
+    <dimen name="offset">32dp</dimen>
+</resources>

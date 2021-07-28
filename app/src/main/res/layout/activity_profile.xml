@@ -1,0 +1,896 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/bg"
+        android:fillViewport="true"
+        tools:context=".ui.Activity.ProfileActivity">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+            <RelativeLayout
+
+                android:id="@+id/constraintLayout"
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@color/blue"
+                android:gravity="top|end"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+
+                <ImageView
+                    android:layout_margin="8dp"
+                    android:background="@drawable/buttonstyle"
+                    android:id="@+id/edit"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="top|end"
+                    android:padding="8dp"
+                    android:src="@drawable/editpen"
+                    android:visibility="invisible">
+
+                </ImageView>
+
+                <ImageView
+                    android:layout_margin="8dp"
+
+                    android:background="@drawable/buttonstyle"
+                    android:id="@+id/save"
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_gravity="top|end"
+                    android:padding="8dp"
+                    android:src="@drawable/check"
+                    android:visibility="gone">
+
+                </ImageView>
+
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/txtAccountCreatedat"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:gravity="start"
+                android:text="Account Created at: "
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toTopOf="@+id/materialCardView"
+                app:layout_constraintEnd_toStartOf="@+id/constraintLayout"
+                app:layout_constraintStart_toEndOf="@+id/constraintLayout"
+                app:layout_constraintTop_toTopOf="@+id/constraintLayout"
+                app:layout_constraintVertical_bias="0.0">
+
+            </TextView>
+
+            <com.google.android.material.card.MaterialCardView
+
+                android:id="@+id/materialCardView"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:background="@color/white"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
+
+                <ImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="85dp"
+                    android:layout_height="85dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/person">
+
+
+                </ImageView>
+
+                <ImageView
+                    android:visibility="invisible"
+                    android:id="@+id/takePhoto"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end|bottom"
+                    android:src="@drawable/ic_baseline_photo_camera_24">
+
+                </ImageView>
+
+            </com.google.android.material.card.MaterialCardView>
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtRegistraionId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/person"
+                            android:drawableLeft="@drawable/person"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Registration Id"
+                            android:textStyle="bold"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    </com.google.android.material.textfield.TextInputLayout>
+  <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtfirstname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/person"
+                            android:drawableLeft="@drawable/person"
+                            android:drawablePadding="16dp"
+                            android:textStyle="bold"
+
+                            android:enabled="false"
+                            android:hint="First Name"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtlastname"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/person"
+                            android:drawableLeft="@drawable/person"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Last Name"
+                            android:textStyle="bold"
+
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName"
+                            android:outlineSpotShadowColor="@color/colorAccent"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+                            app:passwordToggleEnabled="true" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtmobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/phone"
+                            android:drawableLeft="@drawable/phone"
+                            android:drawablePadding="16dp"
+                            android:ems="10"
+                            android:enabled="false"
+                            android:textStyle="bold"
+
+                            android:hint="Mobile Number"
+                            android:imeOptions="actionNext"
+                            android:inputType="phone"
+                            android:maxLength="10"
+                            android:textColor="@color/black"
+
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtemail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:drawableStart="@drawable/ic_email"
+                            android:drawableLeft="@drawable/ic_email"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Email address"
+                            android:imeOptions="actionNext"
+                            android:inputType="textEmailAddress"
+                            android:textStyle="bold"
+
+                            android:textColor="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+                            app:passwordToggleEnabled="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:visibility="visible"
+                        app:hintAnimationEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtgender"
+                            android:textStyle="bold"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_gender"
+                            android:drawableLeft="@drawable/ic_gender"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Your Gender"
+                            android:imeOptions="actionNext"
+                            android:inputType="text"
+                            android:outlineSpotShadowColor="@color/black"
+                            android:paddingStart="16dp"
+                            android:paddingLeft="16dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/allll"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:visibility="visible"
+                        app:hintAnimationEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+
+                            android:id="@+id/edtdistrict"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_place"
+                            android:drawableLeft="@drawable/ic_place"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Your College District Name"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:textStyle="bold"
+
+                            android:outlineSpotShadowColor="@color/black"
+                            android:paddingStart="16dp"
+                            android:paddingLeft="16dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+                            app:passwordToggleEnabled="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/otherstatell"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:visibility="gone"
+                        app:hintAnimationEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+
+                            android:id="@+id/otherState"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_place"
+                            android:drawableLeft="@drawable/ic_place"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Your State Name"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:outlineSpotShadowColor="@color/black"
+                            android:paddingStart="16dp"
+                            android:paddingLeft="16dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+                            app:passwordToggleEnabled="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/otherdistricll"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:visibility="gone"
+                        app:hintAnimationEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+
+                            android:id="@+id/otherdistrict"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_place"
+                            android:drawableLeft="@drawable/ic_place"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Your District Name"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:outlineSpotShadowColor="@color/black"
+                            android:paddingStart="16dp"
+                            android:paddingLeft="16dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+                            app:passwordToggleEnabled="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/otherprofessionll"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:visibility="gone"
+                        app:hintAnimationEnabled="true"
+                        app:passwordToggleEnabled="true">
+
+                        <com.google.android.material.textfield.TextInputEditText
+
+                            android:id="@+id/otherprofession"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_place"
+                            android:drawableLeft="@drawable/ic_place"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Your Profession Name"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:outlineSpotShadowColor="@color/black"
+                            android:paddingStart="16dp"
+                            android:paddingLeft="16dp"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
+                            app:passwordToggleEnabled="true" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <!-- <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginLeft="6dp"
+                         android:layout_marginTop="5dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginRight="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:text="Select Your Gender."
+                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                         android:textColor="@color/black"
+                         android:textStyle="normal">
+
+                     </TextView>
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:background="@drawable/spinner_border">
+
+                         <androidx.appcompat.widget.AppCompatSpinner
+
+                             android:id="@+id/spnGender"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:backgroundTint="@color/black"
+                             android:foregroundTint="@color/black">
+
+                         </androidx.appcompat.widget.AppCompatSpinner>
+
+
+                     </LinearLayout>
+
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginLeft="6dp"
+                         android:layout_marginTop="5dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginRight="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:text="Select Your City."
+                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                         android:textStyle="bold"
+                         android:visibility="gone">
+
+                     </TextView>
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+
+                         android:layout_marginStart="16dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:background="@drawable/spinner_border"
+                         android:visibility="gone">
+
+                         <androidx.appcompat.widget.AppCompatSpinner
+
+                             android:id="@+id/spnCityc"
+                             android:layout_width="match_parent"
+
+                             android:layout_height="wrap_content"
+                             android:backgroundTint="@color/black"
+                             android:foregroundTint="@color/black">
+
+                         </androidx.appcompat.widget.AppCompatSpinner>
+
+
+                     </LinearLayout>
+
+                     <TextView
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+
+                         android:layout_marginStart="16dp"
+                         android:layout_marginLeft="6dp"
+                         android:layout_marginTop="5dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginRight="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:text="Select Your Distric."
+                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                         android:textColor="@color/black"
+                         android:textStyle="normal">
+
+                     </TextView>
+
+                     <LinearLayout
+                         android:layout_width="match_parent"
+
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:background="@drawable/spinner_border">
+
+                         <androidx.appcompat.widget.AppCompatSpinner
+                             android:id="@+id/spnDistric"
+
+                             android:layout_width="match_parent"
+
+                             android:layout_height="wrap_content"
+                             android:backgroundTint="@color/black"
+                             android:foregroundTint="@color/black">
+
+                         </androidx.appcompat.widget.AppCompatSpinner>
+
+
+                     </LinearLayout>
+
+                     <TextView
+                         android:id="@+id/spntxt"
+
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginLeft="6dp"
+                         android:layout_marginTop="5dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginRight="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:text="Select Your College."
+                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                         android:textColor="@color/black"
+                         android:textStyle="normal">
+
+                     </TextView>
+
+                     <LinearLayout
+                         android:id="@+id/llspncollege"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginTop="5dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:background="@drawable/spinner_border">
+
+                         <androidx.appcompat.widget.AppCompatSpinner
+
+                             android:id="@+id/spnCollege"
+                             android:layout_width="match_parent"
+
+                             android:layout_height="wrap_content"
+                             android:backgroundTint="@color/black"
+                             android:foregroundTint="@color/black">
+
+                         </androidx.appcompat.widget.AppCompatSpinner>
+
+
+                     </LinearLayout>
+
+                     <TextView
+                         android:id="@+id/spntxtstream"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginLeft="6dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginRight="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:text="Select Your Course Type."
+                         android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                         android:textColor="@color/black"
+                         android:textStyle="normal"
+                         android:visibility="visible">
+
+                     </TextView>
+
+                     <LinearLayout
+                         android:id="@+id/llspnstream"
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+                         android:layout_marginStart="16dp"
+                         android:layout_marginEnd="16dp"
+                         android:layout_marginBottom="5dp"
+                         android:background="@drawable/spinner_border"
+                         android:visibility="visible">
+
+                         <androidx.appcompat.widget.AppCompatSpinner
+                             android:id="@+id/spnStream"
+                             android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:backgroundTint="@color/black"
+                             android:foregroundTint="@color/black"
+                             android:visibility="visible">
+
+                         </androidx.appcompat.widget.AppCompatSpinner>
+
+
+                     </LinearLayout>-->
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/allcollege"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtcollegeName"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_college"
+                            android:drawableLeft="@drawable/ic_college"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint=" Your College Name"
+                            android:maxLines="3"
+                            android:textStyle="bold"
+                            android:imeOptions="actionGo"
+                            android:inputType="text"
+                            android:outlineSpotShadowColor="@color/black"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/alldesignation"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtfacultyDesignation"
+                            android:textStyle="bold"
+
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_college"
+                            android:drawableLeft="@drawable/ic_college"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint=" Your Designation"
+                            android:imeOptions="actionGo"
+                            android:inputType="textPersonName"
+                            android:outlineSpotShadowColor="@color/black"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llstudentdata"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone">
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/activity_horizontal_marginn"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtcoursetype"
+                                android:textStyle="bold"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/ic_course_type"
+                                android:drawableLeft="@drawable/ic_course_type"
+                                android:drawablePadding="16dp"
+                                android:enabled="false"
+                                android:hint=" Your Course Type"
+                                android:imeOptions="actionGo"
+                                android:inputType="textPersonName"
+                                android:outlineSpotShadowColor="@color/black"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/black"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/activity_horizontal_marginn"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtcourseName"
+                                android:textStyle="bold"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/person"
+                                android:drawableLeft="@drawable/person"
+                                android:drawablePadding="16dp"
+                                android:enabled="false"
+                                android:hint=" Write Your Course Name"
+                                android:imeOptions="actionGo"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/black"
+
+                                android:textColorHint="@color/black"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="@dimen/activity_horizontal_marginn"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginEnd="16dp">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/edtyearName"
+                                android:textStyle="bold"
+
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:drawableStart="@drawable/person"
+                                android:drawableLeft="@drawable/person"
+                                android:drawablePadding="16dp"
+                                android:enabled="false"
+                                android:hint=" Your Year"
+                                android:imeOptions="actionGo"
+                                android:inputType="textPersonName"
+                                android:outlineSpotShadowColor="@color/black"
+                                android:textColor="@color/black"
+                                android:textColorHint="@color/black"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintHorizontal_bias="0.0"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                        </com.google.android.material.textfield.TextInputLayout>
+                    </LinearLayout>
+
+                    <!--  <TextView
+                          android:id="@+id/txtspnyear"
+
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="16dp"
+                          android:layout_marginLeft="6dp"
+                          android:layout_marginTop="5dp"
+                          android:layout_marginEnd="16dp"
+                          android:layout_marginRight="16dp"
+                          android:layout_marginBottom="5dp"
+                          android:text="Select Your Year."
+                          android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                          android:textColor="@color/black"
+                          android:textStyle="normal">
+
+                      </TextView>
+
+                      <LinearLayout
+                          android:id="@+id/llspnyear"
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginStart="16dp"
+                          android:layout_marginEnd="16dp"
+                          android:layout_marginBottom="5dp"
+                          android:background="@drawable/spinner_border">
+
+                          <androidx.appcompat.widget.AppCompatSpinner
+
+                              android:id="@+id/spnYear"
+                              android:layout_width="match_parent"
+
+                              android:layout_height="wrap_content"
+                              android:backgroundTint="@color/black"
+                              android:foregroundTint="@color/black">
+
+                          </androidx.appcompat.widget.AppCompatSpinner>
+
+
+                      </LinearLayout>
+  -->
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btn_update"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/edtbg"
+                        android:text="Update"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="20dp"
+                        android:visibility="gone">
+
+
+                    </androidx.appcompat.widget.AppCompatButton>
+
+
+                </LinearLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+</layout>

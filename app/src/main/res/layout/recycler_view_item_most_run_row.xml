@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/maincard"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    app:cardCornerRadius="5dp"
+    app:cardUseCompatPadding="true">
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp">
+
+
+        <TableRow
+            android:layout_gravity="center"
+            android:background="#DAE8FC"
+            android:gravity="center"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/txtsr"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1."
+                android:textColor="@color/black"
+                android:textStyle="bold" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_gravity="center_horizontal"
+                android:id="@+id/imageView"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:src="@mipmap/ic_launcher_round"
+                app:civ_border_color="@color/colorPrimaryDark"
+                app:civ_border_overlay="true"
+                app:civ_border_width="2dp"
+                app:civ_circle_background_color="@color/colorPrimaryDark" />
+
+
+            <TextView
+
+                android:textColor="@color/black"
+                android:id="@+id/topbatingings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="000" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/topbatingScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="000" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/topbatingAvg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="000" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/topbatingStrrate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="000" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_gravity="center"
+            android:background="#DAE8FC"
+            android:gravity="center|start"
+            android:orientation="vertical"
+            android:padding="0dp">
+
+            <TextView
+
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:textColor="@color/black"
+                android:id="@+id/txtName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="1dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginBottom="1dp"
+
+                android:gravity="center|start"
+                android:text="Govind Kumar"
+                android:fontFamily="@font/roboto_regular"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+        </TableRow>
+    </TableLayout>
+
+
+</androidx.cardview.widget.CardView>
+

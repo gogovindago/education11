@@ -1,0 +1,71 @@
+<resources>
+<!--
+    <string name="app_name"> Harit Haryana </string>
+-->
+    <!--<string name="app_name"> DHE, Haryana </string>-->
+    <string name="app_name"> Education 11</string>
+    <string name="action_okay">Ok</string>
+    <string name="txt_slct_optionn">Option</string>
+    <string name="txt_gelleryy">Gallery</string>
+    <string name="txt_warningg">Cancel</string>
+    <string name="txt_camerayy">Camera</string>
+    <string name="txt_slct_option">Option</string>
+    <string name="txt_gellery">Select video in Gallery</string>
+    <string name="txt_warning">Cancel</string>
+    <string name="txt_cameray">Reacord video</string>
+    <string name="GPSAlertDialogTitle">Enable Location</string>
+    <string name="GPSAlertDialogMessage">Please Enable GPS in your phone.</string>
+    <string name="action_settings">Settings</string>
+    <string name="cancel">Cancel</string>
+    <string name="email">Email id</string>
+    <string name="psw">Password</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="higher_education_haryana">Higher Education Cricket, Haryana</string>
+    <string name="department_of_higher_education_haryana"> Department of Higher Education Cricket, Haryana</string>
+    <string name="generate_otp">Generate Otp</string>
+    <string name="Login">Login</string>
+<!--
+    <string name="tenplant">I aggried that, I have planted ten(10) plant. And  i will take care of those.</string>
+-->
+<!--
+    <string name="tenplant">I agree to plant 10 saplings and to take their care.</string>
+-->
+    <string name="tenplant">I pledge to plant 10 saplings, and to sincerely care for them and protect them for a minimum period of one year.</string>
+    <string name="digitsoptmsg">We have sent a 6 digits Otp on your Registered mobile which last four digits is.</string>
+    <string name="selectlanguage">Select Your Language</string>
+    <string name="english">English</string>
+    <string name="tencorrectmobile">Please Enter Correct Mobile Number</string>
+    <string name="plzotp">Please Enter Otp.</string>
+    <string name="create_account"><u>Create Account</u></string>
+    <string name="the_official_app"><u>Department of Higher Education Cricket\n Haryana\n\nthe official App</u></string>
+    <string name="make_sure_reloading_page">Make sure you have good internet in your Mobile.Reload page again.</string>
+    <string name="oops_there_is_no_interenet">Oops!! There is no internet connection. Please enable your internet connection.</string>
+    <string name="select_ur_image">Select your image</string>
+    <string name="sampling_option_missing">Saplings option Missing!</string>
+    <string name="check_sapling_option">Please check Saplings option.</string>
+    <string name="location_of_plant_missing">Location of your plant is  Missing!</string>
+    <string name="pleasemakesuregpsorlocation">Please make sure gps or location is Enable / ON of phone to get plant location.</string>
+    <string name="imagedescriptionmissing">Image Description Missing!</string>
+    <string name="somethingabout_image">Please write something about Image in description.</string>
+    <string name="image_missing">Image Missing!</string>
+    <string name="plztakepictureofplant">Please take a picture of your plant.</string>
+    <string name="forgot_password"><u>Forgot password?</u></string>
+    <string name="your_password">Your password</string>
+    <string name="your_new_password">Your new password</string>
+    <string name="registered_mobile_number">Registered Mobile Number</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="resend_otp">Resend Otp</string>
+    <string name="create_Account">Create Account</string>
+
+    <string name="cm"><b>Shri Manohar Lal</b>\nHon’ble Chief Minister</string>
+    <string name="edm"><b>Shri Kanwar Pal</b>\nHon’ble Education Minister</string>
+    <!--    <string name="ps"><b>Shri Ankur Gupta, IAS</b>\nPrincipal Secretary Higher Education, Haryana</string>-->
+    <!--    <string name="dg"><b>Shri Ajit Balaji Joshi, IAS</b>\nDirector General Higher Education, Haryana</string>-->
+    <string name="ps"><b>Shri Ankur Gupta, IAS</b>\nPSHE, Haryana</string>
+    <string name="psnow"><b>Shri. Anand Mohan Sharan, IAS</b>\nPSHE, Haryana</string>
+    <string name="dg"><b>Shri Ajit Balaji Joshi, IAS</b>\nDGHE, Haryana</string>
+
+    <string name="dgnow"><b>Shri Vijay Singh Dahiya, IAS</b>\nDGHE, Haryana</string>
+    <string name="google_maps_key">AIzaSyAU4RhA2kj0_Ligy5bRCcIXT4F1gqPE1B0</string>
+
+</resources>

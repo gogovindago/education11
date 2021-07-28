@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "350593926370",
+    "project_id": "education11-27d1b",
+    "storage_bucket": "education11-27d1b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350593926370:android:1aaf6307fc24d126018abb",
+        "android_client_info": {
+          "package_name": "education.hry.pkl.cricket11"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "350593926370-alt5i9l2i468fd9ng13298t7iak85ncr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmdnQmekZHRFGqVCDM5GwUvrqY6SXJ1ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "350593926370-alt5i9l2i468fd9ng13298t7iak85ncr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
