@@ -82,12 +82,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical">
 
-                    <com.rilixtech.CountryCodePicker
-                        android:id="@+id/ccp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:ccp_enableHint="false"
-                        app:ccp_defaultCode="91"/>
+
                     <EditText
                         android:layout_marginLeft="5dp"
                         android:id="@+id/phone_number_edt"
@@ -134,33 +129,6 @@
 
 
 
-            <ir.samanjafari.easycountdowntimer.EasyCountDownTextview
-                android:id="@+id/easyCountDownTextview"
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="16dp"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="12dp"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/edit_text_border"
-                android:showDividers="middle"
-                android:visibility="gone"
-                app:colonColor="#fff"
-                app:days="00"
-                app:daysLabel="D"
-                app:digitBackground="@android:color/transparent"
-                app:hours="0"
-                app:minute="00"
-                app:second="00"
-                app:setAnimation="true"
-                app:showDays="true"
-                app:showHours="true"
-                app:start_automatically="true"
-                app:textColor="@color/white"
-                app:textSize="22sp"
-                app:useFarsiNumeral="false" />
             </com.google.android.material.textfield.TextInputLayout>
         <com.google.android.material.textfield.TextInputLayout
             android:gravity="center"

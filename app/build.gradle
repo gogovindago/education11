@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-kapt'
 
 android {
    /* signingConfigs {
@@ -89,10 +90,8 @@ dependencies {
     testImplementation "android.arch.persistence.room:testing:$room_version"
     implementation 'com.agrawalsuneet.androidlibs:dotsloader:1.4'
     implementation 'com.github.aabhasr1:OtpView:1.0.5'
-    implementation 'ir.samanjafari.easycountdowntimer:easycountdowntimer:2.4.1'
     implementation 'com.github.Shashank02051997:FancyGifDialog-Android:1.2'
     implementation 'com.github.aabhasr1:OtpView:1.0.5'
-    implementation 'com.github.joielechong:countrycodepicker:2.2.0'
     implementation 'com.google.android.gms:play-services-auth:18.1.0'
     implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
     implementation 'com.github.bumptech.glide:glide:4.11.0'

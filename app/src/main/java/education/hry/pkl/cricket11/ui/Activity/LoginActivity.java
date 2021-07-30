@@ -37,7 +37,6 @@ import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.MyLoaders;
-import ir.samanjafari.easycountdowntimer.EasyCountDownTextview;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginData_interface, GoogleApiClient.ConnectionCallbacks,
         GetOtpInterface, GoogleApiClient.OnConnectionFailedListener {
@@ -55,7 +54,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private String refreshedToken, userMobileNumber, username, userEmailId, lativale, longivalue, admissionURL, Profilepicurl,Registration_Id,token;
     private static final String TAG = "LoginActivity";
     private MyLoaders myLoaders;
-    EasyCountDownTextview countDownTextview;
+
     in.aabhasjindal.otptextview.OtpTextView otpBox;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -91,7 +90,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
     private void findViews() {
-        countDownTextview = (EasyCountDownTextview) findViewById(R.id.easyCountDownTextview);
         txtmsg = (TextView) findViewById(R.id.txtmsg);
         txtforget = (TextView) findViewById(R.id.txtforget);
         lointxt = (TextView) findViewById(R.id.lointxt);

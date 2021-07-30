@@ -5,7 +5,6 @@ import android.content.ActivityNotFoundException;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.IntentSender;
 import android.graphics.Color;
 import android.net.Uri;
@@ -27,7 +26,6 @@ import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -70,6 +68,7 @@ import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.app.MyApplication;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.DataModel;
+import education.hry.pkl.cricket11.model.DataModelLeftNew;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.DataModelLeft;
@@ -83,14 +82,11 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     // List<SliderItem> sliderItemList;
     List<BannerResponse.Banner> sliderItemList;
     SwipeRefreshLayout mSwipeRefreshLayout;
-
     SliderView sliderView;
     SliderAdapter sliderAdapter;
-
-
     private static DrawerLayout mDrawerLayout;
     ImageView toggle, profile_image;
-    TextView toolbartxt, uname, umobile, uemailId, Profilepicurl;
+    TextView toolbartxt, uname, umobile, uemailId;
     Toolbar toolbar;
     Context context;
     AdminImgAdapter adapteradminimage;
@@ -101,15 +97,11 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     TopMostRunAdapter topMostRunAdapter;
     MostSixesAdapter mostSixesAdapter;
     MostFoursAdapter mostFoursAdapter;
-
-
-    private TextView mTextMessage;
-    private String[] mNavigationDrawerItemTitles;
     private ListView mDrawerList;
-    private CharSequence mDrawerTitle;
-    private CharSequence mTitle;
     RecyclerView recyclerView, rvadminimage, rvTopBattingAvg, rvrecentmatch, rvWicketMost, rvRun, rvMostFour, rvMostSixes;
     ArrayList arrayList;
+
+    List<DataModelLeftNew> dataModelLeftList;
 
     private List<BannerResponse.DashboardOfficer> adminimagelist = new ArrayList<BannerResponse.DashboardOfficer>();
     private List<BannerResponse.MatchDetail> matchDetailList = new ArrayList<BannerResponse.MatchDetail>();
@@ -147,13 +139,8 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         context = MyApplication.context;
         mSwipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.simpleSwipeRefreshLayout);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.colorAccent);
-        mTextMessage = findViewById(R.id.message);
         toggle = findViewById(R.id.toggle);
         toolbartxt = findViewById(R.id.toolbartxt);
-
-
-        /// mTitle = mDrawerTitle = getTitle();
-        // mNavigationDrawerItemTitles = getResources().getStringArray(R.array.navigation_drawer_items_array);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerList = findViewById(R.id.left_drawer);
         uname = findViewById(R.id.uname);
@@ -161,45 +148,20 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         uemailId = findViewById(R.id.uemailId);
         profile_image = findViewById(R.id.profile_image);
 
-        /*  CSPreferences.putString(this, "id", userMobileNumber);
-                CSPreferences.putString(this, "User_Id", Registration_Id);
-                CSPreferences.putString(this, "User_mobile", userMobileNumber);
-                CSPreferences.putString(this, "User_email", userEmailId);
-                CSPreferences.putString(this, "User_name", username);*/
-
 
         try {
-
             if (CSPreferences.getBoolean(this, "firstTimelogin")) {
-
                 GlobalClass.dailogsuccess(MainActivity.this, "Login Successfull.", "Welcome to  Education 11, Haryana.");
                 CSPreferences.putBolean(this, "firstTimelogin", false);
                 mDrawerLayout.openDrawer(GravityCompat.START);
-
-
             } else {
-
-
                 mDrawerLayout.closeDrawers();
-
-
             }
 
             uname.setText(CSPreferences.readString(MainActivity.this, "User_name"));
             uemailId.setText(CSPreferences.readString(MainActivity.this, "User_email"));
             umobile.setText(CSPreferences.readString(MainActivity.this, "User_mobile"));
             imageurl = CSPreferences.readString(MainActivity.this, "Profilepicurl");
-
-
-         /*   Glide.with(this)
-                    .load(CSPreferences.readString(MainActivity.this, "Profilepicurl").trim()) // image url
-                    .placeholder(R.mipmap.ic_launcher_round) // any placeholder to load at start
-                    .error(R.mipmap.ic_launcher_round)  // any image in case of error
-                    .override(140, 140) // resizing
-                    .centerCrop()
-                    .into(profile_image);
-*/
-
 
             Picasso.get()
                     .load(imageurl.trim())
@@ -226,32 +188,11 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
         arrayList = new ArrayList();
-        // arrayList.add(new DataModel("Plantation", R.drawable.tree, "#FFFFFF"));
-        // arrayList.add(new DataModel("Harit Haryana", R.drawable.tree, "#FFFFFF"));
-        arrayList.add(new DataModel("Vriksha-Bandhan", R.drawable.tree, "#FFFFFF"));
-        arrayList.add(new DataModel("Admissions", R.drawable.admission, "#FFFFFF"));
-        //arrayList.add(new DataModel("Blood Donation", R.drawable.bloodonate, "#FFFFFF"));
-
+        arrayList.add(new DataModel("Vriksha-Bandhan", R.drawable.personwhite, "#FFFFFF"));
+        arrayList.add(new DataModel("Admissions", R.drawable.dashboard, "#FFFFFF"));
         RecyclerViewAdapter adaptermain = new RecyclerViewAdapter(this, arrayList, this);
         recyclerView.setAdapter(adaptermain);
-
-        /**
-         AutoFitGridLayoutManager that auto fits the cells by the column width defined.
-         **/
-
-        /*AutoFitGridLayoutManager layoutManager = new AutoFitGridLayoutManager(this, 500);
-        recyclerView.setLayoutManager(layoutManager);*/
-
-
-        /**
-         Simple GridLayoutManager that spans two columns
-         **/
-
-
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-//        GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
-//        recyclerView.setLayoutManager(manager);
-
 
         if (GlobalClass.isNetworkConnected(MainActivity.this)) {
 
@@ -279,63 +220,9 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                     Toast.makeText(MainActivity.this, GlobalClass.nointernet, Toast.LENGTH_LONG).show();
                 }
                 shuffle();
-                //mSwipeRefreshLayout.setRefreshing(false);
             }
         });
 
-        DataModelLeft[] drawerItem = new DataModelLeft[8];
-
-
-        drawerItem[0] = new DataModelLeft(R.drawable.ic_outline_dashboard_24, "Gallery");
-        drawerItem[1] = new DataModelLeft(R.drawable.personwhite, "My Profile");
-        drawerItem[2] = new DataModelLeft(R.drawable.rate_review, "Rate App");
-        drawerItem[3] = new DataModelLeft(R.drawable.share, "Share App");
-        drawerItem[4] = new DataModelLeft(R.drawable.notifications, "My Notification");
-        drawerItem[5] = new DataModelLeft(R.drawable.ic_baseline_cloud_download_24, "Certificate Download");
-        drawerItem[6] = new DataModelLeft(R.drawable.lockmain, "Reset Password");
-        drawerItem[7] = new DataModelLeft(R.drawable.logout, "Logout");
-
-
-        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.list_view_item_row, drawerItem);
-        mDrawerList.setAdapter(adapter);
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
-        mDrawerLayout = findViewById(R.id.drawer_layout);
-        mDrawerLayout.setDrawerListener(mDrawerToggle);
-        setupDrawerToggle();
-
-        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(videocall,
-                new IntentFilter("videocall"));
-
-
-       /* //This is default Map
-        firebaseDefaultMap = new HashMap<>();
-        //Setting the Default Map Value with the current version code
-        firebaseDefaultMap.put(VERSION_CODE_KEY, getCurrentVersionCode());
-
-        //Setting that default Map to Firebase Remote Config
-        mFirebaseRemoteConfig.setDefaults(firebaseDefaultMap);
-
-        //Setting Developer Mode enabled to fast retrieve the values
-        mFirebaseRemoteConfig.setConfigSettings(
-                new FirebaseRemoteConfigSettings.Builder().setDeveloperModeEnabled(BuildConfig.DEBUG)
-                        .build());
-
-        //Fetching the values here
-        mFirebaseRemoteConfig.fetch().addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    mFirebaseRemoteConfig.activateFetched();
-                    Log.d(TAG, "Fetched value: " + mFirebaseRemoteConfig.getString(VERSION_CODE_KEY));
-                    //calling function to check if new version is available or not
-                    checkForUpdate();
-                } else
-                    Toast.makeText(MainActivity.this, "Something went wrong please try again", Toast.LENGTH_SHORT).show();
-            }
-        });
-
-        Log.d(TAG, "Default value: " + mFirebaseRemoteConfig.getString(VERSION_CODE_KEY));
-*/
 
 
         sliderView = findViewById(R.id.imageSlider);
@@ -372,36 +259,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
     }
 
-  /*  public void renewItems() {
-        sliderItemList = new ArrayList<>();
-        //dummy data
-        for (int i = 1; i <= 6; i++) {
-            SliderItem sliderItem = new SliderItem();
-            sliderItem.setDescription("Slider Item " + i);
-            if (i % 2 == 0) {
-                sliderItem.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-            } else {
-                sliderItem.setImageUrl("https://images.pexels.com/photos/747964/pexels-photo-747964.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260");
-            }
-            sliderItemList.add(sliderItem);
-        }
 
-        sliderAdapter.renewItems(sliderItemList);
-    }*/
-
-    public void removeLastItem(View view) {
-        if (sliderAdapter.getCount() - 1 >= 0)
-            sliderAdapter.deleteItem(sliderAdapter.getCount() - 1);
-    }
-
-/*
-    public void addNewItem(View view) {
-        SliderItem sliderItem = new SliderItem();
-        sliderItem.setDescription("Slider Item Added Manually");
-        sliderItem.setImageUrl("https://images.pexels.com/photos/929778/pexels-photo-929778.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260");
-        sliderAdapter.addItem(sliderItem);
-    }
-*/
 
     @Override
     public void initData() {
@@ -431,6 +289,55 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 Log.e(TAG, "checkForAppUpdateAvailability: something else");
             }
         });
+
+        dataModelLeftList = new ArrayList<DataModelLeftNew>();
+        dataModelLeftList.clear();
+
+        DataModelLeftNew playersList = new DataModelLeftNew(R.drawable.personwhite, "Players List", 8);
+        dataModelLeftList.add(playersList);
+
+        DataModelLeftNew showMatchDetails = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Show Match Details", 9);
+        dataModelLeftList.add(showMatchDetails);
+
+        DataModelLeftNew careerStatistics = new DataModelLeftNew(R.drawable.personwhite, "Career Statistics", 10);
+        dataModelLeftList.add(careerStatistics);
+
+        DataModelLeftNew publiclib = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Gallery", 0);
+        dataModelLeftList.add(publiclib);
+
+
+        DataModelLeftNew my_profile = new DataModelLeftNew(R.drawable.personwhite, "My Profile", 1);
+        dataModelLeftList.add(my_profile);
+
+
+        DataModelLeftNew rateApp = new DataModelLeftNew(R.drawable.rate_review, "Rate App", 2);
+        dataModelLeftList.add(rateApp);
+
+
+        DataModelLeftNew share_app = new DataModelLeftNew(R.drawable.share, "Share App", 3);
+        dataModelLeftList.add(share_app);
+
+
+        DataModelLeftNew notification = new DataModelLeftNew(R.drawable.notifications, "My Notification", 4);
+        dataModelLeftList.add(notification);
+
+        DataModelLeftNew about_us = new DataModelLeftNew(R.drawable.rate_review, "About Us", 5);
+        dataModelLeftList.add(about_us);
+
+        DataModelLeftNew resetPassword = new DataModelLeftNew(R.drawable.lockmain, "Reset Password", 6);
+        dataModelLeftList.add(resetPassword);
+
+        DataModelLeftNew logout = new DataModelLeftNew(R.drawable.logout, "Logout", 7);
+        dataModelLeftList.add(logout);
+
+
+        DrawerItemCustomAdapter adapter = new DrawerItemCustomAdapter(this, R.layout.list_view_item_row, dataModelLeftList);
+        mDrawerList.setAdapter(adapter);
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+        mDrawerLayout = findViewById(R.id.drawer_layout);
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        setupDrawerToggle();
+
 
     }
 
@@ -499,7 +406,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
         Fragment fragment = null;
 
-        switch (position) {
+        switch (dataModelLeftList.get(position).id) {
             case 0:
                 mDrawerLayout.closeDrawers();
                 Intent intent2 = new Intent(this, GalleryActivity.class);
@@ -610,9 +517,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
     @Override
     public void setTitle(CharSequence title) {
-        mTitle = title;
-        //toolbar.setTitle(mTitle);
-        //toolbartxt.setText(mTitle.toString());
 
     }
 
