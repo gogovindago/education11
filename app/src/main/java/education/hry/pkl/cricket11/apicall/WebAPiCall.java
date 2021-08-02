@@ -18,6 +18,7 @@ import java.util.Objects;
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.BannerData_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetGalleryDetail_interface;
+import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
@@ -27,6 +28,7 @@ import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
+import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
 import education.hry.pkl.cricket11.model.StudentProfileResponse;
 import education.hry.pkl.cricket11.retrofitinterface.ApiClient;
@@ -300,8 +302,6 @@ public class WebAPiCall {
             }
         });
     }
-
-
 
 
     public void profilepicPostDataMethod(final Activity activity, final Context context, RequestBody registration_id, MultipartBody.Part image) {
@@ -586,7 +586,7 @@ public class WebAPiCall {
         loadershowwithMsg(context, "Fetching all Photos...");
 
         Call<GalleryResponse> apiCall =
-                ApiClient.getClient().GalleryApiCall("Bearer "+token);
+                ApiClient.getClient().GalleryApiCall("Bearer " + token);
         apiCall.enqueue(new Callback<GalleryResponse>() {
             @Override
             public void onResponse(Call<GalleryResponse> call, final Response<GalleryResponse> response) {
@@ -621,6 +621,51 @@ public class WebAPiCall {
                 t.printStackTrace();
                 Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
                 Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void PlayerListDataMethod(final Activity activity, final Context context, String token, GetPlayerListDetail_interface anInterface) {
+
+        loadershowwithMsg(context, "Fetching all Players details...");
+
+        Call<PlayersListResponse> apiCall =
+                ApiClient.getClient().PlayersListApiCall("Bearer " + token);
+        apiCall.enqueue(new Callback<PlayersListResponse>() {
+            @Override
+            public void onResponse(Call<PlayersListResponse> call, final Response<PlayersListResponse> response) {
+
+                if (response.isSuccessful()) {
+
+                    dailoghide(context);
+
+
+                    if (response.body().getResponse() == 200) {
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        anInterface.GetPlayerListDetail_list(response.body().getData());
+
+
+                    } else {
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
+
+                    }
+
+
+                } else {
+                    dailoghide(context);
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<PlayersListResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+                Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
+               // Log.d("dddddd", "onFailure: " + t.getMessage());
             }
         });
     }

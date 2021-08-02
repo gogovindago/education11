@@ -6,6 +6,7 @@ import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
+import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
 import education.hry.pkl.cricket11.model.StudentEventDataSaveResponse;
 import education.hry.pkl.cricket11.model.StudentProfileResponse;
@@ -68,5 +69,8 @@ public interface ApiInterface {
 
     @GET("Gallery")
     Call<GalleryResponse> GalleryApiCall(@Header("Authorization") String token);
+
+    @GET("PlayerList")
+    Call<PlayersListResponse>PlayersListApiCall(@Header("Authorization") String token);
 
 }

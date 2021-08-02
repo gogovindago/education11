@@ -224,7 +224,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         });
 
 
-
         sliderView = findViewById(R.id.imageSlider);
 
         sliderAdapter = new SliderAdapter(MainActivity.this);
@@ -258,7 +257,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         //  renewItems();
 
     }
-
 
 
     @Override
@@ -454,6 +452,13 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
                 Intent resetPassword = new Intent(this, ResetPasswordActivity.class);
                 startActivity(resetPassword);
+                break;
+
+            case 8:
+
+                mDrawerLayout.closeDrawers();
+                Intent plylistIntent = new Intent(this, PlayerDetailActivity.class);
+                startActivity(plylistIntent);
                 break;
             case 7:
 
