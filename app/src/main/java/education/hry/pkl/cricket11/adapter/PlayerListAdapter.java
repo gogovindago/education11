@@ -80,7 +80,7 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
 //getAge(c);
 
             textView.setText(item.getPlayerName()+"("+ c.get(Calendar.YEAR)+")");
-            textView.setText(item.getPlayerName()+"("+ String.valueOf(getAge(c))+")");
+            textView.setText(item.getPlayerName()+"("+ String.valueOf(getAge(c))+")"+"\n"+ item.getPlayingRole());
             my_image_view.setImageURI(item.getFilePath());
 
 
