@@ -80,7 +80,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/bg_overlay"
+                        android:background="@drawable/edit_text_borderdash"
                         android:orientation="horizontal">
 
                         <TextView
@@ -94,7 +94,6 @@
                             android:padding="5dp"
                             android:text="Innings "
                             android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
-                            android:textColor="@android:color/white"
                             android:textStyle="bold"
                             tools:targetApi="lollipop" />
 
@@ -111,7 +110,7 @@
                             android:padding="8dp"
                             android:text="N/A"
                             android:textAppearance="@android:style/TextAppearance.Material.Medium"
-                            android:textColor="@android:color/white"
+                            android:textColor="@android:color/black"
                             android:textStyle="bold"
                             tools:targetApi="lollipop" />
 
@@ -120,7 +119,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="2dp"
                         android:background="@color/yellow"
                         android:orientation="vertical">
 
@@ -141,10 +140,11 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
+                                android:background="@drawable/spinner_border"
+
                                 android:id="@+id/txtScore"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -180,7 +180,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -188,6 +187,7 @@
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_weight="0.2"
+                                android:background="@drawable/spinner_border"
 
                                 android:drawablePadding="5dp"
                                 android:gravity="center|start"
@@ -220,7 +220,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -232,6 +231,8 @@
                                 android:gravity="center|start"
                                 android:padding="5dp"
                                 android:text="Fours "
+                                android:background="@drawable/spinner_border"
+
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="bold"
@@ -260,7 +261,6 @@
                             android:id="@+id/llfcstatus"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -272,6 +272,8 @@
                                 android:gravity="center|start"
                                 android:padding="5dp"
                                 android:text="Six "
+                                android:background="@drawable/spinner_border"
+
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="bold"
@@ -299,7 +301,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -310,6 +311,8 @@
                                 android:drawablePadding="5dp"
                                 android:gravity="center|start"
                                 android:padding="5dp"
+                                android:background="@drawable/spinner_border"
+
                                 android:text="Bat Strike Rate "
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
@@ -341,7 +344,7 @@
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_margin="8dp"
+                        android:layout_margin="2dp"
                         android:background="@color/red"
                         android:orientation="vertical">
 
@@ -361,7 +364,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -374,6 +376,8 @@
                                 android:gravity="center|start"
                                 android:padding="8dp"
                                 android:text="Overs "
+                                android:background="@drawable/spinner_border"
+
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white" />
 
@@ -395,7 +399,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -407,6 +410,8 @@
                                 android:gravity="center|start"
                                 android:padding="8dp"
                                 android:text="Maiden "
+                                android:background="@drawable/spinner_border"
+
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 tools:targetApi="lollipop" />
@@ -430,7 +435,6 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -441,6 +445,8 @@
                                 android:layout_weight="0.2"
                                 android:padding="8dp"
                                 android:text="Runs "
+                                android:background="@drawable/spinner_border"
+
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="normal" />
@@ -464,10 +470,11 @@
                             android:id="@+id/llWickets"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
+                                android:background="@drawable/spinner_border"
+
                                 android:id="@+id/textWickets"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
@@ -499,7 +506,6 @@
 
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
@@ -510,6 +516,8 @@
                                 android:layout_weight="0.2"
                                 android:padding="8dp"
                                 android:text="Bowl Average "
+                                android:background="@drawable/spinner_border"
+
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="normal" />
@@ -533,10 +541,10 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:background="@drawable/bg_overlay"
                             android:orientation="horizontal">
 
                             <TextView
+                                android:background="@drawable/spinner_border"
 
                                 android:id="@+id/textEcoRate"
                                 android:layout_width="0dp"
@@ -571,6 +579,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:background="@drawable/spinner_border"
 
                                 android:id="@+id/textCatches"
                                 android:layout_width="0dp"
@@ -605,6 +614,7 @@
                             android:orientation="horizontal">
 
                             <TextView
+                                android:background="@drawable/spinner_border"
 
                                 android:id="@+id/textNotOuts"
                                 android:layout_width="0dp"
@@ -639,7 +649,7 @@
                         android:id="@+id/llappstatus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="8dp"
+                        android:layout_marginTop="2dp"
                         android:background="@drawable/buttonstyle"
                         android:orientation="horizontal">
 
