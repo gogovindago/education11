@@ -14,7 +14,12 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
@@ -33,7 +38,7 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
         mListener = itemListener;
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public TextView textView,gpstime;
         public ImageView imageView;
@@ -55,12 +60,61 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
 
         }
 
-        public void setData(PlayersListResponse.Datum item, int currposition) {
+        public void setData(PlayersListResponse.Datum item, int currposition) throws Exception {
             this.currposition = currposition;
             this.item = item;
-            textView.setText(item.getPlayerName());
+
+
+
+
+            SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+            Date parse = null;
+            try {
+                parse = sdf.parse(item.getDob());
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            Calendar c = Calendar.getInstance();
+            c.setTime(parse);
+            System.out.println(c.get(Calendar.MONTH) + c.get(Calendar.DATE) + c.get(Calendar.YEAR));
+//getAge(c);
+
+            textView.setText(item.getPlayerName()+"("+ c.get(Calendar.YEAR)+")");
+            textView.setText(item.getPlayerName()+"("+ String.valueOf(getAge(c))+")");
             my_image_view.setImageURI(item.getFilePath());
+
+
+
+
+
         }
+
+        // Returns age given the date of birth
+        public  int getAge(Calendar dob) throws Exception {
+            Calendar today = Calendar.getInstance();
+
+            int curYear = today.get(Calendar.YEAR);
+            int dobYear = dob.get(Calendar.YEAR);
+
+            int age = curYear - dobYear;
+
+            // if dob is month or day is behind today's month or day
+            // reduce age by 1
+            int curMonth = today.get(Calendar.MONTH);
+            int dobMonth = dob.get(Calendar.MONTH);
+            if (dobMonth > curMonth) { // this year can't be counted!
+                age--;
+            } else if (dobMonth == curMonth) { // same month? check for day
+                int curDay = today.get(Calendar.DAY_OF_MONTH);
+                int dobDay = dob.get(Calendar.DAY_OF_MONTH);
+                if (dobDay > curDay) { // this year can't be counted!
+                    age--;
+                }
+            }
+
+            return age;
+        }
+
 
 
         @Override
@@ -82,7 +136,11 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         currposition = position;
-        holder.setData(mValues.get(position), currposition);
+        try {
+            holder.setData(mValues.get(position), currposition);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
     }
 
