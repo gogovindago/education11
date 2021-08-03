@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
+import education.hry.pkl.cricket11.databinding.ActivityCareerStatisticsBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityEducationwebsiteBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityForgetPasswordBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityMainBindingImpl;
@@ -28,31 +29,34 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
-  private static final int LAYOUT_ACTIVITYEDUCATIONWEBSITE = 1;
+  private static final int LAYOUT_ACTIVITYCAREERSTATISTICS = 1;
 
-  private static final int LAYOUT_ACTIVITYFORGETPASSWORD = 2;
+  private static final int LAYOUT_ACTIVITYEDUCATIONWEBSITE = 2;
 
-  private static final int LAYOUT_ACTIVITYMAIN = 3;
+  private static final int LAYOUT_ACTIVITYFORGETPASSWORD = 3;
 
-  private static final int LAYOUT_ACTIVITYNOTIFICATIONDETAIL = 4;
+  private static final int LAYOUT_ACTIVITYMAIN = 4;
 
-  private static final int LAYOUT_ACTIVITYNOTIFICATIONS = 5;
+  private static final int LAYOUT_ACTIVITYNOTIFICATIONDETAIL = 5;
 
-  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 6;
+  private static final int LAYOUT_ACTIVITYNOTIFICATIONS = 6;
 
-  private static final int LAYOUT_ACTIVITYPROFILE = 7;
+  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 7;
 
-  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 8;
+  private static final int LAYOUT_ACTIVITYPROFILE = 8;
 
-  private static final int LAYOUT_ACTIVITYWELCOME = 9;
+  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 9;
 
-  private static final int LAYOUT_LISTVIEWITEMROW = 10;
+  private static final int LAYOUT_ACTIVITYWELCOME = 10;
 
-  private static final int LAYOUT_TOOLBARLAYOUT = 11;
+  private static final int LAYOUT_LISTVIEWITEMROW = 11;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(11);
+  private static final int LAYOUT_TOOLBARLAYOUT = 12;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(12);
 
   static {
+    INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_career_statistics, LAYOUT_ACTIVITYCAREERSTATISTICS);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_educationwebsite, LAYOUT_ACTIVITYEDUCATIONWEBSITE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_forget_password, LAYOUT_ACTIVITYFORGETPASSWORD);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_main, LAYOUT_ACTIVITYMAIN);
@@ -75,6 +79,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         throw new RuntimeException("view must have a tag");
       }
       switch(localizedLayoutId) {
+        case  LAYOUT_ACTIVITYCAREERSTATISTICS: {
+          if ("layout/activity_career_statistics_0".equals(tag)) {
+            return new ActivityCareerStatisticsBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_career_statistics is invalid. Received: " + tag);
+        }
         case  LAYOUT_ACTIVITYEDUCATIONWEBSITE: {
           if ("layout/activity_educationwebsite_0".equals(tag)) {
             return new ActivityEducationwebsiteBindingImpl(component, view);
@@ -194,9 +204,10 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(11);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(12);
 
     static {
+      sKeys.put("layout/activity_career_statistics_0", education.hry.pkl.cricket11.R.layout.activity_career_statistics);
       sKeys.put("layout/activity_educationwebsite_0", education.hry.pkl.cricket11.R.layout.activity_educationwebsite);
       sKeys.put("layout/activity_forget_password_0", education.hry.pkl.cricket11.R.layout.activity_forget_password);
       sKeys.put("layout/activity_main_0", education.hry.pkl.cricket11.R.layout.activity_main);

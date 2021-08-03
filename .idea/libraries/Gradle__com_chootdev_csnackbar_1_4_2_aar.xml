@@ -4,9 +4,6 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/a69efa8f95b7a791976529031b069491/transformed/jetified-csnackbar-1.4.2/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a69efa8f95b7a791976529031b069491/transformed/jetified-csnackbar-1.4.2/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a69efa8f95b7a791976529031b069491/transformed/jetified-csnackbar-1.4.2/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/4830873d6379614b8b913efd4a933ce8/transformed/jetified-csnackbar-1.4.2/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4830873d6379614b8b913efd4a933ce8/transformed/jetified-csnackbar-1.4.2/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/4830873d6379614b8b913efd4a933ce8/transformed/jetified-csnackbar-1.4.2/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.chootdev/csnackbar/1.4.2/36c8589e095f8d207fb5b67f09d735cf6e0600c6/csnackbar-1.4.2-javadoc.jar!/" />

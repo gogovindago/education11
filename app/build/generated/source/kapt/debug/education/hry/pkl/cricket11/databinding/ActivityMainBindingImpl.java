@@ -64,7 +64,7 @@ public class ActivityMainBindingImpl extends ActivityMainBinding  {
             , (com.smarteist.autoimageslider.SliderView) bindings[8]
             , (android.widget.ListView) bindings[32]
             , (android.widget.ImageView) bindings[5]
-            , (com.google.android.material.card.MaterialCardView) bindings[27]
+            , (androidx.cardview.widget.CardView) bindings[27]
             , (android.widget.TextView) bindings[25]
             , (com.google.android.material.navigation.NavigationView) bindings[26]
             , (android.widget.ImageView) bindings[28]

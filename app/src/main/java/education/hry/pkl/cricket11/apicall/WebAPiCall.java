@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
@@ -17,12 +18,14 @@ import java.util.Objects;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.BannerData_interface;
+import education.hry.pkl.cricket11.allinterfaces.GetCareerStatistcsDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetGalleryDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
 import education.hry.pkl.cricket11.model.BannerResponse;
+import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
@@ -665,7 +668,52 @@ public class WebAPiCall {
                 dailoghide(context);
                 t.printStackTrace();
                 Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
-               // Log.d("dddddd", "onFailure: " + t.getMessage());
+                // Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void CareerStatisticsDataMethod(final Activity activity, final Context context, String token, GetCareerStatistcsDetail_interface anInterface, RecyclerView rvplayerCareer) {
+
+        loadershowwithMsg(context, "Fetching all Players Career Statistics details...");
+
+        Call<CareerStatisticsResponse> apiCall =
+                ApiClient.getClient().CareerStatisticsApiCall("Bearer " + token);
+        apiCall.enqueue(new Callback<CareerStatisticsResponse>() {
+            @Override
+            public void onResponse(Call<CareerStatisticsResponse> call, final Response<CareerStatisticsResponse> response) {
+
+                if (response.isSuccessful()) {
+
+                    dailoghide(context);
+
+
+                    if (response.body().getResponse() == 200) {
+                        rvplayerCareer.setVisibility(View.VISIBLE);
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        anInterface.GetCareerStatisticsDetail_list(response.body().getData());
+
+
+                    } else {
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
+
+                    }
+
+
+                } else {
+                    dailoghide(context);
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<CareerStatisticsResponse> call, Throwable t) {
+                dailoghide(context);
+                t.printStackTrace();
+                Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
+                // Log.d("dddddd", "onFailure: " + t.getMessage());
             }
         });
     }

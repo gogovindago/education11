@@ -13,5 +13,6 @@
     <color name="greenlight">#E8FCEE</color>
     <color name="green">#0AA639</color>
     <color name="blacklight">#505050</color>
+    <color name="bglight">#DAE8FC</color>
 
 </resources>

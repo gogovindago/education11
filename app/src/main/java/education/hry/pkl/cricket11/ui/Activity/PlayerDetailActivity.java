@@ -35,7 +35,6 @@ public class PlayerDetailActivity extends BaseActivity implements PlayerListAdap
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_player_detail);
 
-        // setContentView(R.layout.activity_player_detail);
 
 
         TextView tv_toolbarTitle = findViewById(R.id.tv_toolbarTitle);

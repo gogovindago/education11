@@ -1,5 +1,5 @@
 <resources>
-<!--
+    <!--
     <string name="app_name"> Harit Haryana </string>
 -->
     <!--<string name="app_name"> DHE, Haryana </string>-->
@@ -24,10 +24,10 @@
     <string name="department_of_higher_education_haryana"> Department of Higher Education Cricket, Haryana</string>
     <string name="generate_otp">Generate Otp</string>
     <string name="Login">Login</string>
-<!--
+    <!--
     <string name="tenplant">I aggried that, I have planted ten(10) plant. And  i will take care of those.</string>
 -->
-<!--
+    <!--
     <string name="tenplant">I agree to plant 10 saplings and to take their care.</string>
 -->
     <string name="tenplant">I pledge to plant 10 saplings, and to sincerely care for them and protect them for a minimum period of one year.</string>

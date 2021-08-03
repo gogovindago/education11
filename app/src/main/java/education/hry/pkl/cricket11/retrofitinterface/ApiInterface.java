@@ -1,6 +1,7 @@
 package education.hry.pkl.cricket11.retrofitinterface;
 
 import education.hry.pkl.cricket11.model.BannerResponse;
+import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
@@ -72,5 +73,8 @@ public interface ApiInterface {
 
     @GET("PlayerList")
     Call<PlayersListResponse>PlayersListApiCall(@Header("Authorization") String token);
+
+    @GET("CareerStatistics")
+    Call<CareerStatisticsResponse>CareerStatisticsApiCall(@Header("Authorization") String token);
 
 }

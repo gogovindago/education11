@@ -460,6 +460,13 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 Intent plylistIntent = new Intent(this, PlayerDetailActivity.class);
                 startActivity(plylistIntent);
                 break;
+
+                case 10:
+
+                mDrawerLayout.closeDrawers();
+                Intent plylistCareerStatisticsIntent = new Intent(this, CareerStatisticsActivity.class);
+                startActivity(plylistCareerStatisticsIntent);
+                break;
             case 7:
 
                 mDrawerLayout.closeDrawers();
