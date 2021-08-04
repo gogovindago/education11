@@ -77,7 +77,7 @@ public class ActivityProfileBindingImpl extends ActivityProfileBinding  {
             , (com.google.android.material.textfield.TextInputEditText) bindings[11]
             , (com.google.android.material.textfield.TextInputEditText) bindings[29]
             , (android.widget.LinearLayout) bindings[26]
-            , (com.google.android.material.card.MaterialCardView) bindings[5]
+            , (androidx.cardview.widget.CardView) bindings[5]
             , (com.google.android.material.textfield.TextInputEditText) bindings[17]
             , (com.google.android.material.textfield.TextInputLayout) bindings[18]
             , (com.google.android.material.textfield.TextInputEditText) bindings[19]
