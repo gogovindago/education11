@@ -13,6 +13,7 @@ import education.hry.pkl.cricket11.databinding.ActivityMainBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityNotificationDetailBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityNotificationsBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityPlayerDetailBindingImpl;
+import education.hry.pkl.cricket11.databinding.ActivityPlayerHistoryBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityProfileBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityResetPasswordBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityWelcomeBindingImpl;
@@ -43,17 +44,19 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 7;
 
-  private static final int LAYOUT_ACTIVITYPROFILE = 8;
+  private static final int LAYOUT_ACTIVITYPLAYERHISTORY = 8;
 
-  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 9;
+  private static final int LAYOUT_ACTIVITYPROFILE = 9;
 
-  private static final int LAYOUT_ACTIVITYWELCOME = 10;
+  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 10;
 
-  private static final int LAYOUT_LISTVIEWITEMROW = 11;
+  private static final int LAYOUT_ACTIVITYWELCOME = 11;
 
-  private static final int LAYOUT_TOOLBARLAYOUT = 12;
+  private static final int LAYOUT_LISTVIEWITEMROW = 12;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(12);
+  private static final int LAYOUT_TOOLBARLAYOUT = 13;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(13);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_career_statistics, LAYOUT_ACTIVITYCAREERSTATISTICS);
@@ -63,6 +66,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_notification_detail, LAYOUT_ACTIVITYNOTIFICATIONDETAIL);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_notifications, LAYOUT_ACTIVITYNOTIFICATIONS);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_player_detail, LAYOUT_ACTIVITYPLAYERDETAIL);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_player_history, LAYOUT_ACTIVITYPLAYERHISTORY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_profile, LAYOUT_ACTIVITYPROFILE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_reset_password, LAYOUT_ACTIVITYRESETPASSWORD);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_welcome, LAYOUT_ACTIVITYWELCOME);
@@ -120,6 +124,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityPlayerDetailBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_player_detail is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ACTIVITYPLAYERHISTORY: {
+          if ("layout/activity_player_history_0".equals(tag)) {
+            return new ActivityPlayerHistoryBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_player_history is invalid. Received: " + tag);
         }
         case  LAYOUT_ACTIVITYPROFILE: {
           if ("layout/activity_profile_0".equals(tag)) {
@@ -204,7 +214,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(12);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(13);
 
     static {
       sKeys.put("layout/activity_career_statistics_0", education.hry.pkl.cricket11.R.layout.activity_career_statistics);
@@ -214,6 +224,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/activity_notification_detail_0", education.hry.pkl.cricket11.R.layout.activity_notification_detail);
       sKeys.put("layout/activity_notifications_0", education.hry.pkl.cricket11.R.layout.activity_notifications);
       sKeys.put("layout/activity_player_detail_0", education.hry.pkl.cricket11.R.layout.activity_player_detail);
+      sKeys.put("layout/activity_player_history_0", education.hry.pkl.cricket11.R.layout.activity_player_history);
       sKeys.put("layout/activity_profile_0", education.hry.pkl.cricket11.R.layout.activity_profile);
       sKeys.put("layout/activity_reset_password_0", education.hry.pkl.cricket11.R.layout.activity_reset_password);
       sKeys.put("layout/activity_welcome_0", education.hry.pkl.cricket11.R.layout.activity_welcome);

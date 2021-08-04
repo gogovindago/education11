@@ -25,6 +25,9 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.Activity.PlayerHistoryActivity"
+            android:exported="true" />
+        <activity
             android:name=".ui.Activity.CareerStatisticsActivity"
             android:exported="true" />
         <activity android:name=".ui.Activity.ForgetPasswordActivity" />

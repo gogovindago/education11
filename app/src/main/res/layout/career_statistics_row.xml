@@ -666,6 +666,7 @@
                             app:shimmer_tilt="180">
 
                             <androidx.appcompat.widget.AppCompatButton
+                                android:id="@+id/btnplyrhist"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"

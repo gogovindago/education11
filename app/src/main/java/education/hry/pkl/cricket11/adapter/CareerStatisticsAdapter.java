@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -44,13 +45,14 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
         public RelativeLayout relativeLayout;
         CareerStatisticsResponse.Datum item;
         public int currposition;
+        Button btnplyrhist;
 
         public ViewHolder(View v) {
 
             super(v);
 
-            v.setOnClickListener(this);
             textNotOutsvalue = (TextView) v.findViewById(R.id.textNotOutsvalue);
+            btnplyrhist = v.findViewById(R.id.btnplyrhist);
             textclassvalue = (TextView) v.findViewById(R.id.textclassvalue);
             txtWicketsvalue = (TextView) v.findViewById(R.id.txtWicketsvalue);
             textRunsvalue = (TextView) v.findViewById(R.id.textRunsvalue);
@@ -67,6 +69,13 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
             textBowlAveragevalue = (TextView) v.findViewById(R.id.textBowlAveragevalue);
             //   imageView = (ImageView) v.findViewById(R.id.imageView);
             imgplayername = (SimpleDraweeView) v.findViewById(R.id.imgplayername);
+
+          //  v.setOnClickListener(this);
+
+
+            btnplyrhist.setOnClickListener(this);
+
+
 
         }
 
@@ -96,8 +105,22 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
 
         @Override
         public void onClick(View view) {
-            if (mListener != null) {
-                mListener.onItemClick(item, currposition);
+
+
+                switch (view.getId()){
+
+                    case R.id.btnplyrhist:
+
+                        if (mListener != null) {
+
+                            mListener.onItemClick(item, currposition,"plyrhist");
+
+
+                        }
+                        break;
+
+
+
             }
         }
     }
@@ -125,6 +148,6 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
     }
 
     public interface ItemListener {
-        void onItemClick(CareerStatisticsResponse.Datum item, int currposition);
+        void onItemClick(CareerStatisticsResponse.Datum item, int currposition,String plyrhist);
     }
 }

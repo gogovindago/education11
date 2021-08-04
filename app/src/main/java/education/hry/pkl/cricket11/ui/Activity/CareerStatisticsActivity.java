@@ -1,12 +1,12 @@
 package education.hry.pkl.cricket11.ui.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +15,7 @@ import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.CareerStatisticsAdapter;
 import education.hry.pkl.cricket11.allinterfaces.GetCareerStatistcsDetail_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
+
 import education.hry.pkl.cricket11.databinding.ActivityCareerStatisticsBinding;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
@@ -45,14 +46,13 @@ public class CareerStatisticsActivity extends BaseActivity implements CareerStat
         if (GlobalClass.isNetworkConnected(this)) {
 
             WebAPiCall aPiCall = new WebAPiCall();
-            aPiCall.CareerStatisticsDataMethod(this, this, token, this,binding.rvplayerCareer);
+            aPiCall.CareerStatisticsDataMethod(this, this, token, this, binding.rvplayerCareer);
 
 
         } else {
 
             Toast.makeText(this, GlobalClass.nointernet, Toast.LENGTH_LONG).show();
         }
-
 
 
     }
@@ -75,10 +75,6 @@ public class CareerStatisticsActivity extends BaseActivity implements CareerStat
 
     }
 
-    @Override
-    public void onItemClick(CareerStatisticsResponse.Datum item, int currposition) {
-
-    }
 
     @Override
     public void GetCareerStatisticsDetail_list(List<CareerStatisticsResponse.Datum> list) {
@@ -96,15 +92,23 @@ public class CareerStatisticsActivity extends BaseActivity implements CareerStat
             binding.rvplayerCareer.setAdapter(adapter);
 
 
-
-
-
-
         } else {
 
             binding.rvplayerCareer.setVisibility(View.GONE);
             GlobalClass.dailogwarring(CareerStatisticsActivity.this, "Empty List", "No any Player found!");
 
         }
+    }
+
+    @Override
+    public void onItemClick(CareerStatisticsResponse.Datum item, int currposition, String plyrhist) {
+
+        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
+
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
+
+
     }
 }

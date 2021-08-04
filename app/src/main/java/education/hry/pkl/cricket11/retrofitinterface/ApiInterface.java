@@ -7,6 +7,7 @@ import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
+import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
 import education.hry.pkl.cricket11.model.StudentEventDataSaveResponse;
@@ -22,6 +23,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.Path;
 import retrofit2.http.Query;
 
 
@@ -76,5 +78,8 @@ public interface ApiInterface {
 
     @GET("CareerStatistics")
     Call<CareerStatisticsResponse>CareerStatisticsApiCall(@Header("Authorization") String token);
+
+    @GET("PlayerStatistics/{playerId}")
+    Call<PlayerHistoryResponse>PlayerHistoryResponseApiCall(@Header("Authorization") String token,@Path("playerId") String plyeID);
 
 }
