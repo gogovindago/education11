@@ -53,12 +53,37 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //setContentView(R.layout.activity_profile);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_profile);
 
         try {
+
+
+            /* CSPreferences.putString(this, "id", Registration_Id);
+            CSPreferences.putString(this, "token", token);
+            CSPreferences.putString(this, "User_Id", Registration_Id);
+            CSPreferences.putString(this, "User_mobile", userMobileNumber);
+            CSPreferences.putString(this, "User_email", userEmailId);
+            CSPreferences.putString(this, "User_name", username);
+            CSPreferences.putBolean(this, "firstTimelogin", firstTimelogin);*/
+
+
+
             Registration_Id = CSPreferences.readString(ProfileActivity.this, "User_Id");
             binding.edtRegistraionId.setText(Registration_Id);
+
+
+            String string = CSPreferences.readString(this,"User_name");
+            String[] parts = string.split(" ");
+            String part1 = parts[0]; // 004
+            String part2 = parts[1]; // 034556
+
+
+            binding.edtfirstname.setText(part1);
+            binding.edtlastname.setText(part2);
+
+
+            binding.edtmobile.setText(CSPreferences.readString(this,"User_mobile"));
+            binding.edtemail.setText(CSPreferences.readString(this,"User_email"));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +91,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
         if (GlobalClass.isNetworkConnected(ProfileActivity.this)) {
             WebAPiCall webapiCall = new WebAPiCall();
-            webapiCall.StudentProfileDataMethod(ProfileActivity.this, ProfileActivity.this, this, Registration_Id);
+           // webapiCall.StudentProfileDataMethod(ProfileActivity.this, ProfileActivity.this, this, Registration_Id);
 
         } else {
 

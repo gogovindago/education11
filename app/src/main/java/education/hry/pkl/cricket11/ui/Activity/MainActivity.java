@@ -163,7 +163,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
             imageurl = CSPreferences.readString(MainActivity.this, "Profilepicurl");
 
             Picasso.get()
-                    .load(imageurl.trim())
+                    .load(imageurl)
                     .placeholder(R.mipmap.ic_launcher_round)
                     .error(R.drawable.notattached)
                     .into(profile_image);
@@ -290,13 +290,13 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         dataModelLeftList = new ArrayList<DataModelLeftNew>();
         dataModelLeftList.clear();
 
-        DataModelLeftNew playersList = new DataModelLeftNew(R.drawable.personwhite, "Players List", 8);
+        DataModelLeftNew playersList = new DataModelLeftNew(R.drawable.ic_baseline_view_list_24, "Players List", 8);
         dataModelLeftList.add(playersList);
 
-        DataModelLeftNew showMatchDetails = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Show Match Details", 9);
+        DataModelLeftNew showMatchDetails = new DataModelLeftNew(R.drawable.ic_baseline_checklist_24, "Show Match Details", 9);
         dataModelLeftList.add(showMatchDetails);
 
-        DataModelLeftNew careerStatistics = new DataModelLeftNew(R.drawable.personwhite, "Career Statistics", 10);
+        DataModelLeftNew careerStatistics = new DataModelLeftNew(R.drawable.carrer, "Career Statistics", 10);
         dataModelLeftList.add(careerStatistics);
 
         DataModelLeftNew publiclib = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Gallery", 0);
@@ -432,12 +432,13 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
                 Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
-                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Share Harit Haryana");
-                String app_url = "https://play.google.com/store/apps/details?id=plantation.hr.cbse.haryanaplantation";
+                shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Education 11");
+               // String app_url = "https://play.google.com/store/apps/details?id=plantation.hr.cbse.haryanaplantation";
+                String app_url = "https://cricket.highereduhry.ac.in/";
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
-
                 break;
+
             case 4:
 
                 mDrawerLayout.closeDrawers();
