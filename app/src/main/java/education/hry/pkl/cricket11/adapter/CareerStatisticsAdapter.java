@@ -21,6 +21,7 @@ import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 
 public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisticsAdapter.ViewHolder> {
+    String imageurl = "https://i.picsum.photos/id/599/200/200.jpg?hmac=2WLKs3sxIsaEQ-6WZaa6YMxgl6ZC4cNnid0aqupm2is";
 
     ArrayList<CareerStatisticsResponse.Datum> mValues = new ArrayList<CareerStatisticsResponse.Datum>();
     Context mContext;
@@ -67,7 +68,6 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
             txtInningsvalue = (TextView) v.findViewById(R.id.txtInningsvalue);
             txtplayerName = (TextView) v.findViewById(R.id.txtplayerName);
             textBowlAveragevalue = (TextView) v.findViewById(R.id.textBowlAveragevalue);
-            //   imageView = (ImageView) v.findViewById(R.id.imageView);
             imgplayername = (SimpleDraweeView) v.findViewById(R.id.imgplayername);
 
           //  v.setOnClickListener(this);
@@ -83,7 +83,14 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
             this.currposition = currposition;
             this.item = item;
 
-            txtplayerName.setText(String.valueOf(++currposition) + ". " + item.getPlayerName());
+
+            String string = item.getPlayerName();
+            String[] parts = string.split(" ");
+            String part1 = parts[0]; // 004
+           // String part2 = parts[1]; // 034556
+
+            btnplyrhist.setText(part1+" indivisual career statistics");
+            txtplayerName.setText(String.valueOf(++currposition) + ".  " + item.getPlayerName());
             txtInningsvalue.setText(String.valueOf(item.getInnings()));
             txtScorevalue.setText(String.valueOf(item.getScore()));
             textCatchesvalue.setText(String.valueOf(item.getCatches()));
@@ -98,7 +105,7 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
             textBowlAveragevalue.setText(String.valueOf(item.getBowlAverage()));
             textclassvalue.setText(String.valueOf(item.getBowlAverage()));
             textNotOutsvalue.setText(String.valueOf(item.getNotOut()));
-            //  imgplayername.setImageURI(item.getFileName());
+              imgplayername.setImageURI(imageurl);
 
         }
 

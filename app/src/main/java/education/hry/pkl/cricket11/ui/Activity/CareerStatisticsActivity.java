@@ -62,17 +62,17 @@ public class CareerStatisticsActivity extends BaseActivity implements CareerStat
         binding.toolbar.tvToolbarTitle.setText("Player Career Statistics");
 
 
+    }
+
+    @Override
+    public void initListeners() {
+
         binding.toolbar.back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 onBackPressed();
             }
         });
-    }
-
-    @Override
-    public void initListeners() {
-
     }
 
 

@@ -71,7 +71,6 @@ import education.hry.pkl.cricket11.model.DataModel;
 import education.hry.pkl.cricket11.model.DataModelLeftNew;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
-import education.hry.pkl.cricket11.utility.DataModelLeft;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 
 public class MainActivity extends BaseActivity implements RecyclerViewAdapter.ItemListener, BannerData_interface, AdminImgAdapter.ItemListener, RecentMatchesAdapter.ItemListener, TopBatAvgAdapter.ItemListener, TopBowlAvgAdapter.ItemListener, MostWicketAdapter.ItemListener, TopMostRunAdapter.ItemListener, MostSixesAdapter.ItemListener, MostFoursAdapter.ItemListener {
@@ -459,6 +458,14 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
                 Intent plylistIntent = new Intent(this, PlayerDetailActivity.class);
                 startActivity(plylistIntent);
+                break;
+
+
+                case 9:
+
+                mDrawerLayout.closeDrawers();
+                Intent allmatchesdetailIntent = new Intent(this, MatchDetailsActivity.class);
+                startActivity(allmatchesdetailIntent);
                 break;
 
                 case 10:

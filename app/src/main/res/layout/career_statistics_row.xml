@@ -71,13 +71,14 @@
                             android:textAllCaps="true"
                             android:textAppearance="@android:style/TextAppearance.Material.Medium"
                             android:textColor="@android:color/white"
-                            android:textStyle="bold"
+                            android:textStyle="normal"
                             tools:targetApi="lollipop" />
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
 
                     <LinearLayout
+                        android:layout_marginTop="2dp"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/edit_text_borderdash"
@@ -120,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
-                        android:background="@color/yellow"
+                        android:background="@color/yellowlight"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -230,7 +231,7 @@
                                 android:drawablePadding="5dp"
                                 android:gravity="center|start"
                                 android:padding="5dp"
-                                android:text="Fours "
+                                android:text="4s "
                                 android:background="@drawable/spinner_border"
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
@@ -271,7 +272,7 @@
                                 android:drawablePadding="5dp"
                                 android:gravity="center|start"
                                 android:padding="5dp"
-                                android:text="Six "
+                                android:text="6s "
                                 android:background="@drawable/spinner_border"
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
@@ -339,13 +340,49 @@
                                 tools:targetApi="lollipop" />
 
                         </LinearLayout>
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/gradientbackgroundgreen"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:background="@drawable/spinner_border"
+
+                                android:id="@+id/textNotOuts"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.2"
+                                android:padding="8dp"
+                                android:text="Not Outs"
+                                android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
+                                android:textColor="@android:color/white"
+                                android:textStyle="normal" />
+
+                            <TextView
+
+                                android:id="@+id/textNotOutsvalue"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:layout_weight="0.2"
+                                android:background="@drawable/spinner_border"
+                                android:gravity="center_horizontal"
+                                android:padding="8dp"
+                                android:text="N/A"
+                                android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
+                                android:textColor="@android:color/white"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <androidx.appcompat.widget.LinearLayoutCompat
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_margin="2dp"
-                        android:background="@color/red"
+                        android:background="@color/yellowlight"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -607,49 +644,15 @@
                                 android:textColor="@android:color/white"
                                 android:textStyle="bold" />
                         </LinearLayout>
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/gradientbackgroundgreen"
-                            android:orientation="horizontal">
 
-                            <TextView
-                                android:background="@drawable/spinner_border"
-
-                                android:id="@+id/textNotOuts"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="0.2"
-                                android:padding="8dp"
-                                android:text="Not Outs"
-                                android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
-                                android:textColor="@android:color/white"
-                                android:textStyle="normal" />
-
-                            <TextView
-
-                                android:id="@+id/textNotOutsvalue"
-                                android:layout_width="0dp"
-                                android:layout_height="match_parent"
-                                android:layout_gravity="center"
-                                android:layout_weight="0.2"
-                                android:background="@drawable/spinner_border"
-                                android:gravity="center_horizontal"
-                                android:padding="8dp"
-                                android:text="N/A"
-                                android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
-                                android:textColor="@android:color/white"
-                                android:textStyle="bold" />
-                        </LinearLayout>
 
                     </androidx.appcompat.widget.LinearLayoutCompat>
 
                     <LinearLayout
                         android:id="@+id/llappstatus"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_marginTop="2dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="0dp"
                         android:background="@drawable/buttonstyle"
                         android:orientation="horizontal">
 
@@ -670,11 +673,11 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
-                                android:fontFamily="@font/cabin_sketch"
+                                android:fontFamily="@font/roboto_medium"
                                 android:gravity="center"
-                                android:padding="8dp"
+                                android:padding="0dp"
                                 android:text="Player indivisual career statistics"
-                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                 android:textColor="@color/colorPrimary"
                                 android:textStyle="normal" />
                         </com.facebook.shimmer.ShimmerFrameLayout>

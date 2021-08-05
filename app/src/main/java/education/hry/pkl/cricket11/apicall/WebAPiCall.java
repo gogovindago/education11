@@ -23,6 +23,7 @@ import education.hry.pkl.cricket11.allinterfaces.GetGalleryDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerHistory_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
+import education.hry.pkl.cricket11.allinterfaces.MatchesDetailData_interface;
 import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
 import education.hry.pkl.cricket11.model.BannerResponse;
@@ -32,6 +33,7 @@ import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
+import education.hry.pkl.cricket11.model.MatchDetailResponse;
 import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
@@ -721,6 +723,48 @@ public class WebAPiCall {
     }
 
 
+    public void MatchDetailDataMethod(final Activity activity, final Context context, String token, MatchesDetailData_interface anInterface) {
+
+        loadershowwithMsg(context, "Fetching all Matches details...");
+
+        Call<MatchDetailResponse> apiCall = ApiClient.getClient().MatchDetailsApiCall("Bearer " + token);
+        apiCall.enqueue(new Callback<MatchDetailResponse>() {
+            @Override
+            public void onResponse(Call<MatchDetailResponse> call, final Response<MatchDetailResponse> response) {
+
+                if (response.isSuccessful()) {
+
+                    dailoghide(context);
+
+
+                    if (response.body().getResponse() == 200) {
+                        anInterface.allmatches_list(response.body().getData());
+
+
+                    } else {
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
+
+                    }
+
+
+                } else {
+                    dailoghide(context);
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<MatchDetailResponse> call, Throwable t) {
+                dailoghide(context);
+                t.printStackTrace();
+                Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
+                // Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
     public void PlayerHistoryDataMethod(final Activity activity, final Context context, String token, String UserID, GetPlayerHistory_interface anInterface) {
 
         loadershowwithMsg(context, "Fetching Player History...");
@@ -737,7 +781,7 @@ public class WebAPiCall {
 
 
                     if (response.body().getResponse() == 200) {
-                       // GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        // GlobalClass.showtost(context, "" + response.body().getSysMessage());
                         anInterface.GetPlayerHistory_list(response.body().getData());
 
 

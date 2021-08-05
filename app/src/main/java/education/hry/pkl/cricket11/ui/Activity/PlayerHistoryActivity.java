@@ -69,7 +69,7 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
 
     @Override
     public void initData() {
-        binding.toolbar.tvToolbarTitle.setText("History");
+       // binding.toolbar.tvToolbarTitle.setText("History");
 
     }
 
@@ -93,6 +93,7 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
 
 
         if (list != null) {
+            binding.toolbar.tvToolbarTitle.setText(list.get(0).getPlayerName()+" History");
 
             arrayList.clear();
             arrayList.addAll(list);
