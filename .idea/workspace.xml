@@ -31,6 +31,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7063279c-bc44-49d9-9779-54be30cd925c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,8 +81,8 @@
   </component>
   <component name="GenerateSignedApkSettings">
     <option name="EXPORT_PRIVATE_KEY" value="false" />
-    <option name="KEY_STORE_PATH" value="E:\AndroidApps\Govind\2020\Documents\GreenHarayana\playStoreCredentialsData\PlayStoreCredentials\jks\haritharyana.jks" />
-    <option name="KEY_ALIAS" value="haritharyana" />
+    <option name="KEY_STORE_PATH" value="E:\AndroidApps\Govind\2020\Documents\education11\education11.jks" />
+    <option name="KEY_ALIAS" value="education11" />
     <option name="REMEMBER_PASSWORDS" value="true" />
   </component>
   <component name="Git.Settings">
@@ -108,7 +110,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="ApkExportedModule" value="haryanaPlantation.app" />
-    <property name="BundleExportedModule" value="haryanaPlantation.app" />
+    <property name="BundleExportedModule" value="education11.app" />
     <property name="DEBUGGABLE_DEVICE" value="samsung-sm_a505f-RZ8M60120ZX" />
     <property name="DEBUGGABLE_PROCESS" value="education.hry.pkl.cricket11" />
     <property name="DEBUGGER_ID" value="Auto" />
@@ -417,7 +419,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628156221622</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Matches Details done.&#10;Indiviual career done.">
+      <created>1628158906714</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1628158906714</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
