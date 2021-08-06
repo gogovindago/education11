@@ -22,9 +22,9 @@ public class ApiClient {
             HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
             interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
             OkHttpClient client = new OkHttpClient.Builder().addInterceptor(interceptor)
-                    .connectTimeout(15, TimeUnit.MINUTES) // connect timeout
-                    .writeTimeout(15, TimeUnit.MINUTES) // write timeout
-                    .readTimeout(15, TimeUnit.MINUTES) // read timeout
+                    .connectTimeout(15, TimeUnit.SECONDS) // connect timeout
+                    .writeTimeout(15, TimeUnit.SECONDS) // write timeout
+                    .readTimeout(15, TimeUnit.SECONDS) // read timeout
                     .build();
             Gson gson = new GsonBuilder()
                     .setLenient()

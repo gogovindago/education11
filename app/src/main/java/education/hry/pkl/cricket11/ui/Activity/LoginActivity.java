@@ -11,6 +11,8 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -41,7 +43,7 @@ import education.hry.pkl.cricket11.utility.MyLoaders;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginData_interface, GoogleApiClient.ConnectionCallbacks,
         GetOtpInterface, GoogleApiClient.OnConnectionFailedListener {
 
-    public int counter;
+
     @TargetApi(Build.VERSION_CODES.O)
 
     GoogleApiClient mGoogleApiClient;
@@ -86,6 +88,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
             }
         });
+
+
+       /* Button crashButton = new Button(this);
+        crashButton.setText("Test Crash");
+        crashButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                throw new RuntimeException("Test Crash"); // Force a crash
+            }
+        });
+
+        addContentView(crashButton, new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.WRAP_CONTENT));*/
     }
 
 
