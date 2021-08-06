@@ -5,7 +5,7 @@ import android.content.SharedPreferences;
 
 public class CSPreferences {
     private static SharedPreferences getPreferences(Context context) {
-        return context.getSharedPreferences("CS_PREF", Context.MODE_PRIVATE);
+        return context.getSharedPreferences("EDUCATION_CRICKET_PREF", Context.MODE_PRIVATE);
     }
 
     public static String readString(Context context, String key) {
