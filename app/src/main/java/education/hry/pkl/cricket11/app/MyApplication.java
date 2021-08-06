@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Context;
 
 import com.facebook.drawee.backends.pipeline.Fresco;
+import com.google.firebase.FirebaseApp;
 
 public class MyApplication extends Application {
 
@@ -13,6 +14,8 @@ public class MyApplication extends Application {
         super.onCreate();
         Fresco.initialize(this);
             context = getApplicationContext();
+        FirebaseApp.initializeApp(context);
+
 
         }
 

@@ -1,9 +1,9 @@
 <component name="libraryTable">
   <library name="Gradle: com.github.cazaea:sweet-alert-dialog:1.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b9fcdc75989b3655ef79473de513409a/transformed/jetified-sweet-alert-dialog-1.0.0/AndroidManifest.xml" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b9fcdc75989b3655ef79473de513409a/transformed/jetified-sweet-alert-dialog-1.0.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/b9fcdc75989b3655ef79473de513409a/transformed/jetified-sweet-alert-dialog-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f492efbb841436e34859211f74840e8/transformed/jetified-sweet-alert-dialog-1.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1f492efbb841436e34859211f74840e8/transformed/jetified-sweet-alert-dialog-1.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1f492efbb841436e34859211f74840e8/transformed/jetified-sweet-alert-dialog-1.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.cazaea/sweet-alert-dialog/1.0.0/72c400c2dc8d649addb18112514b40148bbf0fa/sweet-alert-dialog-1.0.0-javadoc.jar!/" />

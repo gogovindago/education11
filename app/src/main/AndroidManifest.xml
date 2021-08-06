@@ -65,6 +65,12 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
+
+        <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-7033476435545879~2672279386"/>
+
         <activity
             android:name=".ui.Activity.GalleryActivity"
             android:label="@string/title_activity_maps">

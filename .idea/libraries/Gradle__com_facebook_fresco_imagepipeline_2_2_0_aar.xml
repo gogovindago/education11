@@ -1,14 +1,16 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.fresco:imagepipeline:2.2.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ea9f7e4ac19152a7a2a077a3075e5426/transformed/jetified-imagepipeline-2.2.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/acd667d5da52a4f6fea3b219cf630251/transformed/jetified-imagepipeline-2.2.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/d4b9238e4e2a6f222431f2f03098af0f/transformed/jetified-imagepipeline-2.2.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e863c9f7e2044d0373de059d4fb87778/transformed/jetified-imagepipeline-2.2.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ea9f7e4ac19152a7a2a077a3075e5426/transformed/jetified-imagepipeline-2.2.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ea9f7e4ac19152a7a2a077a3075e5426/transformed/jetified-imagepipeline-2.2.0/res" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/ea9f7e4ac19152a7a2a077a3075e5426/transformed/jetified-imagepipeline-2.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ea7d49a6b02118c7d029053c21cf90b2/transformed/jetified-imagepipeline-2.2.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/acd667d5da52a4f6fea3b219cf630251/transformed/jetified-imagepipeline-2.2.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/acd667d5da52a4f6fea3b219cf630251/transformed/jetified-imagepipeline-2.2.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/acd667d5da52a4f6fea3b219cf630251/transformed/jetified-imagepipeline-2.2.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.fresco/imagepipeline/2.2.0/f14549d5fc7b9a84be27b0a7811bb048a68e73c3/imagepipeline-2.2.0-javadoc.jar!/" />

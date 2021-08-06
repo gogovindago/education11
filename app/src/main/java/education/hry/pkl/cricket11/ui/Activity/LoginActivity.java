@@ -3,6 +3,7 @@ package education.hry.pkl.cricket11.ui.Activity;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
 import android.os.Build;
@@ -22,18 +23,22 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.material.textfield.TextInputEditText;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.iid.FirebaseInstanceId;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.GetOtpInterface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
+import education.hry.pkl.cricket11.app.MyApplication;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.utility.CSPreferences;
@@ -43,7 +48,7 @@ import education.hry.pkl.cricket11.utility.MyLoaders;
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginData_interface, GoogleApiClient.ConnectionCallbacks,
         GetOtpInterface, GoogleApiClient.OnConnectionFailedListener {
 
-
+    private AdView mAdView;
     @TargetApi(Build.VERSION_CODES.O)
 
     GoogleApiClient mGoogleApiClient;
@@ -56,7 +61,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private String refreshedToken, userMobileNumber, username, userEmailId, lativale, longivalue, admissionURL, Profilepicurl,Registration_Id,token;
     private static final String TAG = "LoginActivity";
     private MyLoaders myLoaders;
-
+    Context context;
     in.aabhasjindal.otptextview.OtpTextView otpBox;
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
@@ -64,6 +69,13 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        context = MyApplication.context;
+        FirebaseApp.initializeApp(context);
+
+        AdRequest adRequest = new AdRequest.Builder().build();
+        mAdView = findViewById(R.id.adView);
+
+        mAdView.loadAd(adRequest);
 
         // requestSMSPermission();
         myLoaders = new MyLoaders(getApplicationContext());

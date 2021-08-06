@@ -1,12 +1,12 @@
 <component name="libraryTable">
   <library name="Gradle: com.facebook.shimmer:shimmer:0.4.0@aar">
     <ANNOTATIONS>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bd387a5ca05fc633a9ed3c8593f82562/transformed/jetified-shimmer-0.4.0/annotations.zip!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1ff1c8ff9f57ffeba2e04e06196718f7/transformed/jetified-shimmer-0.4.0/annotations.zip!/" />
     </ANNOTATIONS>
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bd387a5ca05fc633a9ed3c8593f82562/transformed/jetified-shimmer-0.4.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/bd387a5ca05fc633a9ed3c8593f82562/transformed/jetified-shimmer-0.4.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/bd387a5ca05fc633a9ed3c8593f82562/transformed/jetified-shimmer-0.4.0/jars/classes.jar!/" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1ff1c8ff9f57ffeba2e04e06196718f7/transformed/jetified-shimmer-0.4.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1ff1c8ff9f57ffeba2e04e06196718f7/transformed/jetified-shimmer-0.4.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1ff1c8ff9f57ffeba2e04e06196718f7/transformed/jetified-shimmer-0.4.0/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.shimmer/shimmer/0.4.0/920f3c89c7d136988c24565de5d8c23ef602a2df/shimmer-0.4.0-javadoc.jar!/" />

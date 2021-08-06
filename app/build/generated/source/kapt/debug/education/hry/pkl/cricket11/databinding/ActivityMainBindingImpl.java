@@ -38,14 +38,15 @@ public class ActivityMainBindingImpl extends ActivityMainBinding  {
         sViewsWithIds.put(R.id.rvMostSixes, 22);
         sViewsWithIds.put(R.id.txtmostFours, 23);
         sViewsWithIds.put(R.id.rvMostFour, 24);
-        sViewsWithIds.put(R.id.message, 25);
-        sViewsWithIds.put(R.id.nav_view, 26);
-        sViewsWithIds.put(R.id.materialCardView, 27);
-        sViewsWithIds.put(R.id.profile_image, 28);
-        sViewsWithIds.put(R.id.uname, 29);
-        sViewsWithIds.put(R.id.umobile, 30);
-        sViewsWithIds.put(R.id.uemailId, 31);
-        sViewsWithIds.put(R.id.left_drawer, 32);
+        sViewsWithIds.put(R.id.adView, 25);
+        sViewsWithIds.put(R.id.message, 26);
+        sViewsWithIds.put(R.id.nav_view, 27);
+        sViewsWithIds.put(R.id.materialCardView, 28);
+        sViewsWithIds.put(R.id.profile_image, 29);
+        sViewsWithIds.put(R.id.uname, 30);
+        sViewsWithIds.put(R.id.umobile, 31);
+        sViewsWithIds.put(R.id.uemailId, 32);
+        sViewsWithIds.put(R.id.left_drawer, 33);
     }
     // views
     // variables
@@ -54,20 +55,21 @@ public class ActivityMainBindingImpl extends ActivityMainBinding  {
     // Inverse Binding Event Handlers
 
     public ActivityMainBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 33, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 34, sIncludes, sViewsWithIds));
     }
     private ActivityMainBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
+            , (com.google.android.gms.ads.AdView) bindings[25]
             , (com.google.android.material.appbar.AppBarLayout) bindings[2]
             , (android.widget.FrameLayout) bindings[7]
             , (androidx.drawerlayout.widget.DrawerLayout) bindings[0]
             , (com.smarteist.autoimageslider.SliderView) bindings[8]
-            , (android.widget.ListView) bindings[32]
+            , (android.widget.ListView) bindings[33]
             , (android.widget.ImageView) bindings[5]
-            , (androidx.cardview.widget.CardView) bindings[27]
-            , (android.widget.TextView) bindings[25]
-            , (com.google.android.material.navigation.NavigationView) bindings[26]
-            , (android.widget.ImageView) bindings[28]
+            , (androidx.cardview.widget.CardView) bindings[28]
+            , (android.widget.TextView) bindings[26]
+            , (com.google.android.material.navigation.NavigationView) bindings[27]
+            , (android.widget.ImageView) bindings[29]
             , (androidx.recyclerview.widget.RecyclerView) bindings[16]
             , (androidx.recyclerview.widget.RecyclerView) bindings[24]
             , (androidx.recyclerview.widget.RecyclerView) bindings[22]
@@ -88,9 +90,9 @@ public class ActivityMainBindingImpl extends ActivityMainBinding  {
             , (androidx.appcompat.widget.AppCompatTextView) bindings[11]
             , (androidx.appcompat.widget.AppCompatTextView) bindings[13]
             , (androidx.appcompat.widget.AppCompatTextView) bindings[19]
+            , (android.widget.TextView) bindings[32]
             , (android.widget.TextView) bindings[31]
             , (android.widget.TextView) bindings[30]
-            , (android.widget.TextView) bindings[29]
             );
         this.drawerLayout.setTag(null);
         setRootTag(root);
