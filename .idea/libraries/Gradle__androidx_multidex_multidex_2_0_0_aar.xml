@@ -1,13 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.multidex:multidex:2.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/162cbb5cdac48b5f6470c195b5fed2fc/transformed/multidex-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c215bbcec836758b049b88d0486b4e4e/transformed/multidex-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/2f5acc8ba294a5f2ee646d43476d9fae/transformed/multidex-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c878e41071516ef3fc250897246dfc1e/transformed/multidex-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/022b2665179a8d65bfe03ac10b1d6000/transformed/multidex-2.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/022b2665179a8d65bfe03ac10b1d6000/transformed/multidex-2.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/022b2665179a8d65bfe03ac10b1d6000/transformed/multidex-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e2dc0ae0ab07f7a0a0cf8fb3eeae3853/transformed/multidex-2.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e2dc0ae0ab07f7a0a0cf8fb3eeae3853/transformed/multidex-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e2dc0ae0ab07f7a0a0cf8fb3eeae3853/transformed/multidex-2.0.0/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

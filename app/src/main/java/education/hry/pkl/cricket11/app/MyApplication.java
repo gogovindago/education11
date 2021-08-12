@@ -14,7 +14,7 @@ public class MyApplication extends Application {
         super.onCreate();
         Fresco.initialize(this);
             context = getApplicationContext();
-        FirebaseApp.initializeApp(context);
+        FirebaseApp.initializeApp(this);
 
 
         }

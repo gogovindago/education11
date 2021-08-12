@@ -36,6 +36,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public static final String CHANNEL_ID = "com.richestsoft.giftcardtrade.messages";
     NotificationUtils notificationUtils;
     RemoteMessage remoteMessage;
+    private String TAG = "MyFirebaseMessagingService";
 
     /**
      * Called when message is received.
@@ -69,14 +70,12 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             Log.e("name: ", title);
 
 
-
-            if(!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
+            if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
                 handleNotification(sendername, remoteMessage);
-            } else
-                { sendNotification(remoteMessage);
+            } else {
+                sendNotification(remoteMessage);
 
-                }
-
+            }
 
 
 //            if (app_preference.getCHATSTATUS().equals("1")) {
@@ -85,7 +84,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 //                sendNotification(remoteMessage);
 //            }
 
-           // handleNotification(sendername, remoteMessage);
+            // handleNotification(sendername, remoteMessage);
         }
 
         // Check if message contains a data payload.
@@ -105,8 +104,8 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     private void handleNotification(String message, RemoteMessage remoteMessage) {
         if (!NotificationUtils.isAppIsInBackground(getApplicationContext())) {
 
-            sendername=remoteMessage.getData().get("moredata");
-            title =remoteMessage.getData().get("name");
+            sendername = remoteMessage.getData().get("moredata");
+            title = remoteMessage.getData().get("name");
             Intent pushNotification = new Intent(Config.PUSH_NOTIFICATION);
             pushNotification.putExtra("moredata", sendername);
             pushNotification.putExtra("name", title);
@@ -243,5 +242,19 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         mNotificationManager.cancel(10);
         mNotificationManager.notify(100, mBuilder.build());
 
+    }
+
+
+    @Override
+    public void onNewToken(String token) {
+
+//        Log.d(TAG, "Refreshed token: " + token);
+//
+//        CSPreferences.putString(this, "fcmToken", token);
+
+        // If you want to send messages  to this application instance or
+        // manage this apps subscriptions on the server side, send the
+        // FCM registration token to your app server.
+        // sendRegistrationToServer(token);
     }
 }

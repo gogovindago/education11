@@ -80,56 +80,12 @@ public class GlobalClass {
     public static final int CUSTOM_IMAGE_TYPE = 4;
     public static final int PROGRESS_TYPE = 5;*/
 
-    public void dailogsuccessWithActivityFinish(final Context context, final Activity activity, String msgtitle, String msgcontentText) {
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context);
-        sweetAlertDialog.setTitle(msgtitle + "!");
-        sweetAlertDialog.setContentText(msgcontentText);
-        sweetAlertDialog.setVolumeControlStream(2);
-        sweetAlertDialog.getAlerType();
-        sweetAlertDialog.changeAlertType(2);
-        sweetAlertDialog.setCancelable(false);
-
-        sweetAlertDialog.setCanceledOnTouchOutside(false);
-        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-            @Override
-            public void onClick(SweetAlertDialog sweetAlertDialog) {
-
-                sweetAlertDialog.dismissWithAnimation();
-                activity.finish();
-            }
-        });
-        sweetAlertDialog.show();
-
-    }
-
-
-    public void dailogsuccessWithActivity(final Context context, final Activity activity, String msgtitle, String msgcontentText) {
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context);
-        sweetAlertDialog.setTitle(msgtitle + "!");
-        sweetAlertDialog.setContentText(msgcontentText);
-        sweetAlertDialog.setVolumeControlStream(2);
-        sweetAlertDialog.getAlerType();
-        sweetAlertDialog.setCancelable(false);
-
-        sweetAlertDialog.changeAlertType(2);
-        sweetAlertDialog.setCanceledOnTouchOutside(false);
-        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-            @Override
-            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                sweetAlertDialog.dismissWithAnimation();
-                activity.finish();
-            }
-        });
-        sweetAlertDialog.show();
-
-    }
-
     public static void dailogsuccess(final Context context, String msgtitle, String msgcontentText) {
         SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context);
         sweetAlertDialog.setTitle(msgtitle + "!");
         sweetAlertDialog.setContentText(msgcontentText);
         sweetAlertDialog.setVolumeControlStream(2);
-        sweetAlertDialog.getAlerType();
+
         sweetAlertDialog.setCancelable(false);
         sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
 
@@ -150,7 +106,7 @@ public class GlobalClass {
         sweetAlertDialog.setTitle(msgtitle + "!");
         sweetAlertDialog.setContentText(msgcontentText);
         sweetAlertDialog.setVolumeControlStream(2);
-        sweetAlertDialog.getAlerType();
+
         sweetAlertDialog.setCancelable(false);
         sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
 
@@ -167,79 +123,4 @@ public class GlobalClass {
     }
 
 
-    public static void dailogsuccessImage(final Context context, String msgtitle, String msgcontentText) {
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context);
-
-
-        sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
-        sweetAlertDialog.setTitle(msgtitle + "!");
-        sweetAlertDialog.setContentText(msgcontentText);
-        sweetAlertDialog.setVolumeControlStream(2);
-        sweetAlertDialog.getAlerType();
-        sweetAlertDialog.setCancelable(false);
-
-        sweetAlertDialog.changeAlertType(2);
-        sweetAlertDialog.setCanceledOnTouchOutside(false);
-        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-            @Override
-            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                sweetAlertDialog.dismiss();
-            }
-        });
-        sweetAlertDialog.show();
-
-    }
-
-    public void dailogError(final Context context, String msgtitle, String msgcontentText) {
-        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context);
-        sweetAlertDialog.setTitle(msgtitle + "!");
-        sweetAlertDialog.setContentText(msgcontentText);
-        sweetAlertDialog.setVolumeControlStream(2);
-        sweetAlertDialog.getAlerType();
-        sweetAlertDialog.setCancelable(false);
-        sweetAlertDialog.changeAlertType(1);
-        sweetAlertDialog.setCanceledOnTouchOutside(false);
-        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-            @Override
-            public void onClick(SweetAlertDialog sweetAlertDialog) {
-                sweetAlertDialog.dismiss();
-            }
-        });
-        sweetAlertDialog.show();
-
-    }
-
-
-    public void dailogshow(final Context context) {
-        pDialog = new SweetAlertDialog(context);
-        pDialog.changeAlertType(5);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText("Loading");
-        pDialog.setCancelable(false);
-        pDialog.show();
-
-//        pd = new ProgressDialog(context);
-//        pd.setMessage("loading...");
-//        pd.setCancelable(false);
-//        pd.show();
-    }
-
-    public void loadershowwithMsg(final Context context, String msg) {
-        pDialog = new SweetAlertDialog(context);
-        pDialog.changeAlertType(5);
-        pDialog.getProgressHelper().setBarColor(Color.parseColor("#A5DC86"));
-        pDialog.setTitleText(msg);
-        pDialog.setCancelable(false);
-        pDialog.show();
-
-//        pd = new ProgressDialog(context);
-//        pd.setMessage("loading...");
-//        pd.setCancelable(false);
-//        pd.show();
-    }
-
-    public void dailoghide(final Context context) {
-        // pd.dismiss();
-        pDialog.dismissWithAnimation();
-    }
 }

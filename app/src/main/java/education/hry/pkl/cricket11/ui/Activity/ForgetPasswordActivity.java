@@ -197,7 +197,7 @@ public class ForgetPasswordActivity extends BaseActivity implements LoginData_in
                     sweetAlertDialog.setTitle("Incorrect Otp!");
                     sweetAlertDialog.setContentText("You have Entered WRONG OTP. Please enter correct OTP.");
                     sweetAlertDialog.setVolumeControlStream(2);
-                    sweetAlertDialog.getAlerType();
+                   // sweetAlertDialog.getAlerType();
                     sweetAlertDialog.changeAlertType(1);
                     sweetAlertDialog.setCanceledOnTouchOutside(false);
                     sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {

@@ -1,6 +1,5 @@
 package education.hry.pkl.cricket11.ui.Activity;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
@@ -12,8 +11,6 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -30,26 +27,30 @@ import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.auth.api.credentials.HintRequest;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.FirebaseApp;
-import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.GetOtpInterface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.app.MyApplication;
+import education.hry.pkl.cricket11.fcm.MyFirebaseMessagingService;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.MyLoaders;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener, LoginData_interface, GoogleApiClient.ConnectionCallbacks,
-        GetOtpInterface, GoogleApiClient.OnConnectionFailedListener {
+public class LoginActivity extends AppCompatActivity implements LoginData_interface, GoogleApiClient.ConnectionCallbacks,
+        GetOtpInterface, GoogleApiClient.OnConnectionFailedListener,
+         View.OnClickListener {
 
     private AdView mAdView;
-    @TargetApi(Build.VERSION_CODES.O)
+
 
     GoogleApiClient mGoogleApiClient;
 
@@ -70,7 +71,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         context = MyApplication.context;
-        FirebaseApp.initializeApp(context);
+        FirebaseApp.initializeApp(this);
+        FirebaseApp.initializeApp(this);
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView = findViewById(R.id.adView);
@@ -79,9 +81,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         // requestSMSPermission();
         myLoaders = new MyLoaders(getApplicationContext());
-        refreshedToken = FirebaseInstanceId.getInstance().getToken();
-        Log.d(TAG, "Refreshed token: " + refreshedToken);
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            //  Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+
+                        // Get new FCM registration token
+                        refreshedToken = task.getResult();
+                       // Log.d("fcm",refreshedToken);
+
+                    }
+                });
+
+
+
+
+
+
+
+
         findViews();
+        //set google api client for hint request
         mGoogleApiClient = new GoogleApiClient.Builder(this)
                 .addConnectionCallbacks(this)
                 .enableAutoManage(this, this)
@@ -297,6 +322,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
 
 
+
+    @Override
+    public void onOtpReceived(String otp) {
+        otpBox.setOTP(otp);
+
+    }
+
+    @Override
+    public void onOtpTimeout() {
+
+    }
+
+
     @Override
     public void onConnected(@Nullable Bundle bundle) {
 
@@ -311,17 +349,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onConnectionFailed(@NonNull ConnectionResult connectionResult) {
 
     }
-
-    @Override
-    public void onOtpReceived(String otp) {
-        otpBox.setOTP(otp);
-
-    }
-
-    @Override
-    public void onOtpTimeout() {
-
-    }
-
-
 }
+
+
+
+
+
+
+
+

@@ -5,15 +5,9 @@ apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-kapt'
 apply plugin: 'com.google.firebase.crashlytics'
 
+
 android {
-   /* signingConfigs {
-        release {
-            storeFile file('E:\\AndroidApps\\Govind\\2020\\Documents\\GreenHarayana\\test\\test.jks')
-            storePassword '123456'
-            keyAlias 'key0'
-            keyPassword '123456'
-        }
-    }*/
+
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
 
@@ -21,8 +15,8 @@ android {
         applicationId "education.hry.pkl.cricket11"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 14
-        versionName "1.7"
+        versionCode 16
+        versionName "1.9"
 
         multiDexEnabled true
 
@@ -41,34 +35,35 @@ android {
         dataBinding = true
         // for view binding :
         // viewBinding = true
+
+
+
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
+
 }
 
 dependencies {
     implementation 'com.facebook.shimmer:shimmer:0.4.0'
     implementation 'com.android.support:multidex:1.0.3'
-    implementation 'com.google.firebase:firebase-config:19.2.0'
+    implementation 'com.google.firebase:firebase-config:21.0.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'
     implementation 'com.google.android.material:material:1.4.0'
-    implementation 'com.google.firebase:firebase-crashlytics:18.2.0'
     implementation 'com.google.android.gms:play-services-ads:20.2.0'
     def room_version = "1.1.1"
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0'
-    implementation 'com.google.android.gms:play-services-maps:17.0.0'
-    implementation 'com.google.firebase:firebase-messaging:20.2.4'
-    testImplementation 'junit:junit:4.12'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.0'
+    testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    implementation "androidx.core:core-ktx:1.3.1"
+    implementation "androidx.core:core-ktx:1.6.0"
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
-    implementation 'com.github.f0ris.sweetalert:library:1.5.6'
+    implementation 'com.github.f0ris.sweetalert:library:1.6.2'
     implementation 'com.github.cazaea:sweet-alert-dialog:1.0.0'
     //Retrofit library used for Network Call
     implementation 'com.squareup.retrofit2:retrofit:2.6.2'
@@ -84,10 +79,10 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.1.0'
     implementation 'com.facebook.fresco:fresco:2.2.0'
     implementation 'com.karumi:dexter:6.0.0'
-    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'com.chootdev:csnackbar:1.4.2'
     implementation 'gun0912.ted:tedpermission:1.0.0'
-    implementation 'com.google.android.gms:play-services-location:17.0.0'
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
     //room
     implementation "android.arch.persistence.room:runtime:$room_version"
     annotationProcessor "android.arch.persistence.room:compiler:$room_version"
@@ -96,15 +91,21 @@ dependencies {
     implementation 'com.github.aabhasr1:OtpView:1.0.5'
     implementation 'com.github.Shashank02051997:FancyGifDialog-Android:1.2'
     implementation 'com.github.aabhasr1:OtpView:1.0.5'
-    implementation 'com.google.android.gms:play-services-auth:18.1.0'
-    implementation 'com.google.android.gms:play-services-auth-api-phone:17.4.0'
+    implementation 'com.google.android.gms:play-services-auth:19.2.0'
+    implementation 'com.google.android.gms:play-services-auth-api-phone:17.5.1'
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     // Glide v4 uses this new annotation processor -- see https://bumptech.github.io/glide/doc/generatedapi.html
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
-    implementation 'com.google.android.play:core:1.8.2'
+    implementation 'com.google.android.play:core:1.10.0'
     implementation 'com.github.smarteist:autoimageslider:1.3.9-appcompat'
-    implementation 'com.google.firebase:firebase-analytics:19.0.0'
+    // Import the BoM for the Firebase platform
+    implementation platform('com.google.firebase:firebase-bom:28.3.1')
 
+    // Declare the dependencies for the Firebase Cloud Messaging and Analytics libraries
+    // When using the BoM, you don't specify versions in Firebase library dependencies
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-analytics'
+    implementation  'com.google.firebase:firebase-messaging-ktx:22.0.0'
 
 }
 repositories {

@@ -69,7 +69,7 @@ public class NotificationsActivity extends AppCompatActivity implements Recycler
             sweetAlertDialog.setTitle("Empty Notification tray!");
             sweetAlertDialog.setContentText("Your Notification List is Empty.");
             sweetAlertDialog.setVolumeControlStream(2);
-            sweetAlertDialog.getAlerType();
+           // sweetAlertDialog.getAlerType();
             sweetAlertDialog.changeAlertType(1);
             sweetAlertDialog.setCanceledOnTouchOutside(false);
             sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
