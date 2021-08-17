@@ -15,8 +15,8 @@ android {
         applicationId "education.hry.pkl.cricket11"
         minSdkVersion 16
         targetSdkVersion 30
-        versionCode 16
-        versionName "1.9"
+        versionCode 18
+        versionName "1.10"
 
         multiDexEnabled true
 
@@ -26,7 +26,8 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled true
+
+            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
@@ -48,7 +49,7 @@ android {
 }
 
 dependencies {
-    implementation 'com.facebook.shimmer:shimmer:0.4.0'
+    implementation 'com.facebook.shimmer:shimmer:0.5.0'
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.google.firebase:firebase-config:21.0.1'
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0'

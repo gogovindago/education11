@@ -17,7 +17,7 @@ public class GlobalClass {
     Context context;
 
     // Live url  current
-      public static String baseurl = "http://CricketAPI.highereduhry.ac.in/api/commonapi/";
+      public static String baseurl = "https://CricketAPI.highereduhry.ac.in/api/commonapi/";
       
 
     public static String nointernet = "No Internet Connection";

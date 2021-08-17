@@ -30,19 +30,8 @@
             android:layout_marginTop="32dp"
             app:srcCompat="@mipmap/ic_launcher_round" />
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:layout_margin="8dp"
-            android:background="@drawable/black_border"
-            android:id="@+id/shimmer_view_container1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:elevation="4dp"
-            app:shimmer_base_alpha="1"
-            app:shimmer_duration="3000"
-            app:shimmer_highlight_alpha="0.4"
-            app:shimmer_tilt="180">
+
         <androidx.appcompat.widget.AppCompatTextView
-            android:textColor="@color/white"
             android:id="@+id/textView7"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +43,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView5" />
-        </com.facebook.shimmer.ShimmerFrameLayout>
+
 
         <RelativeLayout
             android:layout_alignParentTop="true"
@@ -317,6 +306,7 @@
             app:layout_constraintTop_toBottomOf="@+id/button" />
 
         <com.google.android.gms.ads.AdView
+            android:layout_marginTop="8dp"
             android:id="@+id/adView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -138,7 +138,9 @@
 
 
 
-        <service android:name=".fcm.MyFirebaseMessagingService" />
+        <service android:name=".fcm.MyFirebaseMessagingService"
+            >
+        </service>
     </application>
 
 </manifest>
