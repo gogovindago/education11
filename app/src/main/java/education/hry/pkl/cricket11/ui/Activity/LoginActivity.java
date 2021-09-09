@@ -51,7 +51,6 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
 
     private AdView mAdView;
 
-
     GoogleApiClient mGoogleApiClient;
 
     private int RESOLVE_HINT = 2;
@@ -97,12 +96,6 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
 
                     }
                 });
-
-
-
-
-
-
 
 
         findViews();
@@ -225,16 +218,9 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
 
                     Toast.makeText(this, GlobalClass.nointernet, Toast.LENGTH_LONG).show();
                 }
-
-
             }
 
-
-
-
         } else if (v == txtforget) {
-
-
 
             Intent i = new Intent(LoginActivity.this, ForgetPasswordActivity.class);
             startActivity(i);
@@ -247,7 +233,6 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
     public void alluserdata(LoginRespone.Data data) {
 
         if (!data.getToken().isEmpty()) {
-
 
             Registration_Id = data.getId();
             token = data.getToken();
@@ -274,8 +259,6 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(intent);
-
-
         } else {
             GlobalClass.showtost(this, "This  Number is Not Registered with Us.");
             edtMobileNumber.setEnabled(true);

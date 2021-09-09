@@ -618,14 +618,10 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
         rvadminimage.setAdapter(adapteradminimage);
 
-        rvrecentmatch.setAdapter(adapteradminimage);
 
         GridLayoutManager adminimagemanager = new GridLayoutManager(this, 4, GridLayoutManager.VERTICAL, false);
-        GridLayoutManager adminimagemanager1 = new GridLayoutManager(this, 4, GridLayoutManager.VERTICAL, false);
-
         rvadminimage.setLayoutManager(adminimagemanager);
 
-        rvrecentmatch.setLayoutManager(adminimagemanager1);
 
 
     }
