@@ -42,9 +42,27 @@ public class LoginRespone {
 
     public class Data {
 
-        @SerializedName("id")
+        @SerializedName("filePath")
+        @Expose
+        private String filePath;
+
+
+        @SerializedName("playingRole")
+        @Expose
+        private String playingRole;
+
+
+
+          @SerializedName("id")
         @Expose
         private String id;
+
+
+
+
+
+
+
         @SerializedName("name")
         @Expose
         private String name;
@@ -60,6 +78,23 @@ public class LoginRespone {
         @SerializedName("expiration")
         @Expose
         private String expiration;
+
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public void setFilePath(String filePath) {
+            this.filePath = filePath;
+        }
+
+        public String getPlayingRole() {
+            return playingRole;
+        }
+
+        public void setPlayingRole(String playingRole) {
+            this.playingRole = playingRole;
+        }
 
         public String getId() {
             return id;

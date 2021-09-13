@@ -58,7 +58,8 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
     private TextInputEditText edtMobileNumber, txtpaswrd;
     private TextInputEditText edtpass;
     LinearLayout llotpbox;
-    private String refreshedToken, userMobileNumber, username, userEmailId, lativale, longivalue, admissionURL, Profilepicurl,Registration_Id,token;
+    private String refreshedToken, userMobileNumber, username, userEmailId,userprofilepic,
+    PlayingRole,Registration_Id,token;
     private static final String TAG = "LoginActivity";
     private MyLoaders myLoaders;
     Context context;
@@ -237,6 +238,8 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
             Registration_Id = data.getId();
             token = data.getToken();
             username = data.getName();
+            userprofilepic = data.getFilePath();
+            PlayingRole = data.getPlayingRole();
             userMobileNumber = data.getMobile();
             userEmailId = data.getEmailId();
 //            lativale = Lati;
@@ -254,7 +257,8 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
             CSPreferences.putBolean(this, "firstTimelogin", firstTimelogin);
 //            CSPreferences.putString(this, "lativale", lativale);
 //            CSPreferences.putString(this, "longivalue", longivalue);
-//            CSPreferences.putString(this, "Profilepicurl", Profilepicurl);
+            CSPreferences.putString(this, "Profilepicurl", userprofilepic);
+            CSPreferences.putString(this, "PlayingRole", PlayingRole);
 
             Intent intent = new Intent(this, MainActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);

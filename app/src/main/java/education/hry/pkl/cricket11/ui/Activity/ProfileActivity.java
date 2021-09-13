@@ -3,6 +3,7 @@ package education.hry.pkl.cricket11.ui.Activity;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -15,12 +16,16 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.loader.content.CursorLoader;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
@@ -48,7 +53,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     ActivityProfileBinding binding;
     private File imagefile;
     private final int PICK_IMAGE_CAMERA = 1, PICK_IMAGE_GALLERY = 2;
-    String Registration_Id;
+    String Registration_Id, Profilepicurl, PlayingRole;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +72,12 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             CSPreferences.putBolean(this, "firstTimelogin", firstTimelogin);*/
 
 
-
             Registration_Id = CSPreferences.readString(ProfileActivity.this, "User_Id");
             binding.edtRegistraionId.setText(Registration_Id);
+            Profilepicurl = CSPreferences.readString(this, "Profilepicurl");
+            PlayingRole = CSPreferences.readString(this, "PlayingRole");
 
-
-            String string = CSPreferences.readString(this,"User_name");
+            String string = CSPreferences.readString(this, "User_name");
             String[] parts = string.split(" ");
             String part1 = parts[0]; // 004
             String part2 = parts[1]; // 034556
@@ -82,8 +87,17 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
             binding.edtlastname.setText(part2);
 
 
-            binding.edtmobile.setText(CSPreferences.readString(this,"User_mobile"));
-            binding.edtemail.setText(CSPreferences.readString(this,"User_email"));
+            binding.edtmobile.setText(CSPreferences.readString(this, "User_mobile"));
+            binding.edtemail.setText(CSPreferences.readString(this, "User_email"));
+            binding.edtPlayingRole.setText(CSPreferences.readString(this, "PlayingRole"));
+
+            Glide.with(this)
+                    .load(Profilepicurl) // image url
+                    .placeholder(R.mipmap.ic_launcher_round) // any placeholder to load at start
+                    .error(R.mipmap.ic_launcher_round)  // any image in case of error
+                    .override(140, 140) // resizing
+                    .centerCrop()
+                    .into(binding.profileImage);
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,7 +105,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
 
         if (GlobalClass.isNetworkConnected(ProfileActivity.this)) {
             WebAPiCall webapiCall = new WebAPiCall();
-           // webapiCall.StudentProfileDataMethod(ProfileActivity.this, ProfileActivity.this, this, Registration_Id);
+            // webapiCall.StudentProfileDataMethod(ProfileActivity.this, ProfileActivity.this, this, Registration_Id);
 
         } else {
 
@@ -108,6 +122,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
     @Override
     public void initListeners() {
 
+        binding.profileImage.setOnClickListener(this);
         binding.edit.setOnClickListener(this);
         binding.save.setOnClickListener(this);
         binding.btnUpdate.setOnClickListener(this);
@@ -120,7 +135,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 if (Build.VERSION.SDK_INT >= 23) {
 
                     checkpermissions(ProfileActivity.this);
-                }else {
+                } else {
                     selectImage();
                 }
             }
@@ -323,12 +338,60 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 break;
             case R.id.btn_update:
                 break;
+
+
+            case R.id.profile_image:
+
+                openDialog();
+                break;
             default:
                 break;
 
         }
 
     }
+
+
+    public void openDialog() {
+
+
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Light); // Context, this, etc.
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_demo);
+
+        //   dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        ImageView dialog_img = dialog.findViewById(R.id.dialog_img);
+
+       /* ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(item.getEventImage()))
+                .setResizeOptions(new ResizeOptions(150, 150))
+                .build();
+        dialog_img.setController(
+
+                Fresco.newDraweeControllerBuilder()
+                        .setOldController(dialog_img.getController())
+                        .setImageRequest(request)
+                        .build());*/
+
+        //dialog_img.setImageURI(Uri.parse(item.getEventImage()));
+
+        Glide.with(this).load(Profilepicurl)
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(dialog_img);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialog_ok);
+
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+    }
+
 
     @Override
     public void StudentProfileData(List<StudentProfileResponse.StudentProfile> list) {

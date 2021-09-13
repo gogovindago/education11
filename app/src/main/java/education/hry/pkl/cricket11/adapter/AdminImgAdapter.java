@@ -2,6 +2,8 @@ package education.hry.pkl.cricket11.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +62,24 @@ public class AdminImgAdapter extends RecyclerView.Adapter<AdminImgAdapter.ViewHo
         public void setData(BannerResponse.DashboardOfficer item, int currposition) {
             this.currposition = currposition;
             this.item = item;
-            txtName.setText(item.getPlayerName()+"\n"+item.getDesignation());
+
+
+           // txtName.setText(item.getPlayerName()+"\n"+item.getDesignation());
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+
+
+                txtName.setText(Html.fromHtml("  <strong style='color:red';>   "+item.getPlayerName()+ "  </strong><br>" + item.getDesignation(), Html.FROM_HTML_MODE_COMPACT));
+
+
+
+            } else {
+
+                txtName.setText(Html.fromHtml("<strong style='color:red';>   "+item.getPlayerName()+ "  </strong><br>" + item.getDesignation()));
+            }
+
+
+
             if (item.getPlayerId() == 1017) {
                 maincard.setBackgroundResource(R.drawable.edit_text_borderdash);
                // imageView.setImageResource(item.drawable);

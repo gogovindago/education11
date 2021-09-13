@@ -73,7 +73,7 @@ public class PlayerHistoryResponse {
         private int six;
         @SerializedName("overs")
         @Expose
-        private int overs;
+        private float overs;
         @SerializedName("maiden")
         @Expose
         private int maiden;
@@ -94,7 +94,7 @@ public class PlayerHistoryResponse {
         private Object batStrikeRate;
         @SerializedName("ecoRate")
         @Expose
-        private int ecoRate;
+        private float ecoRate;
 
         public int getPlayerId() {
             return playerId;
@@ -168,11 +168,11 @@ public class PlayerHistoryResponse {
             this.six = six;
         }
 
-        public int getOvers() {
+        public float getOvers() {
             return overs;
         }
 
-        public void setOvers(int overs) {
+        public void setOvers(float overs) {
             this.overs = overs;
         }
 
@@ -224,11 +224,11 @@ public class PlayerHistoryResponse {
             this.batStrikeRate = batStrikeRate;
         }
 
-        public int getEcoRate() {
+        public float getEcoRate() {
             return ecoRate;
         }
 
-        public void setEcoRate(int ecoRate) {
+        public void setEcoRate(float ecoRate) {
             this.ecoRate = ecoRate;
         }
 

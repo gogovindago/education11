@@ -7,6 +7,7 @@
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/drawable/ic_baseline_checklist_24.xml" value="0.2601851851851852" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/drawable/ic_baseline_photo_library_24.xml" value="0.3828125" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/drawable/ic_baseline_view_list_24.xml" value="0.23148148148148148" />
+        <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/drawable/ic_baseline_zoom_out_map_24.xml" value="0.3828125" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/drawable/personwhite.xml" value="0.2953703703703704" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/activity_career_statistics.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/activity_forget_password.xml" value="0.22083333333333333" />
@@ -20,10 +21,12 @@
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/activity_profile.xml" value="0.22" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/activity_reset_password.xml" value="0.22083333333333333" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/career_statistics_row.xml" value="0.33" />
+        <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/dialog_demo.xml" value="0.36666666666666664" />
+        <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/go_pro_dialog_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/plyr_history_row.xml" value="0.3548387096774194" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/recycler_view_item_most_sixes_fours_row.xml" value="0.1" />
         <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/recycler_view_itemmain.xml" value="0.1" />
-        <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/recycler_view_itemuserplantedshown.xml" value="0.24114583333333334" />
+        <entry key="..\:/AndroidApps/Govind/2020/AllApps/Java/Live/education11/Education11/app/src/main/res/layout/recycler_view_itemuserplantedshown.xml" value="0.25" />
         <entry key="..\:/education11/app/src/main/res/layout/recycler_view_itemuserplantedshown.xml" value="0.17135416666666667" />
       </map>
     </option>

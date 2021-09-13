@@ -102,6 +102,15 @@
 
 
                 </ImageView>
+                <ImageView
+                    android:visibility="visible"
+                    android:id="@+id/zoomPhoto"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_gravity="end|top"
+                    android:src="@drawable/ic_baseline_zoom_out_map_24">
+
+                </ImageView>
 
                 <ImageView
                     android:visibility="invisible"
@@ -123,7 +132,8 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/materialCardView">
+                app:layout_constraintTop_toBottomOf="@+id/materialCardView"
+                app:layout_constraintVertical_bias="0.04000002">
 
 
                 <LinearLayout
@@ -131,6 +141,37 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="6dp"
                     android:orientation="vertical">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtPlayingRole"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/person"
+                            android:drawableLeft="@drawable/person"
+                            android:drawablePadding="16dp"
+                            android:enabled="false"
+                            android:hint="Playing Role"
+                            android:imeOptions="actionNext"
+                            android:inputType="textPersonName"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textStyle="bold"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintHorizontal_bias="0.0"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textView7" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
 
                     <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
@@ -150,16 +191,16 @@
                             android:drawablePadding="16dp"
                             android:enabled="false"
                             android:hint="Registration Id"
-                            android:textStyle="bold"
                             android:imeOptions="actionNext"
                             android:inputType="textPersonName"
-                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textView7" />
                     </com.google.android.material.textfield.TextInputLayout>
-  <com.google.android.material.textfield.TextInputLayout
+
+                    <com.google.android.material.textfield.TextInputLayout
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -175,13 +216,12 @@
                             android:drawableStart="@drawable/person"
                             android:drawableLeft="@drawable/person"
                             android:drawablePadding="16dp"
-                            android:textStyle="bold"
-
                             android:enabled="false"
+
                             android:hint="First Name"
                             android:imeOptions="actionNext"
                             android:inputType="textPersonName"
-                            android:textColor="@color/black"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -208,13 +248,12 @@
                             android:drawablePadding="16dp"
                             android:enabled="false"
                             android:hint="Last Name"
-                            android:textStyle="bold"
-
                             android:imeOptions="actionNext"
+
                             android:inputType="textPersonName"
                             android:outlineSpotShadowColor="@color/colorAccent"
-                            android:textColor="@color/black"
-                            android:textColorHint="@color/black"
+                            android:textStyle="bold"
+
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
@@ -239,15 +278,12 @@
                             android:drawablePadding="16dp"
                             android:ems="10"
                             android:enabled="false"
-                            android:textStyle="bold"
-
                             android:hint="Mobile Number"
+
                             android:imeOptions="actionNext"
                             android:inputType="phone"
                             android:maxLength="10"
-                            android:textColor="@color/black"
-
-                            android:textColorHint="@color/black"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -278,8 +314,6 @@
                             android:imeOptions="actionNext"
                             android:inputType="textEmailAddress"
                             android:textStyle="bold"
-
-                            android:textColor="@color/black"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
@@ -299,9 +333,8 @@
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtgender"
-                            android:textStyle="bold"
-
                             android:layout_width="match_parent"
+
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/ic_gender"
                             android:drawableLeft="@drawable/ic_gender"
@@ -315,6 +348,7 @@
                             android:paddingLeft="16dp"
                             android:textColor="@color/black"
                             android:textColorHint="@color/black"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -345,13 +379,13 @@
                             android:hint="Your College District Name"
                             android:imeOptions="actionGo"
                             android:inputType="text"
-                            android:textStyle="bold"
-
                             android:outlineSpotShadowColor="@color/black"
+
                             android:paddingStart="16dp"
                             android:paddingLeft="16dp"
                             android:textColor="@color/black"
                             android:textColorHint="@color/black"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toBottomOf="@+id/textInputEditText"
@@ -663,7 +697,6 @@
                      </LinearLayout>-->
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:visibility="gone"
                         android:id="@+id/allcollege"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
@@ -671,7 +704,8 @@
                         android:layout_margin="@dimen/activity_horizontal_marginn"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp">
+                        android:layout_marginEnd="16dp"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtcollegeName"
@@ -682,13 +716,13 @@
                             android:drawablePadding="16dp"
                             android:enabled="false"
                             android:hint=" Your College Name"
-                            android:maxLines="3"
-                            android:textStyle="bold"
                             android:imeOptions="actionGo"
                             android:inputType="text"
+                            android:maxLines="3"
                             android:outlineSpotShadowColor="@color/black"
                             android:textColor="@color/black"
                             android:textColorHint="@color/black"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -696,7 +730,6 @@
                     </com.google.android.material.textfield.TextInputLayout>
 
                     <com.google.android.material.textfield.TextInputLayout
-                        android:visibility="gone"
                         android:id="@+id/alldesignation"
                         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
                         android:layout_width="match_parent"
@@ -704,13 +737,13 @@
                         android:layout_margin="@dimen/activity_horizontal_marginn"
                         android:layout_marginStart="16dp"
                         android:layout_marginTop="16dp"
-                        android:layout_marginEnd="16dp">
+                        android:layout_marginEnd="16dp"
+                        android:visibility="gone">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:id="@+id/edtfacultyDesignation"
-                            android:textStyle="bold"
-
                             android:layout_width="match_parent"
+
                             android:layout_height="wrap_content"
                             android:drawableStart="@drawable/ic_college"
                             android:drawableLeft="@drawable/ic_college"
@@ -722,6 +755,7 @@
                             android:outlineSpotShadowColor="@color/black"
                             android:textColor="@color/black"
                             android:textColorHint="@color/black"
+                            android:textStyle="bold"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintHorizontal_bias="0.0"
                             app:layout_constraintStart_toStartOf="parent"
@@ -747,9 +781,8 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edtcoursetype"
-                                android:textStyle="bold"
-
                                 android:layout_width="match_parent"
+
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/ic_course_type"
                                 android:drawableLeft="@drawable/ic_course_type"
@@ -761,6 +794,7 @@
                                 android:outlineSpotShadowColor="@color/black"
                                 android:textColor="@color/black"
                                 android:textColorHint="@color/black"
+                                android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -778,9 +812,8 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edtcourseName"
-                                android:textStyle="bold"
-
                                 android:layout_width="match_parent"
+
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/person"
                                 android:drawableLeft="@drawable/person"
@@ -790,8 +823,9 @@
                                 android:imeOptions="actionGo"
                                 android:inputType="textPersonName"
                                 android:textColor="@color/black"
-
                                 android:textColorHint="@color/black"
+
+                                android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -810,9 +844,8 @@
 
                             <com.google.android.material.textfield.TextInputEditText
                                 android:id="@+id/edtyearName"
-                                android:textStyle="bold"
-
                                 android:layout_width="match_parent"
+
                                 android:layout_height="wrap_content"
                                 android:drawableStart="@drawable/person"
                                 android:drawableLeft="@drawable/person"
@@ -824,6 +857,7 @@
                                 android:outlineSpotShadowColor="@color/black"
                                 android:textColor="@color/black"
                                 android:textColorHint="@color/black"
+                                android:textStyle="bold"
                                 app:layout_constraintEnd_toEndOf="parent"
                                 app:layout_constraintHorizontal_bias="0.0"
                                 app:layout_constraintStart_toStartOf="parent"

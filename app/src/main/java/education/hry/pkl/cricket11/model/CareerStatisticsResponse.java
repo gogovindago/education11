@@ -70,7 +70,7 @@ public class CareerStatisticsResponse {
         private int six;
         @SerializedName("overs")
         @Expose
-        private int overs;
+        private float overs;
         @SerializedName("maiden")
         @Expose
         private int maiden;
@@ -97,7 +97,7 @@ public class CareerStatisticsResponse {
         private int bowlAverage;
         @SerializedName("ecoRate")
         @Expose
-        private int ecoRate;
+        private float ecoRate;
         @SerializedName("fileName")
         @Expose
         private String fileName;
@@ -169,11 +169,11 @@ public class CareerStatisticsResponse {
             this.six = six;
         }
 
-        public int getOvers() {
+        public float getOvers() {
             return overs;
         }
 
-        public void setOvers(int overs) {
+        public void setOvers(float overs) {
             this.overs = overs;
         }
 
@@ -241,11 +241,11 @@ public class CareerStatisticsResponse {
             this.bowlAverage = bowlAverage;
         }
 
-        public int getEcoRate() {
+        public float getEcoRate() {
             return ecoRate;
         }
 
-        public void setEcoRate(int ecoRate) {
+        public void setEcoRate(float ecoRate) {
             this.ecoRate = ecoRate;
         }
 
