@@ -8,6 +8,7 @@ import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.model.MatchDetailResponse;
+import education.hry.pkl.cricket11.model.NetImageVideoResponse;
 import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
@@ -75,15 +76,21 @@ public interface ApiInterface {
     Call<GalleryResponse> GalleryApiCall(@Header("Authorization") String token);
 
     @GET("PlayerList")
-    Call<PlayersListResponse>PlayersListApiCall(@Header("Authorization") String token);
+    Call<PlayersListResponse> PlayersListApiCall(@Header("Authorization") String token);
 
     @GET("CareerStatistics")
-    Call<CareerStatisticsResponse>CareerStatisticsApiCall(@Header("Authorization") String token);
+    Call<CareerStatisticsResponse> CareerStatisticsApiCall(@Header("Authorization") String token);
 
     @GET("MatchDetails")
-    Call<MatchDetailResponse>MatchDetailsApiCall(@Header("Authorization") String token);
+    Call<MatchDetailResponse> MatchDetailsApiCall(@Header("Authorization") String token);
 
     @GET("PlayerStatistics/{playerId}")
-    Call<PlayerHistoryResponse>PlayerHistoryResponseApiCall(@Header("Authorization") String token,@Path("playerId") String plyeID);
+    Call<PlayerHistoryResponse> PlayerHistoryResponseApiCall(@Header("Authorization") String token, @Path("playerId") String plyeID);
+
+
+    //https://cricketapi.highereduhry.ac.in/api/commonapi/NetPractice/Image
+    @GET("NetPractice/{typeData}")
+    Call<NetImageVideoResponse> PlayerNetImageVideoApiCall(@Path("typeData") String typeData);
+
 
 }

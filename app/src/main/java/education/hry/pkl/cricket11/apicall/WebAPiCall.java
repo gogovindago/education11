@@ -6,6 +6,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +21,7 @@ import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.BannerData_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetCareerStatistcsDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetGalleryDetail_interface;
+import education.hry.pkl.cricket11.allinterfaces.GetNetImageVideoDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerHistory_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
@@ -34,6 +36,7 @@ import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.model.MatchDetailResponse;
+import education.hry.pkl.cricket11.model.NetImageVideoResponse;
 import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
@@ -254,7 +257,7 @@ public class WebAPiCall {
     }
 
 
-    public void allBanner_listMethod(final Context context, final Activity activity, final BannerData_interface dataInterface, SwipeRefreshLayout mSwipeRefreshLayout) {
+    public void allBanner_listMethod(final Context context, final Activity activity, final BannerData_interface dataInterface, LinearLayout llmain, SwipeRefreshLayout mSwipeRefreshLayout) {
 
         //loadershowwithMsg(context, "Getting All Notices...");
         mSwipeRefreshLayout.setRefreshing(true);
@@ -268,7 +271,7 @@ public class WebAPiCall {
 
 
                 if (response.isSuccessful() && Objects.requireNonNull(response.body()).getResponse() == 200) {
-
+                    llmain.setVisibility(View.VISIBLE);
 
                   /*  if (response.body().getData().getNewsCode() == 1) {
 
@@ -292,6 +295,7 @@ public class WebAPiCall {
                     dataInterface.allMostSixes_list((ArrayList<BannerResponse.MostSix>) response.body().getData().getMostSix());
                     dataInterface.allMostFours_list((ArrayList<BannerResponse.MostFour>) response.body().getData().getMostFour());
                 } else {
+                    llmain.setVisibility(View.GONE);
                     GlobalClass.showtost(activity, "" + response.message());
                 }
 
@@ -300,7 +304,7 @@ public class WebAPiCall {
 
             @Override
             public void onFailure(Call<BannerResponse> call, Throwable t) {
-
+                llmain.setVisibility(View.GONE);
                 // dailoghide(context);
                 mSwipeRefreshLayout.setRefreshing(false);
                 t.printStackTrace();
@@ -805,6 +809,44 @@ public class WebAPiCall {
                 t.printStackTrace();
                 Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
                 // Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void allNetImageVideolistMethod(final Context context, final Activity activity, String DataType, final GetNetImageVideoDetail_interface dataInterface, SwipeRefreshLayout mSwipeRefreshLayout) {
+
+        //loadershowwithMsg(context, "Getting All Notices...");
+        mSwipeRefreshLayout.setRefreshing(true);
+
+        Call<NetImageVideoResponse> userpost_responseCall = ApiClient.getClient().PlayerNetImageVideoApiCall(DataType);
+        userpost_responseCall.enqueue(new Callback<NetImageVideoResponse>() {
+            @Override
+            public void onResponse(Call<NetImageVideoResponse> call, Response<NetImageVideoResponse> response) {
+                // dailoghide(context);
+                mSwipeRefreshLayout.setRefreshing(false);
+
+
+                if (response.isSuccessful() && Objects.requireNonNull(response.body()).getResponse() == 200) {
+
+
+                    dataInterface.GetNetImageVideoPlayerListDetail_list((ArrayList<NetImageVideoResponse.Datum>) response.body().getData());
+
+
+                } else {
+                    GlobalClass.showtost(activity, "" + response.message());
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<NetImageVideoResponse> call, Throwable t) {
+
+                // dailoghide(context);
+                mSwipeRefreshLayout.setRefreshing(false);
+                t.printStackTrace();
+
             }
         });
     }

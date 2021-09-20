@@ -1,5 +1,6 @@
 package education.hry.pkl.cricket11.adapter;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
@@ -34,8 +37,13 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtName, txtteamA, txtTeamAscore,txtteamB,txtTeamBscore,txtResult;
-        public CircleImageView imageView;
+        public TextView txtName, txtteamA, txtTeamAscore,txtteamB,txtTeamBscore,txtResult,txtmomPlayerName, txtmomTeamName;
+
+
+
+
+
+        public CircleImageView imageView,imgmomplayer;
         BannerResponse.MatchDetail item;
         RelativeLayout llmain;
         public int currposition;
@@ -46,6 +54,10 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
             super(v);
 
             v.setOnClickListener(this);
+
+            txtmomPlayerName = v.findViewById(R.id.txtmomPlayerName);
+            txtmomTeamName = v.findViewById(R.id.txtmomTeamName);
+            imgmomplayer = v.findViewById(R.id.imgmomplayer);
             maincard = v.findViewById(R.id.maincard);
             llmain = v.findViewById(R.id.llmain);
             txtName = v.findViewById(R.id.txtName);
@@ -69,6 +81,16 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
             txtteamA.setText(item.getTeam1());
             txtteamB.setText(item.getVersusTeam2());
             txtResult.setText(item.getResultRemarks());
+
+            txtmomPlayerName.setText(item.getPlayerName());
+            txtmomTeamName.setText(item.getManoftheMatchTeam());
+
+            Glide.with(itemView)
+                    .load(item.getFilePath())
+                    .fitCenter()
+                    .into(imgmomplayer);
+
+
            /* if (item.getPlayerId() == 1017) {
                 maincard.setBackgroundResource(R.drawable.edit_text_borderdash);
                // imageView.setImageResource(item.drawable);
@@ -106,7 +128,7 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         currposition = position;
 
         holder.setData(mValues.get(position), currposition);

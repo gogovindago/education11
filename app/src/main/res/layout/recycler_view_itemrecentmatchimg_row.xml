@@ -103,8 +103,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:textColor="@color/black"
-            android:textStyle="bold"
             android:id="@+id/txtResult"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -115,7 +113,9 @@
             android:gravity="center"
             android:padding="2dp"
             android:text="Result"
-            android:textSize="12sp" />
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="12sp"
+            android:textStyle="bold" />
 
 
         <TextView
@@ -135,15 +135,22 @@
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgmomplayer"
             android:layout_width="match_parent"
-            android:layout_height="20dp"
+            android:layout_height="80dp"
             android:layout_below="@+id/txtmom"
+            android:layout_centerInParent="true"
+            android:layout_marginStart="2dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="2dp"
+            android:layout_marginRight="2dp"
+            android:layout_marginBottom="2dp"
             android:layout_toEndOf="@+id/ivThumb"
             android:layout_toRightOf="@+id/ivThumb"
             android:gravity="center"
             android:padding="2dp"
+            android:scaleType="centerCrop"
             android:src="@mipmap/ic_launcher_round"
             android:text="Man of the match"
-            android:layout_centerInParent="true"
             app:civ_border_color="@color/colorPrimaryDark"
             app:civ_border_width="2dp" />
 
@@ -159,8 +166,8 @@
             android:gravity="center"
             android:padding="2dp"
             android:text="Name Of mom player"
-            android:textColor="@color/black"
-            android:textSize="12sp"
+            android:textColor="@color/colorPrimaryDark"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
             android:textStyle="bold" />
 
         <TextView
@@ -173,6 +180,7 @@
             android:gravity="center"
             android:padding="2dp"
             android:text="Mom Team Name"
+            android:textColor="@color/black"
             android:textSize="12sp" />
     </RelativeLayout>
 

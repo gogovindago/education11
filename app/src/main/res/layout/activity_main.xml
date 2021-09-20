@@ -102,6 +102,8 @@
 
 
                         <LinearLayout
+                            android:visibility="gone"
+                            android:id="@+id/llmain"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@color/bg"
@@ -153,6 +155,7 @@
                                 android:textStyle="bold" />
 
                             <androidx.recyclerview.widget.RecyclerView
+                                android:foregroundGravity="center"
                                 android:id="@+id/rvadminimage"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"

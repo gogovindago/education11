@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -99,7 +100,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     private ListView mDrawerList;
     RecyclerView recyclerView, rvadminimage, rvTopBattingAvg, rvrecentmatch, rvWicketMost, rvRun, rvMostFour, rvMostSixes;
     ArrayList arrayList;
-
+LinearLayout llmain;
     List<DataModelLeftNew> dataModelLeftList;
 
     private List<BannerResponse.DashboardOfficer> adminimagelist = new ArrayList<BannerResponse.DashboardOfficer>();
@@ -183,6 +184,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         rvRun = (RecyclerView) findViewById(R.id.rvRun);
         rvMostSixes = (RecyclerView) findViewById(R.id.rvMostSixes);
         rvMostFour = (RecyclerView) findViewById(R.id.rvMostFour);
+        llmain = (LinearLayout) findViewById(R.id.llmain);
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
@@ -190,13 +192,14 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         arrayList.add(new DataModel("Vriksha-Bandhan", R.drawable.personwhite, "#FFFFFF"));
         arrayList.add(new DataModel("Admissions", R.drawable.dashboard, "#FFFFFF"));
         RecyclerViewAdapter adaptermain = new RecyclerViewAdapter(this, arrayList, this);
+
         recyclerView.setAdapter(adaptermain);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         if (GlobalClass.isNetworkConnected(MainActivity.this)) {
 
             WebAPiCall aPiCall = new WebAPiCall();
-            aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this, mSwipeRefreshLayout);
+            aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this,llmain, mSwipeRefreshLayout);
 
         } else {
 
@@ -209,10 +212,11 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
             public void onRefresh() {
 
+
                 if (GlobalClass.isNetworkConnected(MainActivity.this)) {
 
                     WebAPiCall aPiCall = new WebAPiCall();
-                    aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this, mSwipeRefreshLayout);
+                    aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this,llmain, mSwipeRefreshLayout);
 
                 } else {
 
@@ -301,6 +305,8 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
         DataModelLeftNew publiclib = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Gallery", 0);
         dataModelLeftList.add(publiclib);
+        DataModelLeftNew netpracticeImagevideo = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Net Practice Image Video", 11);
+        dataModelLeftList.add(netpracticeImagevideo);
 
 
         DataModelLeftNew my_profile = new DataModelLeftNew(R.drawable.personwhite, "My Profile", 1);
@@ -433,7 +439,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 Intent shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Education 11");
-               // String app_url = "https://play.google.com/store/apps/details?id=plantation.hr.cbse.haryanaplantation";
+                // String app_url = "https://play.google.com/store/apps/details?id=plantation.hr.cbse.haryanaplantation";
                 String app_url = "https://cricket.highereduhry.ac.in/";
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
@@ -462,18 +468,27 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 break;
 
 
-                case 9:
+            case 9:
 
                 mDrawerLayout.closeDrawers();
                 Intent allmatchesdetailIntent = new Intent(this, MatchDetailsActivity.class);
                 startActivity(allmatchesdetailIntent);
                 break;
 
-                case 10:
+            case 10:
 
                 mDrawerLayout.closeDrawers();
                 Intent plylistCareerStatisticsIntent = new Intent(this, CareerStatisticsActivity.class);
                 startActivity(plylistCareerStatisticsIntent);
+                break;
+
+            case 11:
+
+                mDrawerLayout.closeDrawers();
+               /* Intent NetPracticeImageVideoIntent = new Intent(this, NetPracticeImageVideoActivity.class);
+                startActivity(NetPracticeImageVideoIntent);*/
+
+                GlobalClass.showtost(MainActivity.this,"Coming soon...");
                 break;
             case 7:
 
@@ -623,7 +638,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         rvadminimage.setLayoutManager(adminimagemanager);
 
 
-
     }
 
     @Override
@@ -637,7 +651,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         rvrecentmatch.setAdapter(recentMatchesAdapter);
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.HORIZONTAL, false);
         rvrecentmatch.setLayoutManager(layoutManager);
-
 
     }
 

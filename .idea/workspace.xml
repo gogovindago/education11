@@ -31,7 +31,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7063279c-bc44-49d9-9779-54be30cd925c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/release/app-release.aab" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityNetPracticeImageVideoBindingImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/allinterfaces/GetNetImageVideoDetail_interface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/NetImageVideoResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/NetPracticeImageVideoActivity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_net_practice_image_video.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/DataBinderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/DataBinderMapperImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/MatchesDetailAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/MatchesDetailAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/RecentMatchesAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/RecentMatchesAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/BannerResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/BannerResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/MatchDetailResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/MatchDetailResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_itemrecentmatchimg_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_itemrecentmatchimg_row.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/release/app-release.aab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -73,8 +94,8 @@
         <option value="layoutResourceFile" />
         <option value="Interface" />
         <option value="resourceFile" />
-        <option value="Class" />
         <option value="layoutResourceFile_vertical" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -147,6 +168,22 @@
     <key name="CreateClassDialog.RecentsKey">
       <recent name="plantation.hr.cbse.haryanaplantation.model" />
     </key>
+    <key name="android.template.-375866736">
+      <recent name="education.hry.pkl.cricket11.ui.Activity" />
+    </key>
+    <key name="android.template.461420893">
+      <recent name="education.hry.pkl.cricket11.ui.Activity" />
+    </key>
+    <key name="android.template.-546120907">
+      <recent name="education.hry.pkl.cricket11.ui.Activity" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="education.hry.pkl.cricket11.allinterfaces" />
+      <recent name="education.hry.pkl.cricket11.adapter" />
+      <recent name="education.hry.pkl.cricket11.ui.Activity" />
+      <recent name="education.hry.pkl.cricket11.model" />
+      <recent name="education.hry.pkl.cricket11.apicall" />
+    </key>
     <key name="android.template.1931415125">
       <recent name="plantation.hr.cbse.haryanaplantation.ui.Activity" />
     </key>
@@ -160,12 +197,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="E:\AndroidApps\Govind\2020\AllApps\Java\Live\haryanaPlantation13julylatest\haryanaPlantation\app\src\main\java\plantation\hr\cbse\haryanaplantation\ui\Activity" />
       <recent name="E:\AndroidApps\Govind\2020\AllApps\Java\Live\haryanaPlantation13julylatest\haryanaPlantation\app\src\main\res\layout" />
-    </key>
-    <key name="android.template.-375866736">
-      <recent name="education.hry.pkl.cricket11.ui.Activity" />
-    </key>
-    <key name="android.template.461420893">
-      <recent name="education.hry.pkl.cricket11.ui.Activity" />
     </key>
     <key name="android.template.723342657">
       <recent name="education.hry.pkl.cricket11.ui.Activity" />
@@ -181,13 +212,6 @@
     </key>
     <key name="android.template.1884980511">
       <recent name="plantation.hr.cbse.haryanaplantation.roomdb" />
-    </key>
-    <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="education.hry.pkl.cricket11.allinterfaces" />
-      <recent name="education.hry.pkl.cricket11.adapter" />
-      <recent name="education.hry.pkl.cricket11.ui.Activity" />
-      <recent name="education.hry.pkl.cricket11.model" />
-      <recent name="education.hry.pkl.cricket11.apicall" />
     </key>
   </component>
   <component name="RunManager" selected="Android App.app">
@@ -483,7 +507,14 @@
       <option name="project" value="LOCAL" />
       <updated>1631530445045</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="published successfully....&#10;&#10;GalleryActivity popup,and profile pic done">
+      <created>1631531103675</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1631531103675</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -616,7 +647,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java</url>
-          <line>165</line>
+          <line>166</line>
           <option name="timeStamp" value="60" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
@@ -671,7 +702,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-method">
           <url>file://$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java</url>
-          <line>331</line>
+          <line>337</line>
           <properties class="education.hry.pkl.cricket11.ui.Activity.MainActivity">
             <option name="EMULATED" value="true" />
           </properties>

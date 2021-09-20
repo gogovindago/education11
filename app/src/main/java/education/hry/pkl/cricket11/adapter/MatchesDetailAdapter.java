@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+
 import java.util.ArrayList;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -35,8 +37,8 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtName, txtteamA, txtTeamAscore,txtteamB,txtTeamBscore,txtResult;
-        public CircleImageView imageView;
+        public TextView txtName, txtteamA, txtTeamAscore,txtteamB,txtTeamBscore,txtResult,txtmomPlayerName,txtmomTeamName;
+        public CircleImageView imageView,imgmomplayer;
         MatchDetailResponse.Datum item;
         RelativeLayout llmain;
         public int currposition;
@@ -50,12 +52,15 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
             maincard = v.findViewById(R.id.maincard);
             llmain = v.findViewById(R.id.llmain);
             txtName = v.findViewById(R.id.txtName);
+            txtmomPlayerName = v.findViewById(R.id.txtmomPlayerName);
+            txtmomTeamName = v.findViewById(R.id.txtmomTeamName);
             txtteamA = v.findViewById(R.id.txtteamA);
             txtteamB = v.findViewById(R.id.txtteamB);
             txtTeamAscore = v.findViewById(R.id.txtTeamAscore);
             txtTeamBscore = v.findViewById(R.id.txtTeamBscore);
             txtResult = v.findViewById(R.id.txtResult);
             imageView = v.findViewById(R.id.ivThumb);
+            imgmomplayer = v.findViewById(R.id.imgmomplayer);
 
 
         }
@@ -70,6 +75,18 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
             txtteamA.setText(item.getTeam1());
             txtteamB.setText(item.getVersusTeam2());
             txtResult.setText(item.getResultRemarks());
+            txtmomPlayerName.setText(item.getPlayerName());
+            txtmomTeamName.setText(item.getManoftheMatchTeam());
+
+            Glide.with(itemView)
+                    .load(item.getFilePath())
+                    .fitCenter()
+                    .into(imgmomplayer);
+
+
+
+
+
            /* if (item.getPlayerId() == 1017) {
                 maincard.setBackgroundResource(R.drawable.edit_text_borderdash);
                // imageView.setImageResource(item.drawable);

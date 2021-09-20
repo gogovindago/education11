@@ -173,6 +173,24 @@ public class BannerResponse {
 
     public class MatchDetail {
 
+
+
+
+        @SerializedName("playerName")
+        @Expose
+        private String playerName;
+
+
+        @SerializedName("filePath")
+        @Expose
+        private String filePath;
+
+        @SerializedName("manoftheMatchTeam")
+        @Expose
+        private String manoftheMatchTeam;
+
+
+
         @SerializedName("id")
         @Expose
         private int id;
@@ -209,6 +227,36 @@ public class BannerResponse {
         @SerializedName("resultRemarks")
         @Expose
         private String resultRemarks;
+
+
+
+
+        public String getPlayerName() {
+            return playerName;
+        }
+
+        public void setPlayerName(String playerName) {
+            this.playerName = playerName;
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public void setFilePath(String filePath) {
+            this.filePath = filePath;
+        }
+
+        public String getManoftheMatchTeam() {
+            return manoftheMatchTeam;
+        }
+
+        public void setManoftheMatchTeam(String manoftheMatchTeam) {
+            this.manoftheMatchTeam = manoftheMatchTeam;
+        }
+
+
+
 
         public int getId() {
             return id;
