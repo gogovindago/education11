@@ -1,5 +1,7 @@
 package education.hry.pkl.cricket11.retrofitinterface;
 
+import education.hry.pkl.cricket11.model.AddMatchResultRequest;
+import education.hry.pkl.cricket11.model.AddMatchResultResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
@@ -40,6 +42,9 @@ public interface ApiInterface {
     @POST("Saveprofile")
     Call<ProfilePicSaveResponse> userProfilePicUploading(@Part("Registration_Id") RequestBody customer_id,
                                                          @Part MultipartBody.Part image);
+
+    @POST("TotalMatchDetails")
+    Call<AddMatchResultResponse> MatchResultDetails(@Body AddMatchResultRequest request);
 
     @POST("login")
     Call<LoginRespone> LoginUser(@Body LoginRequest request);

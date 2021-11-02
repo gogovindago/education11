@@ -25,25 +25,28 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.Activity.AddMatchResultActivity"
+            android:exported="false" />
+        <activity
             android:name=".ui.Activity.NetPracticeImageVideoActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:exported="true" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".ui.Activity.MatchDetailsActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:exported="true" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".ui.Activity.PlayerHistoryActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:exported="true" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".ui.Activity.CareerStatisticsActivity"
+            android:exported="true"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
-            android:exported="true" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity android:name=".ui.Activity.ForgetPasswordActivity" />
         <activity android:name=".roomdb.UpdateTaskActivity" />
         <activity android:name=".roomdb.AddTaskActivity" />
@@ -145,7 +148,7 @@
             android:name="com.google.firebase.messaging.default_notification_color"
             android:resource="@color/colorAccent" />
 
-        <service android:name=".fcm.MyFirebaseMessagingService"></service>
+        <service android:name=".fcm.MyFirebaseMessagingService" />
     </application>
 
 </manifest>

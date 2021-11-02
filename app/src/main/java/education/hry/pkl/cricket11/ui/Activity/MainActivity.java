@@ -70,6 +70,7 @@ import education.hry.pkl.cricket11.app.MyApplication;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.DataModel;
 import education.hry.pkl.cricket11.model.DataModelLeftNew;
+import education.hry.pkl.cricket11.model.NetpracticeTypeData;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
@@ -188,6 +189,10 @@ LinearLayout llmain;
 
 
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
+
+
+
+
         arrayList = new ArrayList();
         arrayList.add(new DataModel("Vriksha-Bandhan", R.drawable.personwhite, "#FFFFFF"));
         arrayList.add(new DataModel("Admissions", R.drawable.dashboard, "#FFFFFF"));
@@ -305,7 +310,8 @@ LinearLayout llmain;
 
         DataModelLeftNew publiclib = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Gallery", 0);
         dataModelLeftList.add(publiclib);
-        DataModelLeftNew netpracticeImagevideo = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Net Practice Image Video", 11);
+
+        DataModelLeftNew netpracticeImagevideo = new DataModelLeftNew(R.drawable.ic_baseline_photo_library_24, "Net Practice Image/Video", 11);
         dataModelLeftList.add(netpracticeImagevideo);
 
 
@@ -485,10 +491,10 @@ LinearLayout llmain;
             case 11:
 
                 mDrawerLayout.closeDrawers();
-               /* Intent NetPracticeImageVideoIntent = new Intent(this, NetPracticeImageVideoActivity.class);
-                startActivity(NetPracticeImageVideoIntent);*/
+                Intent NetPracticeImageVideoIntent = new Intent(this, NetPracticeImageVideoActivity.class);
+                startActivity(NetPracticeImageVideoIntent);
 
-                GlobalClass.showtost(MainActivity.this,"Coming soon...");
+               // GlobalClass.showtost(MainActivity.this,"Coming soon...");
                 break;
             case 7:
 

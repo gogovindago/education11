@@ -7,6 +7,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/524cec568236e9de2a86c17346d63df2/transformed/jetified-picasso-2.71828/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/524cec568236e9de2a86c17346d63df2/transformed/jetified-picasso-2.71828/AndroidManifest.xml" />
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/524cec568236e9de2a86c17346d63df2/transformed/jetified-picasso-2.71828/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5e991144211c584e5b1f9f6fd0e47d56/transformed/jetified-picasso-2.71828/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/5e991144211c584e5b1f9f6fd0e47d56/transformed/jetified-picasso-2.71828/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/5e991144211c584e5b1f9f6fd0e47d56/transformed/jetified-picasso-2.71828/res" />
     </CLASSES>
     <JAVADOC>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.squareup.picasso/picasso/2.71828/2843564e6bac90b1e125104d7c842c87a96a8ee9/picasso-2.71828-javadoc.jar!/" />

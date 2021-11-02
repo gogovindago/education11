@@ -24,7 +24,7 @@
             android:layout_centerInParent="true"
             android:layout_gravity="center"
             android:id="@+id/ivThumb"
-            android:layout_width="100dp"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
             android:scaleType="fitCenter"
             android:src="@mipmap/ic_launcher" />

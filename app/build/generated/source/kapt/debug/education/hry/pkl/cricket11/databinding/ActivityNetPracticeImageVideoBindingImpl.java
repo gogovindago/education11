@@ -22,7 +22,7 @@ public class ActivityNetPracticeImageVideoBindingImpl extends ActivityNetPractic
         sViewsWithIds.put(R.id.llimport, 4);
         sViewsWithIds.put(R.id.txtimportantlink, 5);
         sViewsWithIds.put(R.id.spnContentType, 6);
-        sViewsWithIds.put(R.id.rvadminimage, 7);
+        sViewsWithIds.put(R.id.rvnetimgvideo, 7);
         sViewsWithIds.put(R.id.message, 8);
     }
     // views

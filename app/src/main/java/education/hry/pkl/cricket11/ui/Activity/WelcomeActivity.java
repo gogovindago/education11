@@ -99,6 +99,7 @@ public class WelcomeActivity extends BaseActivity implements AdapterView.OnItemS
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
+
     }
 
     @Override

@@ -5,8 +5,9 @@
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a24eff0514ac5c68c2d8a917956d8c04/transformed/room-testing-2.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/55ca389aa2eb38adb2d30b630a19107a/transformed/room-testing-2.0.0/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cf71b5fb59d17466620c8884e6fe9812/transformed/room-testing-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/cf71b5fb59d17466620c8884e6fe9812/transformed/room-testing-2.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/cf71b5fb59d17466620c8884e6fe9812/transformed/room-testing-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c434484bdfcee6ba9a90e529a669e661/transformed/room-testing-2.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/c434484bdfcee6ba9a90e529a669e661/transformed/room-testing-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/c434484bdfcee6ba9a90e529a669e661/transformed/room-testing-2.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
