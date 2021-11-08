@@ -101,7 +101,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     private ListView mDrawerList;
     RecyclerView recyclerView, rvadminimage, rvTopBattingAvg, rvrecentmatch, rvWicketMost, rvRun, rvMostFour, rvMostSixes;
     ArrayList arrayList;
-LinearLayout llmain;
+    LinearLayout llmain;
     List<DataModelLeftNew> dataModelLeftList;
 
     private List<BannerResponse.DashboardOfficer> adminimagelist = new ArrayList<BannerResponse.DashboardOfficer>();
@@ -115,7 +115,7 @@ LinearLayout llmain;
     private List<BannerResponse.MostFour> mostFours = new ArrayList<BannerResponse.MostFour>();
 
 
-    String imageurl = "https://i.picsum.photos/id/599/200/200.jpg?hmac=2WLKs3sxIsaEQ-6WZaa6YMxgl6ZC4cNnid0aqupm2is";
+    String imageurl = "https://i.picsum.photos/id/599/200/200.jpg?hmac=2WLKs3sxIsaEQ-6WZaa6YMxgl6ZC4cNnid0aqupm2is", role;
     private ActionBarDrawerToggle mDrawerToggle;
 
 
@@ -191,8 +191,6 @@ LinearLayout llmain;
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
 
-
-
         arrayList = new ArrayList();
         arrayList.add(new DataModel("Vriksha-Bandhan", R.drawable.personwhite, "#FFFFFF"));
         arrayList.add(new DataModel("Admissions", R.drawable.dashboard, "#FFFFFF"));
@@ -204,7 +202,7 @@ LinearLayout llmain;
         if (GlobalClass.isNetworkConnected(MainActivity.this)) {
 
             WebAPiCall aPiCall = new WebAPiCall();
-            aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this,llmain, mSwipeRefreshLayout);
+            aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this, llmain, mSwipeRefreshLayout);
 
         } else {
 
@@ -221,7 +219,7 @@ LinearLayout llmain;
                 if (GlobalClass.isNetworkConnected(MainActivity.this)) {
 
                     WebAPiCall aPiCall = new WebAPiCall();
-                    aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this,llmain, mSwipeRefreshLayout);
+                    aPiCall.allBanner_listMethod(MainActivity.this, MainActivity.this, MainActivity.this, llmain, mSwipeRefreshLayout);
 
                 } else {
 
@@ -304,6 +302,18 @@ LinearLayout llmain;
 
         DataModelLeftNew showMatchDetails = new DataModelLeftNew(R.drawable.ic_baseline_checklist_24, "Show Match Details", 9);
         dataModelLeftList.add(showMatchDetails);
+
+        role = CSPreferences.readString(MainActivity.this, "role");
+
+
+        if (role.equalsIgnoreCase("Admin")) {
+
+            DataModelLeftNew addmatchresult = new DataModelLeftNew(R.drawable.ic_baseline_border_color_24, "Add Match Result", 99);
+            dataModelLeftList.add(addmatchresult);
+
+
+        }
+
 
         DataModelLeftNew careerStatistics = new DataModelLeftNew(R.drawable.carrer, "Career Statistics", 10);
         dataModelLeftList.add(careerStatistics);
@@ -481,6 +491,13 @@ LinearLayout llmain;
                 startActivity(allmatchesdetailIntent);
                 break;
 
+            case 99:
+
+                mDrawerLayout.closeDrawers();
+                Intent addmatchresult = new Intent(this, AddMatchResultActivity.class);
+                startActivity(addmatchresult);
+                break;
+
             case 10:
 
                 mDrawerLayout.closeDrawers();
@@ -494,7 +511,7 @@ LinearLayout llmain;
                 Intent NetPracticeImageVideoIntent = new Intent(this, NetPracticeImageVideoActivity.class);
                 startActivity(NetPracticeImageVideoIntent);
 
-               // GlobalClass.showtost(MainActivity.this,"Coming soon...");
+                // GlobalClass.showtost(MainActivity.this,"Coming soon...");
                 break;
             case 7:
 

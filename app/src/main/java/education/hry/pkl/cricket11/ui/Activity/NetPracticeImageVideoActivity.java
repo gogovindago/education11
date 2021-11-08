@@ -103,13 +103,18 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
 
     @Override
     public void initData() {
-
+        binding.toolbar.tvToolbarTitle.setText("Net Practice");
 
     }
 
     @Override
     public void initListeners() {
-
+        binding.toolbar.back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
     @Override
@@ -154,7 +159,6 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
 
     @Override
     public void onItemClick(NetImageVideoResponse.Datum item, int currposition) {
-
 
 
     }

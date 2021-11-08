@@ -25,8 +25,13 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.Activity.AddMatchResultActivity"
+            android:name=".utility.ImagePickerActivity"
             android:exported="false" />
+        <activity
+            android:name=".ui.Activity.AddMatchResultActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".ui.Activity.NetPracticeImageVideoActivity"
             android:exported="true"
@@ -47,14 +52,53 @@
             android:exported="true"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
-        <activity android:name=".ui.Activity.ForgetPasswordActivity" />
-        <activity android:name=".roomdb.UpdateTaskActivity" />
-        <activity android:name=".roomdb.AddTaskActivity" />
-        <activity android:name=".roomdb.RoomDBMainActivity" />
-        <activity android:name=".ui.Activity.NotificationDetailActivity" />
-        <activity android:name=".ui.Activity.NotificationsActivity" />
-        <activity android:name=".ui.Activity.ProfileActivity" />
-
+        <activity
+            android:name=".ui.Activity.ForgetPasswordActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".roomdb.UpdateTaskActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".roomdb.AddTaskActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".roomdb.RoomDBMainActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".ui.Activity.NotificationDetailActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".ui.Activity.NotificationsActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
+            android:name=".ui.Activity.ProfileActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" /> <!-- uCrop cropping activity -->
+        <activity
+            android:name="com.yalantis.ucrop.UCropActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" /> <!-- cache directory file provider paths -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="education.hry.pkl.cricket11"
@@ -84,26 +128,13 @@
 
         <activity
             android:name=".ui.Activity.GalleryActivity"
-            android:label="@string/title_activity_maps">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
-        <activity android:name=".ui.Activity.MainActivity">
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
+            android:label="@string/title_activity_maps"></activity>
+        <activity
+            android:name=".ui.Activity.MainActivity"
+            android:exported="true" />
         <activity
             android:name=".ui.splash.SplashActivity"
+            android:exported="true"
             android:theme="@style/AppFullScreenTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

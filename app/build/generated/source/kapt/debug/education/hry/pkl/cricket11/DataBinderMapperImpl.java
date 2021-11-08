@@ -6,6 +6,7 @@ import android.view.View;
 import androidx.databinding.DataBinderMapper;
 import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
+import education.hry.pkl.cricket11.databinding.ActivityAddMatchResultBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityCareerStatisticsBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityEducationwebsiteBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityForgetPasswordBindingImpl;
@@ -31,37 +32,40 @@ import java.util.HashMap;
 import java.util.List;
 
 public class DataBinderMapperImpl extends DataBinderMapper {
-  private static final int LAYOUT_ACTIVITYCAREERSTATISTICS = 1;
+  private static final int LAYOUT_ACTIVITYADDMATCHRESULT = 1;
 
-  private static final int LAYOUT_ACTIVITYEDUCATIONWEBSITE = 2;
+  private static final int LAYOUT_ACTIVITYCAREERSTATISTICS = 2;
 
-  private static final int LAYOUT_ACTIVITYFORGETPASSWORD = 3;
+  private static final int LAYOUT_ACTIVITYEDUCATIONWEBSITE = 3;
 
-  private static final int LAYOUT_ACTIVITYMATCHDETAILS = 4;
+  private static final int LAYOUT_ACTIVITYFORGETPASSWORD = 4;
 
-  private static final int LAYOUT_ACTIVITYNETPRACTICEIMAGEVIDEO = 5;
+  private static final int LAYOUT_ACTIVITYMATCHDETAILS = 5;
 
-  private static final int LAYOUT_ACTIVITYNOTIFICATIONDETAIL = 6;
+  private static final int LAYOUT_ACTIVITYNETPRACTICEIMAGEVIDEO = 6;
 
-  private static final int LAYOUT_ACTIVITYNOTIFICATIONS = 7;
+  private static final int LAYOUT_ACTIVITYNOTIFICATIONDETAIL = 7;
 
-  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 8;
+  private static final int LAYOUT_ACTIVITYNOTIFICATIONS = 8;
 
-  private static final int LAYOUT_ACTIVITYPLAYERHISTORY = 9;
+  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 9;
 
-  private static final int LAYOUT_ACTIVITYPROFILE = 10;
+  private static final int LAYOUT_ACTIVITYPLAYERHISTORY = 10;
 
-  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 11;
+  private static final int LAYOUT_ACTIVITYPROFILE = 11;
 
-  private static final int LAYOUT_ACTIVITYWELCOME = 12;
+  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 12;
 
-  private static final int LAYOUT_LISTVIEWITEMROW = 13;
+  private static final int LAYOUT_ACTIVITYWELCOME = 13;
 
-  private static final int LAYOUT_TOOLBARLAYOUT = 14;
+  private static final int LAYOUT_LISTVIEWITEMROW = 14;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(14);
+  private static final int LAYOUT_TOOLBARLAYOUT = 15;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(15);
 
   static {
+    INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_add_match_result, LAYOUT_ACTIVITYADDMATCHRESULT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_career_statistics, LAYOUT_ACTIVITYCAREERSTATISTICS);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_educationwebsite, LAYOUT_ACTIVITYEDUCATIONWEBSITE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_forget_password, LAYOUT_ACTIVITYFORGETPASSWORD);
@@ -87,6 +91,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
         throw new RuntimeException("view must have a tag");
       }
       switch(localizedLayoutId) {
+        case  LAYOUT_ACTIVITYADDMATCHRESULT: {
+          if ("layout/activity_add_match_result_0".equals(tag)) {
+            return new ActivityAddMatchResultBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_add_match_result is invalid. Received: " + tag);
+        }
         case  LAYOUT_ACTIVITYCAREERSTATISTICS: {
           if ("layout/activity_career_statistics_0".equals(tag)) {
             return new ActivityCareerStatisticsBindingImpl(component, view);
@@ -224,9 +234,10 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(14);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(15);
 
     static {
+      sKeys.put("layout/activity_add_match_result_0", education.hry.pkl.cricket11.R.layout.activity_add_match_result);
       sKeys.put("layout/activity_career_statistics_0", education.hry.pkl.cricket11.R.layout.activity_career_statistics);
       sKeys.put("layout/activity_educationwebsite_0", education.hry.pkl.cricket11.R.layout.activity_educationwebsite);
       sKeys.put("layout/activity_forget_password_0", education.hry.pkl.cricket11.R.layout.activity_forget_password);

@@ -340,7 +340,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/videocam/baseline_videocam_24.xml" />
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/date_range/baseline_date_range_24.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -350,8 +350,8 @@
                         </option>
                         <option name="values">
                           <map>
-                            <entry key="color" value="c4c0c0" />
-                            <entry key="outputName" value="ic_baseline_videocam_24" />
+                            <entry key="color" value="0e79e3" />
+                            <entry key="outputName" value="ic_baseline_date_range_24" />
                             <entry key="sourceFile" value="E:\AndroidApps\Govind\2020\Documents\iconsANDlogo\course type.svg" />
                           </map>
                         </option>
