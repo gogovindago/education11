@@ -1,9 +1,7 @@
 package education.hry.pkl.cricket11.utility;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.text.TextUtils;
 import android.widget.Toast;

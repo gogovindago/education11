@@ -42,7 +42,7 @@ public class AllTeamListResponse {
         this.data = data;
     }
 
-    public class Datum {
+    public static class Datum {
 
         @SerializedName("team_Id")
         @Expose

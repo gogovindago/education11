@@ -12,33 +12,37 @@ public class ActivityAddMatchResultBindingImpl extends ActivityAddMatchResultBin
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
-        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(23);
+        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(27);
         sIncludes.setIncludes(0, 
             new String[] {"toolbar_layout"},
             new int[] {1},
             new int[] {education.hry.pkl.cricket11.R.layout.toolbar_layout});
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.edtMatchTitle, 2);
-        sViewsWithIds.put(R.id.edtMatchDate, 3);
-        sViewsWithIds.put(R.id.llteamdhe, 4);
-        sViewsWithIds.put(R.id.txtteamdhe, 5);
-        sViewsWithIds.put(R.id.spnteamdhe, 6);
-        sViewsWithIds.put(R.id.edtdhescore, 7);
-        sViewsWithIds.put(R.id.edtdheover, 8);
-        sViewsWithIds.put(R.id.llOpponent, 9);
-        sViewsWithIds.put(R.id.txtOpponent, 10);
-        sViewsWithIds.put(R.id.spnOpponentteam, 11);
-        sViewsWithIds.put(R.id.edtOpponentscore, 12);
-        sViewsWithIds.put(R.id.edtOpponentover, 13);
-        sViewsWithIds.put(R.id.cardsforadoptedpersondetailrural, 14);
-        sViewsWithIds.put(R.id.cardview, 15);
-        sViewsWithIds.put(R.id.my_image_view, 16);
-        sViewsWithIds.put(R.id.upload, 17);
-        sViewsWithIds.put(R.id.txtupload, 18);
-        sViewsWithIds.put(R.id.edtplayerName, 19);
-        sViewsWithIds.put(R.id.llmomteamname, 20);
-        sViewsWithIds.put(R.id.txtmomteamname, 21);
-        sViewsWithIds.put(R.id.spnmomteamname, 22);
+        sViewsWithIds.put(R.id.simpleSwipeRefreshLayout, 2);
+        sViewsWithIds.put(R.id.edtMatchTitle, 3);
+        sViewsWithIds.put(R.id.edtMatchDate, 4);
+        sViewsWithIds.put(R.id.llteamdhe, 5);
+        sViewsWithIds.put(R.id.txtteamdhe, 6);
+        sViewsWithIds.put(R.id.spnteamdhe, 7);
+        sViewsWithIds.put(R.id.edtdhescore, 8);
+        sViewsWithIds.put(R.id.edtdheover, 9);
+        sViewsWithIds.put(R.id.llOpponent, 10);
+        sViewsWithIds.put(R.id.txtOpponent, 11);
+        sViewsWithIds.put(R.id.spnOpponentteam, 12);
+        sViewsWithIds.put(R.id.tlOpponentscore, 13);
+        sViewsWithIds.put(R.id.edtOpponentscore, 14);
+        sViewsWithIds.put(R.id.tlOpponentover, 15);
+        sViewsWithIds.put(R.id.edtOpponentover, 16);
+        sViewsWithIds.put(R.id.cardsforadoptedpersondetailrural, 17);
+        sViewsWithIds.put(R.id.cardview, 18);
+        sViewsWithIds.put(R.id.my_image_view, 19);
+        sViewsWithIds.put(R.id.upload, 20);
+        sViewsWithIds.put(R.id.txtupload, 21);
+        sViewsWithIds.put(R.id.edtplayerName, 22);
+        sViewsWithIds.put(R.id.llmomteamname, 23);
+        sViewsWithIds.put(R.id.txtmomteamname, 24);
+        sViewsWithIds.put(R.id.spnmomteamname, 25);
+        sViewsWithIds.put(R.id.btnaddmatchdetail, 26);
     }
     // views
     @NonNull
@@ -49,32 +53,36 @@ public class ActivityAddMatchResultBindingImpl extends ActivityAddMatchResultBin
     // Inverse Binding Event Handlers
 
     public ActivityAddMatchResultBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 23, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 27, sIncludes, sViewsWithIds));
     }
     private ActivityAddMatchResultBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
-            , (androidx.cardview.widget.CardView) bindings[14]
-            , (androidx.cardview.widget.CardView) bindings[15]
+            , (androidx.appcompat.widget.AppCompatTextView) bindings[26]
+            , (androidx.cardview.widget.CardView) bindings[17]
+            , (androidx.cardview.widget.CardView) bindings[18]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[4]
             , (com.google.android.material.textfield.TextInputEditText) bindings[3]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[2]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[13]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[12]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[16]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[14]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[9]
             , (com.google.android.material.textfield.TextInputEditText) bindings[8]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[7]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[19]
-            , (android.widget.LinearLayout) bindings[9]
-            , (android.widget.LinearLayout) bindings[20]
-            , (android.widget.LinearLayout) bindings[4]
-            , (com.facebook.drawee.view.SimpleDraweeView) bindings[16]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[11]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[22]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[6]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[22]
+            , (android.widget.LinearLayout) bindings[10]
+            , (android.widget.LinearLayout) bindings[23]
+            , (android.widget.LinearLayout) bindings[5]
+            , (com.facebook.drawee.view.SimpleDraweeView) bindings[19]
+            , (androidx.swiperefreshlayout.widget.SwipeRefreshLayout) bindings[2]
+            , (androidx.appcompat.widget.AppCompatSpinner) bindings[12]
+            , (androidx.appcompat.widget.AppCompatSpinner) bindings[25]
+            , (androidx.appcompat.widget.AppCompatSpinner) bindings[7]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[15]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[13]
             , (education.hry.pkl.cricket11.databinding.ToolbarLayoutBinding) bindings[1]
-            , (android.widget.TextView) bindings[10]
+            , (android.widget.TextView) bindings[11]
+            , (android.widget.TextView) bindings[24]
+            , (android.widget.TextView) bindings[6]
             , (android.widget.TextView) bindings[21]
-            , (android.widget.TextView) bindings[5]
-            , (android.widget.TextView) bindings[18]
-            , (android.widget.ImageView) bindings[17]
+            , (android.widget.ImageView) bindings[20]
             );
         this.mboundView0 = (androidx.appcompat.widget.LinearLayoutCompat) bindings[0];
         this.mboundView0.setTag(null);

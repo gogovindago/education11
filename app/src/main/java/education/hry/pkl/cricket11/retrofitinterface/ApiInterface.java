@@ -2,6 +2,7 @@ package education.hry.pkl.cricket11.retrofitinterface;
 
 import education.hry.pkl.cricket11.model.AddMatchResultRequest;
 import education.hry.pkl.cricket11.model.AddMatchResultResponse;
+import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
@@ -96,6 +97,10 @@ public interface ApiInterface {
     //https://cricketapi.highereduhry.ac.in/api/commonapi/NetPractice/Image
     @GET("NetPractice/{typeData}")
     Call<NetImageVideoResponse> PlayerNetImageVideoApiCall(@Path("typeData") String typeData);
+
+    //https://cricketapi.highereduhry.ac.in/api/commonapi/NetPractice/Image
+    @GET("TeamList/{typeData}")
+    Call<AllTeamListResponse> AllTeamListResponseApiCall(@Path("typeData") String typeData);
 
 
 }

@@ -10,13 +10,16 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.DatePicker;
 
 import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.karumi.dexter.Dexter;
@@ -27,32 +30,85 @@ import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import education.hry.pkl.cricket11.R;
+import education.hry.pkl.cricket11.adapter.SpinnerAllTeamAdapter;
+import education.hry.pkl.cricket11.allinterfaces.GetAllTeamList_interface;
+import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityAddMatchResultBinding;
+import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
+import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.ImagePickerActivity;
+import education.hry.pkl.cricket11.utility.MyLoaders;
+import education.hry.pkl.cricket11.utility.NetworkUtil;
 
-public class AddMatchResultActivity extends BaseActivity {
+public class AddMatchResultActivity extends BaseActivity implements GetAllTeamList_interface, AdapterView.OnItemSelectedListener {
 
     ActivityAddMatchResultBinding binding;
     private static final String TAG = MainActivity.class.getSimpleName();
     public static final int REQUEST_IMAGE = 100;
+    private List<AllTeamListResponse.Datum> allteamlist = new ArrayList<AllTeamListResponse.Datum>();
+    SpinnerAllTeamAdapter SpinnerAllTeamAdapter;
+
+    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition, spnmomteamnameCurrentPosition;
+    private MyLoaders myLoaders;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_add_match_result);
-
+        myLoaders = new MyLoaders(getApplicationContext());
         loadProfileDefault();
 
         // Clearing older images from cache directory
         // don't call this line if you want to choose multiple images in the same activity
         // call this once the bitmap(s) usage is over
         ImagePickerActivity.clearCache(this);
+
+
+        if (NetworkUtil.isConnected(AddMatchResultActivity.this)) {
+
+            WebAPiCall aPiCall = new WebAPiCall();
+            aPiCall.allTeamlistMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, "2", AddMatchResultActivity.this, binding.simpleSwipeRefreshLayout);
+
+
+        } else {
+            GlobalClass.showtost(AddMatchResultActivity.this, "No Internet Available.Plz check your internet connection.");
+        }
+
+
+        binding.spnOpponentteam.setOnItemSelectedListener(this);
+        binding.spnteamdhe.setOnItemSelectedListener(this);
+        binding.spnmomteamname.setOnItemSelectedListener(this);
+
+
+        binding.simpleSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+
+            public void onRefresh() {
+
+
+                if (NetworkUtil.isConnected(AddMatchResultActivity.this)) {
+
+                    WebAPiCall aPiCall = new WebAPiCall();
+                    aPiCall.allTeamlistMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, "2", AddMatchResultActivity.this, binding.simpleSwipeRefreshLayout);
+
+
+                } else {
+                    GlobalClass.showtost(AddMatchResultActivity.this, "No Internet Available.Plz check your internet connection.");
+                }
+
+                binding.simpleSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
     }
 
 
@@ -151,7 +207,75 @@ public class AddMatchResultActivity extends BaseActivity {
             }
         });
 
+        binding.btnaddmatchdetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Check_Data(v)) {
 
+
+                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(AddMatchResultActivity.this);
+                    sweetAlertDialog.setTitle("Alert Match Detail Adding !");
+                    sweetAlertDialog.setContentText("Make Sure you have filled all detail correctly.");
+                    sweetAlertDialog.setVolumeControlStream(2);
+                    sweetAlertDialog.setCancelable(true);
+                    sweetAlertDialog.setCancelText("No");
+                    sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+                    sweetAlertDialog.changeAlertType(3);
+                    sweetAlertDialog.setCanceledOnTouchOutside(false);
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            sweetAlertDialog.dismiss();
+
+                        }
+                    });
+
+                    sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            sweetAlertDialog.dismiss();
+                        }
+                    });
+                    sweetAlertDialog.show();
+
+                }
+
+            }
+
+        });
+
+
+    }
+
+
+    public boolean Check_Data(View view) {
+
+        if (TextUtils.isEmpty(binding.edtMatchTitle.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Match Title");
+            return false;
+
+        } else if (TextUtils.isEmpty(binding.edtMatchDate.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Select Date");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtdhescore.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter DHE Total score");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtdheover.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter DHE Total Played Over");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtOpponentscore.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Opponent Total score");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtOpponentover.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Opponent Total Played Over");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtplayerName.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter MOM Player Name");
+            return false;
+        }
+
+        return true;
     }
 
     private void showImagePickerOptions() {
@@ -237,4 +361,81 @@ public class AddMatchResultActivity extends BaseActivity {
         startActivityForResult(intent, 101);
     }
 
+    @Override
+    public void GetAllTeamListDetail_list(List<AllTeamListResponse.Datum> list) {
+
+
+        allteamlist.clear();
+        allteamlist.addAll(list);
+
+        AllTeamListResponse.Datum datum = new AllTeamListResponse.Datum();
+        datum.setTeamName("Select Team.");
+        datum.setTeamId(0);
+        datum.setTeamGroup("A");
+        allteamlist.add(0, datum);
+
+        SpinnerAllTeamAdapter = new SpinnerAllTeamAdapter(getApplicationContext(), allteamlist);
+
+
+        binding.spnOpponentteam.setAdapter(SpinnerAllTeamAdapter);
+        binding.spnteamdhe.setAdapter(SpinnerAllTeamAdapter);
+        binding.spnmomteamname.setAdapter(SpinnerAllTeamAdapter);
+
+        binding.spnteamdhe.setSelection(23);
+        binding.spnteamdhe.setEnabled(false);
+        binding.spnteamdhe.setClickable(false);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long l) {
+
+
+        int id = parent.getId();
+        if (id == R.id.spnOpponentteam) {
+
+            if (position != 0) {
+
+                String mystring = allteamlist.get(position).getTeamName();
+                String arr[] = mystring.split(" ", 3);
+
+                String firstWord = arr[0];   //the
+                String theRest2 = arr[1];     //quick brown fox
+                String theRest3 = arr[2];     //quick brown fox
+                binding.tlOpponentscore.setHint(firstWord + " " + theRest2 + " Total Score");
+                binding.tlOpponentover.setHint(firstWord + " " + theRest2 + " Over played");
+
+
+            } else {
+                binding.tlOpponentscore.setHint("Total Score");
+                binding.tlOpponentover.setHint("Over played");
+                spnOpponentteamCurrentPosition = position;
+            }
+
+
+        } else if (id == R.id.spnteamdhe) {
+
+            if (position != 0) {
+
+
+            } else {
+
+                spnteamdheCurrentPosition = position;
+            }
+
+
+        } else if (id == R.id.spnmomteamname) {
+            if (position != 0) {
+
+            } else {
+                spnmomteamnameCurrentPosition = position;
+            }
+
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> parent) {
+
+    }
 }

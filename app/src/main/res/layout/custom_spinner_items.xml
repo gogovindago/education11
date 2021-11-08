@@ -21,7 +21,7 @@
             android:layout_height="25dp"
             android:padding="5dp"
             android:layout_marginLeft="5dp"
-            android:src="@drawable/ic_college" /><!--Make sure image is present in Drawable folder-->
+            android:src="@drawable/ic_baseline_groups_24" /><!--Make sure image is present in Drawable folder-->
 
         <TextView
 
@@ -31,6 +31,7 @@
             android:layout_gravity="center"
             android:padding="@dimen/activity_horizontal_marginn"
             android:text="Demo"
+            android:textStyle="bold"
             android:textColor="@color/black"
            />
     </LinearLayout>

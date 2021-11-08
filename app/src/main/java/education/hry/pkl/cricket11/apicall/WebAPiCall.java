@@ -19,6 +19,7 @@ import java.util.Objects;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.BannerData_interface;
+import education.hry.pkl.cricket11.allinterfaces.GetAllTeamList_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetCareerStatistcsDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetGalleryDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetMatchResultDetail_interface;
@@ -31,6 +32,7 @@ import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
 import education.hry.pkl.cricket11.model.AddMatchResultRequest;
 import education.hry.pkl.cricket11.model.AddMatchResultResponse;
+import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
@@ -395,8 +397,6 @@ public class WebAPiCall {
     }
 
 
-
-
     public void MatchDetailsMethod(final Activity activity, final Context context, final GetMatchResultDetail_interface anInterface, AddMatchResultRequest request) {
 
         loadershowwithMsg(context, "Loading.");
@@ -410,7 +410,7 @@ public class WebAPiCall {
 
                     if (response.body().getResponse() == 200) {
 
-                       // dailogsuccess(activity, "OTP Sent.", "Please wait for OTP.");
+                        // dailogsuccess(activity, "OTP Sent.", "Please wait for OTP.");
 
 
                         anInterface.GetMatchResultListDetail_list(String.valueOf(response.body().getResponse()));
@@ -655,7 +655,7 @@ public class WebAPiCall {
 
 
                     if (response.body().getResponse() == 200) {
-                       // GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        // GlobalClass.showtost(context, "" + response.body().getSysMessage());
                         anInterface.GetGalleryDetail_list(response.body().getData());
 
 
@@ -701,7 +701,7 @@ public class WebAPiCall {
 
 
                     if (response.body().getResponse() == 200) {
-                       // GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        // GlobalClass.showtost(context, "" + response.body().getSysMessage());
                         anInterface.GetPlayerListDetail_list(response.body().getData());
 
 
@@ -747,7 +747,7 @@ public class WebAPiCall {
 
                     if (response.body().getResponse() == 200) {
                         rvplayerCareer.setVisibility(View.VISIBLE);
-                       // GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        // GlobalClass.showtost(context, "" + response.body().getSysMessage());
                         anInterface.GetCareerStatisticsDetail_list(response.body().getData());
 
 
@@ -889,6 +889,43 @@ public class WebAPiCall {
 
             @Override
             public void onFailure(Call<NetImageVideoResponse> call, Throwable t) {
+
+                // dailoghide(context);
+                mSwipeRefreshLayout.setRefreshing(false);
+                t.printStackTrace();
+
+            }
+        });
+    }
+
+    public void allTeamlistMethod(final Context context, final Activity activity, String DataType, final GetAllTeamList_interface dataInterface, SwipeRefreshLayout mSwipeRefreshLayout) {
+
+        //loadershowwithMsg(context, "Getting All Notices...");
+        mSwipeRefreshLayout.setRefreshing(true);
+
+        Call<AllTeamListResponse> userpost_responseCall = ApiClient.getClient().AllTeamListResponseApiCall(DataType);
+        userpost_responseCall.enqueue(new Callback<AllTeamListResponse>() {
+            @Override
+            public void onResponse(Call<AllTeamListResponse> call, Response<AllTeamListResponse> response) {
+                // dailoghide(context);
+                mSwipeRefreshLayout.setRefreshing(false);
+
+
+                if (response.isSuccessful() && Objects.requireNonNull(response.body()).getResponse() == 200) {
+
+
+                    dataInterface.GetAllTeamListDetail_list(response.body().getData());
+
+
+                } else {
+                    GlobalClass.showtost(activity, "" + response.message());
+                }
+
+
+            }
+
+            @Override
+            public void onFailure(Call<AllTeamListResponse> call, Throwable t) {
 
                 // dailoghide(context);
                 mSwipeRefreshLayout.setRefreshing(false);
