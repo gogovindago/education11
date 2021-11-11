@@ -32,12 +32,18 @@ import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
 import education.hry.pkl.cricket11.model.AddMatchResultRequest;
 import education.hry.pkl.cricket11.model.AddMatchResultResponse;
+import education.hry.pkl.cricket11.model.AddNewTeamsRequest;
+import education.hry.pkl.cricket11.model.AddNewTeamsResponse;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
+import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
+import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
+import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualRequest;
+import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.model.MatchDetailResponse;
@@ -935,5 +941,177 @@ public class WebAPiCall {
         });
     }
 
+
+    public void addNewTeamPostDataMethod(final Activity activity, final Context context, AddNewTeamsRequest request) {
+
+        loadershowwithMsg(context, "Adding Team is going On...");
+
+        Call<AddNewTeamsResponse> teamApi = ApiClient.getClient().addNewTeamApi(request);
+        teamApi.enqueue(new Callback<AddNewTeamsResponse>() {
+            @Override
+            public void onResponse(Call<AddNewTeamsResponse> call, Response<AddNewTeamsResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", "New Team add Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddNewTeamsResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    public void addMatchResultPostDataMethod(final Activity activity, final Context context, RequestBody MatchTitle,
+                                             RequestBody MatchDate,
+                                             RequestBody ScoreTeam1,
+                                             RequestBody OverTeam1,
+                                             RequestBody WicketsTeam1,
+                                             RequestBody VersusTeam2Id,
+                                             RequestBody ScoreTeam2,
+                                             RequestBody OverTeam2,
+                                             RequestBody WicketsTeam2,
+                                             RequestBody ResultRemarks,
+                                             RequestBody CreatedBy,
+                                             RequestBody PlayerName,
+                                             RequestBody ManOfTheMatchTeamId,
+                                             MultipartBody.Part FileName) {
+
+        loadershowwithMsg(context, "Adding Match Result is going On...");
+
+        Call<AddMatchResultResponse> teamApi = ApiClient.getClient().addmatchResultApi(MatchTitle,
+                MatchDate,
+                ScoreTeam1,
+                OverTeam1,
+                WicketsTeam1,
+                VersusTeam2Id,
+                ScoreTeam2,
+                OverTeam2,
+                WicketsTeam2,
+                ResultRemarks,
+                CreatedBy,
+                PlayerName,
+                ManOfTheMatchTeamId,
+                FileName);
+        teamApi.enqueue(new Callback<AddMatchResultResponse>() {
+            @Override
+            public void onResponse(Call<AddMatchResultResponse> call, Response<AddMatchResultResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", "Match add Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<AddMatchResultResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void DeleteTotalMatchDetailsPostDataMethod(final Activity activity, final Context context, DeleteTotalMatchDetailsRequest request) {
+
+        loadershowwithMsg(context, "Deleting Team is going On...");
+
+        Call<DeleteTotalMatchDetailsResponse> teamApi = ApiClient.getClient().DeleteTotalMatchDetailsApi(request);
+        teamApi.enqueue(new Callback<DeleteTotalMatchDetailsResponse>() {
+            @Override
+            public void onResponse(Call<DeleteTotalMatchDetailsResponse> call, Response<DeleteTotalMatchDetailsResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", " Team Deleted Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeleteTotalMatchDetailsResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void InsertMatchRecordIndivisualPostDataMethod(final Activity activity, final Context context, InsertMatchRecordIndivisualRequest request) {
+
+        loadershowwithMsg(context, "Adding Indivisual Match Deatil is going On...");
+
+        Call<InsertMatchRecordIndivisualResponse> teamApi = ApiClient.getClient().InsertMatchRecordIndivisualApi(request);
+        teamApi.enqueue(new Callback<InsertMatchRecordIndivisualResponse>() {
+            @Override
+            public void onResponse(Call<InsertMatchRecordIndivisualResponse> call, Response<InsertMatchRecordIndivisualResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", " Indivisual Match Deatil Added Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<InsertMatchRecordIndivisualResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
 
 }

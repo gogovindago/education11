@@ -311,6 +311,13 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
             DataModelLeftNew addmatchresult = new DataModelLeftNew(R.drawable.ic_baseline_border_color_24, "Add Match Result", 99);
             dataModelLeftList.add(addmatchresult);
 
+            DataModelLeftNew addnewteam = new DataModelLeftNew(R.drawable.ic_baseline_group_add_24, "Add New Team", 199);
+            dataModelLeftList.add(addnewteam);
+
+
+            DataModelLeftNew addIndivisualMatchRecord = new DataModelLeftNew(R.drawable.ic_baseline_group_add_24, "Add Indivisual Match Record", 198);
+            dataModelLeftList.add(addIndivisualMatchRecord);
+
 
         }
 
@@ -496,6 +503,19 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
                 Intent addmatchresult = new Intent(this, AddMatchResultActivity.class);
                 startActivity(addmatchresult);
+                break;
+
+            case 198:
+
+                mDrawerLayout.closeDrawers();
+                Intent addIndivisualMatchRecordintent = new Intent(this, IndivisualMatchDetailAddingActivity.class);
+                startActivity(addIndivisualMatchRecordintent);
+                break;
+            case 199:
+
+                mDrawerLayout.closeDrawers();
+                Intent addnewteam = new Intent(this, AddNewTeamActivity.class);
+                startActivity(addnewteam);
                 break;
 
             case 10:

@@ -185,6 +185,33 @@
                             android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtdheWicket"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/age"
+                            android:drawableLeft="@drawable/age"
+                            android:drawablePadding="16dp"
+                            android:hint=" Dhe Wicket Out"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:maxLength="4"
+                            android:outlineSpotShadowColor="@color/colorAccent"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <LinearLayout
                         android:id="@+id/llOpponent"
                         android:layout_width="match_parent"
@@ -274,6 +301,34 @@
                             android:drawableLeft="@drawable/age"
                             android:drawablePadding="16dp"
                             android:hint=" Opponent Over played"
+                            android:imeOptions="actionNext"
+                            android:inputType="numberDecimal"
+                            android:maxEms="4"
+                            android:maxLength="4"
+                            android:outlineSpotShadowColor="@color/colorAccent"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tlOpponentWicket"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtOpponentWicket"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/age"
+                            android:drawableLeft="@drawable/age"
+                            android:drawablePadding="16dp"
+                            android:hint=" Opponent Wicket Out"
                             android:imeOptions="actionNext"
                             android:inputType="numberDecimal"
                             android:maxEms="4"
@@ -482,6 +537,31 @@
 
                     </androidx.cardview.widget.CardView>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/tlResultRemarks"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_margin"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtResultRemarks"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/age"
+                            android:drawableLeft="@drawable/age"
+                            android:drawablePadding="16dp"
+                            android:hint=" Result Remarks"
+                            android:imeOptions="actionDone"
+                            android:inputType="textPersonName"
+                            android:outlineSpotShadowColor="@color/colorAccent"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:textStyle="bold" />
+                    </com.google.android.material.textfield.TextInputLayout>
 
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/btnaddmatchdetail"

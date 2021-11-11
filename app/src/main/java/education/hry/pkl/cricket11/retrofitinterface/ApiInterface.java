@@ -2,12 +2,18 @@ package education.hry.pkl.cricket11.retrofitinterface;
 
 import education.hry.pkl.cricket11.model.AddMatchResultRequest;
 import education.hry.pkl.cricket11.model.AddMatchResultResponse;
+import education.hry.pkl.cricket11.model.AddNewTeamsRequest;
+import education.hry.pkl.cricket11.model.AddNewTeamsResponse;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
+import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
+import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
+import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualRequest;
+import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.model.MatchDetailResponse;
@@ -33,11 +39,54 @@ import retrofit2.http.Query;
 
 
 public interface ApiInterface {
+/*
+    {
+        "VersusTeam2Id":"1",
+            "ScoreTeam1":"34",
+            "ScoreTeam2":"65",
+            "WicketsTeam1":"23",
+            "WicketsTeam2":"50",
+            "OverTeam1":"6.2",
+            "OverTeam2":"7",
+            "MatchDate":"12-20-2021",
+            "MatchTitle":"ABC",
+            "ResultRemarks":"Demo Remarks",
+            "CreatedBy":"PQR",
+            "PlayerName":"",
+            "ManOfTheMatchTeamId":"",
+            "FileName":""
+    }*/
+
+    @Multipart
+    @POST("TotalMatchDetails")
+    Call<AddMatchResultResponse> addmatchResultApi(@Part("MatchTitle") RequestBody MatchTitle,
+                                                   @Part("MatchDate") RequestBody MatchDate,
+                                                   @Part("ScoreTeam1") RequestBody ScoreTeam1,
+                                                   @Part("OverTeam1") RequestBody OverTeam1,
+                                                   @Part("WicketsTeam1") RequestBody WicketsTeam1,
+                                                   @Part("VersusTeam2Id") RequestBody VersusTeam2Id,
+                                                   @Part("ScoreTeam2") RequestBody ScoreTeam2,
+                                                   @Part("OverTeam2") RequestBody OverTeam2,
+                                                   @Part("WicketsTeam2") RequestBody WicketsTeam2,
+                                                   @Part("ResultRemarks") RequestBody ResultRemarks,
+                                                   @Part("CreatedBy") RequestBody CreatedBy,
+                                                   @Part("PlayerName") RequestBody PlayerName,
+                                                   @Part("ManOfTheMatchTeamId") RequestBody ManOfTheMatchTeamId,
+                                                   @Part MultipartBody.Part FileName);
+
+    @POST("InsertMatchRecord")
+    Call<InsertMatchRecordIndivisualResponse> InsertMatchRecordIndivisualApi(@Body InsertMatchRecordIndivisualRequest request);
+
+
+    @POST("DeleteTotalMatchDetails")
+    Call<DeleteTotalMatchDetailsResponse> DeleteTotalMatchDetailsApi(@Body DeleteTotalMatchDetailsRequest request);
+
+    @POST("InsertTeams")
+    Call<AddNewTeamsResponse> addNewTeamApi(@Body AddNewTeamsRequest request);
 
 
     @GET("HomeData")
     Call<BannerResponse> getBannnerAPi();
-
 
     @Multipart
     @POST("Saveprofile")

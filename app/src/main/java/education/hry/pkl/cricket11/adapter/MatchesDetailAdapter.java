@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -27,9 +28,10 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
     Context mContext;
     protected ItemListener mListener;
     int currposition;
+    String mrole;
 
-    public MatchesDetailAdapter(Context context, ArrayList values, ItemListener itemListener) {
-
+    public MatchesDetailAdapter(Context context, ArrayList values, ItemListener itemListener, String role) {
+        mrole = role;
         mValues = values;
         mContext = context;
         mListener = itemListener;
@@ -37,18 +39,21 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtName, txtteamA, txtTeamAscore,txtteamB,txtTeamBscore,txtResult,txtmomPlayerName,txtmomTeamName;
-        public CircleImageView imageView,imgmomplayer;
+        public TextView txtName, txtteamA, txtTeamAscore, txtteamB, txtTeamBscore, txtResult, txtmomPlayerName, txtmomTeamName;
+        public CircleImageView imageView, imgmomplayer;
         MatchDetailResponse.Datum item;
         RelativeLayout llmain;
         public int currposition;
         CardView maincard;
+        Button btnDeletematchdetail;
 
         public ViewHolder(View v) {
 
             super(v);
 
-            v.setOnClickListener(this);
+            // v.setOnClickListener(this);
+
+            btnDeletematchdetail = v.findViewById(R.id.btnDeletematchdetail);
             maincard = v.findViewById(R.id.maincard);
             llmain = v.findViewById(R.id.llmain);
             txtName = v.findViewById(R.id.txtName);
@@ -61,6 +66,14 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
             txtResult = v.findViewById(R.id.txtResult);
             imageView = v.findViewById(R.id.ivThumb);
             imgmomplayer = v.findViewById(R.id.imgmomplayer);
+            if (mrole.equalsIgnoreCase("Admin")) {
+                btnDeletematchdetail.setVisibility(View.VISIBLE);
+
+            } else {
+                btnDeletematchdetail.setVisibility(View.GONE);
+            }
+
+            btnDeletematchdetail.setOnClickListener(this);
 
 
         }
@@ -109,9 +122,21 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
 
         @Override
         public void onClick(View view) {
-            if (mListener != null) {
-                mListener.onItemClick(item, currposition);
+
+            switch (view.getId()) {
+
+                case R.id.btnDeletematchdetail:
+
+                    if (mListener != null) {
+
+                        mListener.onItemClick(item, currposition);
+
+
+                    }
+                    break;
             }
+
+
         }
     }
 

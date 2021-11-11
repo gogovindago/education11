@@ -15,5 +15,8 @@
     <color name="green">#0AA639</color>
     <color name="blacklight">#505050</color>
     <color name="bglight">#DAE8FC</color>
+    <color name="iconcolor">#F0BCBABA</color>
+    <color name="drkgreeen">#4CAF50</color>
+
 
 </resources>

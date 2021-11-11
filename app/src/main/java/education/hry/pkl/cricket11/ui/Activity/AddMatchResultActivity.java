@@ -28,6 +28,7 @@ import com.karumi.dexter.PermissionToken;
 import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.multi.MultiplePermissionsListener;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -43,10 +44,14 @@ import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityAddMatchResultBinding;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
+import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.ImagePickerActivity;
 import education.hry.pkl.cricket11.utility.MyLoaders;
 import education.hry.pkl.cricket11.utility.NetworkUtil;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class AddMatchResultActivity extends BaseActivity implements GetAllTeamList_interface, AdapterView.OnItemSelectedListener {
 
@@ -56,8 +61,10 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
     private List<AllTeamListResponse.Datum> allteamlist = new ArrayList<AllTeamListResponse.Datum>();
     SpinnerAllTeamAdapter SpinnerAllTeamAdapter;
 
-    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition, spnmomteamnameCurrentPosition;
+    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition=23, spnmomteamnameCurrentPosition;
     private MyLoaders myLoaders;
+    File imagefile;
+    String OpponentteamID, teamdhe, momteamId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -227,6 +234,57 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
                         @Override
                         public void onClick(SweetAlertDialog sweetAlertDialog) {
                             sweetAlertDialog.dismiss();
+                            if (NetworkUtil.isConnected(AddMatchResultActivity.this)) {
+                                sweetAlertDialog.dismiss();
+
+
+                                RequestBody rq_MatchTitle = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMatchTitle.getText().toString().trim());
+                                RequestBody rq_MatchDate = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMatchDate.getText().toString().trim());
+
+
+                                RequestBody rq_ScoreTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdhescore.getText().toString().trim());
+                                RequestBody rq_OverTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdheover.getText().toString().trim());
+                                RequestBody rq_WicketsTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdheWicket.getText().toString().trim());
+
+
+                                RequestBody rq_VersusTeam2Id = RequestBody.create(MediaType.parse("multipart/form-data"), OpponentteamID);
+                                RequestBody rq_ScoreTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentscore.getText().toString().trim());
+                                RequestBody rq_OverTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentover.getText().toString().trim());
+                                RequestBody rq_WicketsTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentWicket.getText().toString().trim());
+
+
+                                RequestBody rq_ManOfTheMatchTeamId = RequestBody.create(MediaType.parse("multipart/form-data"), momteamId);
+
+                                RequestBody rq_MOMPlayerName = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtplayerName.getText().toString().trim());
+
+                                RequestBody rq_ResultRemarks = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtResultRemarks.getText().toString().trim());
+
+
+                                RequestBody rq_CreatedBy = RequestBody.create(MediaType.parse("multipart/form-data"), CSPreferences.readString(AddMatchResultActivity.this, "User_name"));
+
+                                RequestBody imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
+                                MultipartBody.Part imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
+
+                                WebAPiCall aPiCall = new WebAPiCall();
+                                aPiCall.addMatchResultPostDataMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, rq_MatchTitle,
+                                        rq_MatchDate,
+                                        rq_ScoreTeam1,
+                                        rq_OverTeam1,
+                                        rq_WicketsTeam1,
+                                        rq_VersusTeam2Id,
+                                        rq_ScoreTeam2,
+                                        rq_OverTeam2,
+                                        rq_WicketsTeam2,
+                                        rq_ResultRemarks,
+                                        rq_CreatedBy,
+                                        rq_MOMPlayerName,
+                                        rq_ManOfTheMatchTeamId,
+                                        imagefilebody);
+
+                            } else {
+                                GlobalClass.showtost(AddMatchResultActivity.this, "No Internet Available.Plz check your internet connection.");
+                            }
+
 
                         }
                     });
@@ -251,6 +309,7 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
 
     public boolean Check_Data(View view) {
 
+
         if (TextUtils.isEmpty(binding.edtMatchTitle.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter Match Title");
             return false;
@@ -258,11 +317,20 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         } else if (TextUtils.isEmpty(binding.edtMatchDate.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Select Date");
             return false;
+        } else if (spnteamdheCurrentPosition == 0) {
+            myLoaders.showSnackBar(view, "Please Select Dhe Team");
+            return false;
         } else if (TextUtils.isEmpty(binding.edtdhescore.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter DHE Total score");
             return false;
         } else if (TextUtils.isEmpty(binding.edtdheover.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter DHE Total Played Over");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtdheWicket.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter DHE Total Wicket Out");
+            return false;
+        } else if (spnOpponentteamCurrentPosition == 0) {
+            myLoaders.showSnackBar(view, "Please Select Opponent Team");
             return false;
         } else if (TextUtils.isEmpty(binding.edtOpponentscore.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter Opponent Total score");
@@ -270,8 +338,20 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         } else if (TextUtils.isEmpty(binding.edtOpponentover.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter Opponent Total Played Over");
             return false;
+        } else if (TextUtils.isEmpty(binding.edtOpponentWicket.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Opponent Total Wicket Out");
+            return false;
+        } else if (imagefile==null) {
+            myLoaders.showSnackBar(view, "Please Select MOM Player Photo");
+            return false;
         } else if (TextUtils.isEmpty(binding.edtplayerName.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter MOM Player Name");
+            return false;
+        } else if (spnmomteamnameCurrentPosition == 0) {
+            myLoaders.showSnackBar(view, "Please Select MOM Team");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtResultRemarks.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Match Result.");
             return false;
         }
 
@@ -325,16 +405,21 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == REQUEST_IMAGE) {
             if (resultCode == Activity.RESULT_OK) {
+
                 Uri uri = data.getParcelableExtra("path");
+                String path = "";
+
                 try {
                     // You can update this bitmap to your server
                     Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
-
                     // loading profile image from local cache
                     loadProfile(uri.toString());
+                    imagefile = new File(uri.getPath());
+
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+
             }
         }
     }
@@ -396,7 +481,10 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
 
             if (position != 0) {
 
+                spnOpponentteamCurrentPosition = position;
                 String mystring = allteamlist.get(position).getTeamName();
+                OpponentteamID = String.valueOf(allteamlist.get(position).getTeamId());
+
                 String arr[] = mystring.split(" ", 3);
 
                 String firstWord = arr[0];   //the
@@ -416,6 +504,8 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         } else if (id == R.id.spnteamdhe) {
 
             if (position != 0) {
+                spnteamdheCurrentPosition = position;
+                teamdhe = String.valueOf(allteamlist.get(position).getTeamId());
 
 
             } else {
@@ -426,6 +516,9 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
 
         } else if (id == R.id.spnmomteamname) {
             if (position != 0) {
+                spnmomteamnameCurrentPosition = position;
+
+                momteamId = String.valueOf(allteamlist.get(position).getTeamId());
 
             } else {
                 spnmomteamnameCurrentPosition = position;

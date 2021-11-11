@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.aabhasr1:OtpView:1.0.5@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/7e9222f1ff1c0c5ee999528bd5751ee2/transformed/jetified-OtpView-1.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e9222f1ff1c0c5ee999528bd5751ee2/transformed/jetified-OtpView-1.0.5/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/7e9222f1ff1c0c5ee999528bd5751ee2/transformed/jetified-OtpView-1.0.5/AndroidManifest.xml" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.aabhasr1/OtpView/1.0.5/7eb7e2e1404990f35ce99906a33f2972214bb9c9/OtpView-1.0.5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,13 +1,22 @@
 package education.hry.pkl.cricket11.ui.Activity;
 
+import android.app.Dialog;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+import android.widget.VideoView;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,7 +55,7 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
 
         NetpracticeTypeData netpracticeTypeData = new NetpracticeTypeData();
 
-        netpracticeTypeData.setImage(R.drawable.photo);
+        netpracticeTypeData.setImage(R.drawable.photoblue);
         netpracticeTypeData.setName("Image");
         netpracticelist.add(1, netpracticeTypeData);
 
@@ -124,7 +133,7 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
         data = new ArrayList();
         data.addAll(list);
 
-        netImageVideoAdapter = new NetImageVideoAdapter(this, (ArrayList) data, this);
+        netImageVideoAdapter = new NetImageVideoAdapter(this, (ArrayList) data, this, netdatatype);
         binding.rvnetimgvideo.setAdapter(netImageVideoAdapter);
         GridLayoutManager adminimagemanager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
         binding.rvnetimgvideo.setLayoutManager(adminimagemanager);
@@ -158,8 +167,69 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
     }
 
     @Override
-    public void onItemClick(NetImageVideoResponse.Datum item, int currposition) {
+    public void onItemClick(NetImageVideoResponse.Datum item, int currposition, String mnetdatatype, VideoView vw, ImageView imageView) {
+        if (mnetdatatype.equalsIgnoreCase("Video")) {
 
+          /*  MediaController mediaController = new MediaController(this);
+            mediaController.setAnchorView(vw);
+            vw.setMediaController(mediaController);
+            vw.requestFocus();
+            Uri uri = Uri.parse(item.getVideoPath());
+            vw.setVideoURI(uri);*/
+
+
+            if (vw.isPlaying()) {
+                vw.pause();
+            }else {
+                vw.start();
+            }
+
+        } else {
+            openDialog(item);
+
+        }
 
     }
+
+    public void openDialog(NetImageVideoResponse.Datum item) {
+
+
+        final Dialog dialog = new Dialog(this, android.R.style.Theme_Light); // Context, this, etc.
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.dialog_demo);
+
+        //   dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+
+        ImageView dialog_img = dialog.findViewById(R.id.dialog_img);
+
+       /* ImageRequest request = ImageRequestBuilder.newBuilderWithSource(Uri.parse(item.getEventImage()))
+                .setResizeOptions(new ResizeOptions(150, 150))
+                .build();
+        dialog_img.setController(
+
+                Fresco.newDraweeControllerBuilder()
+                        .setOldController(dialog_img.getController())
+                        .setImageRequest(request)
+                        .build());*/
+
+        //dialog_img.setImageURI(Uri.parse(item.getEventImage()));
+
+        Glide.with(this).load(item.getFilePath())
+                .diskCacheStrategy(DiskCacheStrategy.ALL)
+                .into(dialog_img);
+
+        Button dialogButton = (Button) dialog.findViewById(R.id.dialog_ok);
+
+        dialogButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+
+
+        dialog.show();
+    }
+
+
 }

@@ -35,9 +35,47 @@ public class AddMatchResultRequest {
     @SerializedName("ResultRemarks")
     @Expose
     private String resultRemarks;
+
     @SerializedName("CreatedBy")
     @Expose
     private String createdBy;
+
+    @SerializedName("PlayerName")
+    @Expose
+    private String PlayerName;
+
+    @SerializedName("ManOfTheMatchTeamId")
+    @Expose
+    private String ManOfTheMatchTeamId;
+
+    @SerializedName("FileName")
+    @Expose
+    private String FileName;
+
+
+    public String getPlayerName() {
+        return PlayerName;
+    }
+
+    public void setPlayerName(String playerName) {
+        PlayerName = playerName;
+    }
+
+    public String getManOfTheMatchTeamId() {
+        return ManOfTheMatchTeamId;
+    }
+
+    public void setManOfTheMatchTeamId(String manOfTheMatchTeamId) {
+        ManOfTheMatchTeamId = manOfTheMatchTeamId;
+    }
+
+    public String getFileName() {
+        return FileName;
+    }
+
+    public void setFileName(String fileName) {
+        FileName = fileName;
+    }
 
     public String getVersusTeam2Id() {
         return versusTeam2Id;

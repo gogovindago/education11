@@ -2,14 +2,21 @@ package education.hry.pkl.cricket11.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Build;
+import android.provider.MediaStore;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
@@ -29,9 +36,10 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
     Context mContext;
     protected ItemListener mListener;
     int currposition;
+    String mnetdatatype;
 
-    public NetImageVideoAdapter(Context context, ArrayList values, ItemListener itemListener) {
-
+    public NetImageVideoAdapter(Context context, ArrayList values, ItemListener itemListener, String netdatatype) {
+        mnetdatatype = netdatatype;
         mValues = values;
         mContext = context;
         mListener = itemListener;
@@ -45,16 +53,18 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
         LinearLayout llmain;
         public int currposition;
         CardView maincard;
+        VideoView vidvw;
 
         public ViewHolder(View v) {
 
             super(v);
 
             v.setOnClickListener(this);
-            maincard =  v.findViewById(R.id.maincard);
-            llmain =  v.findViewById(R.id.llmain);
+            maincard = v.findViewById(R.id.maincard);
+            llmain = v.findViewById(R.id.llmain);
             txtName = (TextView) v.findViewById(R.id.txtName);
             imageView = (ImageView) v.findViewById(R.id.ivThumb);
+            vidvw = v.findViewById(R.id.vidvw);
 
 
         }
@@ -64,25 +74,51 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
             this.item = item;
 
 
-
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
 
 
-                txtName.setText(Html.fromHtml("  <strong style='color:red';>   "+item.getTitle()+ "  </strong><br>" + item.getDescription(), Html.FROM_HTML_MODE_COMPACT));
-
+                txtName.setText(Html.fromHtml("  <strong style='color:red';>   " + item.getTitle() + "  </strong><br>" + item.getDescription(), Html.FROM_HTML_MODE_COMPACT));
 
 
             } else {
 
-                txtName.setText(Html.fromHtml("<strong style='color:red';>   "+item.getTitle()+ "  </strong><br>" + item.getDescription()));
+                txtName.setText(Html.fromHtml("<strong style='color:red';>   " + item.getTitle() + "  </strong><br>" + item.getDescription()));
             }
 
+            if (mnetdatatype.equalsIgnoreCase("Image")) {
 
+                imageView.setVisibility(View.VISIBLE);
+                vidvw.setVisibility(View.GONE);
 
                 Glide.with(itemView)
                         .load(item.getFilePath())
                         .fitCenter()
                         .into(imageView);
+            } else {
+
+                Bitmap thumb = ThumbnailUtils.createVideoThumbnail(item.getVideoPath(),
+                        MediaStore.Images.Thumbnails.FULL_SCREEN_KIND);
+                BitmapDrawable bitmapDrawable = new BitmapDrawable(thumb);
+                vidvw.setBackgroundDrawable(bitmapDrawable);
+
+                imageView.setVisibility(View.GONE);
+                vidvw.setVisibility(View.VISIBLE);
+
+                MediaController mediaController= new MediaController(mContext);
+                mediaController.setAnchorView(vidvw);
+                vidvw.setMediaController(mediaController);
+                vidvw.requestFocus();
+                Uri uri = Uri.parse(item.getVideoPath());
+                vidvw.setVideoURI(uri);
+                vidvw.seekTo(1);
+                mediaController.setVisibility(View.GONE);
+               // vidvw.start();
+
+               // vidvw.setVideoURI(Uri.parse(item.getVideoPath()));
+
+
+            }
+
 
         }
 
@@ -90,7 +126,7 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
         @Override
         public void onClick(View view) {
             if (mListener != null) {
-                mListener.onItemClick(item, currposition);
+                mListener.onItemClick(item, currposition, mnetdatatype,vidvw,imageView);
             }
         }
     }
@@ -98,7 +134,7 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_view_itemadminimg_row, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_view_itemimgvideo_row, parent, false);
 
         return new ViewHolder(view);
     }
@@ -119,6 +155,6 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
     }
 
     public interface ItemListener {
-        void onItemClick(NetImageVideoResponse.Datum item, int currposition);
+        void onItemClick(NetImageVideoResponse.Datum item, int currposition, String mnetdatatype,VideoView videoView, ImageView ivThumb);
     }
 }

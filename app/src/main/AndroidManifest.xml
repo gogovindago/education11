@@ -25,6 +25,16 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".ui.Activity.IndivisualMatchDetailAddingActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity
+            android:name=".ui.Activity.AddNewTeamActivity"
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
+        <activity
             android:name=".utility.ImagePickerActivity"
             android:exported="false" />
         <activity
@@ -128,7 +138,7 @@
 
         <activity
             android:name=".ui.Activity.GalleryActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
         <activity
             android:name=".ui.Activity.MainActivity"
             android:exported="true" />

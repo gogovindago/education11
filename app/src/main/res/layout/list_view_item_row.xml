@@ -9,51 +9,47 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
-        android:paddingLeft="8dp">
+        android:paddingLeft="5dp">
+
         <RelativeLayout
             android:id="@+id/rrbg2"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="10dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <ImageView
-            android:id="@+id/imageViewIcon"
-            android:layout_width="45dp"
-            android:layout_height="45dp"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_centerInParent="true"
-            android:layout_margin="10dp"
-            android:paddingEnd="5dp"
-            android:paddingRight="5dp"
-            android:src="@mipmap/ic_launcher" />
-
-        <TextView
-            android:id="@+id/textViewName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_centerVertical="true"
-            android:layout_toRightOf="@+id/imageViewIcon"
-            android:fontFamily="@font/roboto_bold"
-            android:padding="5dp"
-            android:paddingRight="10dp"
-            android:text="Item Name"
-            android:textStyle="bold"
-            android:textColor="@color/black"
-            android:textSize="18sp"
-            android:paddingEnd="10dp" />
+            android:layout_marginStart="2dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="2dp">
 
-        <androidx.appcompat.widget.SwitchCompat
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:visibility="gone">
+            <ImageView
+                android:id="@+id/imageViewIcon"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_centerInParent="true"
+                android:src="@mipmap/ic_launcher" />
 
-        </androidx.appcompat.widget.SwitchCompat>
+            <TextView
+                android:id="@+id/textViewName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_toRightOf="@+id/imageViewIcon"
+                android:fontFamily="@font/roboto_bold"
+                android:padding="5dp"
+                android:text="Item Name"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.SwitchCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:visibility="gone">
+
+            </androidx.appcompat.widget.SwitchCompat>
         </RelativeLayout>
 
 

@@ -19,12 +19,17 @@
         android:padding="2dp">
 
         <de.hdodenhof.circleimageview.CircleImageView
-            android:layout_below="@+id/txtName"
             android:id="@+id/ivThumb"
             android:layout_width="80dp"
             android:layout_height="80dp"
+            android:layout_below="@+id/txtName"
             android:layout_gravity="start"
-            android:layout_margin="5dp"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
             android:src="@mipmap/bg"
             app:civ_border_color="@color/colorPrimaryDark"
             app:civ_border_width="2dp" />
@@ -182,6 +187,18 @@
             android:text="Mom Team Name"
             android:textColor="@color/black"
             android:textSize="12sp" />
+
+        <Button
+            android:visibility="gone"
+            android:id="@+id/btnDeletematchdetail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivThumb"
+            android:background="@drawable/buttonstylered"
+            android:padding="5dp"
+            android:text="Delete"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
