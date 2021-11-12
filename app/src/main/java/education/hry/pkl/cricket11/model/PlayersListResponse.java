@@ -44,7 +44,7 @@ public class PlayersListResponse {
         this.data = data;
     }
 
-    public class Datum {
+    public static class Datum {
 
         @SerializedName("player_Id")
         @Expose

@@ -37,6 +37,8 @@ import education.hry.pkl.cricket11.model.AddNewTeamsResponse;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
+import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
+import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
@@ -1068,6 +1070,43 @@ public class WebAPiCall {
 
             @Override
             public void onFailure(Call<DeleteTotalMatchDetailsResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void DeletePlayerDetailsPostDataMethod(final Activity activity, final Context context, DeleteIndivisualMatchDetailsRequest request) {
+
+        loadershowwithMsg(context, "Deleting 1 Individual Match Record is going On...");
+
+        Call<DeleteIndivisualMatchDetailsResponse> teamApi = ApiClient.getClient().DeletePlayerDetailsApi(request);
+        teamApi.enqueue(new Callback<DeleteIndivisualMatchDetailsResponse>() {
+            @Override
+            public void onResponse(Call<DeleteIndivisualMatchDetailsResponse> call, Response<DeleteIndivisualMatchDetailsResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", " 1 Individual Match Record Deleted Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeleteIndivisualMatchDetailsResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();

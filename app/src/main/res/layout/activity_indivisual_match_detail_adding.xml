@@ -63,7 +63,7 @@
 
 
                     <LinearLayout
-                        android:id="@+id/llteamdhe"
+                        android:id="@+id/llteamhostdhe"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -74,11 +74,11 @@
 
 
                         <TextView
-                            android:id="@+id/txtteamdhe"
+                            android:id="@+id/txtteamhostdhe"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="1dp"
-                            android:text="Dhe team."
+                            android:text="Host Dhe team."
                             android:textColor="@color/black"
                             android:textStyle="normal"
                             android:visibility="visible">
@@ -94,6 +94,51 @@
 
                             <androidx.appcompat.widget.AppCompatSpinner
                                 android:id="@+id/spnteamdhe"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:backgroundTint="@color/black"
+                                android:clickable="false"
+                                android:foregroundTint="@color/black"
+                                tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck">
+
+                            </androidx.appcompat.widget.AppCompatSpinner>
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/llteamdhe"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="vertical"
+                        android:visibility="visible">
+
+
+                        <TextView
+                            android:id="@+id/txtteamplayerdhe"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:text="Select Dhe team player."
+                            android:textColor="@color/black"
+                            android:textStyle="normal"
+                            android:visibility="visible">
+
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/spinner_border"
+                            android:orientation="vertical"
+                            android:visibility="visible">
+
+                            <androidx.appcompat.widget.AppCompatSpinner
+                                android:id="@+id/spnteamplayerdhe"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:backgroundTint="@color/black"
@@ -156,7 +201,6 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="6dp"
                         android:layout_marginRight="6dp"
-                        app:cardBackgroundColor="@color/colorPrimary"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="8dp"
                         app:cardMaxElevation="8dp"
@@ -345,6 +389,74 @@
                                         app:layout_constraintTop_toBottomOf="@+id/textView7" />
                                 </com.google.android.material.textfield.TextInputLayout>
                             </LinearLayout>
+
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginLeft="6dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginRight="16dp"
+                                android:layout_marginBottom="5dp"
+                                android:text="Select Batsman status"
+                                android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                                android:textColor="@color/black"
+                                android:textStyle="normal"
+                                android:visibility="visible" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:layout_marginEnd="8dp"
+                                android:layout_marginBottom="5dp"
+                                android:background="@drawable/spinner_border"
+                                android:visibility="visible">
+
+                                <RadioGroup
+                                    android:id="@+id/btnRadiogroup"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center_horizontal"
+                                    android:foregroundTint="@color/black"
+                                    android:gravity="center_horizontal"
+                                    android:orientation="horizontal"
+                                    android:text="Is Out Or Not Out?">
+
+                                    <RadioButton
+                                        android:id="@+id/rdbOUt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="0dp"
+                                        android:text="Out "
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/red"
+                                        android:textSize="15sp"
+                                        android:textStyle="bold">
+
+                                    </RadioButton>
+
+                                    <RadioButton
+                                        android:id="@+id/rdbNotOUt"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_margin="0dp"
+                                        android:text="Not OUt"
+                                        android:textAllCaps="true"
+                                        android:textColor="@color/green"
+                                        android:textSize="15sp"
+                                        android:textStyle="bold"
+                                        android:visibility="visible">
+
+                                    </RadioButton>
+
+
+                                </RadioGroup>
+
+
+                            </LinearLayout>
                         </LinearLayout>
 
 
@@ -357,7 +469,6 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="6dp"
                         android:layout_marginRight="6dp"
-                        app:cardBackgroundColor="@color/colorPrimary"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="8dp"
                         app:cardMaxElevation="8dp"
@@ -375,7 +486,6 @@
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center_horizontal"
-                                android:layout_margin="5dp"
                                 android:drawableStart="@mipmap/balling"
                                 android:drawableLeft="@mipmap/balling"
                                 android:drawablePadding="5dp"
@@ -552,7 +662,6 @@
                         android:layout_marginTop="0dp"
                         android:layout_marginEnd="6dp"
                         android:layout_marginRight="6dp"
-                        app:cardBackgroundColor="@color/colorPrimary"
                         app:cardCornerRadius="8dp"
                         app:cardElevation="8dp"
                         app:cardMaxElevation="8dp"
@@ -610,11 +719,11 @@
                                         android:drawableLeft="@drawable/age"
                                         android:drawablePadding="16dp"
                                         android:editable="true"
-                                        android:maxLength="2"
                                         android:enabled="true"
                                         android:hint="Do Run Out"
                                         android:imeOptions="actionNext"
                                         android:inputType="textPersonName"
+                                        android:maxLength="2"
                                         android:textColor="@color/black"
                                         android:textSize="12sp"
                                         android:textStyle="bold"

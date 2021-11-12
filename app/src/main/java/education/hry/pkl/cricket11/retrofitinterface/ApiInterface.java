@@ -7,6 +7,8 @@ import education.hry.pkl.cricket11.model.AddNewTeamsResponse;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
+import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
+import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
@@ -77,6 +79,9 @@ public interface ApiInterface {
     @POST("InsertMatchRecord")
     Call<InsertMatchRecordIndivisualResponse> InsertMatchRecordIndivisualApi(@Body InsertMatchRecordIndivisualRequest request);
 
+
+    @POST("DeletePlayerDetails")
+    Call<DeleteIndivisualMatchDetailsResponse> DeletePlayerDetailsApi(@Body DeleteIndivisualMatchDetailsRequest request);
 
     @POST("DeleteTotalMatchDetails")
     Call<DeleteTotalMatchDetailsResponse> DeleteTotalMatchDetailsApi(@Body DeleteTotalMatchDetailsRequest request);

@@ -10,16 +10,20 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.CareerStatisticsAdapter;
 import education.hry.pkl.cricket11.adapter.PlayerHistoryAdapter;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerHistory_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityPlayerHistoryBinding;
+import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
+import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
+import education.hry.pkl.cricket11.utility.NetworkUtil;
 
 public class PlayerHistoryActivity extends BaseActivity implements PlayerHistoryAdapter.ItemListener, GetPlayerHistory_interface {
 
@@ -29,6 +33,7 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
     int playerId;
     private PlayerHistoryAdapter adapter;
     private LinearLayoutManager manager;
+    SweetAlertDialog sweetAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,7 +74,7 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
 
     @Override
     public void initData() {
-       // binding.toolbar.tvToolbarTitle.setText("History");
+        // binding.toolbar.tvToolbarTitle.setText("History");
 
     }
 
@@ -86,14 +91,59 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
     @Override
     public void onItemClick(PlayerHistoryResponse.Datum item, int currposition) {
 
+       // GlobalClass.showtost(PlayerHistoryActivity.this, "AAyaa");
+
+        sweetAlertDialog = new SweetAlertDialog(PlayerHistoryActivity.this);
+        sweetAlertDialog.setTitle("Alert individual Match Detail Deleting !");
+        sweetAlertDialog.setContentText("Are you sure want to delete this individual match Record?");
+        sweetAlertDialog.setVolumeControlStream(2);
+        sweetAlertDialog.setCancelable(true);
+        sweetAlertDialog.setCancelText("No");
+        sweetAlertDialog.setConfirmText("Yes");
+        sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+        sweetAlertDialog.changeAlertType(3);
+        sweetAlertDialog.setCanceledOnTouchOutside(false);
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                if (NetworkUtil.isConnected(PlayerHistoryActivity.this)) {
+                    sweetAlertDialog.dismiss();
+
+                    DeleteIndivisualMatchDetailsRequest request = new DeleteIndivisualMatchDetailsRequest();
+                    request.setId(String.valueOf(item.getMatch_Id()));
+                    // request.setDeletedBy(CSPreferences.readString(PlayerHistoryActivity.this, "User_name"));
+
+
+                    WebAPiCall aPiCall = new WebAPiCall();
+                    aPiCall.DeletePlayerDetailsPostDataMethod(PlayerHistoryActivity.this, PlayerHistoryActivity.this, request);
+
+
+                } else {
+                    GlobalClass.showtost(PlayerHistoryActivity.this, "No Internet Available.Plz check your internet connection.");
+                }
+
+            }
+        });
+
+        sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
+        sweetAlertDialog.show();
+
     }
+
 
     @Override
     public void GetPlayerHistory_list(List<PlayerHistoryResponse.Datum> list) {
 
 
         if (list != null) {
-            binding.toolbar.tvToolbarTitle.setText(list.get(0).getPlayerName()+" History");
+            binding.toolbar.tvToolbarTitle.setText(list.get(0).getPlayerName() + " History");
 
             arrayList.clear();
             arrayList.addAll(list);

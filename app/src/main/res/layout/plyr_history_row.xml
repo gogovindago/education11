@@ -9,8 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardBackgroundColor="@color/colorPrimary"
-        app:cardCornerRadius="2dp"
-        app:cardElevation="2dp"
+        app:cardCornerRadius="5dp"
+        app:cardElevation="5dp"
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
@@ -78,11 +78,11 @@
 
 
                     <LinearLayout
-                        android:visibility="gone"
-
                         android:layout_width="match_parent"
+
                         android:layout_height="match_parent"
-                        android:orientation="horizontal">
+                        android:orientation="horizontal"
+                        android:visibility="gone">
 
                         <TextView
                             android:id="@+id/txtInnings"
@@ -140,6 +140,7 @@
 
 
                         <LinearLayout
+
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:orientation="horizontal">
@@ -153,12 +154,12 @@
                                 android:background="@drawable/spinner_border"
                                 android:gravity="center|start"
                                 android:paddingStart="2dp"
-                                android:text="Score "
+                                android:paddingLeft="2dp"
+                                android:text=" Score "
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="bold"
-                                tools:targetApi="lollipop"
-                                android:paddingLeft="2dp" />
+                                tools:targetApi="lollipop" />
 
                             <TextView
                                 android:id="@+id/txtScorevalue"
@@ -193,7 +194,7 @@
                                 android:drawablePadding="0dp"
                                 android:gravity="center|start"
                                 android:padding="0dp"
-                                android:text="Balls "
+                                android:text=" Balls "
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="bold"
@@ -232,7 +233,7 @@
                                 android:drawablePadding="0dp"
                                 android:gravity="center|start"
                                 android:padding="0dp"
-                                android:text="4s "
+                                android:text=" 4s "
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
@@ -273,7 +274,7 @@
                                 android:drawablePadding="0dp"
                                 android:gravity="center|start"
                                 android:padding="0dp"
-                                android:text="6s "
+                                android:text=" 6s "
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
@@ -313,7 +314,7 @@
                                 android:gravity="center|start"
                                 android:padding="0dp"
 
-                                android:text="Bat Strike Rate "
+                                android:text=" Bat Strike Rate "
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="bold"
@@ -339,6 +340,7 @@
                                 tools:targetApi="lollipop" />
 
                         </LinearLayout>
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -347,14 +349,14 @@
 
                             <TextView
                                 android:id="@+id/textNotOuts"
-android:gravity="center|start"
                                 android:layout_width="0dp"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:layout_weight="0.2"
                                 android:background="@drawable/spinner_border"
+                                android:gravity="center|start"
                                 android:padding="0dp"
-                                android:text="Not Outs"
+                                android:text=" Not Out / Out"
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="normal" />
@@ -412,7 +414,7 @@ android:gravity="center|start"
                                 android:background="@drawable/spinner_border"
                                 android:gravity="center|start"
                                 android:padding="0dp"
-                                android:text="Overs "
+                                android:text=" Overs "
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white" />
@@ -446,7 +448,7 @@ android:gravity="center|start"
                                 android:background="@drawable/spinner_border"
                                 android:gravity="center|start"
                                 android:padding="0dp"
-                                android:text="Maiden "
+                                android:text=" Maiden "
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
@@ -481,7 +483,7 @@ android:gravity="center|start"
                                 android:layout_weight="0.2"
                                 android:background="@drawable/spinner_border"
                                 android:padding="0dp"
-                                android:text="Runs "
+                                android:text=" Runs "
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
@@ -517,7 +519,7 @@ android:gravity="center|start"
                                 android:layout_weight="0.2"
                                 android:background="@drawable/spinner_border"
                                 android:padding="0dp"
-                                android:text="Wickets "
+                                android:text=" Wickets "
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="normal" />
@@ -552,7 +554,7 @@ android:gravity="center|start"
                                 android:layout_weight="0.2"
                                 android:background="@drawable/spinner_border"
                                 android:padding="0dp"
-                                android:text="Bowl Average "
+                                android:text=" Bowl Average "
 
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
@@ -588,7 +590,7 @@ android:gravity="center|start"
                                 android:layout_weight="0.2"
                                 android:background="@drawable/spinner_border"
                                 android:padding="0dp"
-                                android:text="Eco Rate"
+                                android:text=" Eco Rate"
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="normal" />
@@ -624,7 +626,7 @@ android:gravity="center|start"
                                 android:layout_weight="0.2"
                                 android:background="@drawable/spinner_border"
                                 android:padding="0dp"
-                                android:text="Catches"
+                                android:text=" Catches"
                                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                                 android:textColor="@android:color/white"
                                 android:textStyle="normal" />
@@ -653,9 +655,8 @@ android:gravity="center|start"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="2dp"
-                        android:background="@drawable/buttonstyle"
                         android:orientation="horizontal"
-                        android:visibility="gone">
+                        android:visibility="visible">
 
                         <com.facebook.shimmer.ShimmerFrameLayout
                             android:id="@+id/shimmer_view_container1"
@@ -670,16 +671,16 @@ android:gravity="center|start"
                             app:shimmer_tilt="180">
 
                             <androidx.appcompat.widget.AppCompatButton
-                                android:id="@+id/btnplyrhist"
-                                android:layout_width="match_parent"
+                                android:id="@+id/btndeleterecord"
+                                android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_gravity="center"
                                 android:fontFamily="@font/cabin_sketch"
                                 android:gravity="center"
                                 android:padding="8dp"
-                                android:text="Player indivisual career statistics"
+                                android:text="Delete This Record"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Small"
-                                android:textColor="@color/colorPrimary"
+                                android:textColor="@color/red"
                                 android:textStyle="normal" />
                         </com.facebook.shimmer.ShimmerFrameLayout>
 

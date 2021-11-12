@@ -2,6 +2,7 @@ package education.hry.pkl.cricket11.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -79,6 +80,7 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
 
         }
 
+        @SuppressLint("ResourceAsColor")
         public void setData(CareerStatisticsResponse.Datum item, int currposition) {
             this.currposition = currposition;
             this.item = item;
@@ -105,6 +107,21 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
             textBowlAveragevalue.setText(String.valueOf(item.getBowlAverage()));
             textclassvalue.setText(String.valueOf(item.getBowlAverage()));
             textNotOutsvalue.setText(String.valueOf(item.getNotOut()));
+           /* if (item.getNotOut()==1) {
+
+                //
+                textNotOutsvalue.setText("Not Out");
+               // textNotOutsvalue.setTextColor( R.color.white);
+                textNotOutsvalue.setTextColor(Color.parseColor("#FFFFFF"));
+
+            }else {
+
+                //  textNotOutsvalue.setText(String.valueOf(item.getNotOut()));
+                textNotOutsvalue.setText("OUT");
+              //  textNotOutsvalue.setTextColor(R.color.red);
+                textNotOutsvalue.setTextColor(Color.parseColor("#F00000"));
+            }*/
+
               imgplayername.setImageURI(imageurl);
 
         }

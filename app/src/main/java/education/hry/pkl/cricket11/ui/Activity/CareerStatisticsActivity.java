@@ -103,7 +103,7 @@ public class CareerStatisticsActivity extends BaseActivity implements CareerStat
     @Override
     public void onItemClick(CareerStatisticsResponse.Datum item, int currposition, String plyrhist) {
 
-        Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, "click", Toast.LENGTH_SHORT).show();
 
         Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
         playerhistoryintent.putExtra("playerId", item.getPlayerId());

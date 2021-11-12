@@ -8,20 +8,23 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.engine.DiskCacheStrategy;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import education.hry.pkl.cricket11.R;
-import education.hry.pkl.cricket11.model.AllTeamListResponse;
+import education.hry.pkl.cricket11.model.PlayersListResponse;
 
 
-public class SpinnerAllTeamAdapter extends BaseAdapter {
+public class SpinnerAllDhePlayerAdapter extends BaseAdapter {
     Context context;
-    private List<AllTeamListResponse.Datum> statelist = new ArrayList<AllTeamListResponse.Datum>();
+    private List<PlayersListResponse.Datum> statelist = new ArrayList<PlayersListResponse.Datum>();
 
     LayoutInflater inflter;
 
-    public SpinnerAllTeamAdapter(Context applicationContext, List<AllTeamListResponse.Datum> statelist) {
+    public SpinnerAllDhePlayerAdapter(Context applicationContext, List<PlayersListResponse.Datum> statelist) {
         this.context = applicationContext;
         this.statelist = statelist;
         inflter = (LayoutInflater.from(applicationContext));
@@ -44,16 +47,26 @@ public class SpinnerAllTeamAdapter extends BaseAdapter {
 
     @Override
     public View getView(int i, View view, ViewGroup viewGroup) {
+
         view = inflter.inflate(R.layout.custom_spinner_items, null);
+
         ImageView icon = (ImageView) view.findViewById(R.id.imageView);
+
         TextView names = (TextView) view.findViewById(R.id.textView);
 
 
-        icon.setImageResource(R.drawable.ic_baseline_groups_24);
+        if (i == 0) {
+            icon.setImageResource(R.drawable.ic_baseline_groups_24);
+        } else {
+
+            Glide.with(context).load(statelist.get(i).getFilePath())
+                    .diskCacheStrategy(DiskCacheStrategy.ALL)
+                    .into(icon);
+        }
+
+        names.setText(statelist.get(i).getPlayerName());
 
 
-
-        names.setText(statelist.get(i).getTeamName());
         return view;
     }
 }

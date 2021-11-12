@@ -300,6 +300,9 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         DataModelLeftNew playersList = new DataModelLeftNew(R.drawable.ic_baseline_view_list_24, "Players List", 8);
         dataModelLeftList.add(playersList);
 
+        DataModelLeftNew TealList = new DataModelLeftNew(R.drawable.ic_baseline_group_add_24, "Team List", 200);
+        dataModelLeftList.add(TealList);
+
         DataModelLeftNew showMatchDetails = new DataModelLeftNew(R.drawable.ic_baseline_checklist_24, "Show Match Details", 9);
         dataModelLeftList.add(showMatchDetails);
 
@@ -516,6 +519,13 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
                 Intent addnewteam = new Intent(this, AddNewTeamActivity.class);
                 startActivity(addnewteam);
+                break;
+
+            case 200:
+
+                mDrawerLayout.closeDrawers();
+                Intent allteamintent = new Intent(this, AllTeamListActivity.class);
+                startActivity(allteamintent);
                 break;
 
             case 10:

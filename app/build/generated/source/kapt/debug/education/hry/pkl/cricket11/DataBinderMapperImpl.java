@@ -8,6 +8,7 @@ import androidx.databinding.DataBindingComponent;
 import androidx.databinding.ViewDataBinding;
 import education.hry.pkl.cricket11.databinding.ActivityAddMatchResultBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityAddNewTeamBindingImpl;
+import education.hry.pkl.cricket11.databinding.ActivityAllTeamListBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityCareerStatisticsBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityEducationwebsiteBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityForgetPasswordBindingImpl;
@@ -38,41 +39,44 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_ACTIVITYADDNEWTEAM = 2;
 
-  private static final int LAYOUT_ACTIVITYCAREERSTATISTICS = 3;
+  private static final int LAYOUT_ACTIVITYALLTEAMLIST = 3;
 
-  private static final int LAYOUT_ACTIVITYEDUCATIONWEBSITE = 4;
+  private static final int LAYOUT_ACTIVITYCAREERSTATISTICS = 4;
 
-  private static final int LAYOUT_ACTIVITYFORGETPASSWORD = 5;
+  private static final int LAYOUT_ACTIVITYEDUCATIONWEBSITE = 5;
 
-  private static final int LAYOUT_ACTIVITYINDIVISUALMATCHDETAILADDING = 6;
+  private static final int LAYOUT_ACTIVITYFORGETPASSWORD = 6;
 
-  private static final int LAYOUT_ACTIVITYMATCHDETAILS = 7;
+  private static final int LAYOUT_ACTIVITYINDIVISUALMATCHDETAILADDING = 7;
 
-  private static final int LAYOUT_ACTIVITYNETPRACTICEIMAGEVIDEO = 8;
+  private static final int LAYOUT_ACTIVITYMATCHDETAILS = 8;
 
-  private static final int LAYOUT_ACTIVITYNOTIFICATIONDETAIL = 9;
+  private static final int LAYOUT_ACTIVITYNETPRACTICEIMAGEVIDEO = 9;
 
-  private static final int LAYOUT_ACTIVITYNOTIFICATIONS = 10;
+  private static final int LAYOUT_ACTIVITYNOTIFICATIONDETAIL = 10;
 
-  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 11;
+  private static final int LAYOUT_ACTIVITYNOTIFICATIONS = 11;
 
-  private static final int LAYOUT_ACTIVITYPLAYERHISTORY = 12;
+  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 12;
 
-  private static final int LAYOUT_ACTIVITYPROFILE = 13;
+  private static final int LAYOUT_ACTIVITYPLAYERHISTORY = 13;
 
-  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 14;
+  private static final int LAYOUT_ACTIVITYPROFILE = 14;
 
-  private static final int LAYOUT_ACTIVITYWELCOME = 15;
+  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 15;
 
-  private static final int LAYOUT_LISTVIEWITEMROW = 16;
+  private static final int LAYOUT_ACTIVITYWELCOME = 16;
 
-  private static final int LAYOUT_TOOLBARLAYOUT = 17;
+  private static final int LAYOUT_LISTVIEWITEMROW = 17;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(17);
+  private static final int LAYOUT_TOOLBARLAYOUT = 18;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(18);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_add_match_result, LAYOUT_ACTIVITYADDMATCHRESULT);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_add_new_team, LAYOUT_ACTIVITYADDNEWTEAM);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_all_team_list, LAYOUT_ACTIVITYALLTEAMLIST);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_career_statistics, LAYOUT_ACTIVITYCAREERSTATISTICS);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_educationwebsite, LAYOUT_ACTIVITYEDUCATIONWEBSITE);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_forget_password, LAYOUT_ACTIVITYFORGETPASSWORD);
@@ -110,6 +114,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityAddNewTeamBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_add_new_team is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ACTIVITYALLTEAMLIST: {
+          if ("layout/activity_all_team_list_0".equals(tag)) {
+            return new ActivityAllTeamListBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_all_team_list is invalid. Received: " + tag);
         }
         case  LAYOUT_ACTIVITYCAREERSTATISTICS: {
           if ("layout/activity_career_statistics_0".equals(tag)) {
@@ -254,11 +264,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(17);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(18);
 
     static {
       sKeys.put("layout/activity_add_match_result_0", education.hry.pkl.cricket11.R.layout.activity_add_match_result);
       sKeys.put("layout/activity_add_new_team_0", education.hry.pkl.cricket11.R.layout.activity_add_new_team);
+      sKeys.put("layout/activity_all_team_list_0", education.hry.pkl.cricket11.R.layout.activity_all_team_list);
       sKeys.put("layout/activity_career_statistics_0", education.hry.pkl.cricket11.R.layout.activity_career_statistics);
       sKeys.put("layout/activity_educationwebsite_0", education.hry.pkl.cricket11.R.layout.activity_educationwebsite);
       sKeys.put("layout/activity_forget_password_0", education.hry.pkl.cricket11.R.layout.activity_forget_password);

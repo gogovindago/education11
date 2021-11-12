@@ -44,6 +44,11 @@ public class PlayerHistoryResponse {
     public class Datum {
 
 
+        @SerializedName("match_Id")
+        @Expose
+        private int match_Id;
+
+
         @SerializedName("player_Id")
         @Expose
         private int playerId;
@@ -95,6 +100,14 @@ public class PlayerHistoryResponse {
         @SerializedName("ecoRate")
         @Expose
         private float ecoRate;
+
+        public int getMatch_Id() {
+            return match_Id;
+        }
+
+        public void setMatch_Id(int match_Id) {
+            this.match_Id = match_Id;
+        }
 
         public int getPlayerId() {
             return playerId;
