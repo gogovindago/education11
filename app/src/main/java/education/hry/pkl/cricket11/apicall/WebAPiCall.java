@@ -39,6 +39,8 @@ import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsResponse;
+import education.hry.pkl.cricket11.model.DeleteTeamDetailsRequest;
+import education.hry.pkl.cricket11.model.DeleteTeamDetailsResponse;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
@@ -1045,12 +1047,48 @@ public class WebAPiCall {
 
     public void DeleteTotalMatchDetailsPostDataMethod(final Activity activity, final Context context, DeleteTotalMatchDetailsRequest request) {
 
-        loadershowwithMsg(context, "Deleting Team is going On...");
+        loadershowwithMsg(context, "Deleting Match Record is going On...");
 
         Call<DeleteTotalMatchDetailsResponse> teamApi = ApiClient.getClient().DeleteTotalMatchDetailsApi(request);
         teamApi.enqueue(new Callback<DeleteTotalMatchDetailsResponse>() {
             @Override
             public void onResponse(Call<DeleteTotalMatchDetailsResponse> call, Response<DeleteTotalMatchDetailsResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", " Match Record Deleted Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeleteTotalMatchDetailsResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    public void DeleteTeamDetailsPostDataMethod(final Activity activity, final Context context, DeleteTeamDetailsRequest request) {
+
+        loadershowwithMsg(context, "Deleting Team is going On...");
+
+        Call<DeleteTeamDetailsResponse> teamApi = ApiClient.getClient().DeleteTeamDetailsApi(request);
+        teamApi.enqueue(new Callback<DeleteTeamDetailsResponse>() {
+            @Override
+            public void onResponse(Call<DeleteTeamDetailsResponse> call, Response<DeleteTeamDetailsResponse> response) {
                 dailoghide(context);
                 if (response.isSuccessful()) {
 
@@ -1069,7 +1107,7 @@ public class WebAPiCall {
             }
 
             @Override
-            public void onFailure(Call<DeleteTotalMatchDetailsResponse> call, Throwable t) {
+            public void onFailure(Call<DeleteTeamDetailsResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();

@@ -31,38 +31,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7063279c-bc44-49d9-9779-54be30cd925c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityAllTeamListBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/AllTeamListAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/SpinnerAllDhePlayerAdapter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/DeleteIndivisualMatchDetailsRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/DeleteIndivisualMatchDetailsResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/circle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_all_team_list.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/dhe_player_spinner_items.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_item_allteam_row.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/DeleteTeamDetailsRequest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/DeleteTeamDetailsResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/deploymentTargetDropDown.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/DataBinderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/DataBinderMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityIndivisualMatchDetailAddingBindingImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityIndivisualMatchDetailAddingBindingImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/CareerStatisticsAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/CareerStatisticsAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/PlayerHistoryAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/PlayerHistoryAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/SpinnerAllTeamAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/SpinnerAllTeamAdapter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/AllTeamListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/AllTeamListAdapter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/PlayerHistoryResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/PlayerHistoryResponse.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/PlayersListResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/PlayersListResponse.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/CareerStatisticsActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/CareerStatisticsActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/IndivisualMatchDetailAddingActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/IndivisualMatchDetailAddingActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/PlayerHistoryActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/PlayerHistoryActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_indivisual_match_detail_adding.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_indivisual_match_detail_adding.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/career_statistics_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/career_statistics_row.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/plyr_history_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/plyr_history_row.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_item_allteam_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_item_allteam_row.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -148,7 +126,7 @@
     <property name="DeviceAndSnapshotComboBoxAction.selectionTime" value="2021-07-28T12:03:54.393630800Z" />
     <property name="ExportApk.ApkPath" value="E:\AndroidApps\Govind\2020\AllApps\Java\Live\education11\Education11\app\src" />
     <property name="ExportApk.BuildVariants" value="release" />
-    <property name="ResourceManagerPrefKey.ResourceType" value="DRAWABLE" />
+    <property name="ResourceManagerPrefKey.ResourceType" value="LAYOUT" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
@@ -579,7 +557,21 @@
       <option name="project" value="LOCAL" />
       <updated>1636630224424</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="1.Delete individual record done.">
+      <created>1636715806455</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1636715806455</updated>
+    </task>
+    <task id="LOCAL-00032" summary="1.Delete individual record done.">
+      <created>1636715974419</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1636715974419</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -664,7 +656,8 @@
     <MESSAGE value="1.net practice image /video ....&#10;2.Add match detail..." />
     <MESSAGE value="001. AddMatchResultActivity mom pic crop nd set done.&#10;&#10;1.net practice image /video ....&#10;2.Add match detail..." />
     <MESSAGE value="* 01- IndivisualMatchDetailAddingActivity.java...&#10;&#10;001. AddMatchResultActivity mom pic crop nd set done.&#10;&#10;1.net practice image /video done&#10;2.Add match detail done" />
-    <option name="LAST_COMMIT_MESSAGE" value="* 01- IndivisualMatchDetailAddingActivity.java...&#10;&#10;001. AddMatchResultActivity mom pic crop nd set done.&#10;&#10;1.net practice image /video done&#10;2.Add match detail done" />
+    <MESSAGE value="1.Delete individual record done." />
+    <option name="LAST_COMMIT_MESSAGE" value="1.Delete individual record done." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -786,22 +779,22 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java</url>
-          <line>90</line>
+          <line>93</line>
           <option name="timeStamp" value="77" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java</url>
-          <line>95</line>
+          <line>98</line>
           <option name="timeStamp" value="78" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java</url>
-          <line>96</line>
+          <line>99</line>
           <option name="timeStamp" value="79" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-line">
           <url>file://$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java</url>
-          <line>97</line>
+          <line>100</line>
           <option name="timeStamp" value="81" />
         </line-breakpoint>
         <line-breakpoint enabled="true" suspend="THREAD" type="java-method">

@@ -7,6 +7,7 @@ import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -46,19 +47,20 @@ public class AllTeamListAdapter extends RecyclerView.Adapter<AllTeamListAdapter.
         LinearLayout llmain;
         public int currposition;
         CardView maincard;
-
+        Button btnDeleteTeam;
 
         public ViewHolder(View v) {
 
             super(v);
 
-            v.setOnClickListener(this);
+            //   v.setOnClickListener(this);
             maincard = v.findViewById(R.id.maincard);
             llmain = v.findViewById(R.id.llmain);
             txtName = (TextView) v.findViewById(R.id.txtName);
             txtteamLogo = (TextView) v.findViewById(R.id.txtteamLogo);
             imageView = (ImageView) v.findViewById(R.id.ivThumb);
-
+            btnDeleteTeam = v.findViewById(R.id.btnDeleteTeam);
+            btnDeleteTeam.setOnClickListener(this);
 
         }
 
@@ -117,9 +119,21 @@ public class AllTeamListAdapter extends RecyclerView.Adapter<AllTeamListAdapter.
 
         @Override
         public void onClick(View view) {
-            if (mListener != null) {
-                mListener.onItemClick(item, currposition);
+
+            switch (view.getId()) {
+
+                case R.id.btnDeleteTeam:
+
+                    if (mListener != null) {
+
+                        mListener.onItemClick(item, currposition);
+
+
+                    }
+                    break;
             }
+
+
         }
     }
 
