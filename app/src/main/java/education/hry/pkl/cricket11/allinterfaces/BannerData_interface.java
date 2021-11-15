@@ -19,4 +19,8 @@ public interface BannerData_interface {
     void allMostSixes_list(List<BannerResponse.MostSix> list);
     void allMostFours_list(List<BannerResponse.MostFour> list);
 
+    void BestBatsman_list(List<BannerResponse.BestBatsman> list);
+    void BestBowler_list(List<BannerResponse.BestBowler> list);
+    void UpcomingBirthday_list(List<BannerResponse.UpcomingBirthday> list);
+
 }

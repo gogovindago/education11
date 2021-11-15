@@ -654,7 +654,7 @@
                         android:id="@+id/llappstatus"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="0dp"
                         android:orientation="horizontal"
                         android:visibility="visible">
 
@@ -662,7 +662,7 @@
                             android:id="@+id/shimmer_view_container1"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="1dp"
+                            android:layout_marginTop="0dp"
                             android:background="@drawable/black_border"
                             android:elevation="4dp"
                             app:shimmer_base_alpha="1"

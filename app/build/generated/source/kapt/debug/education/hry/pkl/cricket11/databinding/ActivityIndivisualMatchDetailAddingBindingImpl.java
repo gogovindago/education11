@@ -19,13 +19,13 @@ public class ActivityIndivisualMatchDetailAddingBindingImpl extends ActivityIndi
             new int[] {education.hry.pkl.cricket11.R.layout.toolbar_layout});
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.simpleSwipeRefreshLayout, 2);
-        sViewsWithIds.put(R.id.edtMatchDate, 3);
-        sViewsWithIds.put(R.id.llteamhostdhe, 4);
-        sViewsWithIds.put(R.id.txtteamhostdhe, 5);
-        sViewsWithIds.put(R.id.spnteamdhe, 6);
-        sViewsWithIds.put(R.id.llteamdhe, 7);
-        sViewsWithIds.put(R.id.txtteamplayerdhe, 8);
-        sViewsWithIds.put(R.id.spnteamplayerdhe, 9);
+        sViewsWithIds.put(R.id.llteamdhe, 3);
+        sViewsWithIds.put(R.id.txtteamplayerdhe, 4);
+        sViewsWithIds.put(R.id.spnteamplayerdhe, 5);
+        sViewsWithIds.put(R.id.edtMatchDate, 6);
+        sViewsWithIds.put(R.id.llteamhostdhe, 7);
+        sViewsWithIds.put(R.id.txtteamhostdhe, 8);
+        sViewsWithIds.put(R.id.spnteamdhe, 9);
         sViewsWithIds.put(R.id.llOpponent, 10);
         sViewsWithIds.put(R.id.txtOpponent, 11);
         sViewsWithIds.put(R.id.spnOpponentteam, 12);
@@ -63,7 +63,7 @@ public class ActivityIndivisualMatchDetailAddingBindingImpl extends ActivityIndi
             , (com.google.android.material.textfield.TextInputEditText) bindings[16]
             , (com.google.android.material.textfield.TextInputEditText) bindings[14]
             , (com.google.android.material.textfield.TextInputEditText) bindings[21]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[3]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[6]
             , (com.google.android.material.textfield.TextInputEditText) bindings[20]
             , (com.google.android.material.textfield.TextInputEditText) bindings[22]
             , (com.google.android.material.textfield.TextInputEditText) bindings[13]
@@ -71,18 +71,18 @@ public class ActivityIndivisualMatchDetailAddingBindingImpl extends ActivityIndi
             , (com.google.android.material.textfield.TextInputEditText) bindings[24]
             , (com.google.android.material.textfield.TextInputEditText) bindings[25]
             , (android.widget.LinearLayout) bindings[10]
+            , (android.widget.LinearLayout) bindings[3]
             , (android.widget.LinearLayout) bindings[7]
-            , (android.widget.LinearLayout) bindings[4]
             , (android.widget.RadioButton) bindings[19]
             , (android.widget.RadioButton) bindings[18]
             , (androidx.swiperefreshlayout.widget.SwipeRefreshLayout) bindings[2]
             , (androidx.appcompat.widget.AppCompatSpinner) bindings[12]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[6]
             , (androidx.appcompat.widget.AppCompatSpinner) bindings[9]
+            , (androidx.appcompat.widget.AppCompatSpinner) bindings[5]
             , (education.hry.pkl.cricket11.databinding.ToolbarLayoutBinding) bindings[1]
             , (android.widget.TextView) bindings[11]
-            , (android.widget.TextView) bindings[5]
             , (android.widget.TextView) bindings[8]
+            , (android.widget.TextView) bindings[4]
             );
         this.mboundView0 = (androidx.appcompat.widget.LinearLayoutCompat) bindings[0];
         this.mboundView0.setTag(null);

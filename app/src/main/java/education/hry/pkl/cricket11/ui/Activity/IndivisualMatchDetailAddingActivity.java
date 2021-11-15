@@ -2,6 +2,7 @@ package education.hry.pkl.cricket11.ui.Activity;
 
 import android.app.DatePickerDialog;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
@@ -17,6 +18,7 @@ import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.SpinnerAllDhePlayerAdapter;
 import education.hry.pkl.cricket11.adapter.SpinnerAllTeamAdapter;
@@ -25,6 +27,7 @@ import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityIndivisualMatchDetailAddingBinding;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
+import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualRequest;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
@@ -39,18 +42,20 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
     SpinnerAllTeamAdapter SpinnerAllTeamAdapter;
     SpinnerAllDhePlayerAdapter spinnerAllDhePlayerAdapter;
 
-    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnmomteamnameCurrentPosition;
+    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnAllDhePlayerCurrentPosition;
     private MyLoaders myLoaders;
 
-    String OpponentteamID, teamdhe, token, uname, Registration_Id, IsBatsmanOUtorNOt;
+    String OpponentteamID, teamdhe, token, uname, Registration_Id, IsBatsmanOUtorNOt, SelectedPlayerforinsertRecordName="", SelectedPlayerforinsertRecordID;
     RadioGroup btnRadiogroup;
     RadioButton checkedRadioButton;
+    private SweetAlertDialog sweetAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         binding = DataBindingUtil.setContentView(this, R.layout.activity_indivisual_match_detail_adding);
+        myLoaders = new MyLoaders(getApplicationContext());
 
         uname = CSPreferences.readString(IndivisualMatchDetailAddingActivity.this, "User_name");
 
@@ -127,7 +132,11 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
 
     @Override
     public void initData() {
-        binding.toolbar.tvToolbarTitle.setText("Add Indivisual Match Record");
+
+        binding.toolbar.tvToolbarTitle.setText("Add Indivisual Match Record of " + SelectedPlayerforinsertRecordName);
+
+        binding.btnaddmatchdetail.setText("Add Match Record for " + SelectedPlayerforinsertRecordName);
+
     }
 
     @Override
@@ -181,7 +190,78 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
         });
 
 
+        binding.btnaddmatchdetail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (Check_Data(v)) {
+
+                    sweetAlertDialog = new SweetAlertDialog(IndivisualMatchDetailAddingActivity.this);
+                    sweetAlertDialog.setTitle("Alert Indivisual Match Deatil of"+ SelectedPlayerforinsertRecordName+" Adding !");
+                    sweetAlertDialog.setContentText("Make Sure you have filled all  Indivisual Match Deatil of"+SelectedPlayerforinsertRecordName+" correctly.");
+                    sweetAlertDialog.setVolumeControlStream(2);
+                    sweetAlertDialog.setCancelable(true);
+                    sweetAlertDialog.setCancelText("No");
+                    sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+                    sweetAlertDialog.changeAlertType(3);
+                    sweetAlertDialog.setCanceledOnTouchOutside(false);
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                            if (NetworkUtil.isConnected(IndivisualMatchDetailAddingActivity.this)) {
+                                sweetAlertDialog.dismiss();
+
+                                InsertMatchRecordIndivisualRequest request = new InsertMatchRecordIndivisualRequest();
+                                request.setDate(binding.edtMatchDate.getText().toString().trim());
+                                request.setScore(binding.edtScored.getText().toString().trim());
+
+
+                                WebAPiCall aPiCall = new WebAPiCall();
+                                aPiCall.InsertMatchRecordIndivisualPostDataMethod(IndivisualMatchDetailAddingActivity.this, IndivisualMatchDetailAddingActivity.this, request);
+
+
+                            } else {
+                                GlobalClass.showtost(IndivisualMatchDetailAddingActivity.this, "No Internet Available.Plz check your internet connection.");
+                            }
+
+                        }
+                    });
+
+                    sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            sweetAlertDialog.dismiss();
+                        }
+                    });
+                    sweetAlertDialog.show();
+
+                } else {
+
+
+                }
+
+
+            }
+        });
+
+
     }
+
+
+    public boolean Check_Data(View view) {
+
+        if (TextUtils.isEmpty(binding.edtMatchDate.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Select Match Date.");
+            return false;
+        }else if (spnAllDhePlayerCurrentPosition == 0) {
+            myLoaders.showSnackBar(view, "Please Select DHE Player Name.");
+            return false;
+        }
+
+        return true;
+    }
+
 
     @Override
     public void GetAllTeamListDetail_list(List<AllTeamListResponse.Datum> list) {
@@ -239,7 +319,31 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
 
         } else if (id == R.id.spnteamplayerdhe) {
 
+            spnAllDhePlayerCurrentPosition = position;
+            SelectedPlayerforinsertRecordName = dheTeamPlayerList.get(position).getPlayerName();
+            SelectedPlayerforinsertRecordID = String.valueOf(dheTeamPlayerList.get(position).getPlayerId());
 
+            String arr[] = SelectedPlayerforinsertRecordName.split(" ", 2);
+
+            String firstWord = arr[0];   //the
+            String theRest2 = arr[1];
+
+            binding.toolbar.tvToolbarTitle.setText("Add Indivisual Match Record of " + firstWord);
+
+            binding.btnaddmatchdetail.setText("Add Match Record for " + firstWord);
+
+
+
+            //quick brown fox
+            //              String theRest3 = arr[2];     //quick brown fox
+//                binding.tlOpponentscore.setHint(firstWord + " " + theRest2 + " Total Score");
+//                binding.tlOpponentover.setHint(firstWord + " " + theRest2 + " Over played");
+
+
+        } else {
+//                binding.tlOpponentscore.setHint("Total Score");
+//                binding.tlOpponentover.setHint("Over played");
+            spnAllDhePlayerCurrentPosition = position;
         }
 
 

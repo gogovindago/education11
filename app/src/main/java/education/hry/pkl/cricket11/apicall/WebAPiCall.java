@@ -309,6 +309,10 @@ public class WebAPiCall {
                     dataInterface.allMostRun_list((ArrayList<BannerResponse.MostRun>) response.body().getData().getMostRun());
                     dataInterface.allMostSixes_list((ArrayList<BannerResponse.MostSix>) response.body().getData().getMostSix());
                     dataInterface.allMostFours_list((ArrayList<BannerResponse.MostFour>) response.body().getData().getMostFour());
+
+                    dataInterface.BestBatsman_list((ArrayList<BannerResponse.BestBatsman>) response.body().getData().getBestBatsman());
+                    dataInterface.BestBowler_list((ArrayList<BannerResponse.BestBowler>) response.body().getData().getBestBowler());
+                    dataInterface.UpcomingBirthday_list((ArrayList<BannerResponse.UpcomingBirthday>) response.body().getData().getUpcomingBirthday());
                 } else {
                     llmain.setVisibility(View.GONE);
                     GlobalClass.showtost(activity, "" + response.message());

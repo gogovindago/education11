@@ -32,6 +32,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
@@ -48,7 +49,11 @@ import com.smarteist.autoimageslider.SliderAnimations;
 import com.smarteist.autoimageslider.SliderView;
 import com.squareup.picasso.Picasso;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -70,24 +75,37 @@ import education.hry.pkl.cricket11.app.MyApplication;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.DataModel;
 import education.hry.pkl.cricket11.model.DataModelLeftNew;
-import education.hry.pkl.cricket11.model.NetpracticeTypeData;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 
-public class MainActivity extends BaseActivity implements RecyclerViewAdapter.ItemListener, BannerData_interface, AdminImgAdapter.ItemListener, RecentMatchesAdapter.ItemListener, TopBatAvgAdapter.ItemListener, TopBowlAvgAdapter.ItemListener, MostWicketAdapter.ItemListener, TopMostRunAdapter.ItemListener, MostSixesAdapter.ItemListener, MostFoursAdapter.ItemListener {
+public class MainActivity extends BaseActivity implements RecyclerViewAdapter.ItemListener,
+        BannerData_interface,
+        AdminImgAdapter.ItemListener,
+        RecentMatchesAdapter.ItemListener,
+        TopBatAvgAdapter.ItemListener,
+        TopBowlAvgAdapter.ItemListener,
+        MostWicketAdapter.ItemListener,
+        TopMostRunAdapter.ItemListener,
+        MostSixesAdapter.ItemListener,
+        MostFoursAdapter.ItemListener {
 
 
     private AppUpdateManager mAppUpdateManager;
+
     private static final int RC_APP_UPDATE = 11;
     // List<SliderItem> sliderItemList;
+
     List<BannerResponse.Banner> sliderItemList;
     SwipeRefreshLayout mSwipeRefreshLayout;
     SliderView sliderView;
     SliderAdapter sliderAdapter;
     private static DrawerLayout mDrawerLayout;
-    ImageView toggle, profile_image;
-    TextView toolbartxt, uname, umobile, uemailId;
+
+    ImageView toggle, profile_image, imgbestbatter,
+            imgbestBowler, imgDobWishes;
+    TextView toolbartxt, uname, umobile, uemailId,
+            txtbestBatter, txtBestbowler, txtbirthdaywishes;
     Toolbar toolbar;
     Context context;
     AdminImgAdapter adapteradminimage;
@@ -99,7 +117,13 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     MostSixesAdapter mostSixesAdapter;
     MostFoursAdapter mostFoursAdapter;
     private ListView mDrawerList;
-    RecyclerView recyclerView, rvadminimage, rvTopBattingAvg, rvrecentmatch, rvWicketMost, rvRun, rvMostFour, rvMostSixes;
+    RecyclerView
+            recyclerView, rvadminimage,
+            rvTopBattingAvg, rvrecentmatch,
+            rvWicketMost, rvRun,
+            rvMostFour,
+            rvMostSixes;
+
     ArrayList arrayList;
     LinearLayout llmain;
     List<DataModelLeftNew> dataModelLeftList;
@@ -148,6 +172,14 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         umobile = findViewById(R.id.umobile);
         uemailId = findViewById(R.id.uemailId);
         profile_image = findViewById(R.id.profile_image);
+
+
+        txtbirthdaywishes = findViewById(R.id.txtbirthdaywishes);
+        txtBestbowler = findViewById(R.id.txtBestbowler);
+        txtbestBatter = findViewById(R.id.txtbestBatter);
+        imgbestbatter = findViewById(R.id.imgbestbatter);
+        imgbestBowler = findViewById(R.id.imgbestBowler);
+        imgDobWishes = findViewById(R.id.imgDobWishes);
 
 
         try {
@@ -783,6 +815,67 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         GridLayoutManager layoutManager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
         rvMostFour.setLayoutManager(layoutManager);
     }
+
+    @Override
+    public void BestBatsman_list(List<BannerResponse.BestBatsman> list) {
+
+
+        txtbestBatter.setText(list.get(0).getPlayerName() + "\nRuns - " + list.get(0).getMaximumRuns() + "\nDated - " + list.get(0).getDate());
+
+
+        Glide.with(this)
+                .load(list.get(0).getFilePath())
+                .fitCenter()
+                .into(imgbestbatter);
+
+
+    }
+
+    @Override
+    public void BestBowler_list(List<BannerResponse.BestBowler> list) {
+
+
+
+
+        txtBestbowler.setText(list.get(0).getPlayerName() + "\nWickets - " + list.get(0).getMaximumWickets() + "\nDated - " + list.get(0).getDate());
+
+
+        Glide.with(this)
+                .load(list.get(0).getFilePath())
+                .fitCenter()
+                .into(imgbestBowler);
+
+
+    }
+
+    @Override
+    public void UpcomingBirthday_list(List<BannerResponse.UpcomingBirthday> list) {
+
+        Glide.with(this)
+                .load(list.get(0).getFilePath())
+                .fitCenter()
+                .into(imgDobWishes);
+
+        txtbirthdaywishes.setSelected(true);
+
+        String input_date=list.get(0).getDob();
+        SimpleDateFormat format1=new SimpleDateFormat("dd/MM/yyyy");
+        Date dt1= null;
+
+        try {
+            dt1 = format1.parse(input_date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        DateFormat format2=new SimpleDateFormat("EEEE, MMMM dd, yyyy");
+        String finalDay=format2.format(dt1);
+
+
+
+        txtbirthdaywishes.setText("                  " + list.get(0).getPlayerName() + ", DOB :-" + finalDay + "                   ");
+
+    }
+
 
     @Override
     public void onadminimgItemClick(BannerResponse.DashboardOfficer item, int currposition) {

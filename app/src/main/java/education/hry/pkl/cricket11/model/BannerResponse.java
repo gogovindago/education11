@@ -49,6 +49,8 @@ public class BannerResponse {
         @Expose
         private List<DashboardOfficer> dashboardOfficers = new ArrayList<DashboardOfficer>();
 
+
+
         @SerializedName("matchDetails")
         @Expose
         private List<MatchDetail> matchDetails = new ArrayList<MatchDetail>();
@@ -75,6 +77,42 @@ public class BannerResponse {
         @SerializedName("mostFour")
         @Expose
         private List<MostFour> mostFour = new ArrayList<MostFour>();
+
+        @SerializedName("bestBatsman")
+        @Expose
+        private List<BestBatsman> bestBatsman = null;
+        @SerializedName("bestBowler")
+        @Expose
+        private List<BestBowler> bestBowler = null;
+        @SerializedName("upcomingBirthday")
+        @Expose
+        private List<UpcomingBirthday> upcomingBirthday = null;
+
+
+        public List<BestBatsman> getBestBatsman() {
+            return bestBatsman;
+        }
+
+        public void setBestBatsman(List<BestBatsman> bestBatsman) {
+            this.bestBatsman = bestBatsman;
+        }
+
+        public List<BestBowler> getBestBowler() {
+            return bestBowler;
+        }
+
+        public void setBestBowler(List<BestBowler> bestBowler) {
+            this.bestBowler = bestBowler;
+        }
+
+        public List<UpcomingBirthday> getUpcomingBirthday() {
+            return upcomingBirthday;
+        }
+
+        public void setUpcomingBirthday(List<UpcomingBirthday> upcomingBirthday) {
+            this.upcomingBirthday = upcomingBirthday;
+        }
+
 
         public List<MatchDetail> getMatchDetails() {
             return matchDetails;
@@ -889,6 +927,163 @@ public class BannerResponse {
 
         public void setFileName(String fileName) {
             this.fileName = fileName;
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public void setFilePath(String filePath) {
+            this.filePath = filePath;
+        }
+
+    }
+
+
+
+    public class BestBatsman {
+
+        @SerializedName("playerName")
+        @Expose
+        private String playerName;
+        @SerializedName("maximumRuns")
+        @Expose
+        private String maximumRuns;
+        @SerializedName("player_Id")
+        @Expose
+        private String playerId;
+        @SerializedName("filePath")
+        @Expose
+        private String filePath;
+
+        @Expose
+        private String date;
+
+        public String getPlayerName() {
+            return playerName;
+        }
+
+        public void setPlayerName(String playerName) {
+            this.playerName = playerName;
+        }
+
+        public String getMaximumRuns() {
+            return maximumRuns;
+        }
+
+        public void setMaximumRuns(String maximumRuns) {
+            this.maximumRuns = maximumRuns;
+        }
+
+        public String getPlayerId() {
+            return playerId;
+        }
+
+        public void setPlayerId(String playerId) {
+            this.playerId = playerId;
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public void setFilePath(String filePath) {
+            this.filePath = filePath;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+    }
+    public class BestBowler {
+
+        @SerializedName("playerName")
+        @Expose
+        private String playerName;
+        @SerializedName("maximumWickets")
+        @Expose
+        private String maximumWickets;
+        @SerializedName("player_Id")
+        @Expose
+        private String playerId;
+        @SerializedName("filePath")
+        @Expose
+        private String filePath;
+        @SerializedName("date")
+        @Expose
+        private String date;
+
+        public String getPlayerName() {
+            return playerName;
+        }
+
+        public void setPlayerName(String playerName) {
+            this.playerName = playerName;
+        }
+
+        public String getMaximumWickets() {
+            return maximumWickets;
+        }
+
+        public void setMaximumWickets(String maximumWickets) {
+            this.maximumWickets = maximumWickets;
+        }
+
+        public String getPlayerId() {
+            return playerId;
+        }
+
+        public void setPlayerId(String playerId) {
+            this.playerId = playerId;
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public void setFilePath(String filePath) {
+            this.filePath = filePath;
+        }
+
+        public String getDate() {
+            return date;
+        }
+
+        public void setDate(String date) {
+            this.date = date;
+        }
+
+    }
+    public class UpcomingBirthday {
+
+        @SerializedName("playerName")
+        @Expose
+        private String playerName;
+        @SerializedName("dob")
+        @Expose
+        private String dob;
+        @SerializedName("filePath")
+        @Expose
+        private String filePath;
+
+        public String getPlayerName() {
+            return playerName;
+        }
+
+        public void setPlayerName(String playerName) {
+            this.playerName = playerName;
+        }
+
+        public String getDob() {
+            return dob;
+        }
+
+        public void setDob(String dob) {
+            this.dob = dob;
         }
 
         public String getFilePath() {

@@ -92,7 +92,7 @@ public class CareerStatisticsAdapter extends RecyclerView.Adapter<CareerStatisti
            // String part2 = parts[1]; // 034556
 
             btnplyrhist.setText(part1+" indivisual career statistics");
-            txtplayerName.setText(String.valueOf(++currposition) + ".  " + item.getPlayerName());
+            txtplayerName.setText(String.valueOf(++currposition) + " .  " + item.getPlayerName());
             txtInningsvalue.setText(String.valueOf(item.getInnings()));
             txtScorevalue.setText(String.valueOf(item.getScore()));
             textCatchesvalue.setText(String.valueOf(item.getCatches()));
