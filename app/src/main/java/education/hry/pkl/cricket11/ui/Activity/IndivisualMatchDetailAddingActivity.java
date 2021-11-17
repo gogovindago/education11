@@ -45,7 +45,7 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
     int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnAllDhePlayerCurrentPosition;
     private MyLoaders myLoaders;
 
-    String OpponentteamID, teamdhe, token, uname, Registration_Id, IsBatsmanOUtorNOt, SelectedPlayerforinsertRecordName="", SelectedPlayerforinsertRecordID;
+    String OpponentteamID,OpponentteamName, teamdhe, token, uname, Registration_Id, IsBatsmanOUtorNOt, SelectedPlayerforinsertRecordName = "", SelectedPlayerforinsertRecordID;
     RadioGroup btnRadiogroup;
     RadioButton checkedRadioButton;
     private SweetAlertDialog sweetAlertDialog;
@@ -133,7 +133,7 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
     @Override
     public void initData() {
 
-        binding.toolbar.tvToolbarTitle.setText("Add Indivisual Match Record of " + SelectedPlayerforinsertRecordName);
+        binding.toolbar.tvToolbarTitle.setText("Add Match Record of " + SelectedPlayerforinsertRecordName);
 
         binding.btnaddmatchdetail.setText("Add Match Record for " + SelectedPlayerforinsertRecordName);
 
@@ -168,7 +168,7 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
 
-                                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault());
+                                SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
                                 //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
 
 
@@ -196,8 +196,8 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
                 if (Check_Data(v)) {
 
                     sweetAlertDialog = new SweetAlertDialog(IndivisualMatchDetailAddingActivity.this);
-                    sweetAlertDialog.setTitle("Alert Indivisual Match Deatil of"+ SelectedPlayerforinsertRecordName+" Adding !");
-                    sweetAlertDialog.setContentText("Make Sure you have filled all  Indivisual Match Deatil of"+SelectedPlayerforinsertRecordName+" correctly.");
+                    sweetAlertDialog.setTitle("Alert Indivisual Match Deatil of  " + SelectedPlayerforinsertRecordName + "  Adding !");
+                    sweetAlertDialog.setContentText("Make Sure you have filled all  Indivisual Match Deatil of  " + SelectedPlayerforinsertRecordName + "  correctly.");
                     sweetAlertDialog.setVolumeControlStream(2);
                     sweetAlertDialog.setCancelable(true);
                     sweetAlertDialog.setCancelText("No");
@@ -213,8 +213,28 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
                                 sweetAlertDialog.dismiss();
 
                                 InsertMatchRecordIndivisualRequest request = new InsertMatchRecordIndivisualRequest();
+
+                                request.setVersus(OpponentteamName);
+                                request.setPlayerId(SelectedPlayerforinsertRecordID);
+
+
+
                                 request.setDate(binding.edtMatchDate.getText().toString().trim());
                                 request.setScore(binding.edtScored.getText().toString().trim());
+                                request.setBalls(binding.edtBallFaced.getText().toString().trim());
+                                request.setFours(binding.edt4s.getText().toString().trim());
+                                request.setSix(binding.edt6s.getText().toString().trim());
+
+
+                                request.setIsNotOut(IsBatsmanOUtorNOt);
+
+
+                                request.setOvers(binding.edtOverbowled.getText().toString().trim());
+                                request.setMaiden(binding.edtMaidenOver.getText().toString().trim());
+                                request.setRun(binding.edtRun.getText().toString().trim());
+                                request.setWickets(binding.edtWicketTaken.getText().toString().trim());
+                                request.setScore(binding.edtdoneRunOut.getText().toString().trim());
+                                request.setCatches(binding.edttakeCatch.getText().toString().trim());
 
 
                                 WebAPiCall aPiCall = new WebAPiCall();
@@ -251,12 +271,50 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
 
     public boolean Check_Data(View view) {
 
-        if (TextUtils.isEmpty(binding.edtMatchDate.getText().toString().trim())) {
-            myLoaders.showSnackBar(view, "Please Select Match Date.");
-            return false;
-        }else if (spnAllDhePlayerCurrentPosition == 0) {
+        if (spnAllDhePlayerCurrentPosition == 0) {
             myLoaders.showSnackBar(view, "Please Select DHE Player Name.");
             return false;
+        } else if (TextUtils.isEmpty(binding.edtMatchDate.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Select Match Date.");
+            return false;
+        } else if (spnOpponentteamCurrentPosition == 0) {
+            myLoaders.showSnackBar(view, "Please Select Opponent Team Name.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtScored.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Scored of Batsman.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtBallFaced.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Nos. of Ball faced by Batsman.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edt4s.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Nos. of 4s  by Batsman.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edt6s.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Nos. of 6s  by Batsman.");
+            return false;
+        } else if (IsBatsmanOUtorNOt==null) {
+            myLoaders.showSnackBar(view, "Please Select  ( Out/not-out ) Batsman status.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtOverbowled.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Over Bowled By bowler.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtMaidenOver.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Maiden Over Bowled By bowler.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtRun.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter 4s Given By bowler.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtWicketTaken.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Wicket took By bowler.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edtdoneRunOut.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Nos. of Run out did.");
+            return false;
+        } else if (TextUtils.isEmpty(binding.edttakeCatch.getText().toString().trim())) {
+            myLoaders.showSnackBar(view, "Please Enter Nos. of Catch taken.");
+            return false;
+        } else {
+
         }
 
         return true;
@@ -298,7 +356,7 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
             if (position != 0) {
 
                 spnOpponentteamCurrentPosition = position;
-                String mystring = allteamlist.get(position).getTeamName();
+                OpponentteamName = allteamlist.get(position).getTeamName();
                 OpponentteamID = String.valueOf(allteamlist.get(position).getTeamId());
 
 //                String arr[] = mystring.split(" ", 3);
@@ -318,32 +376,33 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
 
 
         } else if (id == R.id.spnteamplayerdhe) {
+            if (position != 0) {
 
-            spnAllDhePlayerCurrentPosition = position;
-            SelectedPlayerforinsertRecordName = dheTeamPlayerList.get(position).getPlayerName();
-            SelectedPlayerforinsertRecordID = String.valueOf(dheTeamPlayerList.get(position).getPlayerId());
+                spnAllDhePlayerCurrentPosition = position;
+                SelectedPlayerforinsertRecordName = dheTeamPlayerList.get(position).getPlayerName();
+                SelectedPlayerforinsertRecordID = String.valueOf(dheTeamPlayerList.get(position).getPlayerId());
 
-            String arr[] = SelectedPlayerforinsertRecordName.split(" ", 2);
+                String arr[] = SelectedPlayerforinsertRecordName.split(" ", 2);
 
-            String firstWord = arr[0];   //the
-            String theRest2 = arr[1];
+                String firstWord = arr[0];   //the
+                String theRest2 = arr[1];
 
-            binding.toolbar.tvToolbarTitle.setText("Add Indivisual Match Record of " + firstWord);
+                binding.toolbar.tvToolbarTitle.setText("Add Match Record of " + firstWord);
 
-            binding.btnaddmatchdetail.setText("Add Match Record for " + firstWord);
+                binding.btnaddmatchdetail.setText("Add Record for " + firstWord);
 
 
-
-            //quick brown fox
-            //              String theRest3 = arr[2];     //quick brown fox
+                //quick brown fox
+                //              String theRest3 = arr[2];     //quick brown fox
 //                binding.tlOpponentscore.setHint(firstWord + " " + theRest2 + " Total Score");
 //                binding.tlOpponentover.setHint(firstWord + " " + theRest2 + " Over played");
 
 
-        } else {
+            } else {
 //                binding.tlOpponentscore.setHint("Total Score");
 //                binding.tlOpponentover.setHint("Over played");
-            spnAllDhePlayerCurrentPosition = position;
+                spnAllDhePlayerCurrentPosition = position;
+            }
         }
 
 

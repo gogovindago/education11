@@ -6,6 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
@@ -20,7 +21,6 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -34,13 +34,14 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.android.play.core.appupdate.AppUpdateInfo;
 import com.google.android.play.core.appupdate.AppUpdateManager;
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory;
-import com.google.android.play.core.install.InstallState;
 import com.google.android.play.core.install.InstallStateUpdatedListener;
 import com.google.android.play.core.install.model.AppUpdateType;
 import com.google.android.play.core.install.model.InstallStatus;
 import com.google.android.play.core.install.model.UpdateAvailability;
+import com.google.android.play.core.tasks.Task;
 import com.shashank.sony.fancygifdialoglib.FancyGifDialog;
 import com.shashank.sony.fancygifdialoglib.FancyGifDialogListener;
 import com.smarteist.autoimageslider.IndicatorView.animation.type.IndicatorAnimationType;
@@ -91,9 +92,10 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         MostFoursAdapter.ItemListener {
 
 
-    private AppUpdateManager mAppUpdateManager;
+    private AppUpdateManager appUpdateManager;
+    private InstallStateUpdatedListener installStateUpdatedListener;
+    private static final int FLEXIBLE_APP_UPDATE_REQ_CODE = 123;
 
-    private static final int RC_APP_UPDATE = 11;
     // List<SliderItem> sliderItemList;
 
     List<BannerResponse.Banner> sliderItemList;
@@ -154,7 +156,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
 
     private HashMap<String, Object> firebaseDefaultMap;
-    private static final String TAG = "MainActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -285,6 +286,68 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
             }
         });
 
+
+    }
+
+    private void checkUpdate() {
+
+        Task<AppUpdateInfo> appUpdateInfoTask = appUpdateManager.getAppUpdateInfo();
+
+        appUpdateInfoTask.addOnSuccessListener(appUpdateInfo -> {
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.FLEXIBLE)) {
+                startUpdateFlow(appUpdateInfo);
+            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
+                popupSnackBarForCompleteUpdate();
+            }
+        });
+    }
+
+    private void startUpdateFlow(AppUpdateInfo appUpdateInfo) {
+        try {
+            appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.FLEXIBLE, this, MainActivity.FLEXIBLE_APP_UPDATE_REQ_CODE);
+        } catch (IntentSender.SendIntentException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == FLEXIBLE_APP_UPDATE_REQ_CODE) {
+            if (resultCode == RESULT_CANCELED) {
+                Toast.makeText(getApplicationContext(), "Update canceled by user! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
+            } else if (resultCode == RESULT_OK) {
+                Toast.makeText(getApplicationContext(), "Update success! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
+            } else {
+                Toast.makeText(getApplicationContext(), "Update Failed! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
+                checkUpdate();
+            }
+        }
+    }
+
+    private void popupSnackBarForCompleteUpdate() {
+        Snackbar.make(findViewById(android.R.id.content).getRootView(), "New app is ready!", Snackbar.LENGTH_INDEFINITE)
+
+                .setAction("Install", view -> {
+                    if (appUpdateManager != null) {
+                        appUpdateManager.completeUpdate();
+                    }
+                })
+                .setActionTextColor(getResources().getColor(R.color.colorPrimary))
+                .show();
+    }
+
+    private void removeInstallStateUpdateListener() {
+        if (appUpdateManager != null) {
+            appUpdateManager.unregisterListener(installStateUpdatedListener);
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        removeInstallStateUpdateListener();
     }
 
 
@@ -301,30 +364,23 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     public void initData() {
 
 
-        mAppUpdateManager = AppUpdateManagerFactory.create(this);
 
-        mAppUpdateManager.registerListener(installStateUpdatedListener);
-
-        mAppUpdateManager.getAppUpdateInfo().addOnSuccessListener(appUpdateInfo -> {
-
-            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
-                    && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE /*AppUpdateType.IMMEDIATE*/)) {
-
-                try {
-                    mAppUpdateManager.startUpdateFlowForResult(
-                            appUpdateInfo, AppUpdateType.IMMEDIATE /*AppUpdateType.IMMEDIATE*/, MainActivity.this, RC_APP_UPDATE);
-
-                } catch (IntentSender.SendIntentException e) {
-                    e.printStackTrace();
-                }
-
-            } else if (appUpdateInfo.installStatus() == InstallStatus.DOWNLOADED) {
-                //CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
-                popupSnackbarForCompleteUpdate();
+        appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
+        installStateUpdatedListener = state -> {
+            if (state.installStatus() == InstallStatus.DOWNLOADED) {
+                popupSnackBarForCompleteUpdate();
+            } else if (state.installStatus() == InstallStatus.INSTALLED) {
+                removeInstallStateUpdateListener();
             } else {
-                Log.e(TAG, "checkForAppUpdateAvailability: something else");
+                Toast.makeText(getApplicationContext(), "InstallStateUpdatedListener: state: " + state.installStatus(), Toast.LENGTH_LONG).show();
             }
-        });
+        };
+        appUpdateManager.registerListener(installStateUpdatedListener);
+        checkUpdate();
+
+
+
+
 
         dataModelLeftList = new ArrayList<DataModelLeftNew>();
         dataModelLeftList.clear();
@@ -388,6 +444,10 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         DataModelLeftNew resetPassword = new DataModelLeftNew(R.drawable.lockmain, "Reset Password", 6);
         dataModelLeftList.add(resetPassword);
 
+        DataModelLeftNew version = new DataModelLeftNew(R.mipmap.ic_launcher_round, "Version " + getAppVersion(), 21);
+        dataModelLeftList.add(version);
+
+
         DataModelLeftNew logout = new DataModelLeftNew(R.drawable.logout, "Logout", 7);
         dataModelLeftList.add(logout);
 
@@ -400,56 +460,25 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         setupDrawerToggle();
 
 
+
+
+
+
     }
 
-    InstallStateUpdatedListener installStateUpdatedListener = new
-            InstallStateUpdatedListener() {
-                @Override
-                public void onStateUpdate(InstallState state) {
-                    if (state.installStatus() == InstallStatus.DOWNLOADED) {
-                        //CHECK THIS if AppUpdateType.FLEXIBLE, otherwise you can skip
-                        popupSnackbarForCompleteUpdate();
-                    } else if (state.installStatus() == InstallStatus.INSTALLED) {
-                        if (mAppUpdateManager != null) {
-                            mAppUpdateManager.unregisterListener(installStateUpdatedListener);
-                        }
 
-                    } else {
-                        Log.i(TAG, "InstallStateUpdatedListener: state: " + state.installStatus());
-                    }
-                }
-            };
+    /// get  app version code
 
 
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == RC_APP_UPDATE) {
-            if (resultCode != RESULT_OK) {
-                Log.e(TAG, "onActivityResult: app download failed");
-            }
+    public String getAppVersion() {
+        String versionCode = "";
+        try {
+            versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
-    }
-
-
-    private void popupSnackbarForCompleteUpdate() {
-
-        Snackbar snackbar =
-                Snackbar.make(
-                        mDrawerLayout,
-                        "New app is ready!",
-                        Snackbar.LENGTH_INDEFINITE);
-
-        snackbar.setAction("Install", view -> {
-            if (mAppUpdateManager != null) {
-                mAppUpdateManager.completeUpdate();
-            }
-        });
-
-
-        snackbar.setActionTextColor(getResources().getColor(R.color.colorPrimary));
-        snackbar.show();
+        return versionCode;
     }
 
     @Override
@@ -498,7 +527,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 shareIntent.setType("text/plain");
                 shareIntent.putExtra(Intent.EXTRA_SUBJECT, "Education 11");
                 // String app_url = "https://play.google.com/store/apps/details?id=plantation.hr.cbse.haryanaplantation";
-                String app_url = "https://cricket.highereduhry.ac.in/";
+                String app_url = "https://play.google.com/store/apps/details?id=education.hry.pkl.cricket11";
                 shareIntent.putExtra(android.content.Intent.EXTRA_TEXT, app_url);
                 startActivity(Intent.createChooser(shareIntent, "Share via"));
                 break;
@@ -508,6 +537,15 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
                 Intent notification = new Intent(this, NotificationsActivity.class);
                 startActivity(notification);
+                break;
+            case 5:
+
+                mDrawerLayout.closeDrawers();
+                String aboutUs_url = "https://cricket.highereduhry.ac.in/About.aspx";
+                Intent wbview = new Intent(this, OpenBooksActivity.class);
+                wbview.putExtra("aboutUrl", aboutUs_url);
+                wbview.putExtra("title", "About Us");
+                startActivity(wbview);
                 break;
 
 
@@ -821,6 +859,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
 
         txtbestBatter.setText(list.get(0).getPlayerName() + "\nRuns - " + list.get(0).getMaximumRuns() + "\nDated - " + list.get(0).getDate());
+        // txtbestBatter.setText(list.get(0).getPlayerName() + "\nRuns - " + list.get(0).getMaximumRuns());
 
 
         Glide.with(this)
@@ -835,9 +874,8 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     public void BestBowler_list(List<BannerResponse.BestBowler> list) {
 
 
-
-
         txtBestbowler.setText(list.get(0).getPlayerName() + "\nWickets - " + list.get(0).getMaximumWickets() + "\nDated - " + list.get(0).getDate());
+        // txtBestbowler.setText(list.get(0).getPlayerName() + "\nWickets - " + list.get(0).getMaximumWickets() );
 
 
         Glide.with(this)
@@ -858,21 +896,20 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
         txtbirthdaywishes.setSelected(true);
 
-        String input_date=list.get(0).getDob();
-        SimpleDateFormat format1=new SimpleDateFormat("dd/MM/yyyy");
-        Date dt1= null;
+        String input_date = list.get(0).getDob();
+        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+        Date dt1 = null;
 
         try {
             dt1 = format1.parse(input_date);
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        DateFormat format2=new SimpleDateFormat("EEEE, MMMM dd, yyyy");
-        String finalDay=format2.format(dt1);
+        DateFormat format2 = new SimpleDateFormat("EEE, dd/ MMM/ yyyy");
+        String finalDay = format2.format(dt1);
 
 
-
-        txtbirthdaywishes.setText("                  " + list.get(0).getPlayerName() + ", DOB :-" + finalDay + "                   ");
+        txtbirthdaywishes.setText("          " + list.get(0).getPlayerName() + ", DOB :- " + finalDay + "           ");
 
     }
 

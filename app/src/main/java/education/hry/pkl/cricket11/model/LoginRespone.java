@@ -58,6 +58,11 @@ public class LoginRespone {
         private String id;
 
 
+          @SerializedName("role")
+        @Expose
+        private String role;
+
+
 
 
 
@@ -79,6 +84,14 @@ public class LoginRespone {
         @Expose
         private String expiration;
 
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
 
         public String getFilePath() {
             return filePath;

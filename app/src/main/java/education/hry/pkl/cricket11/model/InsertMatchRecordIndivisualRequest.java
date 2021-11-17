@@ -45,6 +45,18 @@ public class InsertMatchRecordIndivisualRequest {
     @Expose
     private String isNotOut;
 
+    @SerializedName("doneRunOut")
+    @Expose
+    private String doneRunOut;
+
+    public String getDoneRunOut() {
+        return doneRunOut;
+    }
+
+    public void setDoneRunOut(String doneRunOut) {
+        this.doneRunOut = doneRunOut;
+    }
+
     public String getDate() {
         return date;
     }

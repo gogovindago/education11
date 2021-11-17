@@ -5,11 +5,11 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -38,7 +38,6 @@ import education.hry.pkl.cricket11.allinterfaces.GetOtpInterface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.app.MyApplication;
-import education.hry.pkl.cricket11.fcm.MyFirebaseMessagingService;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
 import education.hry.pkl.cricket11.utility.CSPreferences;
@@ -47,19 +46,19 @@ import education.hry.pkl.cricket11.utility.MyLoaders;
 
 public class LoginActivity extends AppCompatActivity implements LoginData_interface, GoogleApiClient.ConnectionCallbacks,
         GetOtpInterface, GoogleApiClient.OnConnectionFailedListener,
-         View.OnClickListener {
+        View.OnClickListener {
 
     private AdView mAdView;
 
     GoogleApiClient mGoogleApiClient;
 
     private int RESOLVE_HINT = 2;
-    TextView generateotp, createaccount, txtforget, lointxt, txtmsg;
+    TextView generateotp, createaccount, txtforget, lointxt, txtmsg, txtversion;
     private TextInputEditText edtMobileNumber, txtpaswrd;
     private TextInputEditText edtpass;
     LinearLayout llotpbox;
-    private String refreshedToken, userMobileNumber, username, userEmailId,userprofilepic,
-    PlayingRole,Registration_Id,token;
+    private String refreshedToken, userMobileNumber, username, userEmailId, userprofilepic,
+            PlayingRole, Registration_Id, role, token;
     private static final String TAG = "LoginActivity";
     private MyLoaders myLoaders;
     Context context;
@@ -70,9 +69,13 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        txtversion = findViewById(R.id.txtversion);
+
+        txtversion.setText(" Version - " + getAppVersion());
+
         context = MyApplication.context;
         FirebaseApp.initializeApp(this);
-        FirebaseApp.initializeApp(this);
+
 
         AdRequest adRequest = new AdRequest.Builder().build();
         mAdView = findViewById(R.id.adView);
@@ -93,7 +96,7 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
 
                         // Get new FCM registration token
                         refreshedToken = task.getResult();
-                       // Log.d("fcm",refreshedToken);
+                        // Log.d("fcm",refreshedToken);
 
                     }
                 });
@@ -108,7 +111,6 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
                 .build();
 
         getHintPhoneNumber();
-
 
 
         createaccount.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +136,17 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
                 ViewGroup.LayoutParams.WRAP_CONTENT));*/
     }
 
+
+    public String getAppVersion() {
+        String versionCode = "";
+        try {
+            versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return versionCode;
+    }
 
     private void findViews() {
         txtmsg = (TextView) findViewById(R.id.txtmsg);
@@ -236,6 +249,7 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
         if (!data.getToken().isEmpty()) {
 
             Registration_Id = data.getId();
+            role = data.getRole();
             token = data.getToken();
             username = data.getName();
             userprofilepic = data.getFilePath();
@@ -247,9 +261,8 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
 //            Profilepicurl = Profilepic;
             edtMobileNumber.setEnabled(false);
             boolean firstTimelogin = true;
-            if (userMobileNumber.equalsIgnoreCase("8269970959")) {
-                CSPreferences.putString(this, "role", "Admin");
-            }
+
+            CSPreferences.putString(this, "role", role);
             CSPreferences.putString(this, "id", Registration_Id);
             CSPreferences.putString(this, "token", token);
             CSPreferences.putString(this, "User_Id", Registration_Id);
@@ -308,8 +321,6 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
             }
         }
     }
-
-
 
 
     @Override

@@ -1,6 +1,7 @@
 package education.hry.pkl.cricket11.ui.Activity;
 
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,12 +21,18 @@ import education.hry.pkl.cricket11.utility.BaseActivity;
 public class WelcomeActivity extends BaseActivity implements AdapterView.OnItemSelectedListener {
     ActivityWelcomeBinding binding;
     ArrayList<DummyData> languagelist;
-    String SelectedLanguage="en";
+    String SelectedLanguage = "en";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome);
+
+
+
+
+
+
         languagelist = new ArrayList<DummyData>();
         for (int i = 0; i <= 3; i++) {
             DummyData dummyData = new DummyData();
@@ -45,7 +52,7 @@ public class WelcomeActivity extends BaseActivity implements AdapterView.OnItemS
                 dummyData.setImage(R.drawable.ic_baseline_language_24);
                 dummyData.setName("Haryanvi");
                 languagelist.add(dummyData);
-            } */else {
+            } */ else {
 
             }
             SpinnerLanguageAdapter spnGenderAdapter = new SpinnerLanguageAdapter(getApplicationContext(), languagelist);
@@ -65,8 +72,21 @@ public class WelcomeActivity extends BaseActivity implements AdapterView.OnItemS
     }*/
 
 
+    public String getAppVersion() {
+        String versionCode = "";
+        try {
+            versionCode = getPackageManager().getPackageInfo(getPackageName(), 0).versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return versionCode;
+    }
+
     @Override
     public void initData() {
+
+        binding.txtversion.setText(" Version :- " + getAppVersion());
 
     }
 

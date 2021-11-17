@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".ui.Activity.OpenBooksActivity">
+
+
+        <include
+             android:id="@+id/toolbar"
+             layout="@layout/toolbar_layout"
+             app:layout_constraintEnd_toEndOf="parent"
+             app:layout_constraintStart_toStartOf="parent"
+             app:layout_constraintTop_toTopOf="parent"/>
+
+
+
+
+
+
+                        <ImageView
+                            android:id="@+id/webviewBack"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/imageview_selector"
+                            android:padding="5dp"
+                            android:src="@drawable/back" />
+
+                        <ImageView
+                            android:id="@+id/webviewForward"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_toRightOf="@+id/webviewBack"
+                            android:background="@drawable/imageview_selector"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_baseline_arrow_forward_ios_24"
+                            android:visibility="invisible" />
+
+                        <TextView
+                            android:id="@+id/toolbartitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_toStartOf="@+id/webviewReload"
+                            android:layout_toLeftOf="@+id/webviewReload"
+                            android:layout_toEndOf="@+id/webviewForward"
+                            android:layout_toRightOf="@+id/webviewForward"
+                            android:padding="5dp"
+                            android:text=""
+                            android:textAllCaps="false"
+                            android:textColor="@color/white"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:id="@+id/webviewReload"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="5dp"
+                            android:layout_toLeftOf="@+id/webviewClose"
+                            android:background="@drawable/imageview_selector"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_baseline_refresh_24"
+                            android:visibility="gone" />
+
+                        <ProgressBar
+                            android:id="@+id/webViewProgressBar"
+                            android:layout_width="23dp"
+                            android:layout_height="23dp"
+                            android:layout_gravity="end"
+                            android:layout_margin="10dp"
+                            android:layout_toLeftOf="@+id/webviewClose"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/webviewClose"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_margin="5dp"
+                            android:background="@drawable/imageview_selector"
+                            android:padding="5dp"
+                            android:src="@drawable/ic_baseline_close_24" />
+
+
+
+
+
+            <WebView
+                android:id="@+id/sitesWebView"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ProgressBar
+                    android:id="@+id/progressBar"
+                    style="?android:attr/progressBarStyle"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </WebView>
+
+    </FrameLayout>

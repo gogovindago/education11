@@ -48,9 +48,9 @@ app:civ_border_width="2dp"
 
         <TextView
             android:id="@+id/textView"
-android:layout_below="@+id/logo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/logo"
             android:layout_centerInParent="true"
             android:gravity="center"
             android:text="@string/app_name"
@@ -64,7 +64,27 @@ android:layout_below="@+id/logo"
             app:layout_constraintTop_toBottomOf="@+id/logo"
             app:layout_constraintVertical_bias="0.077" />
 
-</RelativeLayout>
+
+        <TextView
+            android:id="@+id/txtversion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/logo"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="230dp"
+            android:gravity="center"
+            android:text=""
+            android:textAllCaps="false"
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/logo"
+            app:layout_constraintHorizontal_bias="0.504"
+            app:layout_constraintStart_toStartOf="@+id/logo"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            app:layout_constraintVertical_bias="0.077" />
+
+    </RelativeLayout>
 </com.facebook.shimmer.ShimmerFrameLayout>
 
 </RelativeLayout>

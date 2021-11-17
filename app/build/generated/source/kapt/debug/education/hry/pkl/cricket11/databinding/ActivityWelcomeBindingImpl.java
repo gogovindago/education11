@@ -21,6 +21,7 @@ public class ActivityWelcomeBindingImpl extends ActivityWelcomeBinding  {
         sViewsWithIds.put(R.id.btnlogin, 5);
         sViewsWithIds.put(R.id.languageSpinner, 6);
         sViewsWithIds.put(R.id.textView2, 7);
+        sViewsWithIds.put(R.id.txtversion, 8);
     }
     // views
     @NonNull
@@ -31,7 +32,7 @@ public class ActivityWelcomeBindingImpl extends ActivityWelcomeBinding  {
     // Inverse Binding Event Handlers
 
     public ActivityWelcomeBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 8, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 9, sIncludes, sViewsWithIds));
     }
     private ActivityWelcomeBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
@@ -42,6 +43,7 @@ public class ActivityWelcomeBindingImpl extends ActivityWelcomeBinding  {
             , (com.facebook.shimmer.ShimmerFrameLayout) bindings[2]
             , (android.widget.TextView) bindings[3]
             , (android.widget.TextView) bindings[7]
+            , (android.widget.TextView) bindings[8]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
