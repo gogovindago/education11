@@ -61,10 +61,11 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
     private List<AllTeamListResponse.Datum> allteamlist = new ArrayList<AllTeamListResponse.Datum>();
     SpinnerAllTeamAdapter SpinnerAllTeamAdapter;
 
-    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition=23, spnmomteamnameCurrentPosition;
+    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnmomteamnameCurrentPosition;
     private MyLoaders myLoaders;
     File imagefile;
-    String OpponentteamID, teamdhe, momteamId;
+    String OpponentteamID, teamdhe, momteamId, fcm_MessageTitle, Fcm_MessageBody,
+            teamdheName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -236,6 +237,10 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
                             sweetAlertDialog.dismiss();
                             if (NetworkUtil.isConnected(AddMatchResultActivity.this)) {
                                 sweetAlertDialog.dismiss();
+                                Fcm_MessageBody = teamdheName + "-" + binding.edtdhescore.getText().toString().trim() + "/" + binding.edtdheWicket.getText().toString().trim() + "( " + binding.edtdheover.getText().toString().trim() + ")";
+
+                                RequestBody rq_fcm_MessageTitle = RequestBody.create(MediaType.parse("multipart/form-data"), fcm_MessageTitle);
+                                RequestBody rq_Fcm_MessageBody = RequestBody.create(MediaType.parse("multipart/form-data"), Fcm_MessageBody);
 
 
                                 RequestBody rq_MatchTitle = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMatchTitle.getText().toString().trim());
@@ -266,7 +271,8 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
                                 MultipartBody.Part imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
 
                                 WebAPiCall aPiCall = new WebAPiCall();
-                                aPiCall.addMatchResultPostDataMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, rq_MatchTitle,
+                                aPiCall.addMatchResultPostDataMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, rq_fcm_MessageTitle,
+                                        rq_Fcm_MessageBody, rq_MatchTitle,
                                         rq_MatchDate,
                                         rq_ScoreTeam1,
                                         rq_OverTeam1,
@@ -341,7 +347,7 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         } else if (TextUtils.isEmpty(binding.edtOpponentWicket.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter Opponent Total Wicket Out");
             return false;
-        } else if (imagefile==null) {
+        } else if (imagefile == null) {
             myLoaders.showSnackBar(view, "Please Select MOM Player Photo");
             return false;
         } else if (TextUtils.isEmpty(binding.edtplayerName.getText().toString().trim())) {
@@ -493,6 +499,8 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
                 binding.tlOpponentscore.setHint(firstWord + " " + theRest2 + " Total Score");
                 binding.tlOpponentover.setHint(firstWord + " " + theRest2 + " Over played");
 
+                fcm_MessageTitle = teamdheName + " Vs " + mystring;
+
 
             } else {
                 binding.tlOpponentscore.setHint("Total Score");
@@ -506,6 +514,7 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
             if (position != 0) {
                 spnteamdheCurrentPosition = position;
                 teamdhe = String.valueOf(allteamlist.get(position).getTeamId());
+                teamdheName = allteamlist.get(position).getTeamName();
 
 
             } else {

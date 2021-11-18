@@ -48,7 +48,7 @@
                             android:drawableStart="@drawable/ic_baseline_border_color_24"
                             android:drawableLeft="@drawable/ic_baseline_border_color_24"
                             android:drawablePadding="16dp"
-                            android:hint="Match title as (stadium,overs,date)"
+                            android:hint="Match title as (stadium,overs)"
                             android:imeOptions="actionNext"
                             android:inputType="textPersonName"
                             android:outlineSpotShadowColor="@color/colorAccent"

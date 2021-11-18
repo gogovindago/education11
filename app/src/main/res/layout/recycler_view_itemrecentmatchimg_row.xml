@@ -40,10 +40,27 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
+            android:layout_toLeftOf="@+id/txtMatchStatus"
             android:gravity="center|start"
             android:padding="0dp"
             android:text="Tau Devi Lal Cricket Stadium, Panchkula (20 Overs) | 21/03/2021"
             android:textSize="12sp" />
+
+        <TextView
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:background="@drawable/buttonstylered"
+            android:layout_alignParentEnd="true"
+            android:id="@+id/txtMatchStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginLeft="5dp"
+            android:gravity="center|start"
+            android:padding="5dp"
+            android:text="Result"
+            android:textSize="12sp"
+            android:layout_alignParentRight="true" />
 
         <TextView
 
@@ -59,6 +76,7 @@
             android:textSize="12sp" />
 
         <TextView
+
             android:id="@+id/txtTeamAscore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

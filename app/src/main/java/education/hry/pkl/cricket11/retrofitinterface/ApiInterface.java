@@ -63,7 +63,9 @@ public interface ApiInterface {
 
     @Multipart
     @POST("TotalMatchDetails")
-    Call<AddMatchResultResponse> addmatchResultApi(@Part("MatchTitle") RequestBody MatchTitle,
+    Call<AddMatchResultResponse> addmatchResultApi(@Part("MessageTitle") RequestBody MessageTitle,
+                                                   @Part("MessageBody") RequestBody MessageBody,
+                                                   @Part("MatchTitle") RequestBody MatchTitle,
                                                    @Part("MatchDate") RequestBody MatchDate,
                                                    @Part("ScoreTeam1") RequestBody ScoreTeam1,
                                                    @Part("OverTeam1") RequestBody OverTeam1,

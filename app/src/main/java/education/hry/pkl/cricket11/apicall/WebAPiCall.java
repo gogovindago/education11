@@ -986,7 +986,7 @@ public class WebAPiCall {
         });
     }
 
-    public void addMatchResultPostDataMethod(final Activity activity, final Context context, RequestBody MatchTitle,
+    public void addMatchResultPostDataMethod(final Activity activity, final Context context, RequestBody fcm_MessageTitle, RequestBody Fcm_MessageBody, RequestBody MatchTitle,
                                              RequestBody MatchDate,
                                              RequestBody ScoreTeam1,
                                              RequestBody OverTeam1,
@@ -1003,7 +1003,10 @@ public class WebAPiCall {
 
         loadershowwithMsg(context, "Adding Match Result is going On...");
 
-        Call<AddMatchResultResponse> teamApi = ApiClient.getClient().addmatchResultApi(MatchTitle,
+        Call<AddMatchResultResponse> teamApi = ApiClient.getClient().addmatchResultApi(fcm_MessageTitle,
+
+                Fcm_MessageBody,
+                MatchTitle,
                 MatchDate,
                 ScoreTeam1,
                 OverTeam1,

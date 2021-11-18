@@ -5,6 +5,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -39,7 +40,7 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtName, txtteamA, txtTeamAscore, txtteamB, txtTeamBscore, txtResult, txtmomPlayerName, txtmomTeamName;
+        public TextView txtMatchStatus, txtName, txtteamA, txtTeamAscore, txtteamB, txtTeamBscore, txtResult, txtmomPlayerName, txtmomTeamName;
         public CircleImageView imageView, imgmomplayer;
         MatchDetailResponse.Datum item;
         RelativeLayout llmain;
@@ -66,6 +67,9 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
             txtResult = v.findViewById(R.id.txtResult);
             imageView = v.findViewById(R.id.ivThumb);
             imgmomplayer = v.findViewById(R.id.imgmomplayer);
+            txtMatchStatus = v.findViewById(R.id.txtMatchStatus);
+
+
             if (mrole.equalsIgnoreCase("Admin")) {
                 btnDeletematchdetail.setVisibility(View.VISIBLE);
 
@@ -97,6 +101,7 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
                     .into(imgmomplayer);
 
 
+            txtMatchStatus.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.flash_leave_now));
 
 
 
@@ -139,6 +144,8 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
 
         }
     }
+
+
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
