@@ -19,6 +19,7 @@ import education.hry.pkl.cricket11.databinding.ActivityAllTeamListBinding;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.DeleteTeamDetailsRequest;
 import education.hry.pkl.cricket11.utility.BaseActivity;
+import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.NetworkUtil;
 
@@ -28,11 +29,15 @@ public class AllTeamListActivity extends BaseActivity implements GetAllTeamList_
     private List<AllTeamListResponse.Datum> data = new ArrayList<AllTeamListResponse.Datum>();
     private AllTeamListAdapter adapter;
     private SweetAlertDialog sweetAlertDialog;
-
+String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_team_list);
+
+        role = CSPreferences.readString(AllTeamListActivity.this, "role");
+
+
 
 
         if (NetworkUtil.isConnected(AllTeamListActivity.this)) {
@@ -96,7 +101,7 @@ public class AllTeamListActivity extends BaseActivity implements GetAllTeamList_
         data.addAll(list);
         GridLayoutManager adminimagemanager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
 
-        adapter = new AllTeamListAdapter(this, (ArrayList) data, this);
+        adapter = new AllTeamListAdapter(this, (ArrayList) data, role, this);
         binding.rvteamList.setAdapter(adapter);
         binding.rvteamList.setLayoutManager(adminimagemanager);
 

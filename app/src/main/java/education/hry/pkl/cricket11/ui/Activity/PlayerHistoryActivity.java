@@ -34,7 +34,7 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
     private PlayerHistoryAdapter adapter;
     private LinearLayoutManager manager;
     SweetAlertDialog sweetAlertDialog;
-
+String role;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +44,8 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
         try {
             Registration_Id = CSPreferences.readString(this, "User_Id");
             token = CSPreferences.readString(this, "token");
+            role = CSPreferences.readString(PlayerHistoryActivity.this, "role");
+
 
 
             Bundle extras = getIntent().getExtras();
@@ -150,7 +152,7 @@ public class PlayerHistoryActivity extends BaseActivity implements PlayerHistory
             binding.rvplayer.setVisibility(View.VISIBLE);
             manager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
             binding.rvplayer.setLayoutManager(manager);
-            adapter = new PlayerHistoryAdapter(this, (ArrayList) arrayList, this);
+            adapter = new PlayerHistoryAdapter(this, (ArrayList) arrayList,role, this);
             binding.rvplayer.setAdapter(adapter);
 
 

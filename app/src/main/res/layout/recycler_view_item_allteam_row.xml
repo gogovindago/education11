@@ -63,8 +63,9 @@
             android:textSize="12sp" />
 
         <Button
+
             android:layout_gravity="end"
-            android:visibility="visible"
+            android:visibility="gone"
             android:id="@+id/btnDeleteTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

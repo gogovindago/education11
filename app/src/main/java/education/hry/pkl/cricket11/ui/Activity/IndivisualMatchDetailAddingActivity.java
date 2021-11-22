@@ -45,7 +45,8 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
     int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnAllDhePlayerCurrentPosition;
     private MyLoaders myLoaders;
 
-    String OpponentteamID,OpponentteamName, teamdhe, token, uname, Registration_Id, IsBatsmanOUtorNOt, SelectedPlayerforinsertRecordName = "", SelectedPlayerforinsertRecordID;
+    String OpponentteamID, OpponentteamName, teamdhe, token, uname, Registration_Id, IsBatsmanOUtorNOt,
+            SelectedPlayerforinsertRecordName = "", SelectedPlayerforinsertRecordID;
     RadioGroup btnRadiogroup;
     RadioButton checkedRadioButton;
     private SweetAlertDialog sweetAlertDialog;
@@ -209,32 +210,32 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
                         @Override
                         public void onClick(SweetAlertDialog sweetAlertDialog) {
 
+
+                            InsertMatchRecordIndivisualRequest request = new InsertMatchRecordIndivisualRequest();
+
+                            request.setVersus(OpponentteamName);
+                            request.setPlayerId(SelectedPlayerforinsertRecordID);
+
+
+                            request.setDate(binding.edtMatchDate.getText().toString().trim());
+                            request.setScore(binding.edtScored.getText().toString().trim());
+                            request.setBalls(binding.edtBallFaced.getText().toString().trim());
+                            request.setFours(binding.edt4s.getText().toString().trim());
+                            request.setSix(binding.edt6s.getText().toString().trim());
+
+
+                            request.setIsNotOut(IsBatsmanOUtorNOt);
+
+
+                            request.setOvers(binding.edtOverbowled.getText().toString().trim());
+                            request.setMaiden(binding.edtMaidenOver.getText().toString().trim());
+                            request.setRun(binding.edtRun.getText().toString().trim());
+                            request.setWickets(binding.edtWicketTaken.getText().toString().trim());
+                            request.setDoneRunOut(binding.edtdoneRunOut.getText().toString().trim());
+                            request.setCatches(binding.edttakeCatch.getText().toString().trim());
+                            sweetAlertDialog.dismiss();
+
                             if (NetworkUtil.isConnected(IndivisualMatchDetailAddingActivity.this)) {
-                                sweetAlertDialog.dismiss();
-
-                                InsertMatchRecordIndivisualRequest request = new InsertMatchRecordIndivisualRequest();
-
-                                request.setVersus(OpponentteamName);
-                                request.setPlayerId(SelectedPlayerforinsertRecordID);
-
-
-
-                                request.setDate(binding.edtMatchDate.getText().toString().trim());
-                                request.setScore(binding.edtScored.getText().toString().trim());
-                                request.setBalls(binding.edtBallFaced.getText().toString().trim());
-                                request.setFours(binding.edt4s.getText().toString().trim());
-                                request.setSix(binding.edt6s.getText().toString().trim());
-
-
-                                request.setIsNotOut(IsBatsmanOUtorNOt);
-
-
-                                request.setOvers(binding.edtOverbowled.getText().toString().trim());
-                                request.setMaiden(binding.edtMaidenOver.getText().toString().trim());
-                                request.setRun(binding.edtRun.getText().toString().trim());
-                                request.setWickets(binding.edtWicketTaken.getText().toString().trim());
-                                request.setScore(binding.edtdoneRunOut.getText().toString().trim());
-                                request.setCatches(binding.edttakeCatch.getText().toString().trim());
 
 
                                 WebAPiCall aPiCall = new WebAPiCall();
@@ -292,7 +293,7 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
         } else if (TextUtils.isEmpty(binding.edt6s.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter Nos. of 6s  by Batsman.");
             return false;
-        } else if (IsBatsmanOUtorNOt==null) {
+        } else if (IsBatsmanOUtorNOt == null) {
             myLoaders.showSnackBar(view, "Please Select  ( Out/not-out ) Batsman status.");
             return false;
         } else if (TextUtils.isEmpty(binding.edtOverbowled.getText().toString().trim())) {

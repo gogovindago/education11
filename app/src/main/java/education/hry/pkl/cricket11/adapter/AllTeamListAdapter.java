@@ -30,10 +30,11 @@ public class AllTeamListAdapter extends RecyclerView.Adapter<AllTeamListAdapter.
     Context mContext;
     protected ItemListener mListener;
     int currposition;
+    String mrole;
 
+    public AllTeamListAdapter(Context context, ArrayList values, String role, ItemListener itemListener) {
 
-    public AllTeamListAdapter(Context context, ArrayList values, ItemListener itemListener) {
-
+        mrole = role;
         mValues = values;
         mContext = context;
         mListener = itemListener;
@@ -60,7 +61,21 @@ public class AllTeamListAdapter extends RecyclerView.Adapter<AllTeamListAdapter.
             txtteamLogo = (TextView) v.findViewById(R.id.txtteamLogo);
             imageView = (ImageView) v.findViewById(R.id.ivThumb);
             btnDeleteTeam = v.findViewById(R.id.btnDeleteTeam);
-            btnDeleteTeam.setOnClickListener(this);
+
+            // v.setOnClickListener(this);
+            if (mrole.equalsIgnoreCase("Admin")) {
+
+                btnDeleteTeam.setVisibility(View.VISIBLE);
+                btnDeleteTeam.setOnClickListener(this);
+
+
+            }else {
+                btnDeleteTeam.setVisibility(View.GONE);
+
+
+            }
+
+
 
         }
 

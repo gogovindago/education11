@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -31,9 +32,11 @@ public class PlayerHistoryAdapter extends RecyclerView.Adapter<PlayerHistoryAdap
     Context mContext;
     protected ItemListener mListener;
     int currposition;
+    String mrole;
 
-    public PlayerHistoryAdapter(Context context, ArrayList values, ItemListener itemListener) {
+    public PlayerHistoryAdapter(Context context, ArrayList values, String role, ItemListener itemListener) {
 
+        mrole = role;
         mValues = values;
         mContext = context;
         mListener = itemListener;
@@ -49,18 +52,21 @@ public class PlayerHistoryAdapter extends RecyclerView.Adapter<PlayerHistoryAdap
         public ImageView imageView;
         SimpleDraweeView imgplayername;
 
-        public TextView textView, gpstime;
+        public TextView textView;
         public RelativeLayout relativeLayout;
         PlayerHistoryResponse.Datum item;
+
         public int currposition;
         Button btndeleterecord;
+        LinearLayout llrecordDelete;
 
         public ViewHolder(View v) {
 
             super(v);
 
 
-            btndeleterecord =  v.findViewById(R.id.btndeleterecord);
+            llrecordDelete = v.findViewById(R.id.llrecordDelete);
+            btndeleterecord = v.findViewById(R.id.btndeleterecord);
             textNotOutsvalue = (TextView) v.findViewById(R.id.textNotOutsvalue);
             textclassvalue = (TextView) v.findViewById(R.id.textclassvalue);
             txtWicketsvalue = (TextView) v.findViewById(R.id.txtWicketsvalue);
@@ -80,10 +86,18 @@ public class PlayerHistoryAdapter extends RecyclerView.Adapter<PlayerHistoryAdap
             imgplayername = (SimpleDraweeView) v.findViewById(R.id.imgplayername);
 
 
-           // v.setOnClickListener(this);
-            btndeleterecord.setOnClickListener(this);
+            // v.setOnClickListener(this);
+            if (mrole.equalsIgnoreCase("Admin")) {
+
+                llrecordDelete.setVisibility(View.VISIBLE);
+                btndeleterecord.setOnClickListener(this);
 
 
+            }else {
+                llrecordDelete.setVisibility(View.GONE);
+
+
+            }
         }
 
         @SuppressLint("ResourceAsColor")
@@ -91,8 +105,8 @@ public class PlayerHistoryAdapter extends RecyclerView.Adapter<PlayerHistoryAdap
             this.currposition = currposition;
             this.item = item;
 
-            txtplayerName.setText(String.valueOf(++currposition) + ". "+"Vs "+String.valueOf(item.getVersus()+ " | "+item.getDate()));
-           // txtInningsvalue.setText("Vs "+String.valueOf(item.getVersus()+ " | "+item.getDate()));
+            txtplayerName.setText(String.valueOf(++currposition) + ". " + "Vs " + String.valueOf(item.getVersus() + " | " + item.getDate()));
+            // txtInningsvalue.setText("Vs "+String.valueOf(item.getVersus()+ " | "+item.getDate()));
             txtScorevalue.setText(String.valueOf(item.getScore()));
             textCatchesvalue.setText(String.valueOf(item.getCatches()));
             txtBallsvalue.setText(String.valueOf(item.getBalls()));
@@ -104,17 +118,17 @@ public class PlayerHistoryAdapter extends RecyclerView.Adapter<PlayerHistoryAdap
             textRunsvalue.setText(String.valueOf(item.getRun()));
             txtWicketsvalue.setText(String.valueOf(item.getWickets()));
             //textBowlAveragevalue.setText(String.valueOf(item.getBowlAverage()));
-           // textclassvalue.setText(String.valueOf(item.getBowlAverage()));
-            if (item.getNotOut()==1) {
+            // textclassvalue.setText(String.valueOf(item.getBowlAverage()));
+            if (item.getNotOut() == 1) {
 
-              //  textNotOutsvalue.setText(String.valueOf(item.getNotOut()));
+                //  textNotOutsvalue.setText(String.valueOf(item.getNotOut()));
                 textNotOutsvalue.setText("Not Out");
                 textNotOutsvalue.setTextColor(Color.parseColor("#FFFFFF"));
 
 
-            }else {
+            } else {
 
-              //  textNotOutsvalue.setText(String.valueOf(item.getNotOut()));
+                //  textNotOutsvalue.setText(String.valueOf(item.getNotOut()));
                 textNotOutsvalue.setText("OUT");
                 textNotOutsvalue.setTextColor(Color.parseColor("#F00000"));
 
@@ -182,7 +196,6 @@ public class PlayerHistoryAdapter extends RecyclerView.Adapter<PlayerHistoryAdap
                     }
                     break;
             }
-
 
 
         }

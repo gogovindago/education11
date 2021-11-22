@@ -47,27 +47,27 @@
             android:textSize="12sp" />
 
         <TextView
-            android:textStyle="bold"
-            android:textColor="@color/white"
-            android:background="@drawable/buttonstylered"
-            android:layout_alignParentEnd="true"
             android:id="@+id/txtMatchStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
             android:layout_marginStart="5dp"
             android:layout_marginLeft="5dp"
+            android:background="@drawable/buttonstylered"
             android:gravity="center|start"
             android:padding="5dp"
             android:text="Result"
+            android:textColor="@color/white"
             android:textSize="12sp"
-            android:layout_alignParentRight="true" />
+            android:textStyle="bold" />
 
         <TextView
-
             android:id="@+id/txtteamA"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtName"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/ivThumb"
             android:layout_toRightOf="@+id/ivThumb"
             android:gravity="center"
@@ -83,6 +83,7 @@
             android:layout_below="@+id/txtName"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
+            android:layout_marginTop="5dp"
             android:layout_toEndOf="@+id/txtteamA"
             android:layout_toRightOf="@+id/txtteamA"
             android:gravity="center|end"
@@ -93,7 +94,6 @@
             android:textStyle="bold" />
 
         <TextView
-            android:ellipsize="marquee"
             android:id="@+id/txtteamB"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -101,13 +101,14 @@
             android:layout_alignParentBottom="false"
             android:layout_toEndOf="@+id/ivThumb"
             android:layout_toRightOf="@+id/ivThumb"
+            android:ellipsize="marquee"
             android:gravity="center"
-            android:padding="2dp"
-            android:text="TeamB"
-            android:textSize="12sp"
             android:maxWidth="12sp"
             android:maxEms="12"
-            android:singleLine="true" />
+            android:padding="2dp"
+            android:singleLine="true"
+            android:text="TeamB"
+            android:textSize="12sp" />
 
         <TextView
             android:id="@+id/txtTeamBscore"
@@ -189,8 +190,8 @@
             android:gravity="center"
             android:padding="2dp"
             android:text="Name Of mom player"
-            android:textColor="@color/colorPrimaryDark"
             android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimaryDark"
             android:textStyle="bold" />
 
         <TextView
@@ -207,7 +208,6 @@
             android:textSize="12sp" />
 
         <Button
-            android:visibility="gone"
             android:id="@+id/btnDeletematchdetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -216,7 +216,8 @@
             android:padding="5dp"
             android:text="Delete"
             android:textColor="@color/white"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:visibility="gone" />
     </RelativeLayout>
 
 </androidx.cardview.widget.CardView>
