@@ -681,7 +681,7 @@
                                 android:fontFamily="@font/roboto_medium"
                                 android:gravity="center"
                                 android:padding="0dp"
-                                android:text="Player indivisual career statistics"
+                                android:text="Player Individual career statistics"
                                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                                 android:textColor="@color/colorPrimary"
                                 android:textStyle="normal" />

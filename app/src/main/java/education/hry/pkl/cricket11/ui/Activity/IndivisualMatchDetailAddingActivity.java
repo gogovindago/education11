@@ -197,8 +197,8 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
                 if (Check_Data(v)) {
 
                     sweetAlertDialog = new SweetAlertDialog(IndivisualMatchDetailAddingActivity.this);
-                    sweetAlertDialog.setTitle("Alert Indivisual Match Deatil of  " + SelectedPlayerforinsertRecordName + "  Adding !");
-                    sweetAlertDialog.setContentText("Make Sure you have filled all  Indivisual Match Deatil of  " + SelectedPlayerforinsertRecordName + "  correctly.");
+                    sweetAlertDialog.setTitle("Alert Individual Match Deatil of  " + SelectedPlayerforinsertRecordName + "  Adding !");
+                    sweetAlertDialog.setContentText("Make Sure you have filled all  Individual Match Deatil of  " + SelectedPlayerforinsertRecordName + "  correctly.");
                     sweetAlertDialog.setVolumeControlStream(2);
                     sweetAlertDialog.setCancelable(true);
                     sweetAlertDialog.setCancelText("No");

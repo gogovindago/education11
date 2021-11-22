@@ -406,7 +406,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
             dataModelLeftList.add(addnewteam);
 
 
-            DataModelLeftNew addIndivisualMatchRecord = new DataModelLeftNew(R.drawable.ic_baseline_group_add_24, "Add Indivisual Match Record", 198);
+            DataModelLeftNew addIndivisualMatchRecord = new DataModelLeftNew(R.drawable.ic_baseline_group_add_24, "Add Individual Match Record", 198);
             dataModelLeftList.add(addIndivisualMatchRecord);
 
 
