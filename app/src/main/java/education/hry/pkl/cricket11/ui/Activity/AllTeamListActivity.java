@@ -29,15 +29,14 @@ public class AllTeamListActivity extends BaseActivity implements GetAllTeamList_
     private List<AllTeamListResponse.Datum> data = new ArrayList<AllTeamListResponse.Datum>();
     private AllTeamListAdapter adapter;
     private SweetAlertDialog sweetAlertDialog;
-String role;
+    String role;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_all_team_list);
 
         role = CSPreferences.readString(AllTeamListActivity.this, "role");
-
-
 
 
         if (NetworkUtil.isConnected(AllTeamListActivity.this)) {
@@ -112,7 +111,7 @@ String role;
     public void onItemClick(AllTeamListResponse.Datum item, int currposition) {
 
 
-      //  GlobalClass.showtost(AllTeamListActivity.this, "AAyaa  " + item.getTeamId());
+        //  GlobalClass.showtost(AllTeamListActivity.this, "AAyaa  " + item.getTeamId());
 
         sweetAlertDialog = new SweetAlertDialog(AllTeamListActivity.this);
         sweetAlertDialog.setTitle("Alert Team Detail Deleting !");

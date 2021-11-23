@@ -29,10 +29,6 @@ public class WelcomeActivity extends BaseActivity implements AdapterView.OnItemS
         binding = DataBindingUtil.setContentView(this, R.layout.activity_welcome);
 
 
-
-
-
-
         languagelist = new ArrayList<DummyData>();
         for (int i = 0; i <= 3; i++) {
             DummyData dummyData = new DummyData();
@@ -108,8 +104,8 @@ public class WelcomeActivity extends BaseActivity implements AdapterView.OnItemS
             @Override
             public void onClick(View view) {
                 //Intent intentsignup = new Intent(WelcomeActivity.this, SignupActivityold.class);
-//                Intent intentsignup = new Intent(WelcomeActivity.this, SignupActivity.class);
-//                startActivity(intentsignup);
+                Intent intentsignup = new Intent(WelcomeActivity.this, RegisterUserActivity.class);
+                startActivity(intentsignup);
 
             }
         });

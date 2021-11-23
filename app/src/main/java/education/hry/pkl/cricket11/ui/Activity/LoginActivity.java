@@ -116,8 +116,8 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
         createaccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent i = new Intent(LoginActivity.this, SignupActivity.class);
-//                startActivity(i);
+                Intent i = new Intent(LoginActivity.this, RegisterUserActivity.class);
+                startActivity(i);
 
             }
         });

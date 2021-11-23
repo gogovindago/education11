@@ -101,7 +101,7 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
                     .into(imgmomplayer);
 
 
-            txtMatchStatus.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.flash_leave_now));
+          //  txtMatchStatus.setAnimation(AnimationUtils.loadAnimation(mContext, R.anim.flash_leave_now));
 
 
 
