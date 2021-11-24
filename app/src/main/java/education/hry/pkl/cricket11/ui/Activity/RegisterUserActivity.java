@@ -17,8 +17,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
-import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
@@ -26,6 +26,9 @@ import androidx.databinding.DataBindingUtil;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -69,16 +72,31 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
     SpinnerAllTeamAdapter SpinnerAllTeamAdapter;
     SpinnerPlayerRoleAdapter roleAdapter;
 
-    int spnteamnameCurrentPosition;
+    int spnteamnameCurrentPosition, spnPlayingRoleCurrentPosition;
 
     String OpponentteamID, teamdhe, teamId, fcm_MessageTitle, Fcm_MessageBody,
-            teamdheName, refreshedToken, AccountType;
+            teamdheName, refreshedToken, AccountType, playerRoleName;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_register_user);
+
+
+        FirebaseMessaging.getInstance().getToken()
+                .addOnCompleteListener(new OnCompleteListener<String>() {
+                    @Override
+                    public void onComplete(@NonNull Task<String> task) {
+                        if (!task.isSuccessful()) {
+                            //  Log.w(TAG, "Fetching FCM registration token failed", task.getException());
+                            return;
+                        }
+                        // Get new FCM registration token
+                        refreshedToken = task.getResult();
+                        // Log.d("fcm",refreshedToken);
+                    }
+                });
         myLoaders = new MyLoaders(getApplicationContext());
         loadProfileDefault();
 
@@ -98,7 +116,6 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
         } else {
             GlobalClass.showtost(RegisterUserActivity.this, "No Internet Available.Plz check your internet connection.");
         }
-
 
 
 //        binding.spnOpponentteam.setOnItemSelectedListener(this);
@@ -159,11 +176,6 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
                     return false;
 
-                } else if (!binding.edtemail.getText().toString().trim().matches(emailPattern)) {
-                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Email-Id", "Please Enter Correct Email");
-
-                    return false;
-
                 } else if (TextUtils.isEmpty(binding.edtpass.getText().toString().trim())) {
                     GlobalClass.dailogError(RegisterUserActivity.this, "Missing Password", "Please Enter Password");
 
@@ -178,9 +190,27 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
                     return false;
 
+                } else if (!binding.edtemail.getText().toString().trim().matches(emailPattern)) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Email-Id", "Please Enter Correct Email");
+
+                    return false;
+
+                } else if (TextUtils.isEmpty(binding.edtBirthdayDate.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing DOB", "Please Enter Date Of Birthday");
+                    return false;
+
+                } else if (spnPlayingRoleCurrentPosition == 0) {
+                    myLoaders.showSnackBar(view, "Please Select Your Playing Role In Your Team.");
+                    return false;
+                } else if (spnteamnameCurrentPosition == 0) {
+                    myLoaders.showSnackBar(view, "Please Select Your Team.");
+                    return false;
+                } if (imagefile == null) {
+                    myLoaders.showSnackBar(view, "Please Select Your Profile Photo.");
+                    return false;
                 }
 
-            } else if ((AccountType.equalsIgnoreCase("Guest"))){
+            } else if ((AccountType.equalsIgnoreCase("Guest"))) {
                 if (TextUtils.isEmpty(binding.edtusername.getText().toString().trim())) {
                     GlobalClass.dailogError(RegisterUserActivity.this, "Missing First Name", "Please Enter User First Name");
                     return false;
@@ -194,11 +224,6 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                     return false;
                 } else if (!isValidMobile(binding.edtmobile.getText().toString().trim())) {
                     GlobalClass.dailogError(RegisterUserActivity.this, "Missing 10 digits Mobile Number", "Please Enter 10 digits Mobile Number");
-
-                    return false;
-
-                } else if (!binding.edtemail.getText().toString().trim().matches(emailPattern)) {
-                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Email-Id", "Please Enter Correct Email");
 
                     return false;
 
@@ -245,6 +270,43 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
                 if (Check_Data(view)) {
 
+
+                    if ((AccountType.equalsIgnoreCase("Player"))) {
+
+
+
+
+                    }else if ((AccountType.equalsIgnoreCase("Guest"))) {
+
+
+
+
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(RegisterUserActivity.this);
                     sweetAlertDialog.setTitle("Alert Registration Detail Adding !");
                     sweetAlertDialog.setContentText("Make Sure you have filled all detail correctly.");
@@ -261,6 +323,108 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                             sweetAlertDialog.dismiss();
                             if (NetworkUtil.isConnected(RegisterUserActivity.this)) {
                                 sweetAlertDialog.dismiss();
+
+
+                                /*   Fcm_MessageBody = teamdheName + "-" + binding.edtdhescore.getText().toString().trim() + "/" + binding.edtdheWicket.getText().toString().trim() + "( " + binding.edtdheover.getText().toString().trim() + ")";
+
+                                RequestBody rq_fcm_MessageTitle = RequestBody.create(MediaType.parse("multipart/form-data"), fcm_MessageTitle);
+                                RequestBody rq_Fcm_MessageBody = RequestBody.create(MediaType.parse("multipart/form-data"), Fcm_MessageBody);
+
+
+                                RequestBody rq_MatchTitle = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMatchTitle.getText().toString().trim());
+                                RequestBody rq_MatchDate = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMatchDate.getText().toString().trim());
+
+
+                                RequestBody rq_ScoreTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdhescore.getText().toString().trim());
+                                RequestBody rq_OverTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdheover.getText().toString().trim());
+                                RequestBody rq_WicketsTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdheWicket.getText().toString().trim());
+
+
+                                RequestBody rq_VersusTeam2Id = RequestBody.create(MediaType.parse("multipart/form-data"), OpponentteamID);
+                                RequestBody rq_ScoreTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentscore.getText().toString().trim());
+                                RequestBody rq_OverTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentover.getText().toString().trim());
+                                RequestBody rq_WicketsTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentWicket.getText().toString().trim());
+
+
+                                RequestBody rq_ManOfTheMatchTeamId = RequestBody.create(MediaType.parse("multipart/form-data"), momteamId);
+
+                                RequestBody rq_MOMPlayerName = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtplayerName.getText().toString().trim());
+
+                                RequestBody rq_ResultRemarks = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtResultRemarks.getText().toString().trim());
+
+
+                                RequestBody rq_CreatedBy = RequestBody.create(MediaType.parse("multipart/form-data"), CSPreferences.readString(AddMatchResultActivity.this, "User_name"));
+
+                                RequestBody imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
+                                MultipartBody.Part imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
+
+                                WebAPiCall aPiCall = new WebAPiCall();
+                                aPiCall.addMatchResultPostDataMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, rq_fcm_MessageTitle,
+                                        rq_Fcm_MessageBody, rq_MatchTitle,
+                                        rq_MatchDate,
+                                        rq_ScoreTeam1,
+                                        rq_OverTeam1,
+                                        rq_WicketsTeam1,
+                                        rq_VersusTeam2Id,
+                                        rq_ScoreTeam2,
+                                        rq_OverTeam2,
+                                        rq_WicketsTeam2,
+                                        rq_ResultRemarks,
+                                        rq_CreatedBy,
+                                        rq_MOMPlayerName,
+                                        rq_ManOfTheMatchTeamId,
+                                        imagefilebody);
+
+                            } else {
+                                GlobalClass.showtost(AddMatchResultActivity.this, "No Internet Available.Plz check your internet connection.");
+                            }
+
+
+                        }
+                    });*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
                             } else {
@@ -366,7 +530,7 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
             @Override
             public void onClick(View v) {
                 AccountType = "Guest";
-                binding.GuestTypePic.setBorderWidth(3);
+                binding.GuestTypePic.setBorderWidth(5);
                 binding.GuestTypePic.setBorderColor(Color.parseColor("#228c22"));
                 binding.PlayerTypePic.setBorderColor(Color.parseColor("#ffffff"));
 
@@ -387,9 +551,8 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
             public void onClick(View v) {
 
 
-
                 AccountType = "Player";
-                binding.PlayerTypePic.setBorderWidth(3);
+                binding.PlayerTypePic.setBorderWidth(5);
 
                 binding.PlayerTypePic.setBorderColor(Color.parseColor("#228c22"));
                 binding.GuestTypePic.setBorderColor(Color.parseColor("#ffffff"));
@@ -546,6 +709,16 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                 spnteamnameCurrentPosition = position;
             }
 
+        } else if (id == R.id.spnPlayingRole) {
+
+            if (position != 0) {
+                spnPlayingRoleCurrentPosition = position;
+
+                playerRoleName = String.valueOf(allPlayerRolelist.get(position).getPlayerRole());
+
+            } else {
+                spnPlayingRoleCurrentPosition = position;
+            }
         }
 
     }

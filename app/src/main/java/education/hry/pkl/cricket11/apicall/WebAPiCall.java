@@ -57,6 +57,7 @@ import education.hry.pkl.cricket11.model.NetImageVideoResponse;
 import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
+import education.hry.pkl.cricket11.model.RegistrationRespone;
 import education.hry.pkl.cricket11.model.StudentProfileResponse;
 import education.hry.pkl.cricket11.retrofitinterface.ApiClient;
 import education.hry.pkl.cricket11.utility.CSPreferences;
@@ -581,80 +582,6 @@ public class WebAPiCall {
     }
 
 
-    public void StudentProfileDataMethod(final Activity activity, final Context context, final StudentProfileData_interface studentProfileData_interface, String Student_Reg_Id) {
-
-        loadershowwithMsg(context, "We are Fetching your Data from server.");
-
-        Call<StudentProfileResponse> studentProfileResponseCall = ApiClient.getClient().STUDENT_PROFILE_DATA_RESPONSE_CALL(Student_Reg_Id);
-        studentProfileResponseCall.enqueue(new Callback<StudentProfileResponse>() {
-            @Override
-            public void onResponse(Call<StudentProfileResponse> call, Response<StudentProfileResponse> response) {
-                dailoghide(context);
-                if (response.isSuccessful()) {
-
-                    // if (response.body().getStatusCode() == 200) {
-
-                    //dailogsuccess(context, "OTP Sent.", "Please wait for OTP.");
-
-
-                    studentProfileData_interface.StudentProfileData(response.body().getStudentProfile());
-
-                    // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
-                  /*  new SweetAlertDialog(context)
-                            .setTitleText(response.message())
-                            .show();*/
-
-//                        Intent intent = new Intent(context, MainActivity.class);
-//                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-//                        context.startActivity(intent);
-
-                   /* if (response.body().getStatus().equals("1")) {
-                        // CSPreferences.putString(context,"auth_key",response.body().getProfile().getSessionId());
-                        Intent intent2 = new Intent(context, AlloptionActivity.class);
-                        context.startActivity(intent2);
-
-
-                    } else {
-                        // CSPreferences.putString(context,"auth_key",response.body().getProfile().getSessionId());
-
-                        // Intent intent = new Intent(context, EmpLoginView.class);
-                        // context.startActivity(intent);
-                    }*/
-
-
-
-
-                /*    CSPreferences.putString(context,"auth_key",response.body().getData().getAuthKey());
-                    CSPreferences.putString(context,"id",response.body().getData().getUser().getId().toString());
-                    CSPreferences.putString(context,"name",response.body().getData().getUser().getName());
-                    CSPreferences.putString(context,"last_name",response.body().getData().getUser().getLastName());
-                    CSPreferences.putString(context,"email",response.body().getData().getUser().getEmail());
-                    CSPreferences.putString(context,"type",response.body().getData().getUser().getType());
-     */            // CSPreferences.putString(context,"otp",response.body().getData().getUser().getOtp().toString());
-
-
-//                    } else {
-//                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
-//                        dailogError(context, "Mobile Number Not Found!", "This  Number is Not Registered with Us.");
-//
-//                    }
-
-                } else {
-                    GlobalClass.showtost(context, "" + response.message());
-                }
-            }
-
-            @Override
-            public void onFailure(Call<StudentProfileResponse> call, Throwable t) {
-
-                dailoghide(context);
-                t.printStackTrace();
-
-                Log.d("dddddd", "onFailure: " + t.getMessage());
-            }
-        });
-    }
-
     public void GalleryDataMethod(final Activity activity, final Context context, String token, GetGalleryDetail_interface anInterface) {
 
         loadershowwithMsg(context, "Fetching all Photos...");
@@ -1032,6 +959,66 @@ public class WebAPiCall {
             }
         });
     }
+
+    public void RegistrationPostDataMethod(final Activity activity, final Context context,
+                                           RequestBody UserRole,
+                                           RequestBody PlayerName,
+                                           RequestBody PhoneNumber,
+                                           RequestBody Password,
+                                           RequestBody EmailId,
+                                           RequestBody DOB,
+                                           RequestBody TeamId,
+                                           RequestBody PlayingRole,
+                                           RequestBody FCMToken,
+                                           RequestBody MessageBody,
+                                           RequestBody MatchTitle,
+                                           MultipartBody.Part FileName) {
+
+        loadershowwithMsg(context, "Registration process is going On...");
+
+        Call<RegistrationRespone> teamApi = ApiClient.getClient().RegistrationApi(UserRole,
+                PlayerName,
+                PhoneNumber,
+                Password,
+                EmailId,
+                DOB,
+                TeamId,
+                PlayingRole,
+                FCMToken,
+                MessageBody,
+                MatchTitle,
+                FileName);
+        teamApi.enqueue(new Callback<RegistrationRespone>() {
+            @Override
+            public void onResponse(Call<RegistrationRespone> call, Response<RegistrationRespone> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        GlobalClass.showtost(activity, " Your  Registration process has completed Successfully.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<RegistrationRespone> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
 
     public void addMatchResultPostDataMethod(final Activity activity, final Context context, RequestBody fcm_MessageTitle, RequestBody Fcm_MessageBody, RequestBody MatchTitle,
                                              RequestBody MatchDate,

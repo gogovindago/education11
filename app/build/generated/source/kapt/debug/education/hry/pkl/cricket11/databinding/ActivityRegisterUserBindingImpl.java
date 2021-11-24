@@ -33,8 +33,8 @@ public class ActivityRegisterUserBindingImpl extends ActivityRegisterUserBinding
         sViewsWithIds.put(R.id.edtpass, 17);
         sViewsWithIds.put(R.id.edtconfirmpass, 18);
         sViewsWithIds.put(R.id.cardplayer, 19);
-        sViewsWithIds.put(R.id.edtBirthdayDate, 20);
-        sViewsWithIds.put(R.id.edtemail, 21);
+        sViewsWithIds.put(R.id.edtemail, 20);
+        sViewsWithIds.put(R.id.edtBirthdayDate, 21);
         sViewsWithIds.put(R.id.llPlayingRole, 22);
         sViewsWithIds.put(R.id.txtPlayingRole, 23);
         sViewsWithIds.put(R.id.spnPlayingRole, 24);
@@ -65,9 +65,9 @@ public class ActivityRegisterUserBindingImpl extends ActivityRegisterUserBinding
             , (androidx.appcompat.widget.AppCompatButton) bindings[13]
             , (androidx.cardview.widget.CardView) bindings[12]
             , (androidx.cardview.widget.CardView) bindings[19]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[20]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[18]
             , (com.google.android.material.textfield.TextInputEditText) bindings[21]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[18]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[20]
             , (com.google.android.material.textfield.TextInputEditText) bindings[15]
             , (com.google.android.material.textfield.TextInputEditText) bindings[16]
             , (com.google.android.material.textfield.TextInputEditText) bindings[17]

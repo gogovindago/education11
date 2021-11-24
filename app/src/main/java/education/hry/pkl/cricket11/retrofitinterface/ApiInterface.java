@@ -26,6 +26,7 @@ import education.hry.pkl.cricket11.model.NetImageVideoResponse;
 import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
+import education.hry.pkl.cricket11.model.RegistrationRespone;
 import education.hry.pkl.cricket11.model.StudentEventDataSaveResponse;
 import education.hry.pkl.cricket11.model.StudentProfileResponse;
 import okhttp3.MultipartBody;
@@ -44,7 +45,24 @@ import retrofit2.http.Query;
 
 
 public interface ApiInterface {
-/*
+
+
+    @Multipart
+    @POST("RegisterUser")
+    Call<RegistrationRespone> RegistrationApi(@Part("UserRole") RequestBody UserRole,
+                                              @Part("PlayerName") RequestBody PlayerName,
+                                              @Part("PhoneNumber") RequestBody PhoneNumber,
+                                              @Part("Password") RequestBody Password,
+                                              @Part("EmailId") RequestBody EmailId,
+                                              @Part("DOB") RequestBody DOB,
+                                              @Part("TeamId") RequestBody TeamId,
+                                              @Part("PlayingRole") RequestBody PlayingRole,
+                                              @Part("FCMToken") RequestBody FCMToken,
+                                              @Part("MessageBody") RequestBody MessageBody,
+                                              @Part("MessageTitle") RequestBody MatchTitle,
+                                              @Part MultipartBody.Part FileName);
+
+    /*
     {
         "VersusTeam2Id":"1",
             "ScoreTeam1":"34",
@@ -61,7 +79,6 @@ public interface ApiInterface {
             "ManOfTheMatchTeamId":"",
             "FileName":""
     }*/
-
     @Multipart
     @POST("TotalMatchDetails")
     Call<AddMatchResultResponse> addmatchResultApi(@Part("MessageTitle") RequestBody MessageTitle,
@@ -125,19 +142,6 @@ public interface ApiInterface {
 
     @POST("Login")
     Call<LoginRespone> LoginWithPasswordUser(@Body LoginRequest request);
-
-
-    @GET("StudentProfile")
-    Call<StudentProfileResponse> STUDENT_PROFILE_DATA_RESPONSE_CALL(@Query("Registration_Id") String Registration_Id);
-
-    @FormUrlEncoded
-    @POST("student")
-    Call<StudentEventDataSaveResponse> STUDENT_EVENT_DATA_SAVE_RESPONSE_CALL(@Field("Registration_Id") String Registration_Id,
-                                                                             @Field("Description") String Description,
-                                                                             @Field("Longitude") String Longitude,
-                                                                             @Field("Latitude") String Latitude,
-                                                                             @Field("ImageDate") String ImageDate,
-                                                                             @Field("ImagePath") String ImagePath);
 
 
     @GET("Gallery")
