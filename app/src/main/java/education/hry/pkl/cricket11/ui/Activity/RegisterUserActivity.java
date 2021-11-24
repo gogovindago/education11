@@ -6,6 +6,7 @@ import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -366,8 +367,8 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
             public void onClick(View v) {
                 AccountType = "Guest";
                 binding.GuestTypePic.setBorderWidth(3);
-                binding.GuestTypePic.setBorderColor(getColor(R.color.green));
-                binding.PlayerTypePic.setBorderColor(getColor(R.color.white));
+                binding.GuestTypePic.setBorderColor(Color.parseColor("#228c22"));
+                binding.PlayerTypePic.setBorderColor(Color.parseColor("#ffffff"));
 
                 binding.btnRegister.setVisibility(View.VISIBLE);
                 binding.cardGuest.setVisibility(View.VISIBLE);
@@ -387,10 +388,11 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
 
 
-                AccountType = "Player7";
+                AccountType = "Player";
                 binding.PlayerTypePic.setBorderWidth(3);
-                binding.PlayerTypePic.setBorderColor(getColor(R.color.green));
-                binding.GuestTypePic.setBorderColor(getColor(R.color.white));
+
+                binding.PlayerTypePic.setBorderColor(Color.parseColor("#228c22"));
+                binding.GuestTypePic.setBorderColor(Color.parseColor("#ffffff"));
 
 
                 binding.cardGuest.setVisibility(View.GONE);
