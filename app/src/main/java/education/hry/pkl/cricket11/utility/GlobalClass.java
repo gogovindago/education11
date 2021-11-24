@@ -119,6 +119,26 @@ public class GlobalClass {
         sweetAlertDialog.show();
 
     }
+    public static void dailogError(final Context context, String msgtitle, String msgcontentText) {
+        SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(context);
+        sweetAlertDialog.setTitle(msgtitle + "!");
+        sweetAlertDialog.setContentText(msgcontentText);
+        sweetAlertDialog.setVolumeControlStream(2);
+
+        sweetAlertDialog.setCancelable(false);
+        sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+        sweetAlertDialog.changeAlertType(1);
+        sweetAlertDialog.setCanceledOnTouchOutside(false);
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
+        sweetAlertDialog.show();
+
+    }
 
 
 }

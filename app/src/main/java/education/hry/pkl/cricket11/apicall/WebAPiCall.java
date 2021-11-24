@@ -19,6 +19,7 @@ import java.util.Objects;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.allinterfaces.BannerData_interface;
+import education.hry.pkl.cricket11.allinterfaces.GetAllPlayerRoleList_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetAllTeamList_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetCareerStatistcsDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetGalleryDetail_interface;
@@ -46,6 +47,7 @@ import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
+import education.hry.pkl.cricket11.model.GetPlayerRoleResponse;
 import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualRequest;
 import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
@@ -734,6 +736,51 @@ public class WebAPiCall {
 
             @Override
             public void onFailure(Call<PlayersListResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+                Toast.makeText(context, "Poor Connection." + t.toString(), Toast.LENGTH_SHORT).show();
+                // Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void PlayerRoleListDataMethod(final Activity activity, final Context context, GetAllPlayerRoleList_interface anInterface) {
+
+        loadershowwithMsg(context, "Fetching all Players Role details...");
+
+        Call<GetPlayerRoleResponse> apiCall =
+                ApiClient.getClient().PlayerRoleListApiCall();
+        apiCall.enqueue(new Callback<GetPlayerRoleResponse>() {
+            @Override
+            public void onResponse(Call<GetPlayerRoleResponse> call, final Response<GetPlayerRoleResponse> response) {
+
+                if (response.isSuccessful()) {
+
+                    dailoghide(context);
+
+
+                    if (response.body().getResponse() == 200) {
+                        // GlobalClass.showtost(context, "" + response.body().getSysMessage());
+                        anInterface.GetAllPlayerRoleDetail_list(response.body().getData());
+
+
+                    } else {
+                        GlobalClass.showtost(context, "" + response.body().getSysMessage());
+
+                    }
+
+
+                } else {
+                    dailoghide(context);
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+
+            @Override
+            public void onFailure(Call<GetPlayerRoleResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();

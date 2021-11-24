@@ -31,25 +31,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7063279c-bc44-49d9-9779-54be30cd925c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityRegisterUserBindingImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/RegisterUserActivity.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register_user.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/SpinnerPlayerRoleAdapter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/allinterfaces/GetAllPlayerRoleList_interface.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/GetPlayerRoleResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-hdpi/done.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-mdpi/done.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xhdpi/done.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable-xxhdpi/done.9.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/checkgreen.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/education/hry/pkl/cricket11/BuildConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/buildConfig/debug/education/hry/pkl/cricket11/BuildConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/DataBinderMapperImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/DataBinderMapperImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/MatchesDetailAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/MatchesDetailAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/AllTeamListActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/LoginActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/LoginActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/WelcomeActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/WelcomeActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_login.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityRegisterUserBindingImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityRegisterUserBindingImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityWelcomeBindingImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/build/generated/source/kapt/debug/education/hry/pkl/cricket11/databinding/ActivityWelcomeBindingImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/RegisterUserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/RegisterUserActivity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/utility/GlobalClass.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/utility/GlobalClass.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_register_user.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_register_user.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_welcome.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_itemrecentmatchimg_row.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_itemrecentmatchimg_row.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/release/app-release.aab" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/release/app-release.aab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/strings.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -91,8 +93,8 @@
         <option value="Interface" />
         <option value="layoutResourceFile_vertical" />
         <option value="layoutResourceFile" />
-        <option value="Class" />
         <option value="resourceFile" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -150,7 +152,7 @@
     <property name="com.intellij.openapi.externalSystem.service.settings.ExternalSystemGroupConfigurable" value="ALL" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/app/src/main/res/drawable" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res/layout" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/src/main/res" />
     <property name="multi-representation-previewC:/Users/Govind/.gradle/caches/modules-2/files-2.1/com.github.smarteist/autoimageslider/1.3.9-appcompat/ff711ecdb447013106b1eba445e3bc391f9b247/autoimageslider-1.3.9-appcompat-sources.jar!/com/smarteist/autoimageslider/SliderView.java_selected" value="Custom views" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.17" />
@@ -192,19 +194,19 @@
       <recent name="education.hry.pkl.cricket11.ui.Activity" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="education.hry.pkl.cricket11.allinterfaces" />
+      <recent name="education.hry.pkl.cricket11.adapter" />
       <recent name="education.hry.pkl.cricket11.ui.Activity" />
       <recent name="education.hry.pkl.cricket11.model" />
-      <recent name="education.hry.pkl.cricket11.adapter" />
       <recent name="education.hry.pkl.cricket11.utility" />
-      <recent name="education.hry.pkl.cricket11.allinterfaces" />
     </key>
     <key name="android.template.1931415125">
       <recent name="plantation.hr.cbse.haryanaplantation.ui.Activity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="E:\AndroidApps\Govind\2020\AllApps\Java\Live\education11\Education11\app\src\main\res\layout" />
       <recent name="E:\AndroidApps\Govind\2020\AllApps\Java\Live\education11\Education11\app\src\main\res" />
       <recent name="E:\AndroidApps\Govind\2020\AllApps\Java\Live\education11\Education11\app\src\main\res\drawable" />
+      <recent name="E:\AndroidApps\Govind\2020\AllApps\Java\Live\education11\Education11\app\src\main\res\layout" />
       <recent name="D:\DHE\Cricket11\Education11\app\src\main\res\layout" />
       <recent name="E:\AndroidApps\Govind\2020\AllApps\Java\Live\education11\education11\Education11\app\src\main\res\mipmap-xxhdpi" />
     </key>
@@ -625,7 +627,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637563718822</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="1.REgistration....">
+      <created>1637667004045</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1637667004045</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -715,7 +724,8 @@
     <MESSAGE value="1.About us &#10;2. In app updated." />
     <MESSAGE value="1. fcm&#10;2. result tag" />
     <MESSAGE value="1. fixed error of inserting score in individual." />
-    <option name="LAST_COMMIT_MESSAGE" value="1. fixed error of inserting score in individual." />
+    <MESSAGE value="1.REgistration...." />
+    <option name="LAST_COMMIT_MESSAGE" value="1.REgistration...." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

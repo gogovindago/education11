@@ -15,29 +15,34 @@ public class ActivityRegisterUserBindingImpl extends ActivityRegisterUserBinding
         sIncludes = null;
         sViewsWithIds = new android.util.SparseIntArray();
         sViewsWithIds.put(R.id.simpleSwipeRefreshLayout, 1);
-        sViewsWithIds.put(R.id.materialCardView, 2);
-        sViewsWithIds.put(R.id.profilePic, 3);
-        sViewsWithIds.put(R.id.takePhoto, 4);
-        sViewsWithIds.put(R.id.llUerType, 5);
-        sViewsWithIds.put(R.id.txtUerType, 6);
-        sViewsWithIds.put(R.id.spnUserType, 7);
-        sViewsWithIds.put(R.id.llPlayingRole, 8);
-        sViewsWithIds.put(R.id.txtPlayingRole, 9);
-        sViewsWithIds.put(R.id.spnPlayingRole, 10);
-        sViewsWithIds.put(R.id.llteamname, 11);
-        sViewsWithIds.put(R.id.txtteamname, 12);
-        sViewsWithIds.put(R.id.spnteamname, 13);
-        sViewsWithIds.put(R.id.btn_uploadprofilepic, 14);
-        sViewsWithIds.put(R.id.edtusername, 15);
-        sViewsWithIds.put(R.id.edtlastname, 16);
-        sViewsWithIds.put(R.id.edtmobile, 17);
-        sViewsWithIds.put(R.id.edtBirthdayDate, 18);
-        sViewsWithIds.put(R.id.edtemail, 19);
-        sViewsWithIds.put(R.id.edtpass, 20);
-        sViewsWithIds.put(R.id.edtconfirmpass, 21);
-        sViewsWithIds.put(R.id.spnGender, 22);
-        sViewsWithIds.put(R.id.btn_register, 23);
-        sViewsWithIds.put(R.id.txt_login, 24);
+        sViewsWithIds.put(R.id.llUerType, 2);
+        sViewsWithIds.put(R.id.GuestTypePic, 3);
+        sViewsWithIds.put(R.id.GuestTypeIcon, 4);
+        sViewsWithIds.put(R.id.txtUerTypeGuest, 5);
+        sViewsWithIds.put(R.id.PlayerTypePic, 6);
+        sViewsWithIds.put(R.id.PlayerTypeIcon, 7);
+        sViewsWithIds.put(R.id.txtUerTypePlayer, 8);
+        sViewsWithIds.put(R.id.materialCardView, 9);
+        sViewsWithIds.put(R.id.profilePic, 10);
+        sViewsWithIds.put(R.id.takePhoto, 11);
+        sViewsWithIds.put(R.id.cardGuest, 12);
+        sViewsWithIds.put(R.id.btn_uploadprofilepic, 13);
+        sViewsWithIds.put(R.id.edtusername, 14);
+        sViewsWithIds.put(R.id.edtlastname, 15);
+        sViewsWithIds.put(R.id.edtmobile, 16);
+        sViewsWithIds.put(R.id.edtpass, 17);
+        sViewsWithIds.put(R.id.edtconfirmpass, 18);
+        sViewsWithIds.put(R.id.cardplayer, 19);
+        sViewsWithIds.put(R.id.edtBirthdayDate, 20);
+        sViewsWithIds.put(R.id.edtemail, 21);
+        sViewsWithIds.put(R.id.llPlayingRole, 22);
+        sViewsWithIds.put(R.id.txtPlayingRole, 23);
+        sViewsWithIds.put(R.id.spnPlayingRole, 24);
+        sViewsWithIds.put(R.id.llteamname, 25);
+        sViewsWithIds.put(R.id.txtteamname, 26);
+        sViewsWithIds.put(R.id.spnteamname, 27);
+        sViewsWithIds.put(R.id.btn_register, 28);
+        sViewsWithIds.put(R.id.txt_login, 29);
     }
     // views
     @NonNull
@@ -48,34 +53,39 @@ public class ActivityRegisterUserBindingImpl extends ActivityRegisterUserBinding
     // Inverse Binding Event Handlers
 
     public ActivityRegisterUserBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 25, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 30, sIncludes, sViewsWithIds));
     }
     private ActivityRegisterUserBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
-            , (androidx.appcompat.widget.AppCompatButton) bindings[23]
-            , (androidx.appcompat.widget.AppCompatButton) bindings[14]
+            , (android.widget.ImageView) bindings[4]
+            , (de.hdodenhof.circleimageview.CircleImageView) bindings[3]
+            , (android.widget.ImageView) bindings[7]
+            , (de.hdodenhof.circleimageview.CircleImageView) bindings[6]
+            , (androidx.appcompat.widget.AppCompatButton) bindings[28]
+            , (androidx.appcompat.widget.AppCompatButton) bindings[13]
+            , (androidx.cardview.widget.CardView) bindings[12]
+            , (androidx.cardview.widget.CardView) bindings[19]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[20]
             , (com.google.android.material.textfield.TextInputEditText) bindings[18]
             , (com.google.android.material.textfield.TextInputEditText) bindings[21]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[19]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[15]
             , (com.google.android.material.textfield.TextInputEditText) bindings[16]
             , (com.google.android.material.textfield.TextInputEditText) bindings[17]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[20]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[15]
-            , (android.widget.LinearLayout) bindings[8]
-            , (android.widget.LinearLayout) bindings[5]
-            , (android.widget.LinearLayout) bindings[11]
-            , (com.google.android.material.card.MaterialCardView) bindings[2]
-            , (de.hdodenhof.circleimageview.CircleImageView) bindings[3]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[14]
+            , (android.widget.LinearLayout) bindings[22]
+            , (android.widget.LinearLayout) bindings[2]
+            , (android.widget.LinearLayout) bindings[25]
+            , (com.google.android.material.card.MaterialCardView) bindings[9]
+            , (de.hdodenhof.circleimageview.CircleImageView) bindings[10]
             , (androidx.swiperefreshlayout.widget.SwipeRefreshLayout) bindings[1]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[22]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[10]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[7]
-            , (androidx.appcompat.widget.AppCompatSpinner) bindings[13]
-            , (android.widget.ImageView) bindings[4]
-            , (androidx.appcompat.widget.AppCompatTextView) bindings[24]
-            , (android.widget.TextView) bindings[9]
-            , (android.widget.TextView) bindings[6]
-            , (android.widget.TextView) bindings[12]
+            , (androidx.appcompat.widget.AppCompatSpinner) bindings[24]
+            , (androidx.appcompat.widget.AppCompatSpinner) bindings[27]
+            , (android.widget.ImageView) bindings[11]
+            , (androidx.appcompat.widget.AppCompatTextView) bindings[29]
+            , (android.widget.TextView) bindings[23]
+            , (android.widget.TextView) bindings[5]
+            , (android.widget.TextView) bindings[8]
+            , (android.widget.TextView) bindings[26]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);

@@ -17,11 +17,12 @@ public class ActivityWelcomeBindingImpl extends ActivityWelcomeBinding  {
         sViewsWithIds.put(R.id.imageView, 1);
         sViewsWithIds.put(R.id.shimmer_view_container1, 2);
         sViewsWithIds.put(R.id.textView, 3);
-        sViewsWithIds.put(R.id.btnsignup, 4);
+        sViewsWithIds.put(R.id.linearLayout, 4);
         sViewsWithIds.put(R.id.btnlogin, 5);
-        sViewsWithIds.put(R.id.languageSpinner, 6);
-        sViewsWithIds.put(R.id.textView2, 7);
-        sViewsWithIds.put(R.id.txtversion, 8);
+        sViewsWithIds.put(R.id.btnsignup, 6);
+        sViewsWithIds.put(R.id.languageSpinner, 7);
+        sViewsWithIds.put(R.id.textView2, 8);
+        sViewsWithIds.put(R.id.txtversion, 9);
     }
     // views
     @NonNull
@@ -32,18 +33,19 @@ public class ActivityWelcomeBindingImpl extends ActivityWelcomeBinding  {
     // Inverse Binding Event Handlers
 
     public ActivityWelcomeBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 9, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 10, sIncludes, sViewsWithIds));
     }
     private ActivityWelcomeBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 0
             , (android.widget.Button) bindings[5]
-            , (android.widget.Button) bindings[4]
+            , (android.widget.Button) bindings[6]
             , (de.hdodenhof.circleimageview.CircleImageView) bindings[1]
-            , (android.widget.Spinner) bindings[6]
+            , (android.widget.Spinner) bindings[7]
+            , (android.widget.LinearLayout) bindings[4]
             , (com.facebook.shimmer.ShimmerFrameLayout) bindings[2]
             , (android.widget.TextView) bindings[3]
-            , (android.widget.TextView) bindings[7]
             , (android.widget.TextView) bindings[8]
+            , (android.widget.TextView) bindings[9]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);

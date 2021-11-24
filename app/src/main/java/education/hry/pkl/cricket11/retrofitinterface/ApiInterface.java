@@ -16,6 +16,7 @@ import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
 import education.hry.pkl.cricket11.model.ForgotPasswordResponse;
 import education.hry.pkl.cricket11.model.GalleryResponse;
+import education.hry.pkl.cricket11.model.GetPlayerRoleResponse;
 import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualRequest;
 import education.hry.pkl.cricket11.model.InsertMatchRecordIndivisualResponse;
 import education.hry.pkl.cricket11.model.LoginRequest;
@@ -141,6 +142,9 @@ public interface ApiInterface {
 
     @GET("Gallery")
     Call<GalleryResponse> GalleryApiCall(@Header("Authorization") String token);
+
+    @GET("GetPlayerRole")
+    Call<GetPlayerRoleResponse> PlayerRoleListApiCall();
 
     @GET("PlayerList")
     Call<PlayersListResponse> PlayersListApiCall(@Header("Authorization") String token);

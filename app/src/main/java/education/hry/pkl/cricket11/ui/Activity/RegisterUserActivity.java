@@ -7,15 +7,19 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.DatePicker;
+import android.widget.Toast;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
@@ -34,20 +38,25 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.regex.Pattern;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.SpinnerAllTeamAdapter;
+import education.hry.pkl.cricket11.adapter.SpinnerPlayerRoleAdapter;
+import education.hry.pkl.cricket11.allinterfaces.GetAllPlayerRoleList_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetAllTeamList_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityRegisterUserBinding;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
+import education.hry.pkl.cricket11.model.GetPlayerRoleResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.ImagePickerActivity;
 import education.hry.pkl.cricket11.utility.MyLoaders;
 import education.hry.pkl.cricket11.utility.NetworkUtil;
 
-public class RegisterUserActivity extends BaseActivity implements GetAllTeamList_interface, AdapterView.OnItemSelectedListener {
+public class RegisterUserActivity extends BaseActivity implements GetAllTeamList_interface, AdapterView.OnItemSelectedListener, GetAllPlayerRoleList_interface {
     ActivityRegisterUserBinding binding;
     private MyLoaders myLoaders;
     File imagefile;
@@ -55,13 +64,15 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
     public static final int REQUEST_IMAGE = 100;
 
     private List<AllTeamListResponse.Datum> allteamlist = new ArrayList<AllTeamListResponse.Datum>();
+    private List<GetPlayerRoleResponse.Datum> allPlayerRolelist = new ArrayList<GetPlayerRoleResponse.Datum>();
     SpinnerAllTeamAdapter SpinnerAllTeamAdapter;
+    SpinnerPlayerRoleAdapter roleAdapter;
 
-    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnteamnameCurrentPosition;
+    int spnteamnameCurrentPosition;
 
     String OpponentteamID, teamdhe, teamId, fcm_MessageTitle, Fcm_MessageBody,
-            teamdheName;
-
+            teamdheName, refreshedToken, AccountType;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,10 +86,12 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
         // call this once the bitmap(s) usage is over
         ImagePickerActivity.clearCache(this);
 
+
         if (NetworkUtil.isConnected(RegisterUserActivity.this)) {
 
             WebAPiCall aPiCall = new WebAPiCall();
             aPiCall.allTeamlistMethod(RegisterUserActivity.this, RegisterUserActivity.this, "2", RegisterUserActivity.this, binding.simpleSwipeRefreshLayout);
+            aPiCall.PlayerRoleListDataMethod(RegisterUserActivity.this, RegisterUserActivity.this, RegisterUserActivity.this);
 
 
         } else {
@@ -86,9 +99,11 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
         }
 
 
+
 //        binding.spnOpponentteam.setOnItemSelectedListener(this);
 //        binding.spnteamdhe.setOnItemSelectedListener(this);
         binding.spnteamname.setOnItemSelectedListener(this);
+        binding.spnPlayingRole.setOnItemSelectedListener(this);
 
 
         binding.simpleSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -114,6 +129,106 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
     }
 
+
+    private boolean isValidMobile(String phone) {
+        if (!Pattern.matches("[a-zA-Z]+", phone)) {
+            return phone.length() >= 10 && phone.length() < 11;
+            //return phone.length()==10;
+        }
+        return false;
+    }
+
+    public boolean Check_Data(View view) {
+        if (!(AccountType == null)) {
+
+            if ((AccountType.equalsIgnoreCase("Player"))) {
+                if (TextUtils.isEmpty(binding.edtusername.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing First Name", "Please Enter User First Name");
+                    return false;
+                } else if (TextUtils.isEmpty(binding.edtlastname.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Last Name", "Please Enter User Last Name");
+
+                    return false;
+                } else if (TextUtils.isEmpty(binding.edtmobile.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Mobile Number", "Please Enter Mobile Number");
+
+                    return false;
+                } else if (!isValidMobile(binding.edtmobile.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing 10 digits Mobile Number", "Please Enter 10 digits Mobile Number");
+
+                    return false;
+
+                } else if (!binding.edtemail.getText().toString().trim().matches(emailPattern)) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Email-Id", "Please Enter Correct Email");
+
+                    return false;
+
+                } else if (TextUtils.isEmpty(binding.edtpass.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Password", "Please Enter Password");
+
+                    return false;
+
+                } else if (TextUtils.isEmpty(binding.edtconfirmpass.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Confirm Password", "Please Enter Confirm Password");
+                    return false;
+
+                } else if (!binding.edtpass.getText().toString().trim().equals(binding.edtconfirmpass.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Miss-match Password and Confirm-password", "Your Password and Confirm-password does not match.");
+
+                    return false;
+
+                }
+
+            } else if ((AccountType.equalsIgnoreCase("Guest"))){
+                if (TextUtils.isEmpty(binding.edtusername.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing First Name", "Please Enter User First Name");
+                    return false;
+                } else if (TextUtils.isEmpty(binding.edtlastname.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Last Name", "Please Enter User Last Name");
+
+                    return false;
+                } else if (TextUtils.isEmpty(binding.edtmobile.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Mobile Number", "Please Enter Mobile Number");
+
+                    return false;
+                } else if (!isValidMobile(binding.edtmobile.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing 10 digits Mobile Number", "Please Enter 10 digits Mobile Number");
+
+                    return false;
+
+                } else if (!binding.edtemail.getText().toString().trim().matches(emailPattern)) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Email-Id", "Please Enter Correct Email");
+
+                    return false;
+
+                } else if (TextUtils.isEmpty(binding.edtpass.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Password", "Please Enter Password");
+
+                    return false;
+
+                } else if (TextUtils.isEmpty(binding.edtconfirmpass.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Confirm Password", "Please Enter Confirm Password");
+                    return false;
+
+                } else if (!binding.edtpass.getText().toString().trim().equals(binding.edtconfirmpass.getText().toString().trim())) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Miss-match Password and Confirm-password", "Your Password and Confirm-password does not match.");
+
+                    return false;
+
+                }
+
+            }
+
+            return true;
+
+        } else {
+
+            GlobalClass.dailogError(RegisterUserActivity.this, "Missing User Type", "Please Select Your User Type First.");
+
+            return false;
+        }
+    }
+
     @Override
     public void initData() {
 
@@ -121,6 +236,51 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
     @Override
     public void initListeners() {
+
+
+        binding.btnRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (Check_Data(view)) {
+
+                    SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(RegisterUserActivity.this);
+                    sweetAlertDialog.setTitle("Alert Registration Detail Adding !");
+                    sweetAlertDialog.setContentText("Make Sure you have filled all detail correctly.");
+                    sweetAlertDialog.setVolumeControlStream(2);
+                    sweetAlertDialog.setCancelable(true);
+                    sweetAlertDialog.setCancelText("No");
+                    sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+                    sweetAlertDialog.changeAlertType(3);
+                    sweetAlertDialog.setCanceledOnTouchOutside(false);
+                    sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            sweetAlertDialog.dismiss();
+                            if (NetworkUtil.isConnected(RegisterUserActivity.this)) {
+                                sweetAlertDialog.dismiss();
+
+
+                            } else {
+                                GlobalClass.showtost(RegisterUserActivity.this, "No Internet Available.Plz check your internet connection.");
+                            }
+                        }
+                    });
+
+                    sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                        @Override
+                        public void onClick(SweetAlertDialog sweetAlertDialog) {
+                            sweetAlertDialog.dismiss();
+                        }
+                    });
+                    sweetAlertDialog.show();
+
+                }
+            }
+        });
+
+
         binding.txtLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -196,6 +356,50 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
                 datePickerDialog.show();
 
+            }
+        });
+
+
+        binding.GuestTypePic.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+                AccountType = "Guest";
+                binding.GuestTypePic.setBorderWidth(3);
+                binding.GuestTypePic.setBorderColor(getColor(R.color.green));
+                binding.PlayerTypePic.setBorderColor(getColor(R.color.white));
+
+                binding.btnRegister.setVisibility(View.VISIBLE);
+                binding.cardGuest.setVisibility(View.VISIBLE);
+                binding.GuestTypeIcon.setVisibility(View.VISIBLE);
+
+                binding.PlayerTypeIcon.setVisibility(View.GONE);
+                binding.materialCardView.setVisibility(View.GONE);
+                binding.cardplayer.setVisibility(View.GONE);
+
+            }
+        });
+
+        binding.PlayerTypePic.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.M)
+            @Override
+            public void onClick(View v) {
+
+
+
+                AccountType = "Player7";
+                binding.PlayerTypePic.setBorderWidth(3);
+                binding.PlayerTypePic.setBorderColor(getColor(R.color.green));
+                binding.GuestTypePic.setBorderColor(getColor(R.color.white));
+
+
+                binding.cardGuest.setVisibility(View.GONE);
+                binding.GuestTypeIcon.setVisibility(View.GONE);
+                binding.cardGuest.setVisibility(View.VISIBLE);
+                binding.PlayerTypeIcon.setVisibility(View.VISIBLE);
+                binding.materialCardView.setVisibility(View.VISIBLE);
+                binding.cardplayer.setVisibility(View.VISIBLE);
+                binding.btnRegister.setVisibility(View.VISIBLE);
             }
         });
 
@@ -346,6 +550,29 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
+
+    }
+
+    @Override
+    public void GetAllPlayerRoleDetail_list(List<GetPlayerRoleResponse.Datum> list) {
+
+
+        allPlayerRolelist.clear();
+        allPlayerRolelist.addAll(list);
+
+        GetPlayerRoleResponse.Datum playerRolepojo = new GetPlayerRoleResponse.Datum();
+        playerRolepojo.setPlayerRole("Select Player Role.");
+        playerRolepojo.setId(0);
+
+        allPlayerRolelist.add(0, playerRolepojo);
+
+        roleAdapter = new SpinnerPlayerRoleAdapter(getApplicationContext(), allPlayerRolelist);
+
+
+        // binding.spnOpponentteam.setAdapter(SpinnerAllTeamAdapter);
+        //  binding.spnteamdhe.setAdapter(SpinnerAllTeamAdapter);
+        binding.spnPlayingRole.setAdapter(roleAdapter);
+
 
     }
 }

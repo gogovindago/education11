@@ -8,97 +8,85 @@
 
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorbg"
+        android:background="@color/bg"
         tools:context=".ui.Activity.WelcomeActivity">
 
-        <LinearLayout
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageView"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="172dp"
+            android:layout_marginEnd="8dp"
+            android:src="@mipmap/ic_launcher_round"
+            app:civ_border_color="@color/white"
+            app:civ_border_width="2dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <com.facebook.shimmer.ShimmerFrameLayout
+            android:id="@+id/shimmer_view_container1"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/black_border"
+            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:shimmer_base_alpha="1"
+            app:shimmer_duration="3000"
+            app:shimmer_highlight_alpha="0.4"
+            app:shimmer_tilt="180">
+
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imageView"
+                android:layout_margin="0dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="8dp"
+                android:fontFamily="@font/cabin_sketch"
+                android:gravity="center"
+                android:text="@string/app_name"
+                android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:background="@color/white"
+            android:foregroundGravity="center"
             android:gravity="center"
             android:orientation="vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.87">
 
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/imageView"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="8dp"
-                android:src="@mipmap/ic_launcher_round"
-                app:civ_border_color="@color/white"
-                app:civ_border_width="2dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <com.facebook.shimmer.ShimmerFrameLayout
-                android:id="@+id/shimmer_view_container1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/black_border"
-                android:elevation="4dp"
-                app:shimmer_base_alpha="1"
-                app:shimmer_duration="3000"
-                app:shimmer_highlight_alpha="0.4"
-                app:shimmer_tilt="180">
-
-
-                <TextView
-                    android:id="@+id/textView"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/imageView"
-                    android:layout_margin="0dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginEnd="8dp"
-                    android:fontFamily="@font/cabin_sketch"
-                    android:gravity="center"
-                    android:text="@string/app_name"
-                    android:textAppearance="@style/TextAppearance.AppCompat.Headline"
-                    android:textColor="@color/white"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView" />
-            </com.facebook.shimmer.ShimmerFrameLayout>
-
-            <Button
-                android:id="@+id/btnsignup"
-                android:layout_width="200dp"
-                android:layout_height="55dp"
-                android:layout_below="@+id/textView"
-                android:layout_centerHorizontal="true"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="8dp"
-                android:layout_marginEnd="8dp"
-                android:background="@drawable/buttonstyle"
-                android:text="@string/create_Account"
-                android:textAllCaps="false"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:visibility="visible"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.496"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 
             <Button
                 android:id="@+id/btnlogin"
-                android:layout_width="200dp"
-                android:layout_height="55dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_below="@+id/btnsignup"
                 android:layout_centerHorizontal="true"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="8dp"
 
                 android:background="@drawable/buttonstyle"
@@ -111,6 +99,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
+            <Button
+                android:id="@+id/btnsignup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/textView"
+                android:layout_centerHorizontal="true"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/buttonstyle"
+                android:text="@string/create_Account"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.496"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btnlogin" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -143,52 +151,48 @@
             </LinearLayout>
 
 
-            <TextView
-
-                android:id="@+id/textView2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="center"
-                android:text="@string/the_official_app"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/blue"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView"/>
-
-
-            <TextView
-
-                android:id="@+id/txtversion"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="52dp"
-                android:layout_marginEnd="8dp"
-                android:layout_marginBottom="8dp"
-                android:fontFamily="@font/roboto_light"
-                android:gravity="center|bottom"
-                android:text=""
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
-                android:textColor="@color/blue"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textView2"
-
-
-                />
-
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center"
+            android:layout_marginBottom="5dp"
+            android:background="@color/white"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center"
+            android:text="@string/the_official_app"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/txtversion"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+
+            android:id="@+id/txtversion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto_light"
+            android:gravity="center|bottom"
+            android:text=""
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="@color/colorPrimary"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
