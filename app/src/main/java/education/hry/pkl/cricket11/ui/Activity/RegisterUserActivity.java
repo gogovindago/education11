@@ -59,6 +59,9 @@ import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.ImagePickerActivity;
 import education.hry.pkl.cricket11.utility.MyLoaders;
 import education.hry.pkl.cricket11.utility.NetworkUtil;
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 
 public class RegisterUserActivity extends BaseActivity implements GetAllTeamList_interface, AdapterView.OnItemSelectedListener, GetAllPlayerRoleList_interface {
     ActivityRegisterUserBinding binding;
@@ -77,6 +80,32 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
     String OpponentteamID, teamdhe, teamId, fcm_MessageTitle, Fcm_MessageBody,
             teamdheName, refreshedToken, AccountType, playerRoleName;
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+
+
+
+
+    String UserRole= null,
+            PlayerName= null,
+            PhoneNumber= null,
+            Password= null,
+            EmailId= null,
+            DOB= null,
+            TeamId= null,
+            PlayingRole= null,
+            FCMToken= null,
+            MessageBody= null,
+            MatchTitle = null,
+            FileName= null;
+
+
+
+
+
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -205,7 +234,8 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                 } else if (spnteamnameCurrentPosition == 0) {
                     myLoaders.showSnackBar(view, "Please Select Your Team.");
                     return false;
-                } if (imagefile == null) {
+                }
+                if (imagefile == null) {
                     myLoaders.showSnackBar(view, "Please Select Your Profile Photo.");
                     return false;
                 }
@@ -271,40 +301,49 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                 if (Check_Data(view)) {
 
 
+
+
+
                     if ((AccountType.equalsIgnoreCase("Player"))) {
 
+                        UserRole = AccountType;
+
+                        PlayerName = binding.edtusername.getText().toString().trim() + " " + binding.edtlastname.getText().toString().trim();
+                        PhoneNumber = binding.edtmobile.getText().toString().trim();
+                        Password = binding.edtconfirmpass.getText().toString().trim();
+                        EmailId = binding.edtemail.getText().toString().trim();
+                        DOB = binding.edtBirthdayDate.getText().toString().trim();
+                        TeamId = teamId;
+                        PlayingRole = playerRoleName;
+                        FCMToken = refreshedToken;
+                        MatchTitle = "A " + AccountType + " User Came";
+                        MessageBody = "A " + AccountType + " Name " + PlayerName + "  Registered Plz verify him ASAP. ";
+
+                       // FileName = String.valueOf(imagefile);
+
+                    } else if ((AccountType.equalsIgnoreCase("Guest"))) {
+
+                        UserRole = AccountType;
 
 
+                        PlayerName = binding.edtusername.getText().toString().trim() + " " + binding.edtlastname.getText().toString().trim();
+                        PhoneNumber = binding.edtmobile.getText().toString().trim();
+                        Password = binding.edtconfirmpass.getText().toString().trim();
 
-                    }else if ((AccountType.equalsIgnoreCase("Guest"))) {
+
+                        EmailId = "";
+                        DOB = "01/01/1900";
+                        TeamId = " ";
+                        PlayingRole = " ";
 
 
-
+                        FCMToken = refreshedToken;
+                        MatchTitle = "A " + AccountType + " User Came";
+                        MessageBody = "A " + AccountType + " User " + PlayerName + "  Registered ";
+                        FileName = null;
+                        imagefile = null;
 
                     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
                     SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(RegisterUserActivity.this);
@@ -325,104 +364,71 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                                 sweetAlertDialog.dismiss();
 
 
-                                /*   Fcm_MessageBody = teamdheName + "-" + binding.edtdhescore.getText().toString().trim() + "/" + binding.edtdheWicket.getText().toString().trim() + "( " + binding.edtdheover.getText().toString().trim() + ")";
 
-                                RequestBody rq_fcm_MessageTitle = RequestBody.create(MediaType.parse("multipart/form-data"), fcm_MessageTitle);
-                                RequestBody rq_Fcm_MessageBody = RequestBody.create(MediaType.parse("multipart/form-data"), Fcm_MessageBody);
+                                RequestBody rq_FCMToken = RequestBody.create(MediaType.parse("multipart/form-data"), FCMToken);
+                                RequestBody rq_fcm_MessageTitle = RequestBody.create(MediaType.parse("multipart/form-data"), MatchTitle);
+                                RequestBody rq_Fcm_MessageBody = RequestBody.create(MediaType.parse("multipart/form-data"), MessageBody);
 
+                                RequestBody rq_UserRole = RequestBody.create(MediaType.parse("multipart/form-data"), UserRole);
 
-                                RequestBody rq_MatchTitle = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMatchTitle.getText().toString().trim());
-                                RequestBody rq_MatchDate = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtMatchDate.getText().toString().trim());
-
-
-                                RequestBody rq_ScoreTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdhescore.getText().toString().trim());
-                                RequestBody rq_OverTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdheover.getText().toString().trim());
-                                RequestBody rq_WicketsTeam1 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtdheWicket.getText().toString().trim());
+                                RequestBody rq_PlayerName = RequestBody.create(MediaType.parse("multipart/form-data"), PlayerName);
+                                RequestBody rq_PhoneNumber = RequestBody.create(MediaType.parse("multipart/form-data"), PhoneNumber);
 
 
-                                RequestBody rq_VersusTeam2Id = RequestBody.create(MediaType.parse("multipart/form-data"), OpponentteamID);
-                                RequestBody rq_ScoreTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentscore.getText().toString().trim());
-                                RequestBody rq_OverTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentover.getText().toString().trim());
-                                RequestBody rq_WicketsTeam2 = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtOpponentWicket.getText().toString().trim());
+                                RequestBody rq_Password = RequestBody.create(MediaType.parse("multipart/form-data"), Password);
+                                RequestBody rq_EmailId = RequestBody.create(MediaType.parse("multipart/form-data"), EmailId);
 
 
-                                RequestBody rq_ManOfTheMatchTeamId = RequestBody.create(MediaType.parse("multipart/form-data"), momteamId);
+                                RequestBody rq_DOB = RequestBody.create(MediaType.parse("multipart/form-data"), DOB);
+                                RequestBody rq_TeamId = RequestBody.create(MediaType.parse("multipart/form-data"), TeamId);
+                                RequestBody rq_PlayingRole = RequestBody.create(MediaType.parse("multipart/form-data"), PlayingRole);
 
-                                RequestBody rq_MOMPlayerName = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtplayerName.getText().toString().trim());
+                                RequestBody imagefilerequestFile ;
+                                MultipartBody.Part imagefilebody = null;
+                               /* try {
+                                    imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
+                                    imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
+                                } catch (Exception e) {
+                                    e.printStackTrace();
+                                }
 
-                                RequestBody rq_ResultRemarks = RequestBody.create(MediaType.parse("multipart/form-data"), binding.edtResultRemarks.getText().toString().trim());
+                                */
 
 
-                                RequestBody rq_CreatedBy = RequestBody.create(MediaType.parse("multipart/form-data"), CSPreferences.readString(AddMatchResultActivity.this, "User_name"));
+                                 if (imagefile == null) {
+                                    //GlobalClass.showtost(SignupActivity.this, "Select your image");
+                                     imagefilebody = null;
+                                } else {
 
-                                RequestBody imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
-                                MultipartBody.Part imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
+
+                                     try {
+                                         imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
+                                         imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
+                                     } catch (Exception e) {
+
+                                         e.printStackTrace();
+                                     }
+                                 }
+
+
+
+                                /*UserRole,
+                PlayerName,
+                PhoneNumber,
+                Password,
+                EmailId,
+                DOB,
+                TeamId,
+                PlayingRole,
+                FCMToken,
+                MessageBody,
+                MatchTitle,
+                FileName*/
 
                                 WebAPiCall aPiCall = new WebAPiCall();
-                                aPiCall.addMatchResultPostDataMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, rq_fcm_MessageTitle,
-                                        rq_Fcm_MessageBody, rq_MatchTitle,
-                                        rq_MatchDate,
-                                        rq_ScoreTeam1,
-                                        rq_OverTeam1,
-                                        rq_WicketsTeam1,
-                                        rq_VersusTeam2Id,
-                                        rq_ScoreTeam2,
-                                        rq_OverTeam2,
-                                        rq_WicketsTeam2,
-                                        rq_ResultRemarks,
-                                        rq_CreatedBy,
-                                        rq_MOMPlayerName,
-                                        rq_ManOfTheMatchTeamId,
+                                aPiCall.RegistrationPostDataMethod(RegisterUserActivity.this, RegisterUserActivity.this,
+                                        rq_UserRole,rq_PlayerName,rq_PhoneNumber,rq_Password,rq_EmailId,rq_DOB,rq_TeamId,rq_PlayingRole,rq_FCMToken,rq_Fcm_MessageBody,rq_fcm_MessageTitle,
                                         imagefilebody);
-
-                            } else {
-                                GlobalClass.showtost(AddMatchResultActivity.this, "No Internet Available.Plz check your internet connection.");
-                            }
-
-
-                        }
-                    });*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -530,6 +536,7 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
             @Override
             public void onClick(View v) {
                 AccountType = "Guest";
+
                 binding.GuestTypePic.setBorderWidth(5);
                 binding.GuestTypePic.setBorderColor(Color.parseColor("#228c22"));
                 binding.PlayerTypePic.setBorderColor(Color.parseColor("#ffffff"));

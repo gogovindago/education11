@@ -17,13 +17,13 @@
             android:layout_height="100dp"
             android:layout_centerHorizontal="true"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="172dp"
+            android:layout_marginTop="72dp"
             android:layout_marginEnd="8dp"
             android:src="@mipmap/ic_launcher_round"
             app:civ_border_color="@color/white"
             app:civ_border_width="2dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.532"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -169,10 +169,10 @@
             android:textStyle="bold"
             app:layout_constraintBottom_toTopOf="@+id/txtversion"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintVertical_bias="0.501" />
 
         <TextView
 
