@@ -31,26 +31,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7063279c-bc44-49d9-9779-54be30cd925c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/allinterfaces/RegistrationData_interface.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/DeletePlayerRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/model/DeletePlayerResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/layout/recycler_view_player_row.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/AllTeamListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/AllTeamListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/PlayerListAdapter.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/adapter/PlayerListAdapter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/apicall/WebAPiCall.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/retrofitinterface/ApiInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/PlayerDetailActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/PlayerDetailActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/RegisterUserActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/education/hry/pkl/cricket11/ui/Activity/RegisterUserActivity.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[RZ8M60120ZX]" />
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Govind\.android\avd\Pixel_3a_XL_API_22.avd]" />
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
@@ -661,7 +650,14 @@
       <option name="project" value="LOCAL" />
       <updated>1637826946340</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="1.PlayerList item deleting done.">
+      <created>1637835838348</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1637835838348</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="UpdateCopyrightCheckinHandler">
@@ -753,7 +749,8 @@
     <MESSAGE value="1. fixed error of inserting score in individual." />
     <MESSAGE value="1.REgistration...." />
     <MESSAGE value="1.REgistration done." />
-    <option name="LAST_COMMIT_MESSAGE" value="1.REgistration done." />
+    <MESSAGE value="1.PlayerList item deleting done." />
+    <option name="LAST_COMMIT_MESSAGE" value="1.PlayerList item deleting done." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
