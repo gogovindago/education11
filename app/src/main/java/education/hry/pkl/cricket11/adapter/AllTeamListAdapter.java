@@ -143,7 +143,6 @@ public class AllTeamListAdapter extends RecyclerView.Adapter<AllTeamListAdapter.
 
                         mListener.onItemClick(item, currposition);
 
-
                     }
                     break;
             }

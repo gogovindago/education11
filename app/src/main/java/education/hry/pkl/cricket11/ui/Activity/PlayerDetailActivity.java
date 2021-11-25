@@ -19,16 +19,20 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.PlayerListAdapter;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityPlayerDetailBinding;
+import education.hry.pkl.cricket11.model.DeletePlayerRequest;
+import education.hry.pkl.cricket11.model.DeleteTeamDetailsRequest;
 import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
+import education.hry.pkl.cricket11.utility.NetworkUtil;
 
 public class PlayerDetailActivity extends BaseActivity implements PlayerListAdapter.ItemListener, GetPlayerListDetail_interface {
 
@@ -36,13 +40,14 @@ public class PlayerDetailActivity extends BaseActivity implements PlayerListAdap
 
     ArrayList<PlayersListResponse.Datum> arrayList = new ArrayList<PlayersListResponse.Datum>();
     String Registration_Id, token;
-
+    String role;
+    private SweetAlertDialog sweetAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_player_detail);
-
+        role = CSPreferences.readString(PlayerDetailActivity.this, "role");
 
 
         TextView tv_toolbarTitle = findViewById(R.id.tv_toolbarTitle);
@@ -98,6 +103,57 @@ public class PlayerDetailActivity extends BaseActivity implements PlayerListAdap
     @Override
     public void onItemClick(PlayersListResponse.Datum item, int currposition) {
 
+        //  GlobalClass.showtost(PlayerDetailActivity.this, "AAyaa  " + item.getTeamId());
+
+        sweetAlertDialog = new SweetAlertDialog(PlayerDetailActivity.this);
+        sweetAlertDialog.setTitle("Alert Player Detail Deleting !");
+        sweetAlertDialog.setContentText("Are you sure want to delete this Player?");
+        sweetAlertDialog.setVolumeControlStream(2);
+        sweetAlertDialog.setCancelable(true);
+        sweetAlertDialog.setCancelText("No");
+        sweetAlertDialog.setConfirmText("Yes");
+        sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+        sweetAlertDialog.changeAlertType(3);
+        sweetAlertDialog.setCanceledOnTouchOutside(false);
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                if (NetworkUtil.isConnected(PlayerDetailActivity.this)) {
+                    sweetAlertDialog.dismiss();
+
+                    DeletePlayerRequest request = new DeletePlayerRequest();
+                    request.setPlayer_Id(String.valueOf(item.getPlayerId()));
+                    request.setPhoneNumber(String.valueOf(item.getPhoneNumber()));
+                    // request.setDeletedBy(CSPreferences.readString(PlayerDetailActivity.this, "User_name"));
+
+                    WebAPiCall aPiCall = new WebAPiCall();
+                    aPiCall.DeletePlayerPostDataMethod(PlayerDetailActivity.this, PlayerDetailActivity.this, request);
+
+                } else {
+                    GlobalClass.showtost(PlayerDetailActivity.this, "No Internet Available.Plz check your internet connection.");
+                }
+
+            }
+        });
+
+        sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
+        sweetAlertDialog.show();
+
+
+    }
+
+
+
+
+    @Override
+    public void onItemZoom(PlayersListResponse.Datum item, int currposition) {
         openDialog(item);
     }
 
@@ -111,7 +167,7 @@ public class PlayerDetailActivity extends BaseActivity implements PlayerListAdap
             arrayList.addAll(list);
             binding.rvplayer.setVisibility(View.VISIBLE);
 
-            PlayerListAdapter adaptermain = new PlayerListAdapter(this, arrayList, this);
+            PlayerListAdapter adaptermain = new PlayerListAdapter(this, arrayList, role, this);
             binding.rvplayer.setAdapter(adaptermain);
 
 

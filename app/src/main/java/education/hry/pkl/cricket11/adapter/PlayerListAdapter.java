@@ -16,7 +16,6 @@ import com.facebook.drawee.view.SimpleDraweeView;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -30,18 +29,19 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
     Context mContext;
     protected ItemListener mListener;
     int currposition;
+    String mrole;
 
-    public PlayerListAdapter(Context context, ArrayList values, ItemListener itemListener) {
-
+    public PlayerListAdapter(Context context, ArrayList values, String role, ItemListener itemListener) {
+        mrole = role;
         mValues = values;
         mContext = context;
         mListener = itemListener;
     }
 
-    public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView textView,gpstime;
-        public ImageView imageView;
+        public TextView textView, txtdeleteplayer;
+        public ImageView imageView,imgZoom;
         SimpleDraweeView my_image_view;
         public RelativeLayout relativeLayout;
         PlayersListResponse.Datum item;
@@ -51,20 +51,33 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
 
             super(v);
 
-            v.setOnClickListener(this);
+//            v.setOnClickListener(this);
             textView = (TextView) v.findViewById(R.id.txtcaption);
-            gpstime = (TextView) v.findViewById(R.id.gpstime);
+            txtdeleteplayer = (TextView) v.findViewById(R.id.txtdeleteplayer);
             imageView = (ImageView) v.findViewById(R.id.imageView);
+            imgZoom = (ImageView) v.findViewById(R.id.imgZoom);
             my_image_view = (SimpleDraweeView) v.findViewById(R.id.my_image_view);
             relativeLayout = (RelativeLayout) v.findViewById(R.id.relativeLayout);
+
+            imgZoom.setOnClickListener(this);
+
+            if (mrole.equalsIgnoreCase("Admin")) {
+
+                txtdeleteplayer.setVisibility(View.VISIBLE);
+                txtdeleteplayer.setOnClickListener(this);
+
+
+            } else {
+                txtdeleteplayer.setVisibility(View.GONE);
+
+
+            }
 
         }
 
         public void setData(PlayersListResponse.Datum item, int currposition) throws Exception {
             this.currposition = currposition;
             this.item = item;
-
-
 
 
             SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
@@ -79,18 +92,15 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
             System.out.println(c.get(Calendar.MONTH) + c.get(Calendar.DATE) + c.get(Calendar.YEAR));
 //getAge(c);
 
-            textView.setText(item.getPlayerName()+"("+ c.get(Calendar.YEAR)+")");
-            textView.setText(item.getPlayerName()+"("+ String.valueOf(getAge(c))+")"+"\n"+ item.getPlayingRole());
+            //  textView.setText(item.getPlayerName() + "(" + c.get(Calendar.YEAR) + ")");
+            textView.setText(item.getPlayerName() + "(" + String.valueOf(getAge(c)) + ")" + "\n" + item.getPlayingRole());
             my_image_view.setImageURI(item.getFilePath());
-
-
-
 
 
         }
 
         // Returns age given the date of birth
-        public  int getAge(Calendar dob) throws Exception {
+        public int getAge(Calendar dob) throws Exception {
             Calendar today = Calendar.getInstance();
 
             int curYear = today.get(Calendar.YEAR);
@@ -116,11 +126,30 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
         }
 
 
-
         @Override
         public void onClick(View view) {
-            if (mListener != null) {
-                mListener.onItemClick(item, currposition);
+            switch (view.getId()) {
+
+                case R.id.txtdeleteplayer:
+
+                    if (mListener != null) {
+
+                        mListener.onItemClick(item, currposition);
+
+
+                    }
+                    break;
+
+
+                    case R.id.imgZoom:
+
+                    if (mListener != null) {
+
+                        mListener.onItemZoom(item, currposition);
+
+
+                    }
+                    break;
             }
         }
     }
@@ -128,7 +157,7 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_view_itemuserplantedshown, parent, false);
+        View view = LayoutInflater.from(mContext).inflate(R.layout.recycler_view_player_row, parent, false);
 
         return new ViewHolder(view);
     }
@@ -153,5 +182,6 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
 
     public interface ItemListener {
         void onItemClick(PlayersListResponse.Datum item, int currposition);
+        void onItemZoom(PlayersListResponse.Datum item, int currposition);
     }
 }

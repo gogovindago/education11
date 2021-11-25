@@ -50,11 +50,14 @@ import education.hry.pkl.cricket11.adapter.SpinnerAllTeamAdapter;
 import education.hry.pkl.cricket11.adapter.SpinnerPlayerRoleAdapter;
 import education.hry.pkl.cricket11.allinterfaces.GetAllPlayerRoleList_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetAllTeamList_interface;
+import education.hry.pkl.cricket11.allinterfaces.RegistrationData_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityRegisterUserBinding;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.model.GetPlayerRoleResponse;
+import education.hry.pkl.cricket11.model.RegistrationRespone;
 import education.hry.pkl.cricket11.utility.BaseActivity;
+import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.ImagePickerActivity;
 import education.hry.pkl.cricket11.utility.MyLoaders;
@@ -63,7 +66,7 @@ import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.RequestBody;
 
-public class RegisterUserActivity extends BaseActivity implements GetAllTeamList_interface, AdapterView.OnItemSelectedListener, GetAllPlayerRoleList_interface {
+public class RegisterUserActivity extends BaseActivity implements GetAllTeamList_interface, AdapterView.OnItemSelectedListener, GetAllPlayerRoleList_interface, RegistrationData_interface {
     ActivityRegisterUserBinding binding;
     private MyLoaders myLoaders;
     File imagefile;
@@ -82,29 +85,18 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
     String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
 
-
-
-    String UserRole= null,
-            PlayerName= null,
-            PhoneNumber= null,
-            Password= null,
-            EmailId= null,
-            DOB= null,
-            TeamId= null,
-            PlayingRole= null,
-            FCMToken= null,
-            MessageBody= null,
+    String UserRole = null,
+            PlayerName = null,
+            PhoneNumber = null,
+            Password = null,
+            EmailId = null,
+            DOB = null,
+            TeamId = null,
+            PlayingRole = null,
+            FCMToken = null,
+            MessageBody = null,
             MatchTitle = null,
-            FileName= null;
-
-
-
-
-
-
-
-
-
+            FileName = null;
 
 
     @Override
@@ -301,9 +293,6 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                 if (Check_Data(view)) {
 
 
-
-
-
                     if ((AccountType.equalsIgnoreCase("Player"))) {
 
                         UserRole = AccountType;
@@ -319,7 +308,7 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                         MatchTitle = "A " + AccountType + " User Came";
                         MessageBody = "A " + AccountType + " Name " + PlayerName + "  Registered Plz verify him ASAP. ";
 
-                       // FileName = String.valueOf(imagefile);
+                        // FileName = String.valueOf(imagefile);
 
                     } else if ((AccountType.equalsIgnoreCase("Guest"))) {
 
@@ -364,7 +353,6 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                                 sweetAlertDialog.dismiss();
 
 
-
                                 RequestBody rq_FCMToken = RequestBody.create(MediaType.parse("multipart/form-data"), FCMToken);
                                 RequestBody rq_fcm_MessageTitle = RequestBody.create(MediaType.parse("multipart/form-data"), MatchTitle);
                                 RequestBody rq_Fcm_MessageBody = RequestBody.create(MediaType.parse("multipart/form-data"), MessageBody);
@@ -383,7 +371,7 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                                 RequestBody rq_TeamId = RequestBody.create(MediaType.parse("multipart/form-data"), TeamId);
                                 RequestBody rq_PlayingRole = RequestBody.create(MediaType.parse("multipart/form-data"), PlayingRole);
 
-                                RequestBody imagefilerequestFile ;
+                                RequestBody imagefilerequestFile;
                                 MultipartBody.Part imagefilebody = null;
                                /* try {
                                     imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
@@ -395,20 +383,20 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                                 */
 
 
-                                 if (imagefile == null) {
+                                if (imagefile == null) {
                                     //GlobalClass.showtost(SignupActivity.this, "Select your image");
-                                     imagefilebody = null;
+                                    imagefilebody = null;
                                 } else {
 
 
-                                     try {
-                                         imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
-                                         imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
-                                     } catch (Exception e) {
+                                    try {
+                                        imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
+                                        imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
+                                    } catch (Exception e) {
 
-                                         e.printStackTrace();
-                                     }
-                                 }
+                                        e.printStackTrace();
+                                    }
+                                }
 
 
 
@@ -427,10 +415,8 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
                                 WebAPiCall aPiCall = new WebAPiCall();
                                 aPiCall.RegistrationPostDataMethod(RegisterUserActivity.this, RegisterUserActivity.this,
-                                        rq_UserRole,rq_PlayerName,rq_PhoneNumber,rq_Password,rq_EmailId,rq_DOB,rq_TeamId,rq_PlayingRole,rq_FCMToken,rq_Fcm_MessageBody,rq_fcm_MessageTitle,
-                                        imagefilebody);
-
-
+                                        rq_UserRole, rq_PlayerName, rq_PhoneNumber, rq_Password, rq_EmailId, rq_DOB, rq_TeamId, rq_PlayingRole, rq_FCMToken, rq_Fcm_MessageBody, rq_fcm_MessageTitle,
+                                        imagefilebody, RegisterUserActivity.this);
 
 
                             } else {
@@ -755,6 +741,30 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
         //  binding.spnteamdhe.setAdapter(SpinnerAllTeamAdapter);
         binding.spnPlayingRole.setAdapter(roleAdapter);
 
+
+    }
+
+    @Override
+    public void allRegistereduserdata(RegistrationRespone.Data data) {
+
+        boolean firstTimelogin = true;
+
+        CSPreferences.putString(this, "role", data.getRole());
+        CSPreferences.putString(this, "id", data.getId());
+        CSPreferences.putString(this, "token", data.getToken());
+        CSPreferences.putString(this, "User_Id", data.getId());
+        CSPreferences.putString(this, "User_mobile", data.getMobile());
+        CSPreferences.putString(this, "User_email", data.getEmailId());
+        CSPreferences.putString(this, "User_name", data.getName());
+        CSPreferences.putBolean(this, "firstTimelogin", firstTimelogin);
+//            CSPreferences.putString(this, "lativale", lativale);
+//            CSPreferences.putString(this, "longivalue", longivalue);
+        CSPreferences.putString(this, "Profilepicurl", data.getFilePath());
+        CSPreferences.putString(this, "PlayingRole", data.getPlayingRole());
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
 
     }
 }

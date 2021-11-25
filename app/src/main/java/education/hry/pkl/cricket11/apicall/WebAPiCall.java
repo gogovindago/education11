@@ -29,8 +29,8 @@ import education.hry.pkl.cricket11.allinterfaces.GetPlayerHistory_interface;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.allinterfaces.LoginData_interface;
 import education.hry.pkl.cricket11.allinterfaces.MatchesDetailData_interface;
+import education.hry.pkl.cricket11.allinterfaces.RegistrationData_interface;
 import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
-import education.hry.pkl.cricket11.allinterfaces.StudentProfileData_interface;
 import education.hry.pkl.cricket11.model.AddMatchResultRequest;
 import education.hry.pkl.cricket11.model.AddMatchResultResponse;
 import education.hry.pkl.cricket11.model.AddNewTeamsRequest;
@@ -40,6 +40,8 @@ import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsResponse;
+import education.hry.pkl.cricket11.model.DeletePlayerRequest;
+import education.hry.pkl.cricket11.model.DeletePlayerResponse;
 import education.hry.pkl.cricket11.model.DeleteTeamDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteTeamDetailsResponse;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
@@ -58,7 +60,6 @@ import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
 import education.hry.pkl.cricket11.model.RegistrationRespone;
-import education.hry.pkl.cricket11.model.StudentProfileResponse;
 import education.hry.pkl.cricket11.retrofitinterface.ApiClient;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
@@ -972,7 +973,7 @@ public class WebAPiCall {
                                            RequestBody FCMToken,
                                            RequestBody MessageBody,
                                            RequestBody MatchTitle,
-                                           MultipartBody.Part FileName) {
+                                           MultipartBody.Part FileName, RegistrationData_interface anInterface) {
 
         loadershowwithMsg(context, "Registration process is going On...");
 
@@ -997,6 +998,7 @@ public class WebAPiCall {
                     if (response.body().getResponse() == 200) {
 
                         GlobalClass.showtost(activity, " Your  Registration process has completed Successfully.");
+                        anInterface.allRegistereduserdata(response.body().getData());
                     } else {
                         // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
                         dailogError(activity, "Something went wrong!", "Plz try Again.");
@@ -1149,6 +1151,42 @@ public class WebAPiCall {
 
             @Override
             public void onFailure(Call<DeleteTeamDetailsResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+    public void DeletePlayerPostDataMethod(final Activity activity, final Context context, DeletePlayerRequest request) {
+
+        loadershowwithMsg(context, "Deleting Player is going On...");
+
+        Call<DeletePlayerResponse> teamApi = ApiClient.getClient().DeletePlayerApi(request);
+        teamApi.enqueue(new Callback<DeletePlayerResponse>() {
+            @Override
+            public void onResponse(Call<DeletePlayerResponse> call, Response<DeletePlayerResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", " Player Deleted Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeletePlayerResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();
