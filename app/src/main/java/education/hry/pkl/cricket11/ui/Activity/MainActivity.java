@@ -106,7 +106,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
     ImageView toggle, profile_image, imgbestbatter,
             imgbestBowler, imgDobWishes;
-    TextView toolbartxt, uname, umobile, uemailId,
+    TextView toolbartxt, uname,txtrole,txtUserType, umobile, uemailId,
             txtbestBatter, txtBestbowler, txtbirthdaywishes;
     Toolbar toolbar;
     Context context;
@@ -169,6 +169,8 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         toolbartxt = findViewById(R.id.toolbartxt);
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerList = findViewById(R.id.left_drawer);
+        txtUserType = findViewById(R.id.txtUserType);
+        txtrole = findViewById(R.id.uname);
         uname = findViewById(R.id.uname);
         umobile = findViewById(R.id.umobile);
         uemailId = findViewById(R.id.uemailId);
@@ -192,6 +194,8 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
             }
 
+            txtUserType.setText(CSPreferences.readString(MainActivity.this, "role"));
+            txtrole.setText(CSPreferences.readString(MainActivity.this, "PlayingRole"));
             uname.setText(CSPreferences.readString(MainActivity.this, "User_name"));
             uemailId.setText(CSPreferences.readString(MainActivity.this, "User_email"));
             umobile.setText(CSPreferences.readString(MainActivity.this, "User_mobile"));
