@@ -50,6 +50,9 @@ public class AddNewTeamActivity extends BaseActivity {
         binding.btnAddteam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                GlobalClass.closeKeyboard(AddNewTeamActivity.this);
+
                 if (Check_Data(v)) {
 
                     sweetAlertDialog = new SweetAlertDialog(AddNewTeamActivity.this);

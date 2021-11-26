@@ -22,6 +22,8 @@ import java.util.Date;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
+import education.hry.pkl.cricket11.ui.Activity.PlayerDetailActivity;
+import education.hry.pkl.cricket11.utility.CSPreferences;
 
 public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.ViewHolder> {
 
@@ -36,6 +38,7 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
         mValues = values;
         mContext = context;
         mListener = itemListener;
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -139,7 +142,6 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
 
                     }
                     break;
-
 
                     case R.id.imgZoom:
 

@@ -21,17 +21,21 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import java.util.ArrayList;
 import java.util.List;
 
+import cn.pedant.SweetAlert.SweetAlertDialog;
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.NetImageVideoAdapter;
 import education.hry.pkl.cricket11.adapter.NetpracticeTypeAdapter;
 import education.hry.pkl.cricket11.allinterfaces.GetNetImageVideoDetail_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityNetPracticeImageVideoBinding;
+import education.hry.pkl.cricket11.model.DeletePlayerRequest;
+import education.hry.pkl.cricket11.model.DeleteRequest;
 import education.hry.pkl.cricket11.model.NetImageVideoResponse;
 import education.hry.pkl.cricket11.model.NetpracticeTypeData;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
+import education.hry.pkl.cricket11.utility.NetworkUtil;
 
 public class NetPracticeImageVideoActivity extends BaseActivity implements GetNetImageVideoDetail_interface, AdapterView.OnItemSelectedListener, NetImageVideoAdapter.ItemListener {
 
@@ -41,6 +45,7 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
     int playerId;
     ArrayList<NetpracticeTypeData> netpracticelist = new ArrayList<NetpracticeTypeData>();
     ArrayList<NetImageVideoResponse.Datum> data = new ArrayList<NetImageVideoResponse.Datum>();
+    private SweetAlertDialog sweetAlertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,7 +185,7 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
 
             if (vw.isPlaying()) {
                 vw.pause();
-            }else {
+            } else {
                 vw.start();
             }
 
@@ -188,6 +193,54 @@ public class NetPracticeImageVideoActivity extends BaseActivity implements GetNe
             openDialog(item);
 
         }
+
+    }
+
+    @Override
+    public void onItemdelete(NetImageVideoResponse.Datum item, int currposition) {
+
+        //  GlobalClass.showtost(PlayerDetailActivity.this, "AAyaa  " + item.getTeamId());
+
+        sweetAlertDialog = new SweetAlertDialog(NetPracticeImageVideoActivity.this);
+        sweetAlertDialog.setTitle("Alert Data Detail Deleting !");
+        sweetAlertDialog.setContentText("Are you sure want to delete this Data?");
+        sweetAlertDialog.setVolumeControlStream(2);
+        sweetAlertDialog.setCancelable(true);
+        sweetAlertDialog.setCancelText("No");
+        sweetAlertDialog.setConfirmText("Yes");
+        sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+        sweetAlertDialog.changeAlertType(3);
+        sweetAlertDialog.setCanceledOnTouchOutside(false);
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                if (NetworkUtil.isConnected(NetPracticeImageVideoActivity.this)) {
+                    sweetAlertDialog.dismiss();
+
+                    DeleteRequest request = new DeleteRequest();
+                    request.setId(String.valueOf(item.getId()));
+                    // request.setPhoneNumber(String.valueOf(item.getPhoneNumber()));
+                    // request.setDeletedBy(CSPreferences.readString(PlayerDetailActivity.this, "User_name"));
+
+                    WebAPiCall aPiCall = new WebAPiCall();
+                    aPiCall.DeletePostDataMethod(NetPracticeImageVideoActivity.this, NetPracticeImageVideoActivity.this, request);
+
+                } else {
+                    GlobalClass.showtost(NetPracticeImageVideoActivity.this, "No Internet Available.Plz check your internet connection.");
+                }
+
+            }
+        });
+
+        sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
+        sweetAlertDialog.show();
 
     }
 

@@ -41,7 +41,6 @@
 
         <TextView
             android:textColor="@color/black"
-            android:layout_alignParentBottom="true"
             android:id="@+id/txtName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,6 +49,18 @@
             android:text="Sample title"
             android:textSize="10sp"
             />
+        <TextView
+            android:id="@+id/txtdelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/splashbg"
+            android:padding="5dp"
+            android:text="Delete"
+            android:textAllCaps="true"
+            android:textColor="@color/red"
+            android:textSize="13dp"
+            android:textStyle="bold"
+            android:visibility="visible" />
     </LinearLayout>
 
 </androidx.cardview.widget.CardView>

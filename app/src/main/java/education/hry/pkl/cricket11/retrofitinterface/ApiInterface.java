@@ -11,6 +11,8 @@ import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.DeletePlayerRequest;
 import education.hry.pkl.cricket11.model.DeletePlayerResponse;
+import education.hry.pkl.cricket11.model.DeleteRequest;
+import education.hry.pkl.cricket11.model.DeleteResponse;
 import education.hry.pkl.cricket11.model.DeleteTeamDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteTeamDetailsResponse;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
@@ -107,9 +109,11 @@ public interface ApiInterface {
     @POST("DeletePlayerDetails")
     Call<DeleteIndivisualMatchDetailsResponse> DeletePlayerDetailsApi(@Body DeleteIndivisualMatchDetailsRequest request);
 
+    @POST("Deletenetpractice")
+    Call<DeleteResponse> DeletenetpracticeApi(@Body DeleteRequest request);
+
     @POST("DeletePlayer")
     Call<DeletePlayerResponse> DeletePlayerApi(@Body DeletePlayerRequest request);
-
 
 
     @POST("DeleteTeams")

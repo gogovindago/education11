@@ -28,6 +28,8 @@ import java.util.ArrayList;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.model.NetImageVideoResponse;
+import education.hry.pkl.cricket11.ui.Activity.PlayerDetailActivity;
+import education.hry.pkl.cricket11.utility.CSPreferences;
 
 public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdapter.ViewHolder> {
 
@@ -36,18 +38,20 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
     Context mContext;
     protected ItemListener mListener;
     int currposition;
-    String mnetdatatype;
+    String mnetdatatype, mrole;
 
     public NetImageVideoAdapter(Context context, ArrayList values, ItemListener itemListener, String netdatatype) {
         mnetdatatype = netdatatype;
         mValues = values;
         mContext = context;
         mListener = itemListener;
+        mrole = CSPreferences.readString(mContext, "role");
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtName;
+        public TextView txtName, txtdelete;
         public ImageView imageView;
         NetImageVideoResponse.Datum item;
         LinearLayout llmain;
@@ -60,11 +64,23 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
             super(v);
 
             v.setOnClickListener(this);
+            txtdelete = v.findViewById(R.id.txtdelete);
             maincard = v.findViewById(R.id.maincard);
             llmain = v.findViewById(R.id.llmain);
             txtName = (TextView) v.findViewById(R.id.txtName);
             imageView = (ImageView) v.findViewById(R.id.ivThumb);
             vidvw = v.findViewById(R.id.vidvw);
+            if (mrole.equalsIgnoreCase("Admin")) {
+
+                txtdelete.setVisibility(View.VISIBLE);
+                txtdelete.setOnClickListener(this);
+
+
+            } else {
+                txtdelete.setVisibility(View.GONE);
+
+
+            }
 
 
         }
@@ -104,7 +120,7 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
                 imageView.setVisibility(View.GONE);
                 vidvw.setVisibility(View.VISIBLE);
 
-                MediaController mediaController= new MediaController(mContext);
+                MediaController mediaController = new MediaController(mContext);
                 mediaController.setAnchorView(vidvw);
                 vidvw.setMediaController(mediaController);
                 vidvw.requestFocus();
@@ -112,9 +128,9 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
                 vidvw.setVideoURI(uri);
                 vidvw.seekTo(1);
                 mediaController.setVisibility(View.GONE);
-               // vidvw.start();
+                // vidvw.start();
 
-               // vidvw.setVideoURI(Uri.parse(item.getVideoPath()));
+                // vidvw.setVideoURI(Uri.parse(item.getVideoPath()));
 
 
             }
@@ -125,9 +141,29 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
 
         @Override
         public void onClick(View view) {
-            if (mListener != null) {
-                mListener.onItemClick(item, currposition, mnetdatatype,vidvw,imageView);
+
+            switch (view.getId()) {
+
+                case R.id.txtdelete:
+
+                    if (mListener != null) {
+
+                        mListener.onItemdelete(item, currposition);
+
+
+                    }
+                    break;
+                default:
+                    if (mListener != null) {
+                        mListener.onItemClick(item, currposition, mnetdatatype, vidvw, imageView);
+                    }
+
             }
+
+
+           /* if (mListener != null) {
+                mListener.onItemClick(item, currposition, mnetdatatype,vidvw,imageView);
+            }*/
         }
     }
 
@@ -155,6 +191,7 @@ public class NetImageVideoAdapter extends RecyclerView.Adapter<NetImageVideoAdap
     }
 
     public interface ItemListener {
-        void onItemClick(NetImageVideoResponse.Datum item, int currposition, String mnetdatatype,VideoView videoView, ImageView ivThumb);
+        void onItemClick(NetImageVideoResponse.Datum item, int currposition, String mnetdatatype, VideoView videoView, ImageView ivThumb);
+        void onItemdelete(NetImageVideoResponse.Datum item, int currposition);
     }
 }

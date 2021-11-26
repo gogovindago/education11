@@ -42,6 +42,8 @@ import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsResponse;
 import education.hry.pkl.cricket11.model.DeletePlayerRequest;
 import education.hry.pkl.cricket11.model.DeletePlayerResponse;
+import education.hry.pkl.cricket11.model.DeleteRequest;
+import education.hry.pkl.cricket11.model.DeleteResponse;
 import education.hry.pkl.cricket11.model.DeleteTeamDetailsRequest;
 import education.hry.pkl.cricket11.model.DeleteTeamDetailsResponse;
 import education.hry.pkl.cricket11.model.DeleteTotalMatchDetailsRequest;
@@ -1187,6 +1189,43 @@ public class WebAPiCall {
 
             @Override
             public void onFailure(Call<DeletePlayerResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void DeletePostDataMethod(final Activity activity, final Context context, DeleteRequest request) {
+
+        loadershowwithMsg(context, "Deleting data is going On...");
+
+        Call<DeleteResponse> teamApi = ApiClient.getClient().DeletenetpracticeApi(request);
+        teamApi.enqueue(new Callback<DeleteResponse>() {
+            @Override
+            public void onResponse(Call<DeleteResponse> call, Response<DeleteResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", " data Deleted Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<DeleteResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();
