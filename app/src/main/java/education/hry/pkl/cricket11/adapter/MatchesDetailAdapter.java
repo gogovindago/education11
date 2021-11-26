@@ -5,8 +5,6 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -40,13 +38,13 @@ public class MatchesDetailAdapter extends RecyclerView.Adapter<MatchesDetailAdap
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView txtMatchStatus, txtName, txtteamA, txtTeamAscore, txtteamB, txtTeamBscore, txtResult, txtmomPlayerName, txtmomTeamName;
+        public TextView btnDeletematchdetail, txtMatchStatus, txtName, txtteamA, txtTeamAscore, txtteamB, txtTeamBscore, txtResult, txtmomPlayerName, txtmomTeamName;
         public CircleImageView imageView, imgmomplayer;
         MatchDetailResponse.Datum item;
         RelativeLayout llmain;
         public int currposition;
         CardView maincard;
-        Button btnDeletematchdetail;
+
 
         public ViewHolder(View v) {
 

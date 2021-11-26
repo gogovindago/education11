@@ -194,6 +194,9 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
         binding.btnaddmatchdetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                GlobalClass.closeKeyboard(IndivisualMatchDetailAddingActivity.this);
+
+
                 if (Check_Data(v)) {
 
                     sweetAlertDialog = new SweetAlertDialog(IndivisualMatchDetailAddingActivity.this);

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.text.Html;
 import android.text.TextUtils;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +41,7 @@ import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.app.MyApplication;
 import education.hry.pkl.cricket11.model.LoginRequest;
 import education.hry.pkl.cricket11.model.LoginRespone;
+import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.MyLoaders;
@@ -213,7 +215,7 @@ public class LoginActivity extends AppCompatActivity implements LoginData_interf
 
         } else if (v == lointxt) {
 
-
+            GlobalClass.closeKeyboard(this);
             if (Check_Data(v)) {
 
 

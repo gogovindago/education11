@@ -62,18 +62,19 @@
             android:textColor="@color/colorPrimary"
             android:textSize="12sp" />
 
-        <Button
+        <TextView
 
             android:layout_gravity="end"
-            android:visibility="gone"
+            android:visibility="visible"
             android:id="@+id/btnDeleteTeam"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivThumb"
-            android:background="@drawable/buttonstylered"
+            android:background="@drawable/splashbg"
             android:padding="5dp"
+            android:textSize="13sp"
             android:text="Delete"
-            android:textColor="@color/white"
+            android:textColor="@color/red"
             android:textStyle="bold" />
 
 

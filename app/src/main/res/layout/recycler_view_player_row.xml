@@ -147,17 +147,17 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:padding="5dp"
-                    android:visibility="visible"
                     android:id="@+id/txtdeleteplayer"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/splashbg"
+                    android:padding="5dp"
                     android:text="Delete"
+                    android:textAllCaps="true"
                     android:textColor="@color/red"
                     android:textSize="13dp"
-                    android:textAllCaps="true"
-                    android:textStyle="bold"/>
+                    android:textStyle="bold"
+                    android:visibility="visible" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/imgZoom"

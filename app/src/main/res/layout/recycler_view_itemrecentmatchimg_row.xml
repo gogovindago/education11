@@ -208,15 +208,15 @@
             android:textColor="@color/black"
             android:textSize="12sp" />
 
-        <Button
+        <TextView
             android:id="@+id/btnDeletematchdetail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivThumb"
-            android:background="@drawable/buttonstylered"
+            android:background="@drawable/splashbg"
             android:padding="5dp"
             android:text="Delete"
-            android:textColor="@color/white"
+            android:textColor="@color/red"
             android:textStyle="bold"
             android:visibility="gone" />
     </RelativeLayout>

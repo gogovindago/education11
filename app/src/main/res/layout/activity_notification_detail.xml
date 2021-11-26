@@ -52,7 +52,7 @@
             android:ellipsize="end"
             android:gravity="center"
             android:singleLine="false"
-            android:text="No NOtification."
+            android:text="No Notification."
             android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent.Title"
             android:textColor="@color/colorPrimary"
             android:textSize="25sp" />
@@ -63,6 +63,7 @@
             android:layout_height="match_parent">
 
             <TextView
+                android:layout_gravity="center"
                 android:id="@+id/text"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -74,7 +75,7 @@
                 android:singleLine="false"
                 android:hint="NO Detail"
                 android:text=""
-                android:textAlignment="textStart"
+                android:textAlignment="center"
                 android:textAppearance="@android:style/TextAppearance.StatusBar.EventContent"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"

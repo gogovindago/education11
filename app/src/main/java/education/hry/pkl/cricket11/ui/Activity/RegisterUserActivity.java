@@ -290,6 +290,11 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
             @Override
             public void onClick(View view) {
 
+
+                GlobalClass.closeKeyboard(RegisterUserActivity.this);
+
+
+
                 if (Check_Data(view)) {
 
 

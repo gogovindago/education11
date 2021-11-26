@@ -218,6 +218,12 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         binding.btnaddmatchdetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                GlobalClass.closeKeyboard(AddMatchResultActivity.this);
+
+
+
+
                 if (Check_Data(v)) {
 
 
