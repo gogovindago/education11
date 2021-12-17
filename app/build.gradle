@@ -15,8 +15,8 @@ android {
         applicationId "education.hry.pkl.cricket11"
         minSdkVersion 16
         targetSdkVersion 31
-        versionCode 29
-        versionName "1.21"
+        versionCode 30
+        versionName "1.22"
 
         multiDexEnabled true
 
