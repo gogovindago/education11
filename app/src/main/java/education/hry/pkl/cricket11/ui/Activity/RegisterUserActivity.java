@@ -263,6 +263,11 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
                     return false;
 
+                } else if (!binding.edtemail.getText().toString().trim().matches(emailPattern)) {
+                    GlobalClass.dailogError(RegisterUserActivity.this, "Missing Email-Id", "Please Enter Correct Email");
+
+                    return false;
+
                 }
 
             }
@@ -292,7 +297,6 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
 
                 GlobalClass.closeKeyboard(RegisterUserActivity.this);
-
 
 
                 if (Check_Data(view)) {
@@ -533,6 +537,7 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                 binding.PlayerTypePic.setBorderColor(Color.parseColor("#ffffff"));
 
                 binding.btnRegister.setVisibility(View.VISIBLE);
+                binding.tledtemail.setVisibility(View.VISIBLE);
                 binding.cardGuest.setVisibility(View.VISIBLE);
                 binding.GuestTypeIcon.setVisibility(View.VISIBLE);
 
@@ -555,7 +560,7 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
                 binding.PlayerTypePic.setBorderColor(Color.parseColor("#228c22"));
                 binding.GuestTypePic.setBorderColor(Color.parseColor("#ffffff"));
 
-
+                binding.tledtemail.setVisibility(View.VISIBLE);
                 binding.cardGuest.setVisibility(View.GONE);
                 binding.GuestTypeIcon.setVisibility(View.GONE);
                 binding.cardGuest.setVisibility(View.VISIBLE);
@@ -749,27 +754,63 @@ public class RegisterUserActivity extends BaseActivity implements GetAllTeamList
 
     }
 
+
     @Override
-    public void allRegistereduserdata(RegistrationRespone.Data data) {
+    public void allRegistereduserdata(List<RegistrationRespone.Datum> data) {
 
-        boolean firstTimelogin = true;
+        if ((AccountType.equalsIgnoreCase("Player"))) {
 
-        CSPreferences.putString(this, "role", data.getRole());
-        CSPreferences.putString(this, "id", data.getId());
-        CSPreferences.putString(this, "token", data.getToken());
-        CSPreferences.putString(this, "User_Id", data.getId());
-        CSPreferences.putString(this, "User_mobile", data.getMobile());
-        CSPreferences.putString(this, "User_email", data.getEmailId());
-        CSPreferences.putString(this, "User_name", data.getName());
-        CSPreferences.putBolean(this, "firstTimelogin", firstTimelogin);
+            SweetAlertDialog sweetAlertDialog = new SweetAlertDialog(RegisterUserActivity.this);
+            sweetAlertDialog.setTitle("Registration Successfull" + "!");
+            sweetAlertDialog.setContentText("Please Wait for Admin Approval.\n You will get a Notification, Once Admin verified.");
+            sweetAlertDialog.setVolumeControlStream(2);
+
+            sweetAlertDialog.setCancelable(false);
+            sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+            sweetAlertDialog.changeAlertType(2);
+            sweetAlertDialog.setCanceledOnTouchOutside(false);
+            sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+                @Override
+                public void onClick(SweetAlertDialog sweetAlertDialog) {
+                    sweetAlertDialog.dismiss();
+
+
+                    Intent intent = new Intent(RegisterUserActivity.this, LoginActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                    startActivity(intent);
+
+
+                }
+            });
+            sweetAlertDialog.show();
+
+
+        } else {
+
+
+            boolean firstTimelogin = true;
+
+            CSPreferences.putString(this, "role", data.get(0).getRole());
+            CSPreferences.putString(this, "id", String.valueOf(data.get(0).getUserId()));
+            CSPreferences.putString(this, "token", data.get(0).getMobileNo());
+            CSPreferences.putString(this, "User_Id", String.valueOf(data.get(0).getUserId()));
+            CSPreferences.putString(this, "User_mobile", data.get(0).getMobileNo());
+            CSPreferences.putString(this, "User_email", data.get(0).getEmailId());
+            CSPreferences.putString(this, "User_name", data.get(0).getName());
+            CSPreferences.putBolean(this, "firstTimelogin", firstTimelogin);
+
 //            CSPreferences.putString(this, "lativale", lativale);
 //            CSPreferences.putString(this, "longivalue", longivalue);
-        CSPreferences.putString(this, "Profilepicurl", data.getFilePath());
-        CSPreferences.putString(this, "PlayingRole", data.getPlayingRole());
+            CSPreferences.putString(this, "Profilepicurl", data.get(0).getFilePath());
+            CSPreferences.putString(this, "PlayingRole", data.get(0).getPlayingRole());
 
-        Intent intent = new Intent(this, MainActivity.class);
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+            Intent intent = new Intent(this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(intent);
+
+        }
+
 
     }
 }

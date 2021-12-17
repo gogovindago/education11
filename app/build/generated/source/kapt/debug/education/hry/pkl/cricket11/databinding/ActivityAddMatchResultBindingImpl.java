@@ -12,7 +12,7 @@ public class ActivityAddMatchResultBindingImpl extends ActivityAddMatchResultBin
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
-        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(32);
+        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(36);
         sIncludes.setIncludes(0, 
             new String[] {"toolbar_layout"},
             new int[] {1},
@@ -47,7 +47,11 @@ public class ActivityAddMatchResultBindingImpl extends ActivityAddMatchResultBin
         sViewsWithIds.put(R.id.spnmomteamname, 28);
         sViewsWithIds.put(R.id.tlResultRemarks, 29);
         sViewsWithIds.put(R.id.edtResultRemarks, 30);
-        sViewsWithIds.put(R.id.btnaddmatchdetail, 31);
+        sViewsWithIds.put(R.id.cardviewAssignment, 31);
+        sViewsWithIds.put(R.id.llAssignment, 32);
+        sViewsWithIds.put(R.id.txtAssignment, 33);
+        sViewsWithIds.put(R.id.attachedpdfAssignment, 34);
+        sViewsWithIds.put(R.id.btnaddmatchdetail, 35);
     }
     // views
     @NonNull
@@ -58,13 +62,15 @@ public class ActivityAddMatchResultBindingImpl extends ActivityAddMatchResultBin
     // Inverse Binding Event Handlers
 
     public ActivityAddMatchResultBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 32, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 36, sIncludes, sViewsWithIds));
     }
     private ActivityAddMatchResultBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
-            , (androidx.appcompat.widget.AppCompatTextView) bindings[31]
+            , (android.widget.ImageView) bindings[34]
+            , (androidx.appcompat.widget.AppCompatTextView) bindings[35]
             , (androidx.cardview.widget.CardView) bindings[20]
             , (androidx.cardview.widget.CardView) bindings[21]
+            , (androidx.cardview.widget.CardView) bindings[31]
             , (com.google.android.material.textfield.TextInputEditText) bindings[4]
             , (com.google.android.material.textfield.TextInputEditText) bindings[3]
             , (com.google.android.material.textfield.TextInputEditText) bindings[19]
@@ -75,6 +81,7 @@ public class ActivityAddMatchResultBindingImpl extends ActivityAddMatchResultBin
             , (com.google.android.material.textfield.TextInputEditText) bindings[9]
             , (com.google.android.material.textfield.TextInputEditText) bindings[8]
             , (com.google.android.material.textfield.TextInputEditText) bindings[25]
+            , (android.widget.LinearLayout) bindings[32]
             , (android.widget.LinearLayout) bindings[11]
             , (android.widget.LinearLayout) bindings[26]
             , (android.widget.LinearLayout) bindings[5]
@@ -88,6 +95,7 @@ public class ActivityAddMatchResultBindingImpl extends ActivityAddMatchResultBin
             , (com.google.android.material.textfield.TextInputLayout) bindings[14]
             , (com.google.android.material.textfield.TextInputLayout) bindings[29]
             , (education.hry.pkl.cricket11.databinding.ToolbarLayoutBinding) bindings[1]
+            , (android.widget.TextView) bindings[33]
             , (android.widget.TextView) bindings[12]
             , (android.widget.TextView) bindings[27]
             , (android.widget.TextView) bindings[6]

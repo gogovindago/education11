@@ -67,7 +67,7 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
         if (NetworkUtil.isConnected(IndivisualMatchDetailAddingActivity.this)) {
 
             WebAPiCall aPiCall = new WebAPiCall();
-            aPiCall.PlayerListDataMethod(this, this, token, this);
+            aPiCall.PlayerListDataMethod(this, this, token, this,binding.spnteamplayerdhe, binding.simpleSwipeRefreshLayout);
 
 
         } else {

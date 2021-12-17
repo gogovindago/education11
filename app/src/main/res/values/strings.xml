@@ -70,6 +70,7 @@
     <string name="forgot_password"><u>Forgot password?</u></string>
     <string name="your_password">Your password</string>
     <string name="your_new_password">Your new password</string>
+    <string name="your_old_password">Your Old password</string>
     <string name="registered_mobile_number">Registered Mobile Number</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="resend_otp">Resend Otp</string>
@@ -87,5 +88,6 @@
     <string name="google_maps_key">AIzaSyAU4RhA2kj0_Ligy5bRCcIXT4F1gqPE1B0</string>
 
     <string name="banner_ad_unit_id">ca-app-pub-7033476435545879/6199433185</string>
+    <string name="score_card"><u>Score Card</u></string>
 
 </resources>

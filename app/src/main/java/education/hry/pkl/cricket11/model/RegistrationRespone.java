@@ -3,23 +3,26 @@ package education.hry.pkl.cricket11.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class RegistrationRespone {
 
     @SerializedName("response")
     @Expose
-    private int response;
+    private long response;
     @SerializedName("sys_message")
     @Expose
     private String sysMessage;
     @SerializedName("data")
     @Expose
-    private Data data;
+    private List<Datum> data = new ArrayList<Datum>();
 
-    public int getResponse() {
+    public long getResponse() {
         return response;
     }
 
-    public void setResponse(int response) {
+    public void setResponse(long response) {
         this.response = response;
     }
 
@@ -31,90 +34,85 @@ public class RegistrationRespone {
         this.sysMessage = sysMessage;
     }
 
-    public Data getData() {
+    public List<Datum> getData() {
         return data;
     }
 
-    public void setData(Data data) {
+    public void setData(List<Datum> data) {
         this.data = data;
     }
 
 
-    public class Data {
 
-        @SerializedName("filePath")
+    public class Datum {
+
+        @SerializedName("user_Id")
         @Expose
-        private String filePath;
-
-
-        @SerializedName("playingRole")
-        @Expose
-        private String playingRole;
-
-
-
-          @SerializedName("id")
-        @Expose
-        private String id;
-
-
-          @SerializedName("role")
-        @Expose
-        private String role;
-
-
-
-
-
-
-
+        private long userId;
         @SerializedName("name")
         @Expose
         private String name;
-        @SerializedName("mobile")
+        @SerializedName("mobileNo")
         @Expose
-        private String mobile;
+        private String mobileNo;
+        @SerializedName("password")
+        @Expose
+        private String password;
+        @SerializedName("role")
+        @Expose
+        private String role;
+        @SerializedName("isActive")
+        @Expose
+        private boolean isActive;
+        @SerializedName("fcmToken")
+        @Expose
+        private String fcmToken;
+        @SerializedName("player_Id")
+        @Expose
+        private long playerId;
+        @SerializedName("playerName")
+        @Expose
+        private String playerName;
+        @SerializedName("dob")
+        @Expose
+        private String dob;
+        @SerializedName("playingRole")
+        @Expose
+        private String playingRole;
+        @SerializedName("fileName")
+        @Expose
+        private String fileName;
+        @SerializedName("filePath")
+        @Expose
+        private String filePath;
         @SerializedName("emailId")
         @Expose
         private String emailId;
-        @SerializedName("token")
+        @SerializedName("phoneNumber")
         @Expose
-        private String token;
-        @SerializedName("expiration")
+        private String phoneNumber;
+        @SerializedName("isDeleted")
         @Expose
-        private String expiration;
+        private long isDeleted;
+        @SerializedName("fcmToken1")
+        @Expose
+        private Object fcmToken1;
+        @SerializedName("designation")
+        @Expose
+        private Object designation;
+        @SerializedName("teamId")
+        @Expose
+        private long teamId;
+        @SerializedName("isApproved")
+        @Expose
+        private long isApproved;
 
-
-        public String getRole() {
-            return role;
+        public long getUserId() {
+            return userId;
         }
 
-        public void setRole(String role) {
-            this.role = role;
-        }
-
-        public String getFilePath() {
-            return filePath;
-        }
-
-        public void setFilePath(String filePath) {
-            this.filePath = filePath;
-        }
-
-        public String getPlayingRole() {
-            return playingRole;
-        }
-
-        public void setPlayingRole(String playingRole) {
-            this.playingRole = playingRole;
-        }
-
-        public String getId() {
-            return id;
-        }
-
-        public void setId(String id) {
-            this.id = id;
+        public void setUserId(long userId) {
+            this.userId = userId;
         }
 
         public String getName() {
@@ -125,12 +123,92 @@ public class RegistrationRespone {
             this.name = name;
         }
 
-        public String getMobile() {
-            return mobile;
+        public String getMobileNo() {
+            return mobileNo;
         }
 
-        public void setMobile(String mobile) {
-            this.mobile = mobile;
+        public void setMobileNo(String mobileNo) {
+            this.mobileNo = mobileNo;
+        }
+
+        public String getPassword() {
+            return password;
+        }
+
+        public void setPassword(String password) {
+            this.password = password;
+        }
+
+        public String getRole() {
+            return role;
+        }
+
+        public void setRole(String role) {
+            this.role = role;
+        }
+
+        public boolean isIsActive() {
+            return isActive;
+        }
+
+        public void setIsActive(boolean isActive) {
+            this.isActive = isActive;
+        }
+
+        public String getFcmToken() {
+            return fcmToken;
+        }
+
+        public void setFcmToken(String fcmToken) {
+            this.fcmToken = fcmToken;
+        }
+
+        public long getPlayerId() {
+            return playerId;
+        }
+
+        public void setPlayerId(long playerId) {
+            this.playerId = playerId;
+        }
+
+        public String getPlayerName() {
+            return playerName;
+        }
+
+        public void setPlayerName(String playerName) {
+            this.playerName = playerName;
+        }
+
+        public String getDob() {
+            return dob;
+        }
+
+        public void setDob(String dob) {
+            this.dob = dob;
+        }
+
+        public String getPlayingRole() {
+            return playingRole;
+        }
+
+        public void setPlayingRole(String playingRole) {
+            this.playingRole = playingRole;
+        }
+
+        public String getFileName() {
+            return fileName;
+        }
+
+        public void setFileName(String fileName) {
+            this.fileName = fileName;
+        }
+
+        public String getFilePath() {
+            return filePath;
+        }
+
+        public void setFilePath(String filePath) {
+            this.filePath = filePath;
         }
 
         public String getEmailId() {
@@ -141,20 +219,52 @@ public class RegistrationRespone {
             this.emailId = emailId;
         }
 
-        public String getToken() {
-            return token;
+        public String getPhoneNumber() {
+            return phoneNumber;
         }
 
-        public void setToken(String token) {
-            this.token = token;
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
         }
 
-        public String getExpiration() {
-            return expiration;
+        public long getIsDeleted() {
+            return isDeleted;
         }
 
-        public void setExpiration(String expiration) {
-            this.expiration = expiration;
+        public void setIsDeleted(long isDeleted) {
+            this.isDeleted = isDeleted;
+        }
+
+        public Object getFcmToken1() {
+            return fcmToken1;
+        }
+
+        public void setFcmToken1(Object fcmToken1) {
+            this.fcmToken1 = fcmToken1;
+        }
+
+        public Object getDesignation() {
+            return designation;
+        }
+
+        public void setDesignation(Object designation) {
+            this.designation = designation;
+        }
+
+        public long getTeamId() {
+            return teamId;
+        }
+
+        public void setTeamId(long teamId) {
+            this.teamId = teamId;
+        }
+
+        public long getIsApproved() {
+            return isApproved;
+        }
+
+        public void setIsApproved(long isApproved) {
+            this.isApproved = isApproved;
         }
 
     }

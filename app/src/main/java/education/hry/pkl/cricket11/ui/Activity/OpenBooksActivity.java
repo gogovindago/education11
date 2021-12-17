@@ -80,7 +80,7 @@ public class OpenBooksActivity extends AppCompatActivity implements View.OnClick
             if (extras != null) {
 
                 String result = extras.getString("title");
-                webViewUrl = extras.getString("aboutUrl");
+                webViewUrl = extras.getString("Url");
 
                 toolbartitle.setAllCaps(true);
                 toolbartitle.setText(result);

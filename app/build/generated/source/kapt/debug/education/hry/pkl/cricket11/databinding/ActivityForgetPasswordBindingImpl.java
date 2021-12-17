@@ -12,7 +12,7 @@ public class ActivityForgetPasswordBindingImpl extends ActivityForgetPasswordBin
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
-        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(17);
+        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(19);
         sIncludes.setIncludes(0, 
             new String[] {"toolbar_layout"},
             new int[] {1},
@@ -24,15 +24,17 @@ public class ActivityForgetPasswordBindingImpl extends ActivityForgetPasswordBin
         sViewsWithIds.put(R.id.member_login_tv, 5);
         sViewsWithIds.put(R.id.llll, 6);
         sViewsWithIds.put(R.id.txtmobile, 7);
-        sViewsWithIds.put(R.id.llofrgotpassword, 8);
-        sViewsWithIds.put(R.id.txtforget, 9);
-        sViewsWithIds.put(R.id.txtmsg, 10);
-        sViewsWithIds.put(R.id.llotpbox, 11);
-        sViewsWithIds.put(R.id.otp_view, 12);
-        sViewsWithIds.put(R.id.generateotp_button, 13);
-        sViewsWithIds.put(R.id.verify_button, 14);
-        sViewsWithIds.put(R.id.btnpassword, 15);
-        sViewsWithIds.put(R.id.view_1, 16);
+        sViewsWithIds.put(R.id.llEmailid, 8);
+        sViewsWithIds.put(R.id.txtEmailId, 9);
+        sViewsWithIds.put(R.id.llofrgotpassword, 10);
+        sViewsWithIds.put(R.id.txtforget, 11);
+        sViewsWithIds.put(R.id.txtmsg, 12);
+        sViewsWithIds.put(R.id.llotpbox, 13);
+        sViewsWithIds.put(R.id.otp_view, 14);
+        sViewsWithIds.put(R.id.generateotp_button, 15);
+        sViewsWithIds.put(R.id.verify_button, 16);
+        sViewsWithIds.put(R.id.btnpassword, 17);
+        sViewsWithIds.put(R.id.view_1, 18);
     }
     // views
     @NonNull
@@ -43,26 +45,28 @@ public class ActivityForgetPasswordBindingImpl extends ActivityForgetPasswordBin
     // Inverse Binding Event Handlers
 
     public ActivityForgetPasswordBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 17, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 19, sIncludes, sViewsWithIds));
     }
     private ActivityForgetPasswordBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
             , (android.widget.ScrollView) bindings[3]
+            , (android.widget.Button) bindings[17]
             , (android.widget.Button) bindings[15]
-            , (android.widget.Button) bindings[13]
             , (android.widget.LinearLayout) bindings[2]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[6]
             , (com.google.android.material.textfield.TextInputLayout) bindings[8]
-            , (android.widget.LinearLayout) bindings[11]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[6]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[10]
+            , (android.widget.LinearLayout) bindings[13]
             , (android.widget.TextView) bindings[5]
-            , (in.aabhasjindal.otptextview.OtpTextView) bindings[12]
+            , (in.aabhasjindal.otptextview.OtpTextView) bindings[14]
             , (education.hry.pkl.cricket11.databinding.ToolbarLayoutBinding) bindings[1]
-            , (android.widget.TextView) bindings[4]
             , (com.google.android.material.textfield.TextInputEditText) bindings[9]
+            , (android.widget.TextView) bindings[4]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[11]
             , (com.google.android.material.textfield.TextInputEditText) bindings[7]
-            , (android.widget.TextView) bindings[10]
-            , (android.widget.Button) bindings[14]
-            , (de.hdodenhof.circleimageview.CircleImageView) bindings[16]
+            , (android.widget.TextView) bindings[12]
+            , (android.widget.Button) bindings[16]
+            , (de.hdodenhof.circleimageview.CircleImageView) bindings[18]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);

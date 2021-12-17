@@ -1,5 +1,6 @@
 package education.hry.pkl.cricket11.ui.Activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
@@ -32,6 +33,9 @@ public class MatchDetailsActivity extends BaseActivity implements MatchesDetailD
     ActivityMatchDetailsBinding binding;
     private LinearLayoutManager manager;
 
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,6 +61,9 @@ public class MatchDetailsActivity extends BaseActivity implements MatchesDetailD
 
             Toast.makeText(this, GlobalClass.nointernet, Toast.LENGTH_LONG).show();
         }
+
+
+
 
     }
 
@@ -109,7 +116,7 @@ public class MatchDetailsActivity extends BaseActivity implements MatchesDetailD
     public void onItemClick(MatchDetailResponse.Datum item, int currposition) {
 
 
-      //  GlobalClass.showtost(MatchDetailsActivity.this, "AAyaa  " + item.getId());
+        //  GlobalClass.showtost(MatchDetailsActivity.this, "AAyaa  " + item.getId());
 
         sweetAlertDialog = new SweetAlertDialog(MatchDetailsActivity.this);
         sweetAlertDialog.setTitle("Alert Match Detail Deleting !");
@@ -152,6 +159,22 @@ public class MatchDetailsActivity extends BaseActivity implements MatchesDetailD
             }
         });
         sweetAlertDialog.show();
+
+    }
+
+    @Override
+    public void onItemScoreCardClick(MatchDetailResponse.Datum item, int currposition) {
+
+
+        String url = item.getScoreCardFilePath();
+        Intent intent = new Intent(this, OpenPDFActivity.class);
+        intent.putExtra("Url", url);
+        intent.putExtra("title", "Score Card");
+        startActivity(intent);
+
+
+
+
 
     }
 

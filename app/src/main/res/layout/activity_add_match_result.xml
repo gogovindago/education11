@@ -563,6 +563,65 @@
                             android:textStyle="bold" />
                     </com.google.android.material.textfield.TextInputLayout>
 
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cardviewAssignment"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_marginRight="6dp"
+                        app:cardCornerRadius="8dp"
+                        app:cardElevation="8dp"
+                        app:cardPreventCornerOverlap="true">
+
+                        <LinearLayout
+                            android:id="@+id/llAssignment"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/spinner_border"
+                            android:orientation="horizontal"
+                            android:weightSum="1">
+
+
+                            <TextView
+                                android:id="@+id/txtAssignment"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:layout_margin="5dp"
+                                android:layout_marginTop="5dp"
+                                android:layout_weight="0.85"
+                                android:drawableStart="@drawable/ic_baseline_attach_file_24"
+                                android:drawableLeft="@drawable/ic_baseline_attach_file_24"
+                                android:gravity="center|start"
+                                android:padding="5dp"
+                                android:text="Click here to Upload Score card"
+                                android:textColor="@color/colorPrimaryDark"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <ImageView
+                                android:id="@+id/attachedpdfAssignment"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_alignParentLeft="true"
+                                android:layout_alignParentTop="true"
+                                android:layout_alignParentEnd="true"
+                                android:layout_alignParentRight="true"
+                                android:layout_weight="0.15"
+                                android:background="@drawable/spinner_border"
+                                android:padding="5dp"
+                                android:src="@drawable/checkgreen"
+                                android:visibility="gone" />
+
+
+                        </LinearLayout>
+
+
+                    </androidx.cardview.widget.CardView>
+
+
                     <androidx.appcompat.widget.AppCompatTextView
                         android:id="@+id/btnaddmatchdetail"
                         android:layout_width="match_parent"

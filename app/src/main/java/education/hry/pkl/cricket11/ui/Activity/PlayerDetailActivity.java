@@ -1,6 +1,7 @@
 package education.hry.pkl.cricket11.ui.Activity;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -24,10 +26,10 @@ import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.PlayerListAdapter;
 import education.hry.pkl.cricket11.allinterfaces.GetPlayerListDetail_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
+
 import education.hry.pkl.cricket11.databinding.ActivityPlayerDetailBinding;
+import education.hry.pkl.cricket11.model.ApprovalPlayerRequest;
 import education.hry.pkl.cricket11.model.DeletePlayerRequest;
-import education.hry.pkl.cricket11.model.DeleteTeamDetailsRequest;
-import education.hry.pkl.cricket11.model.GalleryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
@@ -49,6 +51,29 @@ public class PlayerDetailActivity extends BaseActivity implements PlayerListAdap
         binding = DataBindingUtil.setContentView(this, R.layout.activity_player_detail);
         role = CSPreferences.readString(PlayerDetailActivity.this, "role");
 
+        binding.simpleSwipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+
+
+                if (GlobalClass.isNetworkConnected(PlayerDetailActivity.this)) {
+
+                    WebAPiCall aPiCall = new WebAPiCall();
+                    aPiCall.PlayerListDataMethod(PlayerDetailActivity.this, PlayerDetailActivity.this, token, PlayerDetailActivity.this,binding.rvplayer, binding.simpleSwipeRefreshLayout);
+
+
+                } else {
+
+                    Toast.makeText(PlayerDetailActivity.this, GlobalClass.nointernet, Toast.LENGTH_LONG).show();
+                }
+                binding.simpleSwipeRefreshLayout.setRefreshing(false);
+            }
+        });
+
+
+
+
+
 
         TextView tv_toolbarTitle = findViewById(R.id.tv_toolbarTitle);
         tv_toolbarTitle.setText("Player List");
@@ -66,7 +91,7 @@ public class PlayerDetailActivity extends BaseActivity implements PlayerListAdap
         if (GlobalClass.isNetworkConnected(this)) {
 
             WebAPiCall aPiCall = new WebAPiCall();
-            aPiCall.PlayerListDataMethod(this, this, token, this);
+            aPiCall.PlayerListDataMethod(this, this, token, this,binding.rvplayer, binding.simpleSwipeRefreshLayout);
 
 
         } else {
@@ -149,7 +174,61 @@ public class PlayerDetailActivity extends BaseActivity implements PlayerListAdap
 
     }
 
+    @Override
+    public void onItemClickForDetail(PlayersListResponse.Datum item, int currposition) {
 
+
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
+
+    }
+
+    @Override
+    public void onPlayerApprovalItemClick(PlayersListResponse.Datum item, int currposition) {
+
+        sweetAlertDialog = new SweetAlertDialog(PlayerDetailActivity.this);
+        sweetAlertDialog.setTitle("Alert Player Detail Approval !");
+        sweetAlertDialog.setContentText("Are you sure want to Approve this Player?");
+        sweetAlertDialog.setVolumeControlStream(2);
+        sweetAlertDialog.setCancelable(true);
+        sweetAlertDialog.setCancelText("No");
+        sweetAlertDialog.setConfirmText("Yes");
+        sweetAlertDialog.setCustomImage(R.mipmap.ic_launcher_round);
+
+        sweetAlertDialog.changeAlertType(3);
+        sweetAlertDialog.setCanceledOnTouchOutside(false);
+        sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+
+                if (NetworkUtil.isConnected(PlayerDetailActivity.this)) {
+                    sweetAlertDialog.dismiss();
+
+                    ApprovalPlayerRequest request = new ApprovalPlayerRequest();
+                    request.setPlayer_Id(String.valueOf(item.getPlayerId()));
+                    request.setPhoneNumber(String.valueOf(item.getPhoneNumber()));
+
+                    WebAPiCall aPiCall = new WebAPiCall();
+                   aPiCall.ApprovalPlayerPostDataMethod(PlayerDetailActivity.this, PlayerDetailActivity.this, request);
+
+                } else {
+                    GlobalClass.showtost(PlayerDetailActivity.this, "No Internet Available.Plz check your internet connection.");
+                }
+
+            }
+        });
+
+        sweetAlertDialog.setCancelClickListener(new SweetAlertDialog.OnSweetClickListener() {
+            @Override
+            public void onClick(SweetAlertDialog sweetAlertDialog) {
+                sweetAlertDialog.dismiss();
+            }
+        });
+        sweetAlertDialog.show();
+
+
+    }
 
 
     @Override

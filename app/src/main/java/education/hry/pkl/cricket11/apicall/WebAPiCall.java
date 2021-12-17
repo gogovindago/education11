@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import education.hry.pkl.cricket11.R;
@@ -36,6 +37,8 @@ import education.hry.pkl.cricket11.model.AddMatchResultResponse;
 import education.hry.pkl.cricket11.model.AddNewTeamsRequest;
 import education.hry.pkl.cricket11.model.AddNewTeamsResponse;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
+import education.hry.pkl.cricket11.model.ApprovalPlayerRequest;
+import education.hry.pkl.cricket11.model.ApprovalPlayerResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
@@ -62,6 +65,8 @@ import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
 import education.hry.pkl.cricket11.model.RegistrationRespone;
+import education.hry.pkl.cricket11.model.ResetPasswordRequest;
+import education.hry.pkl.cricket11.model.ResetPaswordResponse;
 import education.hry.pkl.cricket11.retrofitinterface.ApiClient;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
@@ -340,11 +345,17 @@ public class WebAPiCall {
     }
 
 
-    public void profilepicPostDataMethod(final Activity activity, final Context context, RequestBody registration_id, MultipartBody.Part image) {
+    public void profilepicPostDataMethod(final Activity activity, final Context context,
+                                         RequestBody   DOB,RequestBody playerRole,RequestBody  Emailld,RequestBody PhoneNumber,RequestBody  Player_ld,  MultipartBody.Part FileName) {
 
         loadershowwithMsg(context, "Your profile photo uploading is going on...");
 
-        Call<ProfilePicSaveResponse> userpost_responseCall = ApiClient.getClient().userProfilePicUploading(registration_id, image);
+        Call<ProfilePicSaveResponse> userpost_responseCall = ApiClient.getClient().userUpdatePlayerdetailsUploading(
+                DOB,
+                playerRole,
+                Emailld,
+                PhoneNumber,
+                Player_ld,FileName);
 
         userpost_responseCall.enqueue(new Callback<ProfilePicSaveResponse>() {
             @Override
@@ -461,7 +472,7 @@ public class WebAPiCall {
 
     public void forgotPostDataMethod(final Activity activity, final Context context, ForgotPasswordRequest request) {
 
-        loadershowwithMsg(context, "We are veryfing your Mobile to send password.");
+        loadershowwithMsg(context, "We are veryfing your Email Id to send password.");
 
         Call<ForgotPasswordResponse> userpost_responseCall = ApiClient.getClient().forgotPassword(request);
         userpost_responseCall.enqueue(new Callback<ForgotPasswordResponse>() {
@@ -470,9 +481,9 @@ public class WebAPiCall {
                 dailoghide(context);
                 if (response.isSuccessful()) {
 
-                    if (response.body().getStatusCode() == 200) {
+                    if (response.body().getResponse() == 200) {
 
-                        dailogsuccessWithActivity(context, activity, "Password Sent.", "Please check your mobile for 5 digits auto generated password, for login.");
+                        dailogsuccessWithActivity(context, activity, "Password Sent.", "Please check your Email Id for  auto generated password, for login.");
 
 
                         //  loginData_interface.alluserdata(response.body().getOTP(), response.body().getRegistrationId(), response.body().getStundentName(), response.body().getMobile(), response.body().getEmail(), response.body().getLatitude(), response.body().getLongitude(), response.body().getAdmissionportalUrl(), response.body().getProfilePic());
@@ -480,7 +491,7 @@ public class WebAPiCall {
 
                     } else {
                         // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
-                        dailogError(activity, "Mobile Number Not Found!", "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Email Id Number Not Found!", "This  Email Id is Not Registered with Us.");
 
                     }
 
@@ -501,24 +512,24 @@ public class WebAPiCall {
     }
 
 
-    public void resetforgotPostDataMethod(final Activity activity, final Context context, ResetForget_interface resetForget_interface, ForgotPasswordRequest request) {
+    public void resetforgotPostDataMethod(final Activity activity, final Context context, ResetForget_interface resetForget_interface, ResetPasswordRequest request) {
 
         loadershowwithMsg(context, "We are veryfing your Mobile to Reset-password.");
 
-        Call<ForgotPasswordResponse> userpost_responseCall = ApiClient.getClient().ResetforgotPassword(request);
-        userpost_responseCall.enqueue(new Callback<ForgotPasswordResponse>() {
+        Call<ResetPaswordResponse> userpost_responseCall = ApiClient.getClient().ResetforgotPassword(request);
+        userpost_responseCall.enqueue(new Callback<ResetPaswordResponse>() {
             @Override
-            public void onResponse(Call<ForgotPasswordResponse> call, Response<ForgotPasswordResponse> response) {
+            public void onResponse(Call<ResetPaswordResponse> call, Response<ResetPaswordResponse> response) {
                 dailoghide(context);
                 if (response.isSuccessful()) {
 
-                    if (response.body().getStatusCode() == 200) {
+                    if (response.body().getResponse() == 200) {
 
                         //dailogsuccessWithActivity(context, activity, "Password Re-Set Done.", "Successfully Reset your Password.");
                         GlobalClass.showtost(context, "Password Reset Done.\n Successfully Reset your Password.");
 
 
-                        resetForget_interface.resetpassword(response.body().getStatusCode());
+                        resetForget_interface.resetpassword(response.body().getResponse());
 
                     } else {
                         // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
@@ -532,7 +543,7 @@ public class WebAPiCall {
             }
 
             @Override
-            public void onFailure(Call<ForgotPasswordResponse> call, Throwable t) {
+            public void onFailure(Call<ResetPaswordResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();
@@ -561,6 +572,10 @@ public class WebAPiCall {
 
                         loginData_interface.alluserdata(response.body().getData());
 
+
+                    } else if (response.body().getResponse() == 401) {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Approval Pending!", "Approval of This Credential is Pending,Please wait,\n Once approved by Admin,You will get a notification.");
 
                     } else {
                         // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
@@ -631,7 +646,7 @@ public class WebAPiCall {
     }
 
 
-    public void PlayerListDataMethod(final Activity activity, final Context context, String token, GetPlayerListDetail_interface anInterface) {
+    public void PlayerListDataMethod(final Activity activity, final Context context, String token, GetPlayerListDetail_interface anInterface, View llmain, SwipeRefreshLayout mSwipeRefreshLayout) {
 
         loadershowwithMsg(context, "Fetching all Players details...");
 
@@ -1037,7 +1052,7 @@ public class WebAPiCall {
                                              RequestBody CreatedBy,
                                              RequestBody PlayerName,
                                              RequestBody ManOfTheMatchTeamId,
-                                             MultipartBody.Part FileName) {
+                                             MultipartBody.Part FileName,MultipartBody.Part ScoreCardFileName) {
 
         loadershowwithMsg(context, "Adding Match Result is going On...");
 
@@ -1057,7 +1072,7 @@ public class WebAPiCall {
                 CreatedBy,
                 PlayerName,
                 ManOfTheMatchTeamId,
-                FileName);
+                FileName,ScoreCardFileName);
         teamApi.enqueue(new Callback<AddMatchResultResponse>() {
             @Override
             public void onResponse(Call<AddMatchResultResponse> call, Response<AddMatchResultResponse> response) {
@@ -1189,6 +1204,43 @@ public class WebAPiCall {
 
             @Override
             public void onFailure(Call<DeletePlayerResponse> call, Throwable t) {
+
+                dailoghide(context);
+                t.printStackTrace();
+
+                Log.d("dddddd", "onFailure: " + t.getMessage());
+            }
+        });
+    }
+
+
+    public void ApprovalPlayerPostDataMethod(final Activity activity, final Context context, ApprovalPlayerRequest request) {
+
+        loadershowwithMsg(context, "Approval of Player is going On...");
+
+        Call<ApprovalPlayerResponse> teamApi = ApiClient.getClient().ApprovePlayerPlayerApi(request);
+        teamApi.enqueue(new Callback<ApprovalPlayerResponse>() {
+            @Override
+            public void onResponse(Call<ApprovalPlayerResponse> call, Response<ApprovalPlayerResponse> response) {
+                dailoghide(context);
+                if (response.isSuccessful()) {
+
+                    if (response.body().getResponse() == 200) {
+
+                        dailogsuccess(activity, "Successfull.", " Player Approval Successful.");
+                    } else {
+                        // GlobalClass.showtost(context, "This  Number is Not Registered with Us.");
+                        dailogError(activity, "Something went wrong!", "Plz try Again.");
+
+                    }
+
+                } else {
+                    GlobalClass.showtost(context, "" + response.message());
+                }
+            }
+
+            @Override
+            public void onFailure(Call<ApprovalPlayerResponse> call, Throwable t) {
 
                 dailoghide(context);
                 t.printStackTrace();

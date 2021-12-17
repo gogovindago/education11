@@ -48,13 +48,14 @@ public class ForgetPasswordActivity extends BaseActivity implements LoginData_in
     public int counter;
 
     ActivityForgetPasswordBinding binding;
-    private String userMobileNumber, UserGetOtp;
+    private String userMobileNumber, UserGetOtp, userEmailId;
     private MyLoaders myLoaders;
     @TargetApi(Build.VERSION_CODES.O)
 
     GoogleApiClient mGoogleApiClient;
 
     private int RESOLVE_HINT = 2;
+    String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
 
 
     @Override
@@ -70,14 +71,14 @@ public class ForgetPasswordActivity extends BaseActivity implements LoginData_in
         //  mySMSBroadCastReceiver = new MySMSBroadCastReceiver();
 
         //set google api client for hint request
-        mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .addConnectionCallbacks(this)
-                .enableAutoManage(this, this)
-                .addApi(Auth.CREDENTIALS_API)
-                .build();
+//        mGoogleApiClient = new GoogleApiClient.Builder(this)
+//                .addConnectionCallbacks(this)
+//                .enableAutoManage(this, this)
+//                .addApi(Auth.CREDENTIALS_API)
+//                .build();
 
         // get mobile number from phone
-        getHintPhoneNumber();
+        //  getHintPhoneNumber();
         //start SMS listner
         //  smsListener();
 
@@ -141,8 +142,10 @@ public class ForgetPasswordActivity extends BaseActivity implements LoginData_in
 
 
                     userMobileNumber = binding.txtmobile.getText().toString().trim();
+                    userEmailId = binding.txtEmailId.getText().toString().trim();
                     ForgotPasswordRequest request = new ForgotPasswordRequest();
-                    request.setMobile(userMobileNumber);
+                    //  request.setMobile(userMobileNumber);
+                    request.setEmailId(userEmailId);
 
 
                     if (GlobalClass.isNetworkConnected(ForgetPasswordActivity.this)) {
@@ -197,7 +200,7 @@ public class ForgetPasswordActivity extends BaseActivity implements LoginData_in
                     sweetAlertDialog.setTitle("Incorrect Otp!");
                     sweetAlertDialog.setContentText("You have Entered WRONG OTP. Please enter correct OTP.");
                     sweetAlertDialog.setVolumeControlStream(2);
-                   // sweetAlertDialog.getAlerType();
+                    // sweetAlertDialog.getAlerType();
                     sweetAlertDialog.changeAlertType(1);
                     sweetAlertDialog.setCanceledOnTouchOutside(false);
                     sweetAlertDialog.setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
@@ -221,18 +224,22 @@ public class ForgetPasswordActivity extends BaseActivity implements LoginData_in
 
     public boolean Check_Data(View view) {
 
-        if (binding.txtmobile.getText().toString().length() != 10) {
+       /* if (binding.txtmobile.getText().toString().length() != 10) {
             myLoaders.showSnackBar(view, getString(R.string.tencorrectmobile));
             return false;
-
+*/
        /* } else if (TextUtils.isEmpty(edtpass.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter Password");
             return false;
         }*/
+       /* } else*/ if (!binding.txtEmailId.getText().toString().trim().matches(emailPattern)) {
+            GlobalClass.dailogError(ForgetPasswordActivity.this, "Missing Email-Id", "Please Enter Correct Email");
+
+            return false;
+
         }
         return true;
     }
-
 
 
     public void smsListener() {

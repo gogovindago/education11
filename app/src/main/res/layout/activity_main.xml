@@ -3,7 +3,6 @@
 
     xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
@@ -135,7 +134,7 @@
                                     app:sliderIndicatorRadius="2dp"
                                     app:sliderIndicatorSelectedColor="#5A5A5A"
                                     app:sliderIndicatorUnselectedColor="#FFF"
-                                    app:sliderScrollTimeInSec="1"
+                                    app:sliderScrollTimeInSec="2"
                                     app:sliderStartAutoCycle="true"
                                     tools:ignore="TooDeepLayout" />
 
@@ -878,123 +877,126 @@
             android:orientation="vertical"
             android:weightSum="1">
 
-            <LinearLayout
+            <RelativeLayout
+                android:layout_marginBottom="8dp"
+                android:id="@+id/gotoprofileactivity"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_gravity="bottom|start"
-                android:layout_weight="0.3"
+                android:layout_gravity="bottom"
+                android:layout_weight="0.2"
                 android:background="@color/colorAccent"
-                android:gravity="bottom|start"
-                android:orientation="vertical"
-                android:paddingTop="5dp">
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/materialCardView"
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginLeft="0dp"
-                    android:layout_marginTop="0dp"
-                    android:background="@color/white"
-                    app:cardCornerRadius="1dp"
-                    app:cardElevation="1dp"
-                    app:layout_constraintBottom_toBottomOf="@+id/constraintLayout"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/constraintLayout">
-
-                    <ImageView
-                        android:id="@+id/profile_image"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_gravity="center"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/person">
-
-                    </ImageView>
+                android:orientation="vertical">
 
 
-                </androidx.cardview.widget.CardView>
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profile_image"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginLeft="16dp"
+                    android:src="@drawable/person"
+                    app:civ_border_color="@color/white"
+                    app:civ_border_width="2dp">
+
+                </de.hdodenhof.circleimageview.CircleImageView>
+
+                <ImageView
+                    android:id="@+id/accountVerified"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_gravity="center|end|bottom"
+                    android:src="@drawable/verified">
+
+                </ImageView>
+
+
+
+
 
 
                 <TextView
+                    android:drawableEnd="@drawable/ic_baseline_arrow_forward_ios_24"
                     android:id="@+id/uname"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_below="@+id/profile_image"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:gravity="center|start"
                     android:text=""
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:drawableRight="@drawable/ic_baseline_arrow_forward_ios_24" />
 
                 <TextView
                     android:id="@+id/txtUserType"
-
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_below="@+id/uname"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:gravity="center|start"
                     android:text=""
                     android:textColor="@android:color/white"
                     android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
 
                 <TextView
+
                     android:id="@+id/umobile"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_below="@+id/txtUserType"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
-
                     android:gravity="center|start"
                     android:text=""
                     android:textColor="@android:color/white"
-
-                    android:textStyle="bold" />
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/uemailId"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_below="@+id/umobile"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:gravity="center|start"
                     android:text=""
                     android:textColor="@android:color/white"
-                    android:textStyle="bold"
+                    android:textStyle="italic"
                     android:visibility="visible" />
+
 
                 <TextView
                     android:id="@+id/txtrole"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
+                    android:layout_above="@+id/uemailId"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginStart="5dp"
                     android:layout_marginLeft="5dp"
                     android:gravity="center|start"
                     android:text=""
                     android:textColor="@android:color/white"
-                    android:textStyle="bold"
+                    android:textStyle="italic"
                     android:visibility="visible" />
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:layout_marginStart="0dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_marginEnd="0dp"
-                    android:background="@android:color/white">
 
-                </View>
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_weight="0.7">
+                android:layout_weight="0.8">
 
                 <ListView
 
@@ -1002,7 +1004,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="start"
-                    android:layout_marginBottom="8dp"
+                    android:layout_marginBottom="2dp"
                     android:divider="@android:color/darker_gray"
                     android:dividerHeight="1dp"
                     android:headerDividersEnabled="true" />

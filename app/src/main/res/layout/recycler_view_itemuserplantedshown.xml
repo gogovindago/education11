@@ -90,14 +90,15 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
-                    android:layout_margin="5dp"
-                    android:layout_marginTop="5dp"
-                    android:gravity="center"
-                    android:padding="5dp"
+                    android:layout_marginBottom="2dp"
+                    android:background="@drawable/bg_overlay"
+                    android:gravity="center|start"
+                    android:maxLines="3"
+                    android:padding="1dp"
                     android:text="About Image Caption"
                     android:textColor="@color/white"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="8sp"
+                    android:textStyle="italic" />
 
                 <TextView
                     android:id="@+id/lat"

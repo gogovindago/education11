@@ -25,11 +25,15 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-
+            android:name=".ui.Activity.OpenPDFActivity"
+            android:exported="false"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize"/>
+        <activity
             android:name=".ui.Activity.RegisterUserActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden|adjustResize" />
         <activity
             android:name=".ui.Activity.AllTeamListActivity"
             android:exported="false" />

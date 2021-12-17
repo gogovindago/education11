@@ -45,6 +45,14 @@ public class MatchDetailResponse {
     public class Datum {
 
 
+        @SerializedName("scoreCardFileName")
+        @Expose
+        private String scoreCardFileName;
+
+        @SerializedName("scoreCardFilePath")
+        @Expose
+        private String scoreCardFilePath;
+
         @SerializedName("playerName")
         @Expose
         private String playerName;
@@ -98,6 +106,22 @@ public class MatchDetailResponse {
         @Expose
         private String resultRemarks;
 
+
+        public String getScoreCardFileName() {
+            return scoreCardFileName;
+        }
+
+        public void setScoreCardFileName(String scoreCardFileName) {
+            this.scoreCardFileName = scoreCardFileName;
+        }
+
+        public String getScoreCardFilePath() {
+            return scoreCardFilePath;
+        }
+
+        public void setScoreCardFilePath(String scoreCardFilePath) {
+            this.scoreCardFilePath = scoreCardFilePath;
+        }
 
         public String getPlayerName() {
             return playerName;

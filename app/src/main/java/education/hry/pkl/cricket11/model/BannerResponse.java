@@ -211,7 +211,13 @@ public class BannerResponse {
 
     public class MatchDetail {
 
+        @SerializedName("scoreCardFileName")
+        @Expose
+        private String scoreCardFileName;
 
+        @SerializedName("scoreCardFilePath")
+        @Expose
+        private String scoreCardFilePath;
 
 
         @SerializedName("playerName")
@@ -266,8 +272,21 @@ public class BannerResponse {
         @Expose
         private String resultRemarks;
 
+        public String getScoreCardFileName() {
+            return scoreCardFileName;
+        }
 
+        public void setScoreCardFileName(String scoreCardFileName) {
+            this.scoreCardFileName = scoreCardFileName;
+        }
 
+        public String getScoreCardFilePath() {
+            return scoreCardFilePath;
+        }
+
+        public void setScoreCardFilePath(String scoreCardFilePath) {
+            this.scoreCardFilePath = scoreCardFilePath;
+        }
 
         public String getPlayerName() {
             return playerName;
@@ -912,6 +931,18 @@ public class BannerResponse {
         @SerializedName("filePath")
         @Expose
         private String filePath;
+
+        @SerializedName("caption")
+        @Expose
+        private String caption;
+
+        public String getCaption() {
+            return caption;
+        }
+
+        public void setCaption(String caption) {
+            caption = caption;
+        }
 
         public int getId() {
             return id;

@@ -5,116 +5,39 @@ import com.google.gson.annotations.SerializedName;
 
 public class ForgotPasswordResponse {
 
-
-
-    @SerializedName("OTP")
+    @SerializedName("response")
     @Expose
-    private String oTP;
-    @SerializedName("RegistrationId")
+    private long response;
+    @SerializedName("sys_message")
     @Expose
-    private Integer registrationId;
-    @SerializedName("StatusCode")
+    private String sysMessage;
+    @SerializedName("data")
     @Expose
-    private Integer StatusCode;
-    @SerializedName("Message")
-    @Expose
-    private String message;
-    @SerializedName("StundentName")
-    @Expose
-    private String stundentName;
-    @SerializedName("Mobile")
-    @Expose
-    private String mobile;
-    @SerializedName("Email")
-    @Expose
-    private String email;
-    @SerializedName("AdmissionportalUrl")
-    @Expose
-    private String admissionportalUrl;
-    @SerializedName("Extraurl")
-    @Expose
-    private String extraurl;
-    @SerializedName("ProfilePic")
-    @Expose
-    private String profilePic;
+    private Object data;
 
-    public String getOTP() {
-        return oTP;
+    public long getResponse() {
+        return response;
     }
 
-    public void setOTP(String oTP) {
-        this.oTP = oTP;
+    public void setResponse(long response) {
+        this.response = response;
     }
 
-    public Integer getRegistrationId() {
-        return registrationId;
+    public String getSysMessage() {
+        return sysMessage;
     }
 
-    public void setRegistrationId(Integer registrationId) {
-        this.registrationId = registrationId;
+    public void setSysMessage(String sysMessage) {
+        this.sysMessage = sysMessage;
     }
 
-    public Integer getStatusCode() {
-        return StatusCode;
+    public Object getData() {
+        return data;
     }
 
-    public void setStatusCode(Integer StatusCode) {
-        this.StatusCode = StatusCode;
+    public void setData(Object data) {
+        this.data = data;
     }
 
-    public String getMessage() {
-        return message;
-    }
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public String getStundentName() {
-        return stundentName;
-    }
-
-    public void setStundentName(String stundentName) {
-        this.stundentName = stundentName;
-    }
-
-    public String getMobile() {
-        return mobile;
-    }
-
-    public void setMobile(String mobile) {
-        this.mobile = mobile;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getAdmissionportalUrl() {
-        return admissionportalUrl;
-    }
-
-    public void setAdmissionportalUrl(String admissionportalUrl) {
-        this.admissionportalUrl = admissionportalUrl;
-    }
-
-    public String getExtraurl() {
-        return extraurl;
-    }
-
-    public void setExtraurl(String extraurl) {
-        this.extraurl = extraurl;
-    }
-
-    public String getProfilePic() {
-        return profilePic;
-    }
-
-    public void setProfilePic(String profilePic) {
-        this.profilePic = profilePic;
-    }
 }

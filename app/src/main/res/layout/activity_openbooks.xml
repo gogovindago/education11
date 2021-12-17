@@ -9,12 +9,6 @@
     tools:context=".ui.Activity.OpenBooksActivity">
 
 
-        <include
-             android:id="@+id/toolbar"
-             layout="@layout/toolbar_layout"
-             app:layout_constraintEnd_toEndOf="parent"
-             app:layout_constraintStart_toStartOf="parent"
-             app:layout_constraintTop_toTopOf="parent"/>
 
 
 
@@ -90,6 +84,7 @@
 
 
             <WebView
+
                 android:id="@+id/sitesWebView"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">

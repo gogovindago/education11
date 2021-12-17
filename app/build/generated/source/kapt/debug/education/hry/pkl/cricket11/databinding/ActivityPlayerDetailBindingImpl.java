@@ -12,14 +12,15 @@ public class ActivityPlayerDetailBindingImpl extends ActivityPlayerDetailBinding
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
-        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(4);
+        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(5);
         sIncludes.setIncludes(0, 
             new String[] {"toolbar_layout"},
             new int[] {1},
             new int[] {education.hry.pkl.cricket11.R.layout.toolbar_layout});
         sViewsWithIds = new android.util.SparseIntArray();
-        sViewsWithIds.put(R.id.rvplayer, 2);
-        sViewsWithIds.put(R.id.plantationnow, 3);
+        sViewsWithIds.put(R.id.simpleSwipeRefreshLayout, 2);
+        sViewsWithIds.put(R.id.rvplayer, 3);
+        sViewsWithIds.put(R.id.plantationnow, 4);
     }
     // views
     @NonNull
@@ -30,12 +31,13 @@ public class ActivityPlayerDetailBindingImpl extends ActivityPlayerDetailBinding
     // Inverse Binding Event Handlers
 
     public ActivityPlayerDetailBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 4, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 5, sIncludes, sViewsWithIds));
     }
     private ActivityPlayerDetailBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
-            , (androidx.appcompat.widget.AppCompatButton) bindings[3]
-            , (androidx.recyclerview.widget.RecyclerView) bindings[2]
+            , (androidx.appcompat.widget.AppCompatButton) bindings[4]
+            , (androidx.recyclerview.widget.RecyclerView) bindings[3]
+            , (androidx.swiperefreshlayout.widget.SwipeRefreshLayout) bindings[2]
             , (education.hry.pkl.cricket11.databinding.ToolbarLayoutBinding) bindings[1]
             );
         this.mboundView0 = (androidx.appcompat.widget.LinearLayoutCompat) bindings[0];

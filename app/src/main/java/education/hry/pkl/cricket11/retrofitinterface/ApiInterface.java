@@ -5,6 +5,8 @@ import education.hry.pkl.cricket11.model.AddMatchResultResponse;
 import education.hry.pkl.cricket11.model.AddNewTeamsRequest;
 import education.hry.pkl.cricket11.model.AddNewTeamsResponse;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
+import education.hry.pkl.cricket11.model.ApprovalPlayerRequest;
+import education.hry.pkl.cricket11.model.ApprovalPlayerResponse;
 import education.hry.pkl.cricket11.model.BannerResponse;
 import education.hry.pkl.cricket11.model.CareerStatisticsResponse;
 import education.hry.pkl.cricket11.model.DeleteIndivisualMatchDetailsRequest;
@@ -31,6 +33,8 @@ import education.hry.pkl.cricket11.model.PlayerHistoryResponse;
 import education.hry.pkl.cricket11.model.PlayersListResponse;
 import education.hry.pkl.cricket11.model.ProfilePicSaveResponse;
 import education.hry.pkl.cricket11.model.RegistrationRespone;
+import education.hry.pkl.cricket11.model.ResetPasswordRequest;
+import education.hry.pkl.cricket11.model.ResetPaswordResponse;
 import education.hry.pkl.cricket11.model.StudentEventDataSaveResponse;
 import education.hry.pkl.cricket11.model.StudentProfileResponse;
 import okhttp3.MultipartBody;
@@ -100,7 +104,8 @@ public interface ApiInterface {
                                                    @Part("CreatedBy") RequestBody CreatedBy,
                                                    @Part("PlayerName") RequestBody PlayerName,
                                                    @Part("ManOfTheMatchTeamId") RequestBody ManOfTheMatchTeamId,
-                                                   @Part MultipartBody.Part FileName);
+                                                   @Part MultipartBody.Part FileName,
+                                                   @Part MultipartBody.Part ScoreCardFileName);
 
     @POST("InsertMatchRecord")
     Call<InsertMatchRecordIndivisualResponse> InsertMatchRecordIndivisualApi(@Body InsertMatchRecordIndivisualRequest request);
@@ -111,6 +116,9 @@ public interface ApiInterface {
 
     @POST("Deletenetpractice")
     Call<DeleteResponse> DeletenetpracticeApi(@Body DeleteRequest request);
+
+    @POST("ApprovePlayer")
+    Call<ApprovalPlayerResponse> ApprovePlayerPlayerApi(@Body ApprovalPlayerRequest request);
 
     @POST("DeletePlayer")
     Call<DeletePlayerResponse> DeletePlayerApi(@Body DeletePlayerRequest request);
@@ -130,9 +138,14 @@ public interface ApiInterface {
     Call<BannerResponse> getBannnerAPi();
 
     @Multipart
-    @POST("Saveprofile")
-    Call<ProfilePicSaveResponse> userProfilePicUploading(@Part("Registration_Id") RequestBody customer_id,
-                                                         @Part MultipartBody.Part image);
+    @POST("UpdatePlayerdetails")
+    Call<ProfilePicSaveResponse> userUpdatePlayerdetailsUploading(
+                                                                  @Part("DOB") RequestBody dob,
+                                                                  @Part("playerRole") RequestBody MessageBody,
+                                                                  @Part("Emailld") RequestBody MatchTitle,
+                                                                  @Part("PhoneNumber") RequestBody MatchDate,
+                                                                  @Part("Player_ld") RequestBody ScoreTeam1,
+                                                                  @Part MultipartBody.Part FileName);
 
     @POST("TotalMatchDetails")
     Call<AddMatchResultResponse> MatchResultDetails(@Body AddMatchResultRequest request);
@@ -146,7 +159,7 @@ public interface ApiInterface {
 
 
     @POST("ResetPassword")
-    Call<ForgotPasswordResponse> ResetforgotPassword(@Body ForgotPasswordRequest request);
+    Call<ResetPaswordResponse> ResetforgotPassword(@Body ResetPasswordRequest request);
 
 
 ////http://112.196.99.108/AndroidTesting/api/StudentSignin

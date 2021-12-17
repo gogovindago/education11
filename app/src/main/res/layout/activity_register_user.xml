@@ -224,6 +224,8 @@
                     </com.google.android.material.card.MaterialCardView>
 
 
+
+
                     <androidx.cardview.widget.CardView
 
                         android:id="@+id/cardGuest"
@@ -430,7 +432,36 @@
                         </LinearLayout>
                     </androidx.cardview.widget.CardView>
 
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:visibility="gone"
+                        android:id="@+id/tledtemail"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="@dimen/activity_horizontal_marginn"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:outlineSpotShadowColor="@color/black"
+                        android:textColorHint="@color/black">
 
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/edtemail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_email"
+                            android:drawableLeft="@drawable/ic_email"
+                            android:drawablePadding="16dp"
+                            android:hint="Email address"
+                            android:imeOptions="actionDone"
+                            android:inputType="textEmailAddress"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
+
+                    </com.google.android.material.textfield.TextInputLayout>
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cardplayer"
                         android:layout_width="match_parent"
@@ -454,34 +485,6 @@
 
 
 
-                            <com.google.android.material.textfield.TextInputLayout
-                                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_margin="@dimen/activity_horizontal_marginn"
-                                android:layout_marginStart="16dp"
-                                android:layout_marginTop="16dp"
-                                android:layout_marginEnd="16dp"
-                                android:outlineSpotShadowColor="@color/black"
-                                android:textColorHint="@color/black">
-
-                                <com.google.android.material.textfield.TextInputEditText
-                                    android:id="@+id/edtemail"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:drawableStart="@drawable/ic_email"
-                                    android:drawableLeft="@drawable/ic_email"
-                                    android:drawablePadding="16dp"
-                                    android:hint="Email address"
-                                    android:imeOptions="actionDone"
-                                    android:inputType="textEmailAddress"
-                                    android:textColor="@color/black"
-                                    android:textColorHint="@color/black"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toBottomOf="@+id/textInputEditText" />
-
-                            </com.google.android.material.textfield.TextInputLayout>
 
                             <com.google.android.material.textfield.TextInputLayout
                                 style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"

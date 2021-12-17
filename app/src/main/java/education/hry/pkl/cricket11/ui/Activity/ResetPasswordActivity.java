@@ -14,6 +14,7 @@ import education.hry.pkl.cricket11.allinterfaces.ResetForget_interface;
 import education.hry.pkl.cricket11.apicall.WebAPiCall;
 import education.hry.pkl.cricket11.databinding.ActivityResetPasswordBinding;
 import education.hry.pkl.cricket11.model.ForgotPasswordRequest;
+import education.hry.pkl.cricket11.model.ResetPasswordRequest;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
 import education.hry.pkl.cricket11.utility.GlobalClass;
@@ -22,7 +23,7 @@ import education.hry.pkl.cricket11.utility.MyLoaders;
 public class ResetPasswordActivity extends BaseActivity implements ResetForget_interface {
 
     ActivityResetPasswordBinding binding;
-    private String userMobileNumber,confirmoasswd, Registration_Id, umobile;
+    private String userMobileNumber,confirmoasswd,Oldpassword, Registration_Id, umobile;
     private MyLoaders myLoaders;
 
     @Override
@@ -73,10 +74,11 @@ public class ResetPasswordActivity extends BaseActivity implements ResetForget_i
 
                     userMobileNumber = binding.edtmobile.getText().toString().trim();
                     confirmoasswd = binding.textInputEditText.getText().toString().trim();
+                    Oldpassword = binding.edtOldpassword.getText().toString().trim();
 
-                    ForgotPasswordRequest request = new ForgotPasswordRequest();
-                    request.setMobile(userMobileNumber);
-                    request.setRegId(Registration_Id);
+                    ResetPasswordRequest request = new ResetPasswordRequest();
+                    request.setMobileNo(userMobileNumber);
+                    request.setOldPassword(Oldpassword);
                     request.setPassword(confirmoasswd);
 
 
@@ -89,9 +91,7 @@ public class ResetPasswordActivity extends BaseActivity implements ResetForget_i
                         Toast.makeText(ResetPasswordActivity.this, GlobalClass.nointernet, Toast.LENGTH_LONG).show();
                     }
 
-
                 }
-
 
             }
         });

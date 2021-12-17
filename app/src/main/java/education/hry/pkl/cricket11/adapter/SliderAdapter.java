@@ -1,6 +1,7 @@
 package education.hry.pkl.cricket11.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,13 +17,15 @@ import java.util.List;
 
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.model.BannerResponse;
+import education.hry.pkl.cricket11.ui.Activity.GalleryActivity;
+import education.hry.pkl.cricket11.ui.Activity.PlayerHistoryActivity;
 
 /**
  * Created by Govind Kumar on 8/15/2020.
  * * DHE
  * *  govind224556@gmail.com
  **/
-public class SliderAdapter  extends SliderViewAdapter<SliderAdapter.SliderAdapterVH> {
+public class SliderAdapter extends SliderViewAdapter<SliderAdapter.SliderAdapterVH> {
 
     private Context context;
     private List<BannerResponse.Banner> mSliderItems = new ArrayList<>();
@@ -57,8 +60,8 @@ public class SliderAdapter  extends SliderViewAdapter<SliderAdapter.SliderAdapte
 
         BannerResponse.Banner sliderItem = mSliderItems.get(position);
 
-        viewHolder.textViewDescription.setText(sliderItem.getFileName());
-        viewHolder.textViewDescription.setTextSize(16);
+        viewHolder.textViewDescription.setText(sliderItem.getCaption());
+        viewHolder.textViewDescription.setTextSize(10);
         viewHolder.textViewDescription.setTextColor(Color.WHITE);
         Glide.with(viewHolder.itemView)
                 .load(sliderItem.getFilePath())
@@ -68,7 +71,11 @@ public class SliderAdapter  extends SliderViewAdapter<SliderAdapter.SliderAdapte
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-               // Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
+                Intent playerhistoryintent = new Intent(context, GalleryActivity.class);
+                context.startActivity(playerhistoryintent);
+
+
+                // Toast.makeText(context, "This is item in position " + position, Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -80,7 +87,7 @@ public class SliderAdapter  extends SliderViewAdapter<SliderAdapter.SliderAdapte
     }
 
 
-    public static   class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
+    public static class SliderAdapterVH extends SliderViewAdapter.ViewHolder {
 
         View itemView;
         ImageView imageViewBackground;

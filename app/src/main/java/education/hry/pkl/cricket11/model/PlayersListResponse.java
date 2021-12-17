@@ -71,6 +71,18 @@ public class PlayersListResponse {
         @Expose
         private String phoneNumber;
 
+        @SerializedName("isApproved")
+        @Expose
+        private String isApproved;
+
+        public String getIsApproved() {
+            return isApproved;
+        }
+
+        public void setIsApproved(String isApproved) {
+            this.isApproved = isApproved;
+        }
+
         public int getPlayerId() {
             return playerId;
         }

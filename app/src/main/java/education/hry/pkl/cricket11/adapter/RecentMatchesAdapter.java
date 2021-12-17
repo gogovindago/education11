@@ -70,6 +70,30 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
 
 
         }
+        // Function to find string which has first
+        // character of each word.
+        String firstLetterWord(String str) {
+            String result = "";
+
+            // Traverse the string.
+            boolean v = true;
+            for (int i = 0; i < str.length(); i++) {
+                // If it is space, set v as true.
+                if (str.charAt(i) == ' ') {
+                    v = true;
+                }
+
+                // Else check if v is true or not.
+                // If true, copy character in output
+                // string and set v as false.
+                else if (str.charAt(i) != ' ' && v == true) {
+                    result += (str.charAt(i));
+                    v = false;
+                }
+            }
+
+            return result;
+        }
 
         public void setData(BannerResponse.MatchDetail item, int currposition) {
             this.currposition = currposition;
@@ -78,8 +102,13 @@ public class RecentMatchesAdapter extends RecyclerView.Adapter<RecentMatchesAdap
 
             txtTeamAscore.setText(item.getScoreTeam1() + " - " + item.getWicketsTeam1() + "(" + item.getOverTeam1() + ")");
             txtTeamBscore.setText(item.getScoreTeam2() + " - " + item.getWicketsTeam2() + "(" + item.getOverTeam2() + ")");
-            txtteamA.setText(item.getTeam1());
-            txtteamB.setText(item.getVersusTeam2());
+
+
+            txtteamA.setText(firstLetterWord(item.getTeam1().replaceAll("[^a-zA-Z0-9]", " ")));
+            txtteamB.setText(firstLetterWord(item.getVersusTeam2().replaceAll("[^a-zA-Z0-9]", " ")));
+
+           // txtteamA.setText(item.getTeam1());
+           // txtteamB.setText(item.getVersusTeam2());
             txtResult.setText(item.getResultRemarks());
 
             txtmomPlayerName.setText(item.getPlayerName());

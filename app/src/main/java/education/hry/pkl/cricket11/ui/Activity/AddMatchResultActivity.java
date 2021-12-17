@@ -1,5 +1,9 @@
 package education.hry.pkl.cricket11.ui.Activity;
 
+import static android.Manifest.permission.INTERNET;
+import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
+import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -7,6 +11,7 @@ import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.provider.Settings;
@@ -17,11 +22,14 @@ import android.widget.AdapterView;
 import android.widget.DatePicker;
 
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.bumptech.glide.Glide;
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.karumi.dexter.Dexter;
 import com.karumi.dexter.MultiplePermissionsReport;
 import com.karumi.dexter.PermissionToken;
@@ -45,6 +53,7 @@ import education.hry.pkl.cricket11.databinding.ActivityAddMatchResultBinding;
 import education.hry.pkl.cricket11.model.AllTeamListResponse;
 import education.hry.pkl.cricket11.utility.BaseActivity;
 import education.hry.pkl.cricket11.utility.CSPreferences;
+import education.hry.pkl.cricket11.utility.FileUtils;
 import education.hry.pkl.cricket11.utility.GlobalClass;
 import education.hry.pkl.cricket11.utility.ImagePickerActivity;
 import education.hry.pkl.cricket11.utility.MyLoaders;
@@ -66,6 +75,8 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
     File imagefile;
     String OpponentteamID, teamdhe, momteamId, fcm_MessageTitle, Fcm_MessageBody,
             teamdheName;
+    File scorecardfile;
+    private int REQUEST_CODE;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -149,6 +160,18 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         });
 
 
+        binding.llAssignment.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+            @Override
+            public void onClick(View view) {
+
+                checkpermissions(AddMatchResultActivity.this);
+                REQUEST_CODE = 123;
+                showFileChooser(REQUEST_CODE);
+            }
+        });
+
+
         binding.edtMatchDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -215,13 +238,12 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
             }
         });
 
+
         binding.btnaddmatchdetail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 GlobalClass.closeKeyboard(AddMatchResultActivity.this);
-
-
 
 
                 if (Check_Data(v)) {
@@ -276,6 +298,9 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
                                 RequestBody imagefilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), imagefile);
                                 MultipartBody.Part imagefilebody = MultipartBody.Part.createFormData("FileName", imagefile.getName(), imagefilerequestFile);
 
+                                RequestBody scorecardfilerequestFile = RequestBody.create(MediaType.parse("multipart/form-data"), scorecardfile);
+                                MultipartBody.Part scorecardfilebody = MultipartBody.Part.createFormData("ScoreCardFileName", scorecardfile.getName(), scorecardfilerequestFile);
+
                                 WebAPiCall aPiCall = new WebAPiCall();
                                 aPiCall.addMatchResultPostDataMethod(AddMatchResultActivity.this, AddMatchResultActivity.this, rq_fcm_MessageTitle,
                                         rq_Fcm_MessageBody, rq_MatchTitle,
@@ -291,7 +316,7 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
                                         rq_CreatedBy,
                                         rq_MOMPlayerName,
                                         rq_ManOfTheMatchTeamId,
-                                        imagefilebody);
+                                        imagefilebody, scorecardfilebody);
 
                             } else {
                                 GlobalClass.showtost(AddMatchResultActivity.this, "No Internet Available.Plz check your internet connection.");
@@ -316,6 +341,59 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         });
 
 
+    }
+
+
+    public void checkpermissions(Activity context) {
+        if (Build.VERSION.SDK_INT >= 23) {
+            new TedPermission(context)
+                    .setPermissionListener(permissionListener)
+                    //.setDeniedMessage("If you reject permission,you can not use this service\n\nPlease turn on permissions at [Setting] > [Permission]")
+                    .setPermissions(
+                            INTERNET,
+                            READ_EXTERNAL_STORAGE,
+                            WRITE_EXTERNAL_STORAGE
+
+                    )
+                    .check();
+        }
+
+
+    }
+
+    PermissionListener permissionListener = new PermissionListener() {
+        @Override
+        public void onPermissionGranted() {
+
+        }
+
+        @Override
+        public void onPermissionDenied(ArrayList<String> deniedPermissions) {
+            checkpermissions(AddMatchResultActivity.this);
+        }
+
+    };
+
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public void showFileChooser(int REQUEST_CODE) {
+        Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
+
+        // Update with mime types
+        intent.setType("*/*");
+
+        String[] mimeTypes = {"application/pdf"};
+
+        // Update with additional mime types here using a String[].
+        intent.putExtra(Intent.EXTRA_MIME_TYPES, mimeTypes);
+
+        // Only pick openable and local files. Theoretically we could pull files from google drive
+        // or other applications that have networked files, but that's unnecessary for this example.
+        intent.addCategory(Intent.CATEGORY_OPENABLE);
+        intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+
+        // REQUEST_CODE = <some-integer>
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
 
@@ -364,6 +442,9 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
             return false;
         } else if (TextUtils.isEmpty(binding.edtResultRemarks.getText().toString().trim())) {
             myLoaders.showSnackBar(view, "Please Enter Match Result.");
+            return false;
+        } else if (scorecardfile == null) {
+            myLoaders.showSnackBar(view, "Please Select Score-card Of Match");
             return false;
         }
 
@@ -433,6 +514,43 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
                 }
 
             }
+        } else if (requestCode == 123) {
+
+            if (resultCode == RESULT_OK) {
+                Uri uri = data.getData();
+                String path = "";
+                int currentVersion = android.os.Build.VERSION.SDK_INT;
+                if (currentVersion >= android.os.Build.VERSION_CODES.N) {
+                    // Do something for lollipop and above versions
+                    path = FileUtils.getFilePathForN(uri, this);
+                } else {
+                    // do something for phones running an SDK before lollipop
+                    path = FileUtils.getPath(this, uri);
+                }
+                // "file:///mnt/sdcard/FileName.mp3"
+                Log.d("PATHS : ", path);
+                File file = null;
+                try {
+                    file = new File(path);
+                    scorecardfile = file;
+                    // binding.txtupload.setText(imagefile.toString());
+                    binding.txtAssignment.setText(scorecardfile.getName());
+                    binding.txtAssignment.setTextColor(getResources().getColor(R.color.drkgreeen));
+
+                    binding.attachedpdfAssignment.setVisibility(View.VISIBLE);
+                    binding.llAssignment.setBackgroundResource(R.drawable.spinner_bordergreen);
+
+                    Log.d("PDF", file.getAbsolutePath());
+                    Log.d("PDF", "" + file.getTotalSpace());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            } else {
+
+            }
+
+
         }
     }
 

@@ -17,6 +17,7 @@ import education.hry.pkl.cricket11.databinding.ActivityMatchDetailsBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityNetPracticeImageVideoBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityNotificationDetailBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityNotificationsBindingImpl;
+import education.hry.pkl.cricket11.databinding.ActivityOpenPdfactivityBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityPlayerDetailBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityPlayerHistoryBindingImpl;
 import education.hry.pkl.cricket11.databinding.ActivityProfileBindingImpl;
@@ -58,23 +59,25 @@ public class DataBinderMapperImpl extends DataBinderMapper {
 
   private static final int LAYOUT_ACTIVITYNOTIFICATIONS = 11;
 
-  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 12;
+  private static final int LAYOUT_ACTIVITYOPENPDFACTIVITY = 12;
 
-  private static final int LAYOUT_ACTIVITYPLAYERHISTORY = 13;
+  private static final int LAYOUT_ACTIVITYPLAYERDETAIL = 13;
 
-  private static final int LAYOUT_ACTIVITYPROFILE = 14;
+  private static final int LAYOUT_ACTIVITYPLAYERHISTORY = 14;
 
-  private static final int LAYOUT_ACTIVITYREGISTERUSER = 15;
+  private static final int LAYOUT_ACTIVITYPROFILE = 15;
 
-  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 16;
+  private static final int LAYOUT_ACTIVITYREGISTERUSER = 16;
 
-  private static final int LAYOUT_ACTIVITYWELCOME = 17;
+  private static final int LAYOUT_ACTIVITYRESETPASSWORD = 17;
 
-  private static final int LAYOUT_LISTVIEWITEMROW = 18;
+  private static final int LAYOUT_ACTIVITYWELCOME = 18;
 
-  private static final int LAYOUT_TOOLBARLAYOUT = 19;
+  private static final int LAYOUT_LISTVIEWITEMROW = 19;
 
-  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(19);
+  private static final int LAYOUT_TOOLBARLAYOUT = 20;
+
+  private static final SparseIntArray INTERNAL_LAYOUT_ID_LOOKUP = new SparseIntArray(20);
 
   static {
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_add_match_result, LAYOUT_ACTIVITYADDMATCHRESULT);
@@ -88,6 +91,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_net_practice_image_video, LAYOUT_ACTIVITYNETPRACTICEIMAGEVIDEO);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_notification_detail, LAYOUT_ACTIVITYNOTIFICATIONDETAIL);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_notifications, LAYOUT_ACTIVITYNOTIFICATIONS);
+    INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_open_pdfactivity, LAYOUT_ACTIVITYOPENPDFACTIVITY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_player_detail, LAYOUT_ACTIVITYPLAYERDETAIL);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_player_history, LAYOUT_ACTIVITYPLAYERHISTORY);
     INTERNAL_LAYOUT_ID_LOOKUP.put(education.hry.pkl.cricket11.R.layout.activity_profile, LAYOUT_ACTIVITYPROFILE);
@@ -172,6 +176,12 @@ public class DataBinderMapperImpl extends DataBinderMapper {
             return new ActivityNotificationsBindingImpl(component, view);
           }
           throw new IllegalArgumentException("The tag for activity_notifications is invalid. Received: " + tag);
+        }
+        case  LAYOUT_ACTIVITYOPENPDFACTIVITY: {
+          if ("layout/activity_open_pdfactivity_0".equals(tag)) {
+            return new ActivityOpenPdfactivityBindingImpl(component, view);
+          }
+          throw new IllegalArgumentException("The tag for activity_open_pdfactivity is invalid. Received: " + tag);
         }
         case  LAYOUT_ACTIVITYPLAYERDETAIL: {
           if ("layout/activity_player_detail_0".equals(tag)) {
@@ -274,7 +284,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
   }
 
   private static class InnerLayoutIdLookup {
-    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(19);
+    static final HashMap<String, Integer> sKeys = new HashMap<String, Integer>(20);
 
     static {
       sKeys.put("layout/activity_add_match_result_0", education.hry.pkl.cricket11.R.layout.activity_add_match_result);
@@ -288,6 +298,7 @@ public class DataBinderMapperImpl extends DataBinderMapper {
       sKeys.put("layout/activity_net_practice_image_video_0", education.hry.pkl.cricket11.R.layout.activity_net_practice_image_video);
       sKeys.put("layout/activity_notification_detail_0", education.hry.pkl.cricket11.R.layout.activity_notification_detail);
       sKeys.put("layout/activity_notifications_0", education.hry.pkl.cricket11.R.layout.activity_notifications);
+      sKeys.put("layout/activity_open_pdfactivity_0", education.hry.pkl.cricket11.R.layout.activity_open_pdfactivity);
       sKeys.put("layout/activity_player_detail_0", education.hry.pkl.cricket11.R.layout.activity_player_detail);
       sKeys.put("layout/activity_player_history_0", education.hry.pkl.cricket11.R.layout.activity_player_history);
       sKeys.put("layout/activity_profile_0", education.hry.pkl.cricket11.R.layout.activity_profile);

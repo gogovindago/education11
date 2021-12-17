@@ -2,6 +2,8 @@ package education.hry.pkl.cricket11.adapter;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.media.Image;
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,8 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
@@ -43,35 +47,57 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
 
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        public TextView textView, txtdeleteplayer;
-        public ImageView imageView,imgZoom;
+        public TextView textView, txtdeleteplayer, txtApproveplayer;
+        public ImageView imageView, imgZoom;
         SimpleDraweeView my_image_view;
         public RelativeLayout relativeLayout;
         PlayersListResponse.Datum item;
         public int currposition;
+        ImageView imgApproveplayer;
 
         public ViewHolder(View v) {
 
             super(v);
 
 //            v.setOnClickListener(this);
+            txtApproveplayer = (TextView) v.findViewById(R.id.txtApproveplayer);
             textView = (TextView) v.findViewById(R.id.txtcaption);
             txtdeleteplayer = (TextView) v.findViewById(R.id.txtdeleteplayer);
             imageView = (ImageView) v.findViewById(R.id.imageView);
             imgZoom = (ImageView) v.findViewById(R.id.imgZoom);
             my_image_view = (SimpleDraweeView) v.findViewById(R.id.my_image_view);
+            imgApproveplayer = v.findViewById(R.id.imgApproveplayer);
             relativeLayout = (RelativeLayout) v.findViewById(R.id.relativeLayout);
 
             imgZoom.setOnClickListener(this);
+            textView.setOnClickListener(this);
+
+
+
+
+
+
+
+
+
 
             if (mrole.equalsIgnoreCase("Admin")) {
 
+
+               // txtApproveplayer.setVisibility(View.VISIBLE);
                 txtdeleteplayer.setVisibility(View.VISIBLE);
+              //  imgApproveplayer.setVisibility(View.VISIBLE);
+
                 txtdeleteplayer.setOnClickListener(this);
+                txtApproveplayer.setOnClickListener(this);
 
 
             } else {
+             //   imgApproveplayer.setVisibility(View.GONE);
+
+
                 txtdeleteplayer.setVisibility(View.GONE);
+                txtApproveplayer.setVisibility(View.GONE);
 
 
             }
@@ -99,6 +125,49 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
             textView.setText(item.getPlayerName() + "(" + String.valueOf(getAge(c)) + ")" + "\n" + item.getPlayingRole());
             my_image_view.setImageURI(item.getFilePath());
 
+            if (item.getIsApproved().equalsIgnoreCase("1")) {
+
+                imgApproveplayer.setVisibility(View.VISIBLE);
+
+            } else {
+
+                imgApproveplayer.setVisibility(View.GONE);
+
+
+
+            }
+
+
+
+
+            if (mrole.equalsIgnoreCase("Admin")) {
+
+                if (item.getIsApproved().equalsIgnoreCase("1")) {
+
+                  //  txtApproveplayer.setBackground(ContextCompat.getDrawable(mContext, R.drawable.green_button_background));
+                   // txtApproveplayer.setCompoundDrawablesWithIntrinsicBounds(R.drawable.verified, 0, 0, 0);
+
+                    imgApproveplayer.setVisibility(View.VISIBLE);
+//                    txtApproveplayer.setText("Verified");
+//                    txtApproveplayer.setClickable(false);
+//                    txtApproveplayer.setEnabled(false);
+
+
+                } else {
+
+                    imgApproveplayer.setVisibility(View.GONE);
+                    txtApproveplayer.setVisibility(View.VISIBLE);
+                   // txtApproveplayer.setBackground(ContextCompat.getDrawable(mContext, R.drawable.buttonstylered));
+
+                   // txtApproveplayer.setTextColor(ContextCompat.getColor(mContext, R.color.white));
+                    txtApproveplayer.setText("Verify");
+                    txtApproveplayer.setClickable(true);
+                    txtApproveplayer.setEnabled(true);
+
+                }
+
+
+            }
 
         }
 
@@ -143,11 +212,32 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
                     }
                     break;
 
-                    case R.id.imgZoom:
+                case R.id.imgZoom:
 
                     if (mListener != null) {
 
                         mListener.onItemZoom(item, currposition);
+
+
+                    }
+                    break;
+
+
+                case R.id.txtApproveplayer:
+
+                    if (mListener != null) {
+
+                        mListener.onPlayerApprovalItemClick(item, currposition);
+
+
+                    }
+                    break;
+
+                    case R.id.txtcaption:
+
+                    if (mListener != null) {
+
+                        mListener.onItemClickForDetail(item, currposition);
 
 
                     }
@@ -184,6 +274,10 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Vi
 
     public interface ItemListener {
         void onItemClick(PlayersListResponse.Datum item, int currposition);
+        void onItemClickForDetail(PlayersListResponse.Datum item, int currposition);
+
+        void onPlayerApprovalItemClick(PlayersListResponse.Datum item, int currposition);
+
         void onItemZoom(PlayersListResponse.Datum item, int currposition);
     }
 }

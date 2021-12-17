@@ -2,7 +2,6 @@ package education.hry.pkl.cricket11.ui.Activity;
 
 import android.app.ProgressDialog;
 import android.content.ActivityNotFoundException;
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentSender;
@@ -18,6 +17,7 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -58,6 +58,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import de.hdodenhof.circleimageview.CircleImageView;
 import education.hry.pkl.cricket11.R;
 import education.hry.pkl.cricket11.adapter.AdminImgAdapter;
 import education.hry.pkl.cricket11.adapter.DrawerItemCustomAdapter;
@@ -103,10 +104,10 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     SliderView sliderView;
     SliderAdapter sliderAdapter;
     private static DrawerLayout mDrawerLayout;
-
-    ImageView toggle, profile_image, imgbestbatter,
+    CircleImageView profile_image;
+    ImageView toggle, imgbestbatter,
             imgbestBowler, imgDobWishes;
-    TextView toolbartxt, uname,txtrole,txtUserType, umobile, uemailId,
+    TextView toolbartxt, uname, txtrole, txtUserType, umobile, uemailId,
             txtbestBatter, txtBestbowler, txtbirthdaywishes;
     Toolbar toolbar;
     Context context;
@@ -129,7 +130,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     ArrayList arrayList;
     LinearLayout llmain;
     List<DataModelLeftNew> dataModelLeftList;
-
+    RelativeLayout gotoprofileactivity;
     private List<BannerResponse.DashboardOfficer> adminimagelist = new ArrayList<BannerResponse.DashboardOfficer>();
     private List<BannerResponse.MatchDetail> matchDetailList = new ArrayList<BannerResponse.MatchDetail>();
     private List<BannerResponse.TopBat> topBatArrayList = new ArrayList<BannerResponse.TopBat>();
@@ -170,6 +171,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerList = findViewById(R.id.left_drawer);
         txtUserType = findViewById(R.id.txtUserType);
+        gotoprofileactivity = findViewById(R.id.gotoprofileactivity);
         txtrole = findViewById(R.id.uname);
         uname = findViewById(R.id.uname);
         umobile = findViewById(R.id.umobile);
@@ -286,7 +288,20 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         sliderView.setOnIndicatorClickListener(new DrawController.ClickListener() {
             @Override
             public void onIndicatorClicked(int position) {
-                Log.i("GGG", "onIndicatorClicked: " + sliderView.getCurrentPagePosition());
+                //  Log.i("GGG", "onIndicatorClicked: " + sliderView.getCurrentPagePosition());
+            }
+        });
+
+
+        gotoprofileactivity.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                mDrawerLayout.closeDrawers();
+                Intent resetPassword = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(resetPassword);
+
+
             }
         });
 
@@ -320,11 +335,11 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         super.onActivityResult(requestCode, resultCode, data);
         if (requestCode == FLEXIBLE_APP_UPDATE_REQ_CODE) {
             if (resultCode == RESULT_CANCELED) {
-                Toast.makeText(getApplicationContext(), "Update canceled by user! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
+                //  Toast.makeText(getApplicationContext(), "Update canceled by user! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
             } else if (resultCode == RESULT_OK) {
-                Toast.makeText(getApplicationContext(), "Update success! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
+                //  Toast.makeText(getApplicationContext(), "Update success! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
             } else {
-                Toast.makeText(getApplicationContext(), "Update Failed! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
+                //  Toast.makeText(getApplicationContext(), "Update Failed! Result Code: " + resultCode, Toast.LENGTH_LONG).show();
                 checkUpdate();
             }
         }
@@ -368,7 +383,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     public void initData() {
 
 
-
         appUpdateManager = AppUpdateManagerFactory.create(getApplicationContext());
         installStateUpdatedListener = state -> {
             if (state.installStatus() == InstallStatus.DOWNLOADED) {
@@ -376,14 +390,11 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
             } else if (state.installStatus() == InstallStatus.INSTALLED) {
                 removeInstallStateUpdateListener();
             } else {
-                Toast.makeText(getApplicationContext(), "InstallStateUpdatedListener: state: " + state.installStatus(), Toast.LENGTH_LONG).show();
+                // Toast.makeText(getApplicationContext(), "InstallStateUpdatedListener: state: " + state.installStatus(), Toast.LENGTH_LONG).show();
             }
         };
         appUpdateManager.registerListener(installStateUpdatedListener);
         checkUpdate();
-
-
-
 
 
         dataModelLeftList = new ArrayList<DataModelLeftNew>();
@@ -462,10 +473,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mDrawerLayout.setDrawerListener(mDrawerToggle);
         setupDrawerToggle();
-
-
-
-
 
 
     }
@@ -547,7 +554,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
                 mDrawerLayout.closeDrawers();
                 String aboutUs_url = "https://cricket.highereduhry.ac.in/About.aspx";
                 Intent wbview = new Intent(this, OpenBooksActivity.class);
-                wbview.putExtra("aboutUrl", aboutUs_url);
+                wbview.putExtra("Url", aboutUs_url);
                 wbview.putExtra("title", "About Us");
                 startActivity(wbview);
                 break;
@@ -921,40 +928,67 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     @Override
     public void onadminimgItemClick(BannerResponse.DashboardOfficer item, int currposition) {
 
+
     }
 
     @Override
     public void onrecentmatchItemClick(BannerResponse.MatchDetail item, int currposition) {
 
+
+        String url = item.getScoreCardFilePath();
+        Intent intent = new Intent(this, OpenPDFActivity.class);
+        intent.putExtra("Url", url);
+        intent.putExtra("title", "Score Card");
+        startActivity(intent);
+
+
     }
 
     @Override
     public void onTopBattingAvgItemClick(BannerResponse.TopBat item, int currposition) {
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
 
     }
 
     @Override
     public void onTopBowltingAvgItemClick(BannerResponse.TopBowl item, int currposition) {
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
 
     }
 
     @Override
     public void onMostWicketItemClick(BannerResponse.MostWicket item, int currposition) {
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
 
     }
 
     @Override
     public void onMostRuntingAvgItemClick(BannerResponse.MostRun item, int currposition) {
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
 
     }
 
     @Override
     public void onMostSixItemClick(BannerResponse.MostSix item, int currposition) {
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
 
     }
 
     @Override
     public void onMostFourItemClick(BannerResponse.MostFour item, int currposition) {
+        Intent playerhistoryintent = new Intent(this, PlayerHistoryActivity.class);
+        playerhistoryintent.putExtra("playerId", item.getPlayerId());
+        startActivity(playerhistoryintent);
 
     }
 
@@ -1063,26 +1097,6 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
     public void dailoghide(Context context) {
         pd.dismiss();
     }
-
-    private final BroadcastReceiver videocall = new BroadcastReceiver() {
-
-
-        @Override
-        public void onReceive(Context context, android.content.Intent intent) {
-
-
-            Toast.makeText(context, "Sorry For Inconvenience! All Driver is Busy Right Now. Please Book After a few moment. ", Toast.LENGTH_SHORT).show();
-
-            try {
-
-
-            } catch (Exception e) {
-
-            }
-
-
-        }
-    };
 
 
 }

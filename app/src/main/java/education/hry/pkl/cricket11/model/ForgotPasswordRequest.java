@@ -6,11 +6,15 @@ import com.google.gson.annotations.SerializedName;
 public class ForgotPasswordRequest {
 
 
+    @SerializedName("EmailId")
+    @Expose
+    private String EmailId;
+
     @SerializedName("Mobile")
     @Expose
     private String mobile;
 
-  @SerializedName("Password")
+    @SerializedName("Password")
     @Expose
     private String Password;
 
@@ -18,6 +22,13 @@ public class ForgotPasswordRequest {
     @Expose
     private String RegId;
 
+    public String getEmailId() {
+        return EmailId;
+    }
+
+    public void setEmailId(String emailId) {
+        EmailId = emailId;
+    }
 
     public String getPassword() {
         return Password;

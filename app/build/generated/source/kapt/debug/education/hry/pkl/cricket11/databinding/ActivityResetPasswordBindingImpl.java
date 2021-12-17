@@ -12,7 +12,7 @@ public class ActivityResetPasswordBindingImpl extends ActivityResetPasswordBindi
     @Nullable
     private static final android.util.SparseIntArray sViewsWithIds;
     static {
-        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(13);
+        sIncludes = new androidx.databinding.ViewDataBinding.IncludedLayouts(15);
         sIncludes.setIncludes(0, 
             new String[] {"toolbar_layout"},
             new int[] {1},
@@ -23,12 +23,14 @@ public class ActivityResetPasswordBindingImpl extends ActivityResetPasswordBindi
         sViewsWithIds.put(R.id.member_login_tv, 4);
         sViewsWithIds.put(R.id.txtmnumber, 5);
         sViewsWithIds.put(R.id.edtmobile, 6);
-        sViewsWithIds.put(R.id.tilpassword, 7);
-        sViewsWithIds.put(R.id.edtpassword, 8);
-        sViewsWithIds.put(R.id.llll, 9);
-        sViewsWithIds.put(R.id.textInputEditText, 10);
-        sViewsWithIds.put(R.id.resetpasswd_button, 11);
-        sViewsWithIds.put(R.id.view_1, 12);
+        sViewsWithIds.put(R.id.txtOldpassword, 7);
+        sViewsWithIds.put(R.id.edtOldpassword, 8);
+        sViewsWithIds.put(R.id.tilpassword, 9);
+        sViewsWithIds.put(R.id.edtpassword, 10);
+        sViewsWithIds.put(R.id.llll, 11);
+        sViewsWithIds.put(R.id.textInputEditText, 12);
+        sViewsWithIds.put(R.id.resetpasswd_button, 13);
+        sViewsWithIds.put(R.id.view_1, 14);
     }
     // views
     @NonNull
@@ -39,22 +41,24 @@ public class ActivityResetPasswordBindingImpl extends ActivityResetPasswordBindi
     // Inverse Binding Event Handlers
 
     public ActivityResetPasswordBindingImpl(@Nullable androidx.databinding.DataBindingComponent bindingComponent, @NonNull View root) {
-        this(bindingComponent, root, mapBindings(bindingComponent, root, 13, sIncludes, sViewsWithIds));
+        this(bindingComponent, root, mapBindings(bindingComponent, root, 15, sIncludes, sViewsWithIds));
     }
     private ActivityResetPasswordBindingImpl(androidx.databinding.DataBindingComponent bindingComponent, View root, Object[] bindings) {
         super(bindingComponent, root, 1
             , (android.widget.ScrollView) bindings[3]
-            , (com.google.android.material.textfield.TextInputEditText) bindings[6]
             , (com.google.android.material.textfield.TextInputEditText) bindings[8]
-            , (android.widget.LinearLayout) bindings[2]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[9]
-            , (android.widget.TextView) bindings[4]
-            , (android.widget.Button) bindings[11]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[6]
             , (com.google.android.material.textfield.TextInputEditText) bindings[10]
-            , (com.google.android.material.textfield.TextInputLayout) bindings[7]
+            , (android.widget.LinearLayout) bindings[2]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[11]
+            , (android.widget.TextView) bindings[4]
+            , (android.widget.Button) bindings[13]
+            , (com.google.android.material.textfield.TextInputEditText) bindings[12]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[9]
             , (education.hry.pkl.cricket11.databinding.ToolbarLayoutBinding) bindings[1]
+            , (com.google.android.material.textfield.TextInputLayout) bindings[7]
             , (com.google.android.material.textfield.TextInputLayout) bindings[5]
-            , (de.hdodenhof.circleimageview.CircleImageView) bindings[12]
+            , (de.hdodenhof.circleimageview.CircleImageView) bindings[14]
             );
         this.mboundView0 = (androidx.constraintlayout.widget.ConstraintLayout) bindings[0];
         this.mboundView0.setTag(null);
