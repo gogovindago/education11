@@ -578,7 +578,7 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
 
     @Override
     public void GetAllTeamListDetail_list(List<AllTeamListResponse.Datum> list) {
-
+int teamId;
 
         allteamlist.clear();
         allteamlist.addAll(list);
@@ -596,7 +596,12 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
         binding.spnteamdhe.setAdapter(SpinnerAllTeamAdapter);
         binding.spnmomteamname.setAdapter(SpinnerAllTeamAdapter);
 
-        binding.spnteamdhe.setSelection(23);
+        for (int i = 0; i < list.size(); i++) {
+            teamId=   list.get(i).getTeamId();
+
+        }
+
+        binding.spnteamdhe.setSelection(22);
         binding.spnteamdhe.setEnabled(false);
         binding.spnteamdhe.setClickable(false);
 
