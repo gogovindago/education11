@@ -899,19 +899,24 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
     @Override
     public void UpcomingBirthday_list(List<BannerResponse.UpcomingBirthday> list) {
+        if (list == null) {
 
-        Glide.with(this)
-                .load(list.get(0).getFilePath())
-                .fitCenter()
-                .into(imgDobWishes);
+        }else {
 
-        txtbirthdaywishes.setSelected(true);
-
-        String input_date = list.get(0).getDob();
-        SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
         Date dt1 = null;
 
         try {
+            Glide.with(this)
+                    .load(list.get(0).getFilePath())
+                    .fitCenter()
+                    .into(imgDobWishes);
+
+            txtbirthdaywishes.setSelected(true);
+
+            String input_date = list.get(0).getDob();
+            SimpleDateFormat format1 = new SimpleDateFormat("dd/MM/yyyy");
+
+
             dt1 = format1.parse(input_date);
         } catch (ParseException e) {
             e.printStackTrace();
@@ -921,7 +926,7 @@ public class MainActivity extends BaseActivity implements RecyclerViewAdapter.It
 
 
         txtbirthdaywishes.setText("          " + list.get(0).getPlayerName() + ", DOB :- " + finalDay + "           ");
-
+        }
     }
 
 

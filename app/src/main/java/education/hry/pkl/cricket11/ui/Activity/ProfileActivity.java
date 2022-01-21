@@ -222,7 +222,7 @@ public class ProfileActivity extends BaseActivity implements View.OnClickListene
                 if (Check_Data(view)) {
 
 
-                    if ((AccountType.equalsIgnoreCase("Admin"))||(AccountType.equalsIgnoreCase("Player"))) {
+                    if ((AccountType.equalsIgnoreCase("Admin")) || (AccountType.equalsIgnoreCase("Player"))) {
 
 
                         PlayerName = binding.edtfirstname.getText().toString().trim() + " " + binding.edtlastname.getText().toString().trim();
@@ -422,7 +422,7 @@ FileName*/
     public boolean Check_Data(View view) {
         if (!(AccountType == null)) {
 
-            if ((AccountType.equalsIgnoreCase("Player"))||(AccountType.equalsIgnoreCase("Admin"))) {
+            if ((AccountType.equalsIgnoreCase("Player")) || (AccountType.equalsIgnoreCase("Admin"))) {
                 if (TextUtils.isEmpty(binding.edtfirstname.getText().toString().trim())) {
                     GlobalClass.dailogError(ProfileActivity.this, "Missing First Name", "Please Enter User First Name");
                     return false;
@@ -672,11 +672,8 @@ FileName*/
                 }
 
 
-
                 binding.edit.setVisibility(View.GONE);
                 binding.save.setVisibility(View.VISIBLE);
-
-
 
 
                 break;

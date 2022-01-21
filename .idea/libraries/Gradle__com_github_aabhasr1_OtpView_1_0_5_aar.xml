@@ -4,6 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/44b57b62c9c76af359bfa2ae391526b0/transformed/jetified-OtpView-1.0.5/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/44b57b62c9c76af359bfa2ae391526b0/transformed/jetified-OtpView-1.0.5/res" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/44b57b62c9c76af359bfa2ae391526b0/transformed/jetified-OtpView-1.0.5/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1da6b27c15ccd665b20ae88b7b830aed/transformed/jetified-OtpView-1.0.5/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1da6b27c15ccd665b20ae88b7b830aed/transformed/jetified-OtpView-1.0.5/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1da6b27c15ccd665b20ae88b7b830aed/transformed/jetified-OtpView-1.0.5/AndroidManifest.xml" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
