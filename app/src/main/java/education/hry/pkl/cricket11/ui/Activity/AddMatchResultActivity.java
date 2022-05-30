@@ -578,7 +578,8 @@ public class AddMatchResultActivity extends BaseActivity implements GetAllTeamLi
 
     @Override
     public void GetAllTeamListDetail_list(List<AllTeamListResponse.Datum> list) {
-int teamId;
+        int teamId, selectedposition = 22;
+
 
         allteamlist.clear();
         allteamlist.addAll(list);
@@ -597,11 +598,14 @@ int teamId;
         binding.spnmomteamname.setAdapter(SpinnerAllTeamAdapter);
 
         for (int i = 0; i < list.size(); i++) {
-            teamId=   list.get(i).getTeamId();
+            if (list.get(i).getTeamId() == 2024) {
+                teamId = list.get(i).getTeamId();
+                selectedposition = i+1;
+            }
 
         }
 
-        binding.spnteamdhe.setSelection(22);
+        binding.spnteamdhe.setSelection(selectedposition);
         binding.spnteamdhe.setEnabled(false);
         binding.spnteamdhe.setClickable(false);
 
@@ -627,6 +631,7 @@ int teamId;
                 String theRest3 = arr[2];     //quick brown fox
                 binding.tlOpponentscore.setHint(firstWord + " " + theRest2 + " Total Score");
                 binding.tlOpponentover.setHint(firstWord + " " + theRest2 + " Over played");
+                binding.tlOpponentWicket.setHint(firstWord + " " + theRest2 + " Wicket Out");
 
                 fcm_MessageTitle = teamdheName + " Vs " + mystring;
 

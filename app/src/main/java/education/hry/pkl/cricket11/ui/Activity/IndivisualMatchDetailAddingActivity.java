@@ -42,7 +42,7 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
     SpinnerAllTeamAdapter SpinnerAllTeamAdapter;
     SpinnerAllDhePlayerAdapter spinnerAllDhePlayerAdapter;
 
-    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnAllDhePlayerCurrentPosition;
+    int spnOpponentteamCurrentPosition, spnteamdheCurrentPosition = 23, spnAllDhePlayerCurrentPosition,selectedposition,teamId;
     private MyLoaders myLoaders;
 
     String OpponentteamID, OpponentteamName, teamdhe, token, uname, Registration_Id, IsBatsmanOUtorNOt,
@@ -343,9 +343,16 @@ public class IndivisualMatchDetailAddingActivity extends BaseActivity implements
 
         binding.spnOpponentteam.setAdapter(SpinnerAllTeamAdapter);
         binding.spnteamdhe.setAdapter(SpinnerAllTeamAdapter);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getTeamId() == 2024) {
+                teamId = list.get(i).getTeamId();
+                selectedposition = i+1;
+            }
 
+        }
 
-        binding.spnteamdhe.setSelection(23);
+        binding.spnteamdhe.setSelection(selectedposition);
+
         binding.spnteamdhe.setEnabled(false);
         binding.spnteamdhe.setClickable(false);
 

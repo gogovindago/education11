@@ -1,9 +1,18 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.room:room-testing:2.0.0@aar">
     <CLASSES>
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f7f5608d60e3981b281212e4f10813c2/transformed/room-testing-2.0.0/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f7f5608d60e3981b281212e4f10813c2/transformed/room-testing-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f7f5608d60e3981b281212e4f10813c2/transformed/room-testing-2.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6ae490a8d926bb2012a734f8b8faea2a/transformed/room-testing-2.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/6ae490a8d926bb2012a734f8b8faea2a/transformed/room-testing-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6ae490a8d926bb2012a734f8b8faea2a/transformed/room-testing-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/007d0b1c1523218248bc4f8ef800ef58/transformed/room-testing-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/ab53023b4ea232f42ca14e21b7c57f5d/transformed/room-testing-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/6f654999ec3d79906e7c52e5557cdc05/transformed/room-testing-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/b7a31f79fd516fdd3849f9ef5166bb7b/transformed/room-testing-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/a255d6bcedd159cee02fcb8acdd01014/transformed/room-testing-2.0.0/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e759af35b0e4fd289d401ac4f5ee11dd/transformed/room-testing-2.0.0/AndroidManifest.xml" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/e759af35b0e4fd289d401ac4f5ee11dd/transformed/room-testing-2.0.0/res" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/e759af35b0e4fd289d401ac4f5ee11dd/transformed/room-testing-2.0.0/jars/classes.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
